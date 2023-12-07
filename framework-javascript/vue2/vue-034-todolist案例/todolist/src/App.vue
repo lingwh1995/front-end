@@ -1,7 +1,7 @@
 <template>
   <div>
     <MyHeader :receive="recevice"/>
-    <MyItemList/>
+    <MyItemList :items="items"/>
     <MyFooter/>
   </div>
 </template>
@@ -13,6 +13,11 @@ import MyFooter from './components/MyFooter.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      items:[]
+    }
+  },
   components: {
     MyHeader,
     MyItemList,
@@ -20,7 +25,8 @@ export default {
   },
   methods: {
     recevice(param) {
-      console.log(param)
+      //接收Header组件中输入的数据并添加到当前组件的data中的items对象上
+      this.items.unshift(param)
     }
   },
 }
