@@ -1,0 +1,35 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script>
+		/**
+		 * let解构赋值
+		 */
+		var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
+		console.log('x = ' + x + ', y = ' + y + ', z = ' + z);
+
+		var a = [x, y, z] = ['hello', 'JavaScript', 'ES6']; 
+		console.log(a);
+		//访问时使用访问数组的方式进行访问
+		console.log(a[0]);
+
+		/**
+		 * 使用解构抽取属性
+		 */
+		var person = {
+			name: '小明',
+			age: 20,
+			gender: 'male',
+			passport: 'G-12345678',
+			school: 'No.4 middle school',
+			addredd:['beijing','shanghai','guandong','shenzhen']
+
+		};
+		var {name, age, passport} = person;
+		console.log('name = ' + name + ', age = ' + age + ', passport = ' + passport);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

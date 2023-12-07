@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>清除/闭合浮动方法五</title>
+	<style type="text/css">
+	/*清除浮动的目的就是为了解决父亲高度为0的问题*/
+    .father {
+    	width: 600px;
+    	border: 1px solid red ;
+    	/*overflow:hidden;*/
+    }
+    .A,.B {
+    	width: 200px;
+    	height: 100px;
+    	background-color: pink;
+    	border: 1px solid gold ;
+    	float: left;
+    	font-size: 9px;
+    }
+    .clearfix:before,.clearfix:after {
+    	display: table;/*将行内元素转换为块级元素*/
+        content: "";
+    }
+    .clearfix:after {
+    	clear:both;
+    }
+    .clearfix {
+    	zom: 1;
+    }
+	</style>
+</head>
+<body>
+	<div class="father clearfix">
+		<div class="A">熊大</div>
+		<div class="B">熊二</div>
+	</div>
+</body>
+</html>

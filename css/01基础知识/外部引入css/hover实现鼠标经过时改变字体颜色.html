@@ -1,0 +1,27 @@
+<html> 
+    <head>
+	    <title>外部引入css详解+hover</title>
+		<meta http-equiv="Content-Type" content="text/html;charaset=utf-8"/>
+		<!--内部css
+		<style type="text/css">
+		      #A:hover
+			  {
+			    color:red;
+			  }
+		</style>
+		-->
+		
+        <!--外部引入css方式一：@import"样式名称"-->
+		<!--
+		<style type="text/css">
+		     @import"myStye.css";
+		</style>
+		-->
+		<!--外部引入css方式一：链接式（书写在<link标签中/>）-->
+		<!--注意：外部导入CSS是href=""，不是src=""-->
+		<link href="myStye.css" rel="stylesheet" type="text/css"/>
+    </head>
+	<body>	
+	    <span id="A">天猫</span>精选
+	</body>
+</html>

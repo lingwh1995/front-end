@@ -1,0 +1,32 @@
+<!-- 
+    Vue绑定原生事件
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <child @click.native="handleNativeClick"></child>
+    </div>    
+</body>
+<script>
+    Vue.component('child',{
+        template:"<div>绑定原生事件简单写法</div>",
+    });
+
+    var app = new Vue({
+        el:'#app',
+        methods: {
+            handleNativeClick: function(){
+                alert('绑定原生事件简单写法......');
+            }
+        }
+    });
+</script>    
+</html>

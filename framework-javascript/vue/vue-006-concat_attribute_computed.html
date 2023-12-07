@@ -1,0 +1,60 @@
+<!-- 
+    1.使用computed(计算属性)来拼接属性
+    测试方法:
+        改变计算结果未依赖的值,如app.$data.age=25,看控制台是否输出相关文
+        字,以此判断是页面重新渲染时是否调用了拼接字符串的方法,如果调用了,
+        说明没有把拼接结果缓存起来，而是每次页面重新渲染都会被调用,如果没
+        有调用，说明拼接结果已经被缓存起来了
+    测试结果:
+        此种方式拼接字符串会将拼接结果缓存起来    
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 不计算属性:计算逻辑要写在页面上 -->
+        <div>{{firstName + ' ' + lastNmae}}</div>
+        <div>{{age}}</div>
+        <!-- 计算属性：计算逻辑不需要写在页面上 -->
+        <div>{{fullNameByComputed}}</div>
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            firstName: 'Macle',
+            lastNmae: 'Jackson',
+            age: '28'    
+        },
+        //计算属性:很重要的一点,计算属性的结果会缓存起来,只有计算结果依赖的值发生了变化,才会自动重新计算
+        //每次页面重新渲染，此方法不会被重新调用
+        computed: {
+            // fullNameByComputed :function(){
+            //     console.log('计算了一次......');
+            //     return this.firstName + ' ' + this.lastNmae + ' 通过计算属性获取的结果';
+            // }
+
+            //计算属性增强:具体的计算方法里面有get和set方法
+            fullNameByComputed:{
+                get: function(){
+                    console.log('调用了get方法');
+                    return this.firstName + ' ' + this.lastNmae + ' 通过计算属性获取的结果';
+                },
+                set: function(value){
+                    console.log('调用了set方法');
+                    console.log(value);
+                }
+            } 
+        },
+    });
+   
+</script>    
+</html>

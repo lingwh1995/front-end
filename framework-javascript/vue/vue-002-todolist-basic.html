@@ -1,0 +1,69 @@
+<!-- 
+    1.不使用组件实现TodoList
+    2.使用v-for实现循环遍历:
+        v-for="item in list"
+    3.使用v-on绑定事件,并给事件指定方法:
+        v-on:click="handleClick"
+    4.使用v-model实现双向数据绑定
+        <input type="text" v-model="inputValue"/>
+        获取v-model绑定的dom值:  console.log(this.inputValue);  
+        给v-mode绑定的dom设置值:  this.inputValue = 'xxx';
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <hr/>
+    <div id="todo-list-1">
+        <input type="text"/>
+        <input type="button" value="提交"/>
+        <ul>
+            <li v-for='item in list'>{{item}}</li>
+        </ul>    
+    </div>
+    <hr/>
+    <div id="todo-list-2">
+        <input type="text" v-model="inputValue"/>
+        <input type="button" v-on:click="handleClick" value="提交"/>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>    
+    </div>
+</body>
+<script>
+    //展示v-for标签的使用
+    var todoList1 = new Vue({
+        el: '#todo-list-1',
+        data: {
+            list:['第一课内容','第二课内容','第三课内容']
+        }
+    });
+    
+    /**
+     * 1.vue中绑定方法
+     * 2.测试vue的数据双向绑定,在控制台中输入:
+     *      todoList2.$data.inputValue='ASDFASDFASF'
+     * mvvm:只操作数据，根据数据的不同，重新渲染dom,并不操作DOM
+     */
+    var todoList2 = new Vue({
+        el:'#todo-list-2',
+        data: {
+            list: [],
+            inputValue:''
+        },
+        methods: {
+            handleClick:function(){
+                //alert(this.inputValue);
+                this.list.push(this.inputValue);
+                this.inputValue = '';
+            }
+        }
+    });
+</script>    
+</html>

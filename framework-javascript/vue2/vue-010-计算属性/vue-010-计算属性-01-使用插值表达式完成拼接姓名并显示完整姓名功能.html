@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-010-计算属性-01-使用插值表达式完成拼接姓名并显示完整姓名功能</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入姓:<input type="text" v-model:value="firstName"/><br/>
+        请输入名:<input type="text" v-model:value="lastName"/><br/>
+        <!-- 不推荐的写法:在插值表达式中实现复杂操作(vue框架不推荐这样做) -->
+        姓名:<span>{{firstName.slice(0,3).toUpperCase()}}-{{lastName}}</span><br/>
+        <!-- 推荐的写法
+                直接使用插值表达式调用有返回值的方法，把复杂的操作在方法中完成
+                缺点:只要vue实例中的data的值发生任何一次改变，这个 fullName() 方法就会调用一次，效率不高，也比较耗费性能
+                解决方案:使用vue提供的计算属性来完成该需求，使用计算属性(computed)中提供的fullName属性是有缓存的
+        -->
+        <!-- 直接写在methods中写一个方法这种方式是没有缓存的，{{fullName()}}写几次fullName()这个方法就会被调用几次 -->
+        姓名:<span>{{fullName()}}</span><br/>
+        姓名:<span>{{fullName()}}</span><br/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 要求:
+         *      1.页面输入姓和名，在下面显示出完整的姓名
+         *      2.姓只取前三个字符
+         *      3.姓的首字母全部转为大写
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            methods: {
+                fullName() {
+                    alert('fullName()被调用了...')
+                    return this.firstName.slice(0,3).toUpperCase() + '-' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

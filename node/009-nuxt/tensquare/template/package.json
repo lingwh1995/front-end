@@ -1,0 +1,29 @@
+{
+  "name": "tensequare",
+  "version": "1.0.0",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env BASE_URL=http://192.168.1.131:7300/mock/5e897ed6e464ae477c487857/ten_sequare/ nuxt",
+    "build": "cross-env BASE_URL=http://localhost:8761 nuxt build",
+    "start": "cross-env BASE_URL=http://localhost:8761 nuxt start",
+    "generate": "cross-env BASE_URL=http://localhost:8761 nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
+    "nuxt": "^2.0.0",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-social-share": "0.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}

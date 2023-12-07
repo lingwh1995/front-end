@@ -1,0 +1,36 @@
+<!-- 
+    Vue绑定原生事件
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <child @click-native="handleNativeClick"></child>
+    </div>    
+</body>
+<script>
+    Vue.component('child',{
+        template:"<div @click='handleClick'>绑定原生事件复杂写法</div>",
+        methods: {
+            handleClick: function(){
+                this.$emit('click-native');
+            }
+        }
+    });
+    var app = new Vue({
+        el:'#app',
+        methods: {
+            handleNativeClick: function(){
+                alert('绑定原生事件复杂写法......');
+            }
+        }
+    });
+</script>    
+</html>

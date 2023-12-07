@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-015-条件渲染指令-04-切换显示与隐藏(template与v-if结合使用)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="isShow">
+            <h1>我是数字1~</h1>
+            <h1>我是数字2~</h1>
+            <h1>我是数字3~</h1>
+        </template>
+        <button @click="toggleShowAndHiddenNumber">点击切换显示与隐藏数字</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 条件渲染指令--切换显示与隐藏(template与v-if结合使用)
+         *      template只能与v-if结合使用
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods: {
+                toggleShowAndHiddenNumber() {
+                    this.isShow = ! this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+</html>

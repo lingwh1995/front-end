@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js原生代码模拟jquery效果</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            border: 1px solid gold;
+            margin:10px;
+        }
+    </style>
+    <script>
+       window.onload = function(){
+           function $(id){
+               return document.getElementById(id);
+           }
+           $("box1").style.backgroundColor = 'red';
+           $("box2").style.backgroundColor = 'gold';
+           $("box3").style.backgroundColor = 'green';
+       }
+    </script>
+</head>
+<body>
+    <div class="box1" id="box1"></div>
+    <div class="box2" id="box2"></div>
+    <div class="box3" id="box3"></div>
+</body>
+
+</html>

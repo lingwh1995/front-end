@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-003-vue实例和容器是一一对应的-01</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- {{xxx}}是vue的插值表达式语法 -->
+        <h1>{{content}}</h1>
+    </div>
+    <div class="app">
+        <!-- {{xxx}}是vue的插值表达式语法 -->
+        <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+        //创建vue实例
+            //特别注意: 一个vue实例只能对应一个容器，el中只会识别第一个页面元素
+        const app = new Vue({
+            //el:用于指定当前vue容器用于操作哪个容器，值通常为css选择器字符串
+            //或者写成 el:document.getElementById("#app")
+            el: '.app',
+            //data中用于存储数据，存储的数据用于el所操作的容器使用
+            data: {
+                content: 'hello vue!'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-016-列表渲染指令-07-使用计算属性(computed)实现根据关键字显示列表功能</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入名字:<input type="text" v-model="keywords" placeholder="请输入名字中的一个字"/>
+        <button @click="changeSortType('asc')">年龄升序</button>
+        <button @click="changeSortType('desc')">年龄降序</button>
+        <button @click="changeSortType('default')">原序展示</button>
+        <ul>
+            <li v-for="person in filterPersons" :key="person.id">
+                {{person.id}} - {{person.name}} - {{person.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    {id:'001',name:'周杰伦',age:'25'},
+                    {id:'002',name:'周冬雨',age:'35'},
+                    {id:'003',name:'马思雨',age:'40'},
+                    {id:'004',name:'马冬梅',age:'33'}
+                ],
+                keywords: '',
+                sortType: 'default'
+            },
+            computed: {
+                filterPersons() {
+                    //对数组进行过滤
+                    const filterPerson = this.persons.filter((item) => {
+                        return item.name.indexOf(this.keywords) != -1
+                    })
+                    //对过滤后的数组进行排序
+                    let filterOrderPerson = null
+                    switch (this.sortType) {
+                        case 'asc':
+                            filterOrderPerson = filterPerson.sort((a,b)=>{ return a.age - b.age })
+                            break
+                        case 'desc':
+                            filterOrderPerson = filterPerson.sort((a,b)=>{ return b.age - a.age })
+                            break
+                        default:
+                            filterOrderPerson = filterPerson
+                            break
+                    }
+                    return filterOrderPerson
+                }
+            },
+            methods: {
+                changeSortType(param) {
+                    this.sortType = param
+                }
+            },
+        })
+    </script>
+</body>
+</html>

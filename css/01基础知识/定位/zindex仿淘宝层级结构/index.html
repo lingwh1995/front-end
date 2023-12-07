@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>z-index仿淘宝层级结构</title>
+	<style>
+		.test {
+			width: 100px;
+			height: 300px;
+			border: 1px solid #ccc;
+			margin-top: 100px;
+			float: left;
+			margin-left: -1px;
+			position: relative;
+		}
+		.test:hover {
+			border: 1px solid red;
+			position: relative;
+			/*position: absolute;*/
+			/*注意：不能使用绝对定位，因为绝对定位不占位置，鼠标放上去后位置就没了*/
+			/*z-index: 10;*/
+			/*如果都有没有定位，想要盒子在最上层，加相对定位，如果盒子都有定位，想让盒子高度最高，使用z-index解决*/
+		}
+	</style>
+</head>
+<body>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+</body>
+</html>

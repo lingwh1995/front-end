@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-030-vue中的父子组件传值增强-05-子组件使用props接收父组件传递的函数(兄弟组件之间传值解决方案-传递函数解决)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child-son :get-child-son-input-value="getChildSonInputValue"></child-son>
+        <child-daughter :input-value-from-parent-by-brother="inputValueFromChildSon"></child-daughter>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 子组件使用props接收父组件传递的函数(兄弟组件之间传值解决方案-传递函数解决)
+         *      父组件给子组件1传递一个函数，用于接收子组件传递给父组件的值,再把这个接收的值传递给子组件2
+         * 注意：此种解决方案并非最佳解决方案，可以使用数据总线来解决
+         */
+        //第一步：定义ChildSon组件
+        const ChildSon = Vue.extend({
+            template:
+            `<div>
+                <input v-model="inputValue"/>
+                <button @click='getAndSendInputValue'>点击获取输入用户数据并回传给父组件</button>
+            </div>`,
+            data() {
+                return {
+                    inputValue: ''
+                }
+            },
+            props: ['getChildSonInputValue'],
+            methods: {
+                getAndSendInputValue() {
+                    //获取子组件页面中输入的值，并回传给父组件
+                    this.getChildSonInputValue(this.inputValue)
+                }
+            },
+        })
+
+        //第一步：定义ChildDaughter组件
+        const ChildDaughter = Vue.extend({
+            template:
+            `<div>
+                <button @click='showInputValueFromParentByBrother'>点击获取父组件传递给子组件的值(父组件中这个值也是当前组件的兄弟组件传递给父组件的)</button>
+            </div>`,
+            props: ['inputValueFromParentByBrother'],
+            methods: {
+                showInputValueFromParentByBrother() {
+                    alert(this.inputValueFromParentByBrother)
+                }
+            },
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                inputValueFromChildSon: '',
+            },
+            //第二步：注册组件(局部注册)
+            components: { 
+                ChildSon,
+                ChildDaughter
+            },
+            methods: {
+                getChildSonInputValue(param) {
+                    console.log('子组件传递给父组件的值:' + param)
+                    //接收子组件传递给父组件的值并把这个值放在父组件的data中
+                    this.inputValueFromChildSon = param
+                }
+            }
+        })
+    </script>
+</body>
+</html>

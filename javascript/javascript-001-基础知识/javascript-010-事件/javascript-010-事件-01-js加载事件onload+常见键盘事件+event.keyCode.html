@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>加载事件onload+键盘事件+event.keyCode</title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<script type="text/javascript">
+			//关于加载事件onload的高级用法：如果写在语句中则是当语句所在语句全部加载完毕后执行，主要看onload语句所在位置
+			//onload是一个特殊的事件
+			function testOnload(){
+				alert("当看见这句话的时候证明body中事件完整加载完毕（加载事件:当body中事件完整加载完毕后执行的函数）");
+			}
+			//onkeydown:一般写在body中 onkeyup onkeypress,其他两个的用法类似于onkeydown
+			function testOnkeydown(){
+				alert("当看见这行文字的时候，说明触发了onkeydown事件");
+			}
+			function myDown(event){
+			//注意：1.函数中有参数，调用的是时候也要写参数 2.是event.keyCode,不是event.keycode 3.keyCode是属性，所以后面没有括号 4.event是内置对象
+					alert(event.keyCode);//还可以通过判断event.keyCode的值来监听用户的键盘操作
+			}
+		</script>
+	</head>
+
+	<body onload="testOnload()" onkeydown="testOnkeydown()"/><!--这里要注意：不能把onload事件写在body标签中有时容易写错-->
+			<input type="button" name="" value="keyCode" onkeydown="myDown(event)"/>
+	</body>
+</html>

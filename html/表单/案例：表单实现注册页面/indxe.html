@@ -1,0 +1,91 @@
+<html>
+      <head>
+	         <title>表单实现注册页面案例</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+			 <script type="text/javascript">
+			 </script>
+      </head>
+	  
+	  <body>
+	        <strong>免费开通人人网账户</strong>
+			<form action="result.html" method="get">
+			<table width="100%" height="100%">
+			       <tr>
+				        <td align="right">注册邮箱:</td>
+				        <td><input type="text" name="email" value=""></td>
+			       </tr>
+				   <tr>
+				        <td align="right"></td>
+				        <td>您还可以使用&nbsp;<a href="#">账号</a>&nbsp;注册或者&nbsp;<a href="#">手机号</a>&nbsp;</td>
+			       </tr>
+				   <tr>
+				        <td align="right">创建密码:</td>
+				        <td><input type="password" name="pwd" value=""></td>
+			       </tr>
+				   <tr>
+				        <td align="right">真实姓名:</td>
+				        <td><input type="text" name="rName" value=""></td>
+			       </tr>
+				   <tr>
+				        <td align="right">性别:</td>
+				        <td><input type="radio" name="sex" value="nan">男&nbsp;&nbsp;<input type="radio" name="sex" value="nv"></td>
+			       </tr>
+				    <tr>
+				        <td align="right">生日:</td>
+				        <td>
+						    <select name="year">
+							       <option>1991</option>
+							       <option>1992</option>
+							       <option>1993</option>
+							</select>年
+							<select name="month"
+							       <option>01</option>
+							       <option>02</option>
+							       <option>03</option>
+							</select>月
+							<select name="day">
+							       <option>01</option>
+							       <option>02</option>
+							       <option>03</option>
+							</select>日
+						</td>
+			       </tr>
+				   <tr>
+				        <td align="right">我正在:</td>
+				        <td>
+						    <select name="select">
+							       <option>正在上学</option>
+							       <option>正在上班</option>
+							       <option>正在工作</option>
+						    </select>
+						</td>
+			       </tr>
+				   <tr>
+				        <td align="right"></td>
+				        <td><image src="image/verycode.gif"/>&nbsp;&nbsp;&nbsp;<a href="#">看不清换一张？</a></td>
+			       </tr>
+				   <tr>
+				        <td align="right">验证码:</td>
+				        <td><input type="text" name="yzm" value=""/></td>
+			       </tr>
+				   <tr>
+				        <td align="right">自我介绍：</td>
+				        <td vlign="bottom">
+						    <textarea> </textarea>
+						</td>
+			       </tr>
+				   <tr>
+				        <td align="right"></td>
+				        <td><input type="image" src="image/btn_reg.gif"/></td>
+			       </tr>
+				   <pre> 
+				        制作经验: 1.width="100%" height="100%" 会影响valign/align的作用效果
+				                  2.把所有输入项可以有效避免每一行与每一行不对齐的问题，不用麻烦的必须要使用多个空格实现对齐了
+								 3.表格对齐直接用align="right"居右实现很规整的对齐
+						           
+				   </pre>
+			</table>
+			</form>
+	  </body>
+</html>

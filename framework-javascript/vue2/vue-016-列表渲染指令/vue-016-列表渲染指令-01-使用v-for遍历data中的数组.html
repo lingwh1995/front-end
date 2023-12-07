@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-016-列表渲染指令-01-使用v-for遍历data中的数组</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>v-for指令遍历数组第一种写法(推荐写法:使用item.id作为key,这样避免了虚拟dom对比时可能出现的问题)</h1>
+        <ul>
+            <li v-for="item in items" :key="item.id">
+                <span>{{item.id}} - {{item.goods}} - {{item.price}}</span>
+            </li>
+        </ul>
+
+        <h1>v-for指令遍历数组第二种写法(第一种写法是第二种写法的简化形式)</h1>
+        <ul>
+            <li v-for="(item,index) in items" :key="item.id">
+                <span>{{item.id}} - {{item.goods}} - {{item.price}}</span>
+            </li>
+        </ul>
+
+        <h1>v-for指令遍历数组第三种写法</h1>
+        <ul>
+            <li v-for="(item,index) in items" :key="index">
+                <span>{{item.id}} - {{item.goods}} - {{item.price}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 列表渲染指令-使用v-for遍历data中的数组
+         *      1.:key必须写上,虚拟dom对比时会用到这个key
+         *      2.所有的v-for中的in都可以替换为of
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                //数组
+                items: [
+                    {id:'001',goods:'自行车',price:'100'},
+                    {id:'002',goods:'电视机',price:'200'},
+                    {id:'003',goods:'洗衣机',price:'300'}
+                ],
+            }
+        })
+    </script>
+</body>
+</html>

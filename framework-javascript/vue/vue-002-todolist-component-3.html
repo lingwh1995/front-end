@@ -1,0 +1,64 @@
+<!-- 
+    1.子组件向父组件传值
+    2.使用:index="index"代替v-bind:index="index"
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" value="" v-model="inputValue"/>
+        <input type="button" value="测试vue组件" @click="handleClick"/>
+        <ul>
+            <!-- v-bind:父组件给子组件传值时使用 -->
+            <todo-item 
+                v-bind:content="item" 
+                :index="index"
+                v-for="(item,index) in list" 
+                @delete="handleItemClick">
+            </todo-item>
+        </ul>
+    </div>    
+</body>
+<script>
+
+    /**
+     * 局部组件:使用时需要在vue实例中注册
+     */ 
+    var TodoItem = {
+        props:['content','index'],
+        template:"<li @click='handleItemClick'>{{content}}</li>",
+        methods: {
+            handleItemClick: function() {
+                this.$emit('delete',this.index);
+            }
+        }
+    };
+    var app = new Vue({
+        el:'#app',
+        //注册子组件
+        components:{
+            TodoItem: TodoItem
+        },
+        data: {
+            list: [],
+            inputValue:''
+        },
+        methods:{
+            handleClick: function() {
+                this.$data.list.push(this.inputValue);
+                this.inputValue = '';
+            },
+            handleItemClick: function(index) {
+                this.list.splice(index,1);
+            }
+        }    
+    });
+</script>    
+</html>

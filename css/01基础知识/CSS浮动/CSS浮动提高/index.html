@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS浮动</title>
+	<style type="text/css">
+	      .box1{
+	      	  float:left;
+	      	  width:400px;
+	      	  height:400px;
+	      	  background: yellow;
+	      }
+	      .box2{
+	      	  float:left;
+	      	  width:400px;
+	      	  height:400px;
+	      	  background: skyblue;
+	      }
+	       /*浮动的特点：
+	        1.浮动的元素会脱离标准文档流，例如，span本来是一个内联元素，是不可以设置宽和高的，但是通过设置浮动就可以设置宽和高了，不仅span，任何内联元素都
+	         可以通过设置浮动来设置宽高   2.可以发现浮动的元素会自动互相贴靠 3.浮动的元素有字围现象*/
+	      .box3{
+	      	  float:left;
+	      	  width:400px;
+	      	  height:400px;
+	      	  background: orange;
+	      } 
+	      .box4{
+	      	  float:left;
+	      	  width:400px;
+	      	  height:400px;
+	      	  background: gold;
+	      }
+	     
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<span class="box3"></span>
+	<u class="box4"></u>
+</body>
+</html>

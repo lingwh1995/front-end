@@ -1,0 +1,23 @@
+<html>
+      <head>
+	         <title></title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript">
+			       function check(){
+				       var isCheckedTemp = document.getElementById("A");
+					   var isChecked = isCheckedTemp.checked;
+					   var allChecked = document.getElementsByName("check");
+					   for(var i=0;i<allChecked.length;i++){
+					       allChecked[i].checked = isChecked ;
+					   }
+				   }
+			 </script>
+      </head>
+	  <body>
+	        <input type="button" name="" value="全选" onclick="check()"/>
+			<input type="checkbox" name="check" id="A"/><br/>
+	        <input type="checkbox" name="check"/>篮球
+	        <input type="checkbox" name="check"/>足球
+	        <input type="checkbox" name="check"/>排球
+	  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤案例</title>
+    <style>
+        body {
+            background: url("images/1.jpg")top center;
+        }
+        .box {
+            height: 150px;
+            background: rgba(255,255,255,0.4);
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+            var pic4 = document.getElementById("pic4");
+            pic1.onclick = function(){
+                document.body.style.backgroundImage = "url('images/1.jpg')";
+            }
+            pic2.onclick = function(){
+                document.body.style.backgroundImage = "url('images/2.jpg')";
+            }
+            pic3.onclick = function(){
+                document.body.style.backgroundImage = "url('images/3.jpg')";
+            }
+            pic4.onclick = function(){
+                document.body.style.backgroundImage = "url('images/4.jpg')";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <img src="images/1.jpg" alt="" width="150px" id="pic1"/>
+        <img src="images/2.jpg" alt="" width="150px" id="pic2"/>
+        <img src="images/3.jpg" alt="" width="150px" id="pic3"/>
+        <img src="images/4.jpg" alt="" width="150px" id="pic4"/>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>JS全选练习</title>
+	<script type="text/javascript">
+	     function checkedallByCheckbox(){
+	     	  var isallchecked = document.getElementsByName("isallchecked");
+              var allhobby = document.getElementsByName("hobby");
+              for(var i=0;i<allhobby.length;i++){
+              	  allhobby[i].checked = isallchecked[0].checked ;
+              }
+	     }
+	     function checkedallByButton1(){
+              var allhobby = document.getElementsByName("hobby");
+              for(var i=0;i<allhobby.length;i++){
+              	  allhobby[i].checked = true ;
+              }
+	     }	    
+	     function checkedallByButton2(){
+              var allhobby = document.getElementsByName("hobby");
+              for(var i=0;i<allhobby.length;i++){
+              	  allhobby[i].checked = false ;
+              }
+	     }
+	     function checkedallByButton3(){
+              var allhobby = document.getElementsByName("hobby");
+              for(var i=0;i<allhobby.length;i++){
+              	if(allhobby[i].checked==true){
+              		allhobby[i].checked = false ;
+              	}else{
+                    allhobby[i].checked = true ;
+              	}
+              }
+	     }
+	</script>
+</head>
+<body>
+	
+</body>
+    <input type="checkbox" name="isallchecked" onclick="checkedallByCheckbox()"/>全选/全不选<br/>
+    <input type="checkbox" name="hobby"/>篮球<br/>
+    <input type="checkbox" name="hobby"/>足球<br/>
+    <input type="checkbox" name="hobby"/>排球<br/>
+    <input type="checkbox" name="hobby"/>冰球<br/>
+    <input type="button" value="全选" onclick="checkedallByButton1()"/>
+    <input type="button" value="全不选" onclick="checkedallByButton2()"/>
+    <input type="button" value="反选" onclick="checkedallByButton3()"/>
+</html>

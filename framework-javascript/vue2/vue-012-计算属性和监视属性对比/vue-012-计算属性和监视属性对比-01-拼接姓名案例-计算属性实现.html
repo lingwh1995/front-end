@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-012-计算属性和监视属性对比-01-拼接姓名案例-计算属性实现</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入姓:<input v-model="firstName"/></br>
+        请输入名:<input v-model="lastName"/></br>
+        完整姓名:<span>{{fullName}}</span>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 使用计算属性实现拼接姓名案例
+         *      computed中写的代码不属于命令式编程
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                fullName() {
+                    return this.firstName + '-' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

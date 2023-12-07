@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>固定定位</title>
+	<style type="text/css">
+    div {
+    	height: 300px;
+    	width: 400px;
+    	background-color: yellow;
+    	position: absolute;
+    	padding: 50px;
+    	/*margin: 0 auto;
+    	 1.浮动和绝对定位都可以使盒子脱离标流，不在标准流中的盒子，都是平等的，宽高就可以被显示出来
+    	 2.脱离标准流的盒子margin：0 auto;无法设置居中，要使用left:50%;来设置*/
+
+    	 /*无法使用margin:0 auto;居中的盒子如何居中，固定写法*/
+    	 left: 50%;
+    	 margin-left: -250px;/*-宽度的一半*/
+    }
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

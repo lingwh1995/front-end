@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>JS函数提升</title>
+	<script type="text/javascript">
+		/*1.变量的作用域问题:变量在什么位置可以使用
+            *全局变量:定义在函数之外
+            *局部变量:定义在函数内部
+            *注意：JS中没有全块级作用域
+
+            *当变量超出作用域之后，变量就会被垃圾回收器销毁，当浏览器关闭的时 候全局作用域消失，全局变量才会被销毁
+           2.JS的函数编译过程
+             *先进行预编译，再进行解释
+           3.自调用函数:特点是只执行一次
+           4.函数是一种数据类型
+             *函数作为方法的参数
+             *函数作为方法的返回值
+		*/
+		// 全局作用域:在任何位置都可以访问
+		// 第一种全局变量
+		var name = "a" ;
+		console.log("第一种全局变量:"+name);
+		//第二种全局变量
+		function f2(){
+			a = 5 ;
+			console.log(a);
+		}
+		f2();
+		console.log("第二种全局变量:"+a);
+
+		// 局部作用域:在函数内部声明一个变量，只能在改函数内部使用
+        function f1() {
+            var name = "b" ;
+            console.log("局部变量:"+name);
+        }
+        f1();
+        console.log("预解析---------------");
+		//JS函数的由浏览器里面的JavaScript解释器来执行
+		/*//这个函数的执行后会在控制台输出  undefined 
+		var num = 10 ;
+		fun();
+		function fun(){
+			console.log(num);
+			var num = 20 ;
+		}
+		*/
+
+	    /*JS执行函数的具体步骤：
+	    1.JS函数执行之前，会先对全部作用域进行预解析
+	      预解析:会先寻找代码中的所有var、function()、所有的参数，并将找到的内容提前
+	    2.当执行到function()中的时候，会对function()这个函数所在的这个局部作用域进行预解析
+	    3.从上到下一行一行执行*/
+
+	    var num ;
+	    function fun(){
+	    	var num ;
+			console.log(num);
+			num = 20 
+		}
+	    num = 10 ;
+	    fun();
+	    console.log("---------------");
+	    /*
+	    console.log(fName(1,2));
+	    var fName = function(a,b){
+	    	return a+b ;
+	    }
+	    //执行结果：Uncaught TypeError: fName is not a function
+	    */
+	    //预解析分析
+	    /*
+	     var fName ;
+	     console.log(fName(1,2));//fName值为没有值，所以会出现:Uncaught TypeError: fName is not a function
+	     function(a,b){
+	    	return a+b ;
+	    }
+	    */
+	    console.log("对后面部分产生影响注释掉了，需要时打开注释观看");
+	    console.log("---------------");
+	    /*
+	    fun2();
+	    console.log(cc);
+	    console.log(bb);
+	    console.log(aa);
+	    function fun2(){
+	    	var aa = bb = cc = 9 ;
+	    	console.log(aa);
+	    	console.log(bb);
+	    	console.log(cc);
+	    }
+	    */
+	    //预解析分析
+	    function fun2(){
+	    	var aa ; //这里的aa是局部变量，注意了。
+	    	aa = bb = cc = 9 ;
+	    	console.log(aa);
+	    	console.log(bb);
+	    	console.log(cc);
+	    }
+	    fun2();
+	    console.log(cc);
+	    console.log(bb);
+	    // console.log(aa);//观察时打开
+	    //自调用函数
+	     console.log("自调用函数---------------");
+	     (function (){
+	     	console.log("这是一个自调用函数......");
+	     })();
+	     console.log("函数是一种数据类型---------------");
+	     var myFun = function(){
+	     	console.log("Hello World");
+	     };
+	     console.log("myFun的数据类型是："+typeof(myFun));//这说明函数也是一种数据类型
+	</script>
+</head>
+<body>
+
+</body>
+</html>

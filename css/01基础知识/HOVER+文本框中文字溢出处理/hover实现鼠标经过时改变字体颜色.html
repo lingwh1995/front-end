@@ -1,0 +1,28 @@
+<html> 
+    <head>
+	    <title>hover+文本框中文字溢出的处理</title>
+		<meta http-equiv="Content-Type" content="text/html;charaset=utf-8"/>
+		<style type="text/css">
+		
+		      #A:hover
+			  {
+			    color:red;
+			  }
+			  .myclass
+			  {
+			    border:1px solid red ;
+				width:500px ;
+				height:500px ;
+				/*overflow:hidden ;*//*hidden：当文字溢出的时候隐藏溢出部分*/
+				overflow: scroll;/*scroll:当文字溢出的时候拖动滚动条可以浏览溢出部分*/
+			  }
+		</style>
+    </head>
+	<body>	
+	    <span id="A">天猫</span>精选
+		<div class="myclass">
+		<h5 id="B">aaaaaaaaaaaaaaaaagffgsfggggggggggggggggggggggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		aaaaaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggvvvvvbbbbbbbbbbbbbbbbbbbbbbbbbb</h5>
+		</div>
+	</body>
+</html>

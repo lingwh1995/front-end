@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-027-vue的$refs属性操作dom-操作dom元素</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 id="#h1">{{content}}</h1>
+        <h1 ref="h1">{{content}}</h1>
+        <School ref="school"></School>
+        <button @click="oerateDomByJs">原生JS操作dom</button></br>
+        <button @click="oerateDomByVue">vue的$refs操作dom</button></br>
+        <button @click="oerateComponentByVue">vue的$refs操作组件</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        //定义School组件
+        const School = Vue.extend({
+            template:
+            `<div>
+                学校名称:{{schoolName}},
+                学校地址:{{address}},
+             </div>`,
+            data() {
+                return {
+                    schoolName:'西安财经大学',
+                    address:'陕西省西安市长安区韦常南路2号'
+                }
+            }
+        })
+
+        /**
+         * 1.$refs可用于获取dom元素
+         * 2.$refs可用于获取vue组件元素
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue!'
+            },
+            methods: {
+                //原生JS操作dom
+                oerateDomByJs() {
+                    console.log(document.getElementById('#h1'))
+                },
+                //vue的$refs操作dom
+                oerateDomByVue() {
+                    console.log(this.$refs.h1)
+                    console.log(this.$refs.h1.innerText)
+                },
+                //vue的$refs操作组件
+                oerateComponentByVue() {
+                    console.log(this.$refs.school)
+                }
+            },
+            components: { School }
+        })
+    </script>
+</body>
+</html>

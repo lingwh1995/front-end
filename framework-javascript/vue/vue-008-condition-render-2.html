@@ -1,0 +1,33 @@
+<!-- 
+    Vue条件渲染
+        v-if
+        v-else
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+      <div v-if="show" data-test="v-if">v-if</div>
+      <!-- v-else常规写法 -->
+      <!-- <div v-else="show" data-test="v-else">v-else1</div> -->
+      <!-- v-else简单写法 -->
+      <div v-else data-test="v-else">v-else2</div>
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            show: false
+        }
+    });
+   
+</script>    
+</html>

@@ -1,0 +1,64 @@
+<!-- 
+    1.vue对象生命周期函数
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>    
+</body>
+<script>
+    /**
+     * 生命周期函数:
+     *      生命周期函数是vue实例在某一个时间点会自动执行的函数
+     */ 
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message: 'hello vue!'
+        },
+        //template: '<div>hello world!</div>',
+        beforeCreate: function(){
+            console.log('before create......');
+        },
+        created: function(){
+            console.log('created......');
+        },
+        //数据未被渲染到页面上
+        beforeMount: function(){
+            console.log('beforeMount......');
+            console.log(this.$el);
+        },
+        //数据已经渲染到页面上了
+        mounted: function(){
+            //debugger
+            console.log('mounted......');
+            console.log(this.$el);
+        },
+        beforeDestroy: function(){
+            console.log('beforeDestroy......');
+        },
+        destroyed: function(){
+            console.log('destroyed......');
+        },
+        //数据未被渲染到页面上
+        beforeUpdate: function(){
+            debugger
+            console.log('beforeUpdate');
+        },
+        //数据已经渲染到页面上了
+        updated: function(){
+            console.log('updated');
+        }
+    });
+   
+</script>    
+</html>

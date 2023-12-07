@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS类选择器高级扩展</title>
+	<style type="text/css">
+         .teshu
+         {
+         	color:red;
+         }
+
+         /*同一个标签可以属于多个类*/
+         .zhongyao
+         {
+         	text-decoration:underline;
+         }
+
+         /*练习*/
+         .mycolor
+         {
+            color:green;
+         }
+         .myline
+         {
+         	text-decoration:underline;
+         }
+         .myfontsize
+         {
+         	font-size:40px;
+         }
+	</style>
+</head>
+<body>
+	  <h3 class="zhongyao">我是一个h3</h3>
+	  <!--同一个标签可以属于多个类,用空格隔开-->
+	  <h3 class="teshu zhongyao">我是一个h3</h3>
+	  <h3>我是一个h3</h3>
+	  <p>我是一个p标签</p>
+	  <p class="teshu">我是一个p标签</p>
+	  <p class="teshu">我是一个p标签</p>
+
+
+	  <p class="mycolor myfontsize">段落一</p>
+	  <p class="mycolor myline">段落二</p>
+	  <p class="myline myfontsize">段落三</p>
+</body>
+</html>

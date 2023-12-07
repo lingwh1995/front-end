@@ -1,0 +1,46 @@
+<!-- 
+    1.vue demo
+    2.定义vue对象语法
+    3.插值表达式语法
+    4.获取vue对象中data值的语法:
+        var app = new Vue({
+            el:'#hello-vue',
+            data:{
+                content:'hello vue!'
+            }
+        });
+        app.$data.content = 'xxx';
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="hello-vue">
+        <!-- 插值表达式语法 -->
+        {{content}}
+    </div>
+</body>
+<script>
+    //使用原生的js实现Dom操作
+    // var app = document.getElementById('app');
+    // app.innerText = 'hello world!';
+
+    //使用vue实现dom操作
+    var app = new Vue({
+        el:'#hello-vue',
+        data:{
+            content:'hello vue!'
+        }
+    });
+    setTimeout(function() {
+            app.$data.content = 'hello vue,timeout 2s!';
+    },2000)
+</script>    
+</html>

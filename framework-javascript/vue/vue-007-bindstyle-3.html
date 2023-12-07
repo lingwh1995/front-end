@@ -1,0 +1,44 @@
+<!-- 
+    Vue绑定样式
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .activated {
+            color:red;
+            font-size: 30px;
+        }
+    </style>    
+</head>
+<body>
+    <div id="app">
+       <div @click="handleClick" :style="[styleObj]">
+           hello world!
+       </div>
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            styleObj: {
+                color: 'red',
+                fontSize: '58px'
+            }
+        },
+        methods:{
+            handleClick: function(){
+                this.$data.styleObj.color = 
+                    this.$data.styleObj.color == 'red' ? 'black' : 'red';
+            }
+        }
+    });
+   
+</script>    
+</html>

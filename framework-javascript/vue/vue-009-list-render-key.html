@@ -1,0 +1,43 @@
+<!-- 
+   Vue列表渲染:
+        v-for增强:每一个v-for最好都带上一个key,这样可以提高性能
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <!-- key的值要保持唯一 -->
+        <div v-for="(person,index) in persons"
+             :key="index">
+            {{person}}---{{index}}
+        </div>
+        <hr/>
+        <div v-for="(student,index) in students" :key="student.id">
+            {{student}}---{{index}}
+        </div>    
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            persons:['zhangsan','lisi','wangwu'],
+            students:[
+                {id:'1405230344',name:'dongwj'},
+                {id:'1405230345',name:'wangjie'},
+                {id:'1405230346',name:'lingwh'},
+                {id:'1405230347',name:'longtf'},
+                {id:'1405230348',name:'wangqc'}
+            ]
+        },
+    });
+   
+</script>    
+</html>

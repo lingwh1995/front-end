@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layui</title>
+    <script src="libs/jquery-2.0.3.js"></script>
+    <script src="libs/layer/layer.js"></script>
+    <script>
+        $(function () {
+            //弹窗层
+            $(".layer-msg").click(function () {
+                layer.msg('Hello World');
+            });
+            //询问框
+            $(".layer-confirm").click(function () {
+                layer.confirm('我想测试一下确认弹窗', {
+                    btn: ['你想','你不想']
+                }, function(){
+                    layer.msg('是的，我想！', {icon:1});
+                }, function(){
+                    layer.msg('不，我不想,3秒钟后我就自动关闭了！', {
+                        time: 3000, //3s后自动关闭
+                        btn: ['Hello', 'layer']
+                    });
+                });
+            });
+
+            //页面层,除文字部分其他部分加遮罩
+            $(".layer-page").click(function () {
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['420px', '240px'], //宽高
+                    content: 'html内容'
+                });
+            });
+            layer.tips('Hi，我是tips', '吸附元素选择器，如#id');
+
+            //tips层
+            $(".layer-tips").click(function () {
+                layer.tips('Hi，我是tips', '吸附元素选择器，如#id');
+            });
+
+            //iframe层
+            $(".layer-layer").click(function () {
+                layer.open({
+                    type: 2,
+                    title: 'layer mobile页',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['380px', '90%'],
+                    content: 'mobile/' //iframe的url
+                });
+            });
+
+            //iframe窗
+            $(".layer-iframe").click(function () {
+                layer.open({
+                    type: 2,
+                    title: false,
+                    closeBtn: 0, //不显示关闭按钮
+                    shade: [0],
+                    area: ['340px', '215px'],
+                    offset: 'rb', //右下角弹出
+                    time: 2000, //2秒后自动关闭
+                    anim: 2,
+                    content: ['test/guodu.html', 'no'], //iframe的url，no代表不显示滚动条
+                    end: function(){ //此处用于演示
+                        layer.open({
+                            type: 2,
+                            title: '很多时候，我们想最大化看，比如像这个页面。',
+                            shadeClose: true,
+                            shade: false,
+                            maxmin: true, //开启最大化最小化按钮
+                            area: ['893px', '600px'],
+                            content: '//fly.layui.com/'
+                        });
+                    }
+                });
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<input type="button" class="layer-msg" value="测试弹窗"/><br/>
+<input type="button" class="layer-confirm" value="测试确认窗口"/><br/>
+<input type="button" class="layer-page" value="测试页面层"/><br/>
+<input type="button" class="layer-tips" value="提示层(tips)"/><br/>
+<input type="button" class="layer-layer" value="iframe层"/><br/>
+<input type="button" class="layer-iframe" value="iframe层"/><br/>
+</body>
+</html>

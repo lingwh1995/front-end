@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-030-vue中的父子组件传值增强-04-子组件使用props接收父组件传递的函数(父组件使用函数接收子组件传值、兄弟组件之间传值解决方案)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Child string-type="stringType"
+               :number-type="numberType"
+               :array-type="arrayType"
+               :object-type="objectType"
+               :function-type="functionType"/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * vue-029-vue中的父子组件传值增强-04-子组件使用props接收父组件传递的函数(父组件使用函数接收子组件传值)
+         *      1.子组件可以接收到的父组件传递过来的值的类型
+         *          字符串、数字、数组、对象、函数
+         *          传递字符串类型数据:父组件中直接写属性名就可以
+         *          传递字数字类型数据:父组件中属性名前面要加冒号
+         *          传递字字符串类型数据:父组件中属性名前面要加冒号
+         *      2.父组件使用函数接收子组件传值
+         *          父组件给子组件传递一个函数，用于接收子组件传递给父组件的值
+         *      2.兄弟组件之间传值解决方案
+         *          父组件给子组件1传递一个函数，用于接收子组件传递给父组件的值,再把这个接收的值传递给子组件2
+         */
+        //第一步：定义Child组件
+        const Child = Vue.extend({
+            template:
+            `<div>
+                子组件接收的父组件传递过来的值-类型为字符串:<span>{{stringType}}</span></br>
+                <button @click="showReviceValueStringType">点击显示接收到的子组件传递给父组件的字符串类型的值</button></br>
+                子组件接收的父组件传递过来的值-类型为数字:<span>{{numberType}}</span></br>
+                <button @click="showReviceValueNumberType">点击显示接收到的子组件传递给父组件的数字类型的值</button></br>
+                子组件接收的父组件传递过来的值-类型为数组:<span>{{arrayType}}</span></br>
+                <button @click="showReviceValueArrayType">点击显示接收到的子组件传递给父组件的数组类型的值</button></br>
+                子组件接收的父组件传递过来的值-类型为对象:<span>{{objectType}}</span></br>
+                <button @click="showReviceValueObjectType">点击显示接收到的子组件传递给父组件的对象类型的值</button></br>
+                子组件接收的父组件传递过来的值-类型为函数:<span>{{functionType}}</span></br>
+                <button @click="showReviceValueFunctionType">点击显示接收到的子组件传递给父组件的函数类型的值</button></br>
+            </div>`,
+            data() {
+                return {
+                }
+            },
+            methods: {
+                //显示子组件接收的父组件传递过来的值-类型为字符串
+                showReviceValueStringType() {
+                    alert('接受到的数据:' + this.stringType + ',数据类型:' + typeof this.stringType)
+                },
+                //显示子组件接收的父组件传递过来的值-类型为数字
+                showReviceValueNumberType() {
+                    alert('接受到的数据:' + this.stringType + ',数据类型:' + typeof this.numberType)
+                },
+                //显示子组件接收的父组件传递过来的值-类型为数组
+                showReviceValueArrayType() {
+                    alert('接受到的数据:' + this.arrayType + ',数据类型:' + typeof this.arrayType)
+                },
+                //显示子组件接收的父组件传递过来的值-类型为对象
+                showReviceValueObjectType() {
+                    alert('接受到的数据:' + this.objectType + ',数据类型:' + typeof this.objectType)
+                },
+                //显示子组件接收的父组件传递过来的值-类型为函数
+                showReviceValueFunctionType() {
+                    alert('接受到的数据:' + this.functionType + ',数据类型:' + typeof this.functionType)
+                    this.functionType('子组件回传给父组件的值')
+                }
+            },
+            //完整版写法
+            /*
+            props: {
+                stringType: {
+                    //父组件给子组件传递的stringType属性的数据类型是String类型
+                    type:String,
+                    //studentName属性是必须的
+                    //required:true
+                },
+                numberType: {
+                    //父组件给子组件传递的numberType属性的数据类型是Number类型
+                    type:Number,
+                    //numberType属性是必须的
+                    //required:true
+                },
+                arrayType: {
+                    //父组件给子组件传递的arrayType属性的数据类型用Array类型接收,接收到的类型是Object
+                    type:Array,
+                    //arrayType属性是必须的
+                    //required:true
+                },
+                objectType: {
+                    //父组件给子组件传递的objectType属性的数据类型是Object类型
+                    type:Object,
+                    //objectType属性是必须的
+                    //required:true
+                },
+                functionType: {
+                    //父组件给子组件传递的functionType属性的数据类型是Function类型
+                    type:Function,
+                    //functionType属性是必须的
+                    //required:true
+                }
+            }
+            */
+
+            //完整版的简写形式
+            /*
+            props: {
+                stringType:String,
+                numberType:Number,
+                arrayType:Array,
+                objectType:Object,
+                functionType:Function
+            }
+            */
+
+            //
+            //完整版的最简写形式
+            props: ['stringType','numberType','arrayType','objectType','functionType']
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                stringType: '字符串类型数据',
+                numberType: 25,
+                arrayType: [1,2,"3","4"],
+                objectType: {id:'001',name:'张三',age:25}
+
+            },
+            //第二步：注册组件(局部注册)
+            components: { Child },
+            methods: {
+                functionType(param) {
+                    console.log(param)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-018-收集表单数据</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form :action="action">
+            <!-- v-model.trim:控制vue收集表单数据时去掉左右空格 -->
+            账号:<input type="text"      v-model.trim="userInfo.username"/><br/>
+            密码:<input type="password"  v-model="userInfo.password"/><br/>
+            <!-- type=number:控制只能输入数字 v-model.number:控制vue收集到的表单数据是数字类型，而不是字符串类型 -->
+            年龄:<input type="number"    v-model.number="userInfo.age"/><br/>
+            性别:
+                <!-- 使用vue收集单选框数据要注意：先写上value属性，再使用v-model属性进行收集 -->
+                男<input type="radio" name="sex" value="male"   v-model="userInfo.sex"/>
+                女<input type="radio" name="sex" value="female" v-model="userInfo.sex"/><br/>
+            爱好:
+                <!-- 使用vue收集单选框数据要注意：data中的属性初始值是[]，则能收集到多个数据，如果初始值是''，则收集到的数据是true或者false -->
+                抽烟<input type="checkbox" name="hobby" value="chouyan" v-model="userInfo.hobby"/>
+                喝酒<input type="checkbox" name="hobby" value="hejiu"   v-model="userInfo.hobby"/>
+                烫头<input type="checkbox" name="hobby" value="tangtou" v-model="userInfo.hobby"/><br/>
+            所属校区:
+                <select v-model="userInfo.city">
+                    <option value="">请选择所属校区</option>
+                    <option value="beijing">北京校区</option>
+                    <option value="shanghai">上海校区</option>
+                    <option value="shenzhen">深圳校区</option>
+                </select><br/>
+            其他信息：
+                <!-- v-model.lazy:控制vue收集表单数据时不再是实时收集，而是失去焦点的一瞬间开始收集 -->
+                <input type="textarea" v-model.lazy="userInfo.other"/><br/>
+            <input type="checkbox" v-model="userInfo.agree"/>阅读并接受<a href="#">用户协议</a><br/>
+            <button @click.prevent="submit">提交</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  收集表单数据:
+         *  若:<input type="text"/>，则v-model收集的是value值，用户输入的就是value值。
+         *  若:<input type="radio"/>，则v-model收集的是value值，且要给标签配置value值.
+         *  若:<input type="checkbox" />
+         *      1.没有配置input的value属性，那么收集的就是checked(勾选or未勾选，是布尔值)
+         *      2.配置input的value属性:
+         *          (1)v-model的初始值是非数组，那么收集的就是checked(勾选or未勾选，是布尔值)
+         *          (2)v-model的初始值是数组，那么收集的的就是value组成的数组
+         *  备注:v-model的三个修饰符:
+         *      lazy:失去焦点再收集数据
+         *      number:输入字符串转为有效的数字
+         *      trim:输入首尾空格过滤
+         */
+
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                action:'https://#',
+                userInfo: {
+                    username: '',
+                    password: '',
+                    age:'',
+                    sex: '',
+                    //复选框初始值能够影响v-model收集到的数据
+                    hobby:[],
+                    city:'',
+                    other:'',
+                    //复选框初始值能够影响v-model收集到的数据
+                    agree:'',
+                }
+            },
+            methods: {
+                submit() {
+                    console.log('表单数据:' + JSON.stringify(this.userInfo))
+                }
+            },
+        })
+    </script>
+</body>
+</html>

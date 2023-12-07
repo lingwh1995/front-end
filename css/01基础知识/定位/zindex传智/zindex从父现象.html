@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+    * {
+    	margin: 0;
+    	padding: 0;
+    }
+    .A {
+    	width: 200px;
+    	height: 200px;
+    	background-color: blue;
+    	position: absolute;
+        z-index: 10;
+    }
+    .B {
+    	width: 200px;
+    	height: 200px;	
+    	background-color: green;
+    	position: absolute;
+    	top: 200px;
+    	left: 0;
+        z-index: 11;
+    }
+    .a {
+    	width: 60px;
+    	height: 60px;
+    	background-color: pink;
+    	position: absolute;
+    	top: 300px;
+    	left: 450px;
+    	z-index: 5;
+    }
+    .b {
+    	width: 60px;
+    	height: 60px;
+    	background-color: gold;
+    	position: absolute;
+    	top: 130px;
+    	left: 490px;
+    }
+	</style>
+</head>
+<body>
+	<div class="A">
+	A
+		<p class="a">a</p>
+	</div>
+	<div class="B">
+	B
+		<p class="b">b</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+      <head>
+	         <title>JS节点操作之在末尾增加节点</title>
+			 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+             <script type="text/javascript">
+			       /*jQuery是对js的简化*/
+			       /*在末尾添加节点步骤：1.创建li标签   2.创建文本   3.把文本加到li中	 4.把li加到ul下面	*/
+			       function addNodeAtEnd(){
+			       	//获取ul标签
+			       	     var ul1 = document.getElementById('uid');
+			       	//创建标签
+			       	     var li1 = document.createElement("li");
+			        //创建文本
+			             var text1 = document.createTextNode("666666");
+			        //把文本放入指定节点中
+                         li1.appendChild(text1);
+                    //把li加入到ul中
+                         ul1.appendChild(li1);
+			       }
+			 </script>
+	  </head>
+	  <body>
+	        <ul id="uid">
+	        	<li>111111</li>
+		        <li>222222</li> 
+		        <li>333333</li>
+		        <li>444444</li>
+		        <li>555555</li>
+	        </ul>
+	        <input type="button" value="增加节点" onclick="addNodeAtEnd()"/>
+	  </body>
+</html>

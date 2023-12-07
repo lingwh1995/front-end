@@ -1,0 +1,50 @@
+<html>
+      <head>
+	         <title>完整表单校验</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>	
+             <script type="text/javascript" src="/jquery-3.1.1.js"></script>		 
+             <script type="text/javascript">
+			    function check(){
+				    var $name = $("input[name='username']").val();
+					var $password =  $("input[name='userpassword']").val();
+					    if(($name=="")||($name==null)){
+						  alert("用户名不能为空");
+						  return false ;
+						}else if($name.length<6){
+					       $("span:first").css("display","inline");
+						   return false ;
+					    }else if($password.length<6){
+						   //$("span:eq(1)").css("display","none");
+						   $("span:eq(1)").css("display","inline");
+						   return false ;
+						}else{
+						   return true ;
+						}
+			    }
+               $(document).ready(function(){
+				   $("span").css("display","none").css("color","green").css("font-size","12px");
+				   $("tr>td").css("color","green");
+				});		              
+             </script>			 
+      </head>
+	  
+	  <body>
+	  <h3>不使用正则进行表单校验</h3>
+	    <form action="https://www.baidu.com/" onsubmit="return check()">
+	        <table width="30%">
+			       <tr>
+				       <td align="right">用户名:</td>
+				       <td><input type="text" name="username" value="" /><span>*用户名不能小于6</span></td>
+			       </tr>
+				   <tr>
+				       <td align="right">密码:</td>
+				       <td><input type="password" name="userpassword" value="" /><span>*密码长度不能小于6</span></td>
+			       </tr>
+				   <tr>
+				       <td align="right"></td>
+				       <td><input type="submit" value="注册"/></td>
+			       </tr>				   
+	        </table>
+	    </form>
+	  </body>
+</html>

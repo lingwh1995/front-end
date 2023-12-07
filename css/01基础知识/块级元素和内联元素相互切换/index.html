@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>块级元素和内容元素的切换</title>
+	<style type="text/css">
+            span
+            {
+            	display: block;
+            	border:1px solid red;
+            }
+            div.a
+            {
+            	display: inline;
+            	border:1px solid red;
+            } 
+            div
+            {
+            	display: inline;
+            	border:1px solid red;
+            }
+            /*块级元素特点：1.能换行、能接受宽、高 2.如果不设置，默认宽度和父亲相同
+              内联元素特点：1.不换行 2.不能设置宽高，就是文字高度
+              文本级标签： p、span、a、b、i、u、em
+              容器级标签：div 、h系列、li、dt、dd
+              除了p标签意外的文本级标签都是内联元素，容器级标签都是块级元素
+              注意:1.块级元素一旦转换为内联元素，就不能设置宽高了 
+                   2.两种元素区别在于能不能设置宽高，而不是背景颜色
+                   3.多个div默认是排列在一行的
+                   4.如果将块级元素和内联元素相互切换成，一定要把 display:block/inline;写在首行，这样做的目的是方便排查错误
+            */
+	</style>
+</head>
+<body>
+	<p>标准文档流特点： 1.空白折叠现象（两幅图片之间有距离和两个文字之间有距离是一个道理，把图片当成文字来理解） 2.一行文字或者几张处在同一行的图片都会出现高矮不齐，底边平齐的现象3.自动换行现象</p>
+    1234<span>5678</span>91023 <div class="a">dsfasdfa</div>sadfasfaf<div>dsfasdfa</div>sdgsdsadfasfaf<div>dsfasdfa</div>
+</body>
+</html>

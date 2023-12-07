@@ -1,0 +1,32 @@
+<html>
+      <head>
+	         <title>获取鼠标点击坐标</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>	
+             <script type="text/javascript" src="js/jquery-3.1.1.js"></script>			 
+             <script type="text/javascript">
+				    $(document).mouseover(function(event){
+					  var x = event.pageX;
+					  var y = event.pageY;
+					  $("div").offset({top:y-100,left:x-100});
+					  $("div").fadeIn(1500); 
+					});
+					$(document).mousedown(function(){
+					  $("div").fadeOut(1500);  
+					});
+             </script>
+             <style type="text/css">
+			       div
+				   {
+				      background:yellow;
+					  width:200px;
+					  height:200px;
+					  opacity:0.8;
+					  border-radius: 100%;  
+				   }
+             </style>			 
+      </head>
+	  
+	  <body> 
+			<div id="d"></div>
+	  </body>
+</html>

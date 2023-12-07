@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<script>
+		function a(callbackFuncation){
+			alert('a');
+			//callbackFuncation.call(this);//或者是callbackFuncation();//或者是callback.apply(this);
+			callbackFuncation.apply(this);
+			//callbackFuncation();
+		}
+		function b(){
+			alert('b');
+		}
+		//调用
+		a(b);
+		
+		
+		
+    </script>
+</head>
+<body>
+	
+</body>
+</html>

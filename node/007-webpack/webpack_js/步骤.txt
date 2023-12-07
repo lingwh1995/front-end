@@ -1,0 +1,4 @@
+1.npm install webpack -g
+2.npm install webpack-cli -g
+3.进入webpack.config.js所在目录,执行webpack命令
+4.查看生成的dist文件

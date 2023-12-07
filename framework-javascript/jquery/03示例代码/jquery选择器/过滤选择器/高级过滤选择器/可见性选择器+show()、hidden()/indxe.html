@@ -1,0 +1,27 @@
+<html>
+      <head>
+	         <title>可见性选择器+show()/hidden()</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript"  src="js/jquery-3.1.1.js"/></script>
+			 <script type="text/javascript">
+			        $(document).ready(function(){
+					   var len = $(":hidden").length;//一般不单独使用，配合show()和hidden()方法使用					   
+					});
+					function myshow(){
+					  $("#mydesc").show();
+					}
+					function myhidden(){
+					  $("#mydesc").hide();
+					}
+             </script>			 
+      </head>
+	  
+	  <body>
+	        <input type="hidden" name="" value="不可见"/>
+			<div style="display:none;"></div>
+			
+			<div id="mydesc">这里是用来测试的内容</div>
+			<input type="button" value="显示" onclick="myshow()" />
+			<input type="button" value="隐藏" onclick="myhidden()" />
+	  </body>
+</html>

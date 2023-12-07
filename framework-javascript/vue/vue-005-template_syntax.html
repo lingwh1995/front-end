@@ -1,0 +1,37 @@
+<!-- 
+    1.vue模板语法
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>差值表达式:不会自动渲染css</h1>
+        <div>{{message}}</div>
+        <div>{{message + ' UFE'}}</div>
+
+        <h1>v-text:不会自动渲染css</h1>
+        <div v-text="message"></div>
+        <div v-text="message + 'UFE'"></div>
+
+        <h1>v-html:会自动渲染css</h1>
+        <div v-html="message"></div>
+        <div v-html="message + 'UFE'"></div>
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:"<p style='color:red'>Vue模板语法</p>"
+        }
+    });
+   
+</script>    
+</html>

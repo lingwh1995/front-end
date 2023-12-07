@@ -1,0 +1,150 @@
+@charset "UTF-0";/*UTF-8必须是大写，不能是小写*/
+.banner604 {
+    position: relative;
+    /*height: 604px;*/
+}
+.banner604 a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;/*定位的盒子要铺满屏幕一定要写100%*/
+    height: 604px;
+    background: url("../images/banner.jpg") no-repeat top center;
+}
+.main {
+    height: 800px;
+    position: relative;
+}
+.slider {
+    float: left;
+    width: 730px;
+    height: 453px;
+    background-color: pink;
+    margin-left: 220px;
+    margin-top: 12px;
+    position: relative;
+
+}
+.news {
+    float: right;
+    width: 248px;
+    height: 451px;
+    margin-top: 12px;
+    border: 1px solid #E8E8E7;
+}
+
+.circle {
+    position: absolute;
+    bottom: 8px;
+    /*下面两句是解决定位的盒子居中的问题*/
+    left: 50%;
+    margin-left: -66px;
+}
+.circle li {
+    width: 18px;
+    height: 18px;
+    float: left;
+    border-radius: 50%;
+    background-color: #3E3E3E;
+    margin: 0 2px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.circle li.curent {
+    background-color: #B61B1F;
+}
+.arrow {
+    text-align: center;
+    font:700 35px/62px "SimSun";
+    /*opacity: 0.1;*/
+    /*注意：opacity是让盒子半透明，而不是背景半透明*/
+    display: none;
+}
+.arrow-l {
+    position: absolute;
+    width: 28px;
+    height: 62px;
+    top: 50%;
+    left: 0;
+    margin-top:-31px;
+    background: rgba(0,0,0,0.3);
+}
+.arrow-r {
+    position: absolute;
+    width: 28px;
+    height: 62px;
+    top: 50%;
+    right: 0;
+    margin-top:-31px;
+    background: rgba(0,0,0,0.3);
+}
+.arrow-l:hover,.arrow-r:hover {
+    background-color: rgba(0,0,0,.6);/*设置背景颜色透明*/
+}
+.jd-news {
+    height: 200px;/*注意：子盒子可以继承父盒子的宽，不能继承父盒子的高*/
+    border-bottom:1px dashed #E8E8E7;
+}
+
+.jd-news .dt,.leftservices .dt {
+    height: 43px;
+    border: 1px dotted #E8E8E7;
+
+}
+.jd-news .dt h3,
+.leftservices .dt
+{
+    float: left;
+    font: 14px/43px "Microsoft YaHei UI";
+    color: #666;
+    padding-left:15px;/*继承而来的宽度，改变padding值时不会影响盒子的大小*/
+}
+.leftservices .dt {
+    width: 232px;
+}
+.jd-news .dt a {
+    float: right;
+    line-height: 43px;
+}
+.jd-news .dd {
+    padding: 8px 0 0 15px;
+}
+.jd-news .dd li {
+    line-height: 28px;
+}
+.jd-news .dd li span {
+    font-weight: 700;
+    margin-right: 5px;
+}
+.leftservices {
+    height: 251px;/*为什么子盒子不用设置浮动，因为两个子盒子已经可以占满父盒子了*/
+    overflow: hidden;
+}
+.leftservices ul {
+    width: 252px;
+
+}
+.leftservices .dd li {
+    width: 62px;
+    height: 70px;
+    float: left;
+    border: 1px solid #E4E4E4;
+    margin-left: -1px;
+    border-top: 0;/*隐藏/层叠盒子上边框的方法*/
+}
+.leftservices .dd li a {
+    display: block;
+    height: 70px;
+    text-align: center;
+    padding-top:48px;
+    position: relative;
+}
+.leftservices .dd li a i {
+    top: 12px;
+    left: 19px;
+    position: absolute;
+    width: 25px;
+    height: 24px;
+    background: url("../images/icon_lifeserv.png") no-repeat right top;
+}

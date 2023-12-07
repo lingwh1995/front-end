@@ -1,0 +1,59 @@
+<!-- 
+    
+    vue父子组件传值:
+        1.父组件->子组件:属性传值(props)
+        2.子组件->父组件:向外触发事件,$emit('')
+        3.单项数据流:子组件只能接受父组件传递过来的值,但是不能修改父组件传递过来的值
+            原因:
+                如果这个值是引用类型的数据,当子组件修改了这个值之后，会导致其他正在
+                使用这个引用类型数据的代码发生问题
+            解决方案:
+                如果子组件非要修改父组件传递的值,则需要把父组件传递给子组件的值拷贝
+                一个副本，对这个副本进行操作    
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <counter :count="0" @change="handleChange"></counter>
+        <counter :count="0" @change="handleChange"></counter>
+        <div>{{total}}</div>
+    </div>  
+
+</body>
+<script>
+    Vue.component('counter',{
+        props:['count'],
+        data: function(){
+            return {
+                number: this.count
+            }
+        },
+        template:'<div @click="handleClick">{{number}}</div>',
+        methods:{
+            handleClick: function(){
+                this.number++;
+                this.$emit('change',1);
+            }
+        }
+    });
+    var app = new Vue({
+        el:'#app',
+        data:{
+            total: 0
+        },
+        methods: {
+            handleChange: function(step){
+                this.$data.total = this.$data.total + step;
+            }
+        }
+    }); 
+</script>    
+</html>

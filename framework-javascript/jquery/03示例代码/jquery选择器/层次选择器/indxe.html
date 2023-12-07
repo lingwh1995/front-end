@@ -1,0 +1,51 @@
+<html>
+      <head>
+	         <title>jQuery层次选择器</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+			 <script type="text/javascript">
+			 /*
+			   补充：1.li标签是块级元素 2.如果对同一个选中的元素设置的样式，后设置的样式会覆盖先设置的样式
+			   jQuery层次选择器:
+			         1.后代选择器，语法：空格
+					 2.子代选择器，语法： >
+					 3.相邻选择器，语法: +					   
+					 4.同辈选择器，语法：~
+					   注意：以上四个选择器只能识别当前元素以后的元素
+					 注意事项：层次选择器遇到<ol></ol>、<ul></ul>、<dt></dt>嵌套列表标签时会失效，但是在列表标签中可以直接选择
+			 */
+			        $(document).ready(function(){
+					  //子代选择器                      
+                        $("p>strong").css("color","red");
+                      //后代选择器
+                        $("p strong").css("color","blue");	
+                      //相邻选择器：选中当前元素的下一个元素
+                        //$("#li_Id").css("color","red");//先选中 "好"
+                          $("#li_Id+li").css("color","red");//再利用相邻选择器（+）选中 "好" 的下一个元素 "美"					
+					  //同辈选择器：选择当前元素以后的所有元素
+					  $("#li_Id1~li").css("color","blue");
+					});
+			 </script>
+      </head>
+	  
+	  <body>
+	        <p>
+			   <!--p的子代-->
+			   子代选择器(>)：
+			   <strong>World--子代</strong><br/>
+			   <!--p的后代-->
+			   后代选择器(空格)：
+			   <span> <strong>World--后代</strong></span>
+			   
+			   <ul type=none>
+			       <li>你</li>
+			       <li id="li_Id">好</li>
+			       <li>美</li>
+			       <li id="li_Id1">丽</li>
+			       <li>的</li>
+			       <li>世</li>
+			       <li>界</li>
+			   </ul>
+	        </p>
+	  </body>
+</html>

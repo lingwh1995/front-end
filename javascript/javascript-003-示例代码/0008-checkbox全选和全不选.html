@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function selectAll(obj){
+				//获取当前复选框的选中状态
+				var flag = obj.checked;//原生JS选中,返回值为(boolean类型元素1··)true，不选中返回值为false
+				//获取所有的复选框
+					//批量获取DOM节点,有多种方式，演示常见的几种：
+					//方式一:document.getElementsByName("xxx");
+				//var arr = document.getElementsByName("goods");
+					//方式二:document.getElementsByClassName()
+				var arr	= document.getElementsByClassName("selectItems");//class选择器
+				//遍历数组,将所有的复选框和flag相同
+				for(var i=0;i<arr.length;i++){
+					arr[i].checked = flag;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<table id="tab1" border="1" width="800" align="center" >
+			<tr>
+				<th><input type="checkbox" onclick="selectAll(this)" age="11"></th>
+				<th>分类ID</th>
+				<th>分类名称</th>
+				<th>分类描述</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="goods" class="selectItems" /></td>
+				<td>1</td>
+				<td>手机数码</td>
+				<td>手机数码类商品</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="goods" class="selectItems" /></td>
+				<td>2</td>
+				<td>电脑办公</td>
+				<td>电脑办公类商品</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="goods" class="selectItems" /></td>
+				<td>3</td>
+				<td>鞋靴箱包</td>
+				<td>鞋靴箱包类商品</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="goods" class="selectItems" /></td>
+				<td>4</td>
+				<td>家居饰品</td>
+				<td>家居饰品类商品</td>
+			</tr>
+		</table>
+	</body>
+</html>

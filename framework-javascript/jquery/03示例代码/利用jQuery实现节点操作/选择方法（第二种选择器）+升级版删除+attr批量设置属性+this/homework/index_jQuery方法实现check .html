@@ -1,0 +1,160 @@
+<html> 
+     <head> 
+	      <title>My JavaScript Page</title>
+		  <meta http-equiv="Content-Type" content="text/html ;charsert=utf-8"/>
+		  <meta name="keywords" content="这里填写网页的标题"/>
+		  <meta name="description" content="这里填写网页的概述"/>
+		  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+		  <script type="text/javascript">
+		  /*
+		  //遇到的bug
+		   var $myShopping = $("input[name='myShopping']");
+			  alert($myShopping.length);
+		  function myBug(){
+		      var $myShopping = $("input[name='myShopping']");
+			  alert($myShopping.length);
+		  }
+		   */
+				
+	
+			function myfunction(thisEles){
+			//方法一：利用for循环来解决问题
+			   var $myShopping = $("input[name='myShopping']");
+				for(var i=0;i<$myShopping.length;i++){
+				   if($myShopping[i].checked){
+				    $($myShopping[i]).parent().parent().remove();
+				   }
+                }
+				/*
+				$myShopping.each(function(){
+				  if(this.checked){
+				    $(this).parent().parent().remove();
+				  }
+				   
+				});
+				*/
+			}	
+			 function myChoice(){
+			    var ischecked = $("#A")[0].checked;
+				var otherChecked = $("input[type='checkbox']");
+				for(var i=0;i<otherChecked.length;i++){
+				    otherChecked[i].checked = ischecked ;
+				}
+			 }
+			 $("document").ready(function(){			 
+				$("a").attr("onclick","test(this)");
+			    
+			 });
+			
+			 function test(thisEles){
+			     $(thisEles).parent().parent().remove();
+			 }
+			 
+			 
+            $("document").ready(function(){
+			     $("input[value='+']").attr("onclick","addGoodsNumber(this)");
+			     $("input[value='-']").attr("onclick","subGoodsNumber(this)");
+			});	
+			
+            function addGoodsNumber(thisEles){
+			     var $num = $(thisEles).prev().val();
+				 $num++;
+				 $(thisEles).prev().val($num);
+				 //alert($num);
+				  var totalNumber = 0;
+				 var $myShopping = $("input[name='myShopping']");
+				
+				 for(var i=0;i<$myShopping.length;i++){
+				    var $priceEle = $($myShopping[i]).parent().next().next();
+					var price = $priceEle.html();
+					var count = $priceEle.next().children(":eq(1)").val();
+                    var priceN = parseInt(price);
+					var countN = parseInt(count);
+                    var total = priceN*countN;
+					totalNumber = totalNumber + total;
+				 }	
+				 document.getElementById("B").innerHTML=totalNumber;
+	
+			}
+			function subGoodsNumber(thisEles){
+
+			   var $num = $(thisEles).next().val();
+			   $num--;
+			   $(thisEles).next().val($num);
+			     var $myShopping = $("input[name='myShopping']");
+				 var totalNumber = 0;
+				 for(var i=0;i<$myShopping.length;i++){
+				    var $priceEle = $($myShopping[i]).parent().next().next();
+					var price = $priceEle.html();
+					var count = $priceEle.next().children(":eq(1)").val();
+                    var priceN = parseInt(price);
+					var countN = parseInt(count);
+					var total = priceN*countN;
+					totalNumber = totalNumber + total;
+				 }					
+				    document.getElementById("B").innerHTML=totalNumber;
+
+			}
+			
+	
+            
+
+		  </script>
+		  <style type="text/css">
+		     
+			 {
+			  /*取消下划线*/
+			  text-decoration:none;
+			 }
+		  </style>
+		 
+     </head>
+     <body>	 
+			<table border="1px solid black"> 
+			     <tr style="background-color:lightgray">
+				    <th><input type="checkbox" id="A"  onclick="myChoice()"/>全选</th>
+				    <th>商品信息</th>
+				    <th>优惠价格</th>
+				    <th>数量</th>
+				    <th>操作</th>
+			     </tr>
+				 <tr>
+				    <td><input type="checkbox" name="myShopping"/></td>
+				    <td>天堂伞</td>
+				    <td>32.9</td>
+				    <td>
+					   <input type="button" value="-"/>
+					   <input type="text" value="0"/>
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr >
+				 <tr>
+				    <td><input type="checkbox"  name="myShopping"/></td>
+				    <td>苹果手机</td>
+				    <td>4999</td>
+				    <td>
+					   <input type="button" value="-"/>
+					   <input type="text" value="0" />
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr>
+				 <tr >
+				    <td><input type="checkbox" name="myShopping"/></td>
+				    <td>流行小说</td>
+				    <td>25.9</td>
+				    <td>
+					   <input type="button" value="-" />
+					   <input type="text" value="0"/>
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr>
+				
+			</table>
+			<input type="button" value="删除" onclick="myfunction(this)" /> 
+            <div id="C">目前的总价是：￥<span id="B">0</span>元</div>
+           <input type="button" value="BUG" onclick="myBug()" /> 
+     </body>
+</html>

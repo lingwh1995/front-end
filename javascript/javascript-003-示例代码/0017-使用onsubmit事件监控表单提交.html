@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		function $(id){return document.getElementById(id);}
+		function check(){
+			var username = $("username").value
+			var password = $("password").value
+			if(username==null||username==""){
+				alert("用户名不能为空");
+				return false;
+			}else if(password==null||password==""){
+				alert("密码不能为空");
+				return false;
+			}
+		}
+		//下面这句数无法执行的，因为页面还没有加载完
+//		$("u").onclick = fun;
+		var fun = function(){
+			alert("函数");
+		}
+		/*
+		 * JavaScript中函数定义的方法
+		 * 方式一:
+		 * 		function 函数名(参数){
+		 * 			函数体
+		 * 		}
+		 * 方式二:
+		 * 		var 函数名 = function(参数){
+		 * 			函数体
+		 * 		}
+		 */
+	</script>
+	<body>
+		<!--注意：表单校验要使用onsubmit时间监听submit按钮的操作-->
+		<form action="#" method="get" onsubmit="return check()"> 
+			姓名：<input id="username"/><br/>
+			密码：<input type="password" id="password"/><br />
+			<input type="submit" value="提交" />
+			<input type="reset" value="重置"/>
+		</form>
+		<input type="button" value="点击测试" id="u"/><br/>
+	</body>
+</html>

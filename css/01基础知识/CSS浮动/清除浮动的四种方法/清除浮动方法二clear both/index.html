@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>清除浮动方法二clear both</title>
+	<style type="text/css">
+	/* clear: both;//清除别人对我的影响
+	   缺点：通过盒子2设置的margin会失效*/
+	       *{
+	          padding:0px;
+	          margin:0px;
+	       }
+	       body{
+	       	  background-color:skyblue ;
+	       }
+           li{
+              width:50px;
+              height:25px;
+              background-color:gold ;
+              float:left;
+              font-size: 18px;
+              font-weight: bold
+              color:red;
+           }
+           .box2{
+           	  clear: both;//清除别人对我的影响
+           	  margin-top: 200px;/*margin会失效*/
+           }
+	</style>
+</head>
+<body>
+	<div>
+		<ul type="none">
+			<li>星座</li>
+			<li>音乐</li>
+			<li>视频</li>
+			<li>新闻</li>
+			<li>贴吧</li>
+			<li>本地</li>
+			<li>趣图</li>
+	    </ul>
+	</div>	
+	<div class="box2">
+		<ul type="none">
+			<li>星座</li>
+			<li>音乐</li>
+			<li>视频</li>
+			<li>新闻</li>
+			<li>贴吧</li>
+			<li>本地</li>
+			<li>趣图</li>
+	    </ul>
+	</div>
+</body>
+</html>

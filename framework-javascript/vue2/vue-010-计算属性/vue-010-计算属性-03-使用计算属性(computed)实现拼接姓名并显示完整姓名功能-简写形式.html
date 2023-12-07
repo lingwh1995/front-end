@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-010-计算属性-03-使用计算属性(computed)实现拼接姓名并显示完整姓名功能-简写形式</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入姓:<input type="text" v-model:value="firstName"/><br/>
+        请输入名:<input type="text" v-model:value="lastName"/><br/>
+        <!-- 使用计算属性computed完成对属性的加工 -->
+        姓名:<span>{{fullName}}</span><br/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 计算属性的简写形式
+         *      只考虑读取计算后属性的值，而不考虑修改计算后属性的值的情况下，使用下面的简化写法代码量最小
+         * 计算属性总结
+         *      1.computed中写的属性不用出现在data中(实际出现在data中就会报错)就可以直接使用，如这里的fullName属性就没有出现在data中也是可以直接使用的
+         *      2.计算属性(computed)中写的属性第一次进行计算式是页面加载完成后就直接进行计算的，后续每次依赖的值发生了变化，会重新进行计算
+         *      3.如果要一定要操作计算属性(computed)中写的属性，是无法直接操作的，可以使用下面两种方案进行操作
+         *          a.在计算属性(computed)中用一个返回值接收计算操作后的属性的值，然后在计算属性(computed)中再次操作这个接收到的返回值
+         *          b.操作计算属性(computed)中写的属性依赖的值，通过这种方式间接的来操作计算属性(computed)中的属性，这种方式缺点是一但操作过原始数
+         *              据后，所有依赖原始数据的地方都会发生相应的改变，所以不推荐这种方式
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                //完整写法
+                /**
+                fullName: function(){
+                    return this.firstName.slice(0,3).toUpperCase() + '-' + this.lastName
+                }
+                */
+
+                //最简洁写法写法
+                fullName(){
+                    return this.firstName.slice(0,3).toUpperCase() + '-' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

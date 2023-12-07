@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-012-计算属性和监视属性对比-02-拼接姓名案例-监视属性实现</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入姓:<input v-model="firstName"/></br>
+        请输入名:<input v-model="lastName"/></br>
+        完整姓名:<span>{{fullName}}</span>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 使用监视属性实现拼接姓名案例
+         *      1.watch中写的代码属于命令式编程
+         *      2.计算属性(computed)能完成的属性监视(watch)都可以完成
+         *      3.属性监视更为强大
+         *          可以执行异步操作，如我们要实现修改姓名后延迟一秒页面数据才发生变化，只能使用属性监视完成该需要
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三',
+                fullName: '张-三'
+            },
+            watch: {
+                firstName(afterChangeValue) {
+                    setTimeout(() => {
+                        console.log(this);
+                        this.fullName = afterChangeValue + '-' + this.lastName
+                    }, 1000)
+                },
+                lastName(afterChangeValue) {
+                    this.fullName = this.firstName + '-' + afterChangeValue
+                }
+            }
+        })
+    </script>
+</body>
+</html>

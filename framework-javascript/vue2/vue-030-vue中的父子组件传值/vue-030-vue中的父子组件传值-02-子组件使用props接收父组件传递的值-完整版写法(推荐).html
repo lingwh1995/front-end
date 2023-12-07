@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-030-vue中的父子组件传值-02-子组件使用props接收父组件传递的值-完整版写法(推荐)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 注意:props中配置studentName，这里要将驼峰命名改为使用-拼接 -->
+        <!-- age属性是可传可不传的 -->
+        <Child student-name="王五" :age="30"/>
+        <!-- <Child student-name="王五"/> -->
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 子组件使用props接收父组件传递的值-完整版写法(推荐)
+         *      1.把props配置项写成一个对象，这样可以直接规定接收到的属性的数据类型
+         *      2.在页面传入Number类型属性的值时前面要加:,如 <Child student-name="王五" :age="30"/>
+         * 特别注意:
+         *      1.这里收到的值可以显示，不能直接修改，因为vue不推荐开发人员直接修改这里收到的值
+         *      2.这里收到的属性不能出现在return中，因为父组件给子组件传递了一个属性，如果return中也有同名的
+         *          这个属性，则会引发冲突，如这里接收到的studentName和name属性不能出现在return中
+         *      3.如果需要要修改接收到的属性的值，请看下一章节
+         *      4.不能使用proprs接收属性为key的属性，这个key这个属性是vue框架进行虚拟dom转换为真实dom时自己需要使用的
+         */
+        //第一步：定义Child组件
+        const Child = Vue.extend({
+            template:
+            `<div>
+                {{msg}}</br>
+                接收到的驼峰命名属性的值:<span>{{studentName}}</span></br>
+                接收到的非驼峰命名属性的值:<span>{{age}}</span></br>
+                <button @click="showReviceValue">点击显示接收到的值</button></br>
+                <button @click="updateReviceValue">点击修改接收到的值(会报错)</button>
+            </div>`,
+            data() {
+                return {
+                    msg:'子组件使用props接收父组件传递的值'
+                }
+            },
+            methods: {
+                showReviceValue() {
+                    console.log(this.studentName,this.age)
+                },
+                updateReviceValue() {
+                    this.studentName = 'xx'
+                }
+            },
+            //完整版写法
+            props: {
+                studentName: {
+                    //studentName的数据类型是String类型
+                    type:String,
+                    //studentName属性是必须的
+                    required:true
+                },
+                age: {
+                    //age的数据类型是Number类型
+                    type: Number,
+                    //如果不传的话，默认接收的值就是99(required和default一般只会出现一个)
+                    default: 99
+                }
+            }
+            //完整版的简写形式
+            /*
+            props: {
+                studentName:String,
+                age:Number
+            }
+            */
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            //第二步：注册组件(局部注册)
+            components: { Child },
+        })
+    </script>
+</body>
+</html>

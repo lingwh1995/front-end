@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//警告框
+			//window.alert("Hello JavaScript!");
+
+			//确认框，返回值为boolean
+			//var flag = window.confirm("你确定要退出吗？");
+			//alert(flag);
+
+			//输入框,返回值为用户输入的内容
+			//var name = window.prompt("请输入您的姓名？");
+			//alert(name);
+
+
+			function $(id){return document.getElementById(id);}
+			window.onload = function(){
+				$("open").onclick = function() {
+					//window.open("https://www.baidu.com");
+					//或者直接open,有返回值
+					open("https://www.baidu.com");
+				}
+				$("closeSelf").onclick = function() {
+					window.close();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="打开百度" id="open"/>
+		<input type="button" value="关闭当前窗口" id="closeSelf"/>
+	</body>
+</html>

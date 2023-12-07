@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-022-vue中的生命周期-01-引入生命周期</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{n}}</h1>
+        {{changeValue()}}
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 下面这段代码的问题出在哪里?
+         *      首次渲染页面后，n值会被渲染一次，从此之后每次只要通过定时器修改了n的值，则页面会重新渲染或者说是更
+         *      新，更新会导致changeValue()方法会重新调用，进而会导致内存中每次都会创建一个定时器对象，而不是我们
+         *      想象中的只会创建一个定时器对象
+         *  要解决这个问题:
+         *      需要引入mounted{}来解决问题
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                n: 10
+            },
+            methods: {
+                changeValue() {
+                    setInterval(()=>{
+                        console.log(this.n);
+                        this.n -= 1
+                        if(this.n == 0) {
+                            this.n = 10
+                        }
+                    },2000)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

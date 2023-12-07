@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-007-vue的MVVM模型</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <!-- view部分 -->
+    <h1>插值表达式中能写的所有内容: 一些表达式 + Vue实例的所有属性 + Vue原型上的所有属性</h1>
+    <div id="app">
+        <h2>一些表达式</h2>
+        <h1>{{content}}</h1>
+        <h2>Vue实例的所有属性</h2>
+        <h1>{{$el}}</h1>
+        <h2>Vue原型上的所有属性</h2>
+        <h1>{{$data}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * MVVM:M(model)-V(view)-VM(viewmodel)
+         */
+        //创建vue实例
+            //整个new Vue({})部分代码就是vm(ViewModel)
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                //model
+                content: 'hello vue!',
+            }
+        })
+        console.log(vm)
+    </script>
+</body>
+</html>

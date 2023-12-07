@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-031-vue中的mixin混入-公共代码复用</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{xxx}}是vue的插值表达式语法 -->
+        <h1>{{content}}</h1>
+        <button @click="show">点击显示</button>
+    </div>
+
+    <script type="text/javascript">
+        import {mixin} from './mixin.js'
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  vue中的mixin混入-公共代码复用：
+         *      1.定义公共代码片段
+         *      2.使用mixins配置项引入公共代码
+         *  特别注意:
+         *      1.由于使用了import语法，此段代码不能直接运行，需要放在vue脚手架中才能运行，要看效果运行vue脚手架即可
+         *      2.mixins配置项配置的值是一个数组，因此可以引入多个公共代码片段
+         *      3.该公共代码片段中是可以写正常组件中的所有配置项的
+         *      4.如果公共代码片段中的方法和组件中的方法名重复了，会调用当前页面中的方法，而不是调用公共代码片段中的方法，vue的原则是不破坏当前页面代码
+         *      5.vue会合并当前组件中data的值和公共代码片段中data的值，如果data中属性名重复了，以当前组件中的data中的属性的值为准，vue的原则是不破坏当前页面代码
+         *      6.mounted的特殊情况:
+         *          如果一个组件中引入了两个公共的代码片段，每个代码片段都写了mounted()函数，则这两个公共代码片段中的mounted都会执行
+         *      7.有局部混入公共代码片段和全局混入公共代码片段
+         *          注意:全局混入代码片段后，所有的子组件可以使用公共代码片段中的代码
+         */
+
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue!'
+            },
+            mixins: [mixin]
+        })
+    </script>
+</body>
+</html>

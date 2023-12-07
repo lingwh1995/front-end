@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>绝对定位实现压盖效果</title>
+	<style type="text/css">
+	/*绝对定位最大的用处之一是实现压盖效果*/
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	.box {
+		height: 275px;
+		width: 283px;
+		border: 1px solid  orange ;
+		margin: 40px auto;
+		position: relative;
+	}
+	.box .img img {
+		width: 283px;
+		height: 175px;
+	}
+	.box .dtc {
+		position: absolute;
+		top: -9px;
+		left: 9px;
+		width: 52px;
+		height: 28px;
+		background: url(images/icons.png) no-repeat -108px 0;
+	} 
+	.box .myy {
+		position: absolute;
+		top: -9px;
+		left: 57px;
+		width: 52px;
+		height: 28px;
+		background: url(images/icons.png) no-repeat -54px 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+	<span class="dtc"></span>
+	<span class="myy"></span>
+		<p class="img">
+			<img src="images/kaorou.jpg"/>
+		</p>
+	</div>
+</body>
+</html>

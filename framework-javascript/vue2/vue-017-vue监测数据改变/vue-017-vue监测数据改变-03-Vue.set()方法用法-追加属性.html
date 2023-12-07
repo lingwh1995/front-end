@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-018-vue使用Vue.set()方法追加属性</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>vue使用Vue.set()方法追加属性</h1>
+        <span>id:{{person.id}}</span></br>
+        <span>name:{{person.name}}</span></br>
+        <span v-if="person.sex">age:{{person.sex}}</span></br>
+        <button @click="addField">点击为对象追加sex属性</button>
+        <button @click="updateField">点击修改为对象追加sex属性的值</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    id: '001',
+                    name: 'zhangsan'
+                }
+            },
+            methods: {
+                addField() {
+                    //写法一
+                    //Vue.set(this.person,'sex','男')
+                    //写法二
+                    this.$set(this.person,'sex','男')
+                },
+                updateField() {
+                    this.person.sex = '女'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-004-vue的模板语法-插值表达式</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>vue的模板语法之插值表达式语法</h1>
+        <h2>模板语法之插值表达式语法演示#基本用法:{{content}}</h2>
+        <h2>模板语法之插值表达式语法演示#调用方法:{{content.toUpperCase()}}</h2>
+        <h2>模板语法之插值表达式语法演示#调用方法:{{funllName()}}</h2>
+        <h2>模板语法之插值表达式语法演示#获取系统变量:{{Date.now()}}</h2>
+        <h2>模板语法之插值表达式语法演示#级联获取值:{{school.name}}</h2>
+        <h2>模板语法之插值表达式语法演示#拼接值方式一:{{concat.part1}} - {{concat.part2}}</h2>
+        <h2>模板语法之插值表达式语法演示#拼接值方式二:{{concat.part1 + '-' + concat.part2}}</h2>
+        <h2>模板语法之插值表达式语法演示#遇到undefined不报错，但是不会显示:{{undefined}}</h2>
+        <h2>模板语法之插值表达式语法演示#直接获取Vue.prototype上挂的数据:{{bus.desc}}</h2>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        Vue.prototype.bus = {desc:'Vue.prototype上挂的数据'}
+        /**
+         * vue的模板语法-插值表达式
+         *      1.app容器中的代码被称为vue模板
+         *      2.插值语法常用于设置标签体内容的值，如:     <h1>{{content}}</h1>
+         *      3.插值表达式中可以写方法名，如:    <h1>{{fullName()}}</h1>
+         *      4.模板中的数据是响应式数据，Vue.prototype上挂的数据可以直接使用插值表达式获取，因为Vue为这个数据做了
+         *        数据代理，使其成为响应式数据  
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue!',
+                school: {
+                    name: '西安财经大学',
+                },
+                concat: {
+                    part1: '第一部分',
+                    part2: '第二部分'
+                }
+            },
+            methods: {
+                funllName() {
+                    return '张-三'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

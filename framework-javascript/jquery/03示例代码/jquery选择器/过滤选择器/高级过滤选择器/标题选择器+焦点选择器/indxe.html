@@ -1,0 +1,30 @@
+<html>
+      <head>
+	         <title>标题选择器+焦点选择器</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+			 <script type="text/javascript">
+			 $(document).ready(function(){
+			    //标题选择器 ：header
+			    $(":header").css("color","red");  
+				
+				
+			 });	
+             function test(){
+			   //焦点选择器 ：focus (需要配合onclick事件测试)
+			   $(":focus").css("background","orange");
+			 }			 
+			 </script>
+      </head>
+	  
+	  <body>
+	         <h1>这是h1标题</h1>
+	         <h2>这是h2标题</h2>
+	         <h3>这是h3标题</h3>
+	         <h4>这是h4标题</h4>
+	         <h5>这是h5标题</h5>
+	         <h6>这是h6标题</h6>
+			 
+             <input type="button" name="" value="改变背景色" onclick="test()"/>			 
+	  </body>
+</html>

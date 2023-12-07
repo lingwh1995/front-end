@@ -1,0 +1,30 @@
+<html>
+      <head>
+	         <title>js∞Ê≥ÈΩ±1.0</title>
+			 <meta http-equiv="Content-Type" content="text/html;charaset=utf-8"/>
+             <script type="text/javascript">
+			        var myInterval ;
+			        function start(){
+					     myInterval = setInterval("test()","100");
+					}
+					var names = ["a","b","c","d","e","f"];
+					var i = 0 ;
+					function test(){
+						var spanTextTemp = document.getElementsByTagName("span");						
+							 if(i==names.length){
+							    i=0;
+							 }				
+							 spanTextTemp[0].innerHTML = names[i];	
+							 i++;			 
+					}
+					function stop(){
+					    clearInterval(myInterval);
+					}
+			 </script>
+	  </head>
+	  <body>
+	        <font color="green">–“‘Àπ€÷⁄£∫</font><span style="color:red;"></span>
+	        <input type="button" value="≥ÈΩ±" onclick="start()"/>
+	        <input type="button" value="Õ£÷π" onclick="stop()"/>
+	  </body>
+</html>

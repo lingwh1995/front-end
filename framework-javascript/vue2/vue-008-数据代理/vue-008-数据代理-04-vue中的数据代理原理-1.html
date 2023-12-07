@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-008-数据代理-02-什么是数据代理</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 什么是数据代理:  通过一个对象代理对另一个对象中的属性操作(读/写)
+         *      实际上是代理对象给被代理对象中的属性生成了get()和set()方法，通过这两个方法来实现读/写操作的
+         */
+        let target = {
+                        id:'001',
+                        name:'张三',
+                        age: 15,
+                        school: 'ufe'
+                     }
+        /**
+         * 模拟vue的数据代理实现
+         */
+        function Observer(obj) {
+            //汇总对象中所有属性成为一个数组
+            const keys = Object.keys(obj)
+            //将Observer对象自身作为proxy对象，并给这个proxy对象上添加属性
+                //this指向Observer对象的实例
+            keys.forEach((key) => {
+                Object.defineProperty(this,key,{
+                    get() {
+                        console.log('调用了proxy对象获取值的方法...')
+                        return obj[key]
+                    },
+                    set(value) {
+                        console.log('调用了proxy对象修改值的方法...')
+                        obj[key] = value
+                    }
+                })
+            })
+        }
+        const proxy = new Observer(target)
+
+        //通过数据代理获取target中的id属性的值
+        console.log("通过数据代理获取target中的id属性的值:" + proxy.id)
+        //通过数据代理修改target中的id属性的值
+        proxy.id = 300
+        console.log("通过数据代理获取修改后的target中的id属性的值" + proxy.id)
+        console.log(target)
+        console.log(proxy)
+    </script>
+</body>
+</html>

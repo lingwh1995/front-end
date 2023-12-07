@@ -1,0 +1,71 @@
+<html> 
+     <head> 
+	      <title>My JavaScript Page</title>
+		  <meta http-equiv="Content-Type" content="text/html ;charsert=utf-8"/>
+		  <meta name="keywords" content="这里填写网页的标题"/>
+		  <meta name="description" content="这里填写网页的概述"/>
+		  <script type="text/javascript">
+		  function myCheck(){
+		     var selectAll = document.getElementById("A").checked;
+			 var isCheckeds = document.getElementsByName("ischeck");
+			 for(var i=0;i<isCheckeds.length;i++){
+			     isCheckeds[i].checked = selectAll;
+			 }
+
+		  }
+           
+		  </script>
+		  <style type="text/css">
+		     a
+			 {
+			    text-decoration:none;
+			 }
+		  </style>
+     </head>
+     <body>	 
+			<table border="1px solid black"> 
+			     <tr style="background-color:lightgray">
+				    <th><input type="checkbox" id="A" onclick="myCheck()"/>全选</th>
+				    <th>商品信息</th>
+				    <th>优惠价格</th>
+				    <th>数量</th>
+				    <th>操作</th>
+			     </tr>
+				 <tr>
+				    <td><input type="checkbox" name="ischeck"/></td>
+				    <td>天堂伞</td>
+				    <td>￥32.9元</td>
+				    <td>
+					   <input type="button" value="-"/>
+					   <input type="text" />
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr>
+				 <tr>
+				    <td><input type="checkbox" name="ischeck"/></td>
+				    <td>苹果手机</td>
+				    <td>￥4999元</td>
+				    <td>
+					   <input type="button" value="-"/>
+					   <input type="text" />
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr>
+				 <tr>
+				    <td><input type="checkbox" name="ischeck"/></td>
+				    <td>流行小说</td>
+				    <td>￥25.9元</td>
+				    <td>
+					   <input type="button" value="-"/>
+					   <input type="text" />
+					   <input type="button" value="+"/>
+					</td>
+				    <td><a href="#" onclick="return false">删除</a></td>
+				 </tr>
+				 
+			</table>
+			<a href="#">删除</a>
+     </body>
+</html>

@@ -1,0 +1,49 @@
+<!-- 
+    vue使用$refs操作dom:
+        获取dom的引用,之后通过获取到的相关引用操作dom
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <counter ref="one" @change="handleChange"></counter>
+        <counter ref="two" @change="handleChange"></counter>
+        <div>{{total}}</div>
+    </div>  
+
+</body>
+<script>
+    Vue.component('counter',{
+        data: function(){
+            return {
+                number: 0
+            }
+        },
+        template:'<div @click="handleClick">{{number}}</div>',
+        methods:{
+            handleClick: function(){
+                this.number++;
+                this.$emit('change',this.number);
+            }
+        }
+    });
+    var app = new Vue({
+        el:'#app',
+        data:{
+            total: 0
+        },
+        methods:{
+            handleChange: function(){
+                this.$data.total = this.$refs.one.number + this.$refs.two.number;
+            }
+        }
+    }); 
+</script>    
+</html>

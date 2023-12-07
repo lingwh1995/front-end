@@ -1,0 +1,44 @@
+<html>
+      <head>
+	         <title>JS定时器详解</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+             <script type="text/javascript">
+			         //setInterval()
+					  var myInterval1 ;
+			         function test(){
+					    myInterval1 = setInterval("print()",3000);//可以循环执行的定时器
+					 }
+					 var myTimeout ;
+					 function test1(){
+					     myTimeout = setTimeout("print()",3000);
+					 }
+					 function print(){
+					    //alert("Hello World");
+						var date = new Date();
+						alert(date);
+					 }
+					 function stop1(){
+					    clearInterval(myInterval1);
+					 }
+					 function stop2(){
+					    clearTimeout(myTimeout);
+					 }
+
+					 //动态显示时间					 
+					 setInterval("changeTime()","1000")
+					 function changeTime(){ 
+					    var date = new Date(); 
+                        document.getElementById("mytime").innerHTML = date.toLocaleString() ;
+                       // document.getElementById("mytime").innerHTML =  date.getHours+date.getSeconds();
+					 }
+			 </script>
+	  </head>
+	         
+	  <body>
+	         <input type="button" name="" value="循环执行定时器" onclick="test()"/>
+	         <input type="button" name="" value="只执行一次的定时器" onclick="test1()" />
+	         <input type="button" name="" value="清除循环执行定时器" onclick="stop1()" />
+			 <input type="button" name="" value="清除只执行一次的定时器" onclick="stop2()"><br/>
+			 现在时间是：<span id="mytime" style="color:red;"></span>
+	  </body>
+</html>

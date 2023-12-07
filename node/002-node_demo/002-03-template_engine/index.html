@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>模板引擎</title>
+		
+		<script type="text/javascript" src="./template-web.js"></script>
+		<script type="text/html" id="tpl">
+			大家好，我叫:{{name}}
+			我的年龄:{{age}}
+			我的爱好:{{each hobbies}} {{$value}} {{/each}}
+		</script>
+		
+		<script>
+			var result = template('tpl',{
+				name:'Jack',
+				age:'18',
+				hobbies:['抽烟','烫头']													
+			});
+			console.log(result);
+		</script>
+	</head>	
+	<body>
+		<html>
+			<p>大家好，我叫:{{name}}</p>
+			<p>我的年龄:{{age}}</p>
+			<p>我的爱好:{{each hobbies}} {{$value}} {{/each}}</p>
+		</html>	
+	</body>	

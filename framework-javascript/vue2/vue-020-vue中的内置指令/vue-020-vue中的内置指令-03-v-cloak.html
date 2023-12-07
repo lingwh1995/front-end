@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-020-vue中的内置指令-03-v-cloak</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 v-cloak>{{content}}</h1>
+    </div>
+
+    <!-- 延迟3秒引入vue -->
+    <script type="text/javascript" src="http://localhost:8080/chapter_02_018_springmvc_delay_get_vue_war_exploded/resources/delayGetVue/3"></script>
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  v-cloak指令（没有值):
+         *      1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
+         *      2.使用csS配合v-cloak可以解决网速慢时页面展示出{{xxx}]的问题。        
+         */
+         //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue！',
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-016-列表渲染指令-05-使用v-for遍历data中的数组之key的作用与原理</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>v-for指令遍历数组：使用id作为key-不会出bug</h1>
+        <ul>
+            <li v-for="item in items" :key="item.id">
+                <span>{{item.id}} - {{item.goods}} - {{item.price}}</span>
+                <input type="text" />
+            </li>
+        </ul>
+        <h1>v-for指令遍历数组第二种写法：使用index作为key-会出bug</h1>
+        <ul>
+            <li v-for="(item,index) in items" :key="index">
+                <span>{{item.id}} - {{item.goods}} - {{item.price}}</span>
+                <input type="text" />
+            </li>
+        </ul>
+        <button @click.once="addInHead">在数组开头添加一个新的对象来测试两种不同的key</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 列表渲染指令-使用v-for遍历data中的数组之key的作用与原理
+         *      1.:key必须写上,虚拟dom对比时会用到这个key
+         *      2.所有的v-for中的in都可以替换为of
+         */
+         /**
+            面试题:react、vue中的key有什么作用? (key的内部原理)
+            1.虚拟DOM中key的作用:
+                key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】,随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下:
+            2.对比规则:
+                (1).旧虚拟DOM中找到了与新虚拟DOM相同的key:
+                    .若虚拟DOM中内容没变,直接使用之前的真实DOM !
+                    .若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM。
+                (2).旧虚拟DOM中未找到与新虚拟DoM槽同的key
+                    创建新的真实DOM,随后渲染到到页面。
+            3.用index作为key可能会引发的问题;
+                1.若对数据进行:逆序添加、逆序删除等破坏顺序操作:
+                会产生没有必要的真实DOM更新==〉界面效果没问题,但效率低。
+                2.如果结构中还包含输入类的DOM:
+                会产生错误DOM更新==>界面有问题。
+            4.开发中如何选择key? :
+                1.最好使用每条数据的唯一标识作为key,比如id、手机号、身份证号、学号等唯一值。
+                2.如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
+        */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                //数组
+                items: [
+                    {id:'001',goods:'自行车',price:'100'},
+                    {id:'002',goods:'电视机',price:'200'},
+                    {id:'003',goods:'洗衣机',price:'300'}
+                ],
+                car: {
+                    id:'004',
+                    goods:'汽车',
+                    price:'400'
+                }
+            },
+            methods: {
+                //在数组头部添加一个对象
+                addInHead() {
+                    //js数组提供的原生api,使用unshift()在数组头部添加一个对象
+                    this.items.unshift(this.car)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

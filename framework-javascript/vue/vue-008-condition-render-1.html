@@ -1,0 +1,33 @@
+<!-- 
+    Vue条件渲染
+        1.v-if：为true时显示dom,为false时从页面删除dom,看起来像隐藏而已
+        2.v-show: 为true时显示dom,为false时隐藏dom,在dom上添加了
+          style="display: none;" 这个样式，并非真正从页面删除这个dom
+    综上所述:
+         v-show的性能比v-if的性能好   
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+      <div v-if="show" data-test="v-if">v-if</div>
+      <div v-show="show" data-test="v-show">v-show</div>
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            show: false
+        }
+    });
+   
+</script>    
+</html>

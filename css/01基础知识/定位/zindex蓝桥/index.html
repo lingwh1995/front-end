@@ -1,0 +1,35 @@
+<head>
+      <head>
+	        <title>z-index</title>
+			<meta http-equiv="Content-Type" content="text/html;chararset=utf-8"/>
+			<meta name="keywords" content=""/>
+			<meta name="description"/>
+			<style type="text/css">
+			/*关于z-index要注意的事项：
+			     1.使用z-index的前提是：先使用相对定位
+				 2.z-index:默认值为0
+			*/
+			    img
+				{
+				  width:300px ;
+				  height:300xp ;
+				}
+				#a
+				{
+				  position:relative ;
+				  left:10px ;
+				  z-index: -5 ;
+				}
+				#b
+				{
+				   position:relative ;
+				   left:-50px ;
+				   z-index: 1 ;
+				}
+			</style>
+      </head>
+      <body>
+	        <img src="a.png" id="a"/> 
+			<img src="b.png" id="b"/>
+      </body>
+</head>

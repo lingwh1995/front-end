@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-005-vue的数据动态绑定指令-01-单向绑定(v-bind)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>vue的数据动态绑定指令-单向绑定(v-bind):只能由vue实例中的data中的数据来影响页面上的数据</h1>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令:<a v-bind:href="url" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令简写:<a :href="url" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#调用方法:<a :href="url.toUpperCase()" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#调用方法:<a :href="getUrl()" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#级联获取值+调用方法:<a :href="school.website.toUpperCase()" target="_blank">跳转到西安财经大学首页</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#拼接值:<a :href="concat.part1 + concat.part2" target="_blank">跳转到百度首页</a></h2>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * vue的数据动态绑定指令-单向绑定(v-bind)
+         *      1.单向绑定指令语法常用于设置标签属性的值，  如:     <a v-bind:href="url" target="_blank">跳转到百度</a>
+         *      2.单向绑定指令表达式中可以写方法名，如:    <a :href="getUrl()" target="_blank">跳转到百度</a></h2>
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                url: 'https://www.baidu.com',
+                school: {
+                    website: 'http://www.xaufe.edu.cn/'
+                },
+                concat: {
+                    part1: 'https:/',
+                    part2: '/www.baidu.com'
+                }
+            },
+            methods: {
+                getUrl() {
+                    return this.url
+                }
+            },
+        })
+    </script>
+</body>
+</html>

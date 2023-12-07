@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-029-Vue对象和Vue.prototype区别</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>验证直接Vue实例中的data中的数据做了数据代理</h1>
+        <span>--{{content}}--</h1>
+        <h1>验证直接挂在Vue对象上的数据不会做数据代理(无法显示)</h1>
+        <span>--{{moute1}}--</h1>
+        <h1>验证直接挂在Vue.prototype对象上的数据做了数据代理</h1>
+        <span>--{{moute2}}--</h1>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        Vue.moute1 = '直接挂在Vue上的数据'
+        Vue.prototype.moute2 = '直接挂在Vue.prototype上的数据'
+        /**
+         *  Vue对象和Vue.prototype区别
+         *      1.直接挂在Vue对象上的数据不会做数据代理，直接挂在Vue.prototype上的数据会做数据代理
+         *        做了数据代理的数据才是响应式数据，插值表达式中可以获取的是响应式数据
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue!'
+            }
+        })
+    </script>
+</body>
+</html>

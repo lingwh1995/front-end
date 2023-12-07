@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>javascript-008-数组-01-遍历数组</title>
+	<script type="text/javascript">
+		var num = [1,2,3];
+		//方式一：普通for
+		/*
+		for(var i=0;i<num.length;i++){
+			alert(num[i]);
+		}
+		*/
+		//foreach遍历
+		//注意：这个forEach()只能遍历这中已知的数组,但是不能遍历通过DOM操作拿到的元素
+		/*
+		num.forEach(function(value,index,array){
+			alert(value+"---"+index+"---"+array)
+		});
+		num.forEach(function(value,index){
+			alert(value+"---"+index)
+		});
+		*/
+		//方式三：使用map方式遍历
+		//注意：这个也只能遍历这中已知的数组,但是不能遍历通过DOM操作拿到的元素
+		/*
+		num.map(function(index,value,arr){
+			alert(index+"---"+value+"---"+arr);
+		});
+		*/
+		//方式四,for(x in xx)，其中x为index
+		/*
+		for(x in num){
+			alert(num[x]);
+		}
+		*/
+		for(i in num){
+			alert(num[i]);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/* 演示使用JS原生方法修改样式，操作CSS*/
+			function $(id){return document.getElementById(id);}
+			window.onload = function(){
+					$("btn").onclick = function(){
+					//改变div中文字的颜色
+					//$("xxx").style.属性="值";
+					$("div1").style.color="red";
+					//改变div的背景色
+					$("div1").style.backgroundColor="red";
+					//添加边框
+					$("div1").style.border="5px solid green";
+					//添加高度和宽度
+					$("div1").style.width = "40%";
+					$("div1").style.height = "200px";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">div</div>
+		<input type="button" id="btn" value="给div加上样式"/>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<script type="text/javascript">
+			var str = "123" ;
+			var str1 = "123.4" ;
+			var numInt = parseInt(str);//解析为整数
+			var numDouble = parseFloat(str1);//解析为浮点型数据
+			alert(numInt);
+			alert(numDouble);
+			//判断一个数据是不是数字  !isNaN()
+			alert(!isNaN(str));//注意：str是一个字符串，并不是一个数字，之所以返回TRUE是因为js是弱类型的语言
+			alert(!isNaN(123));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

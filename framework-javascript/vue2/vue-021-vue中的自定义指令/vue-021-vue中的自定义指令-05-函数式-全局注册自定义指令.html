@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-021-vue中的自定义指令-05-函数式-全局注册自定义指令</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <h1>在第一个vue容器中使用全局注册的函数式自定义指令</h1>
+    <div id="app_1">
+        n的初始值是:<span>{{n}}</span></br>
+        n值被放大后10倍的值是:<span v-big="n"></span></br>
+        <button @click="increaseValue">点我n值自加1</button>
+    </div>
+    <h1>在第二个vue容器中使用全局注册的函数式自定义指令</h1>
+    <div id="app_2">
+        n的初始值是:<span>{{n}}</span></br>
+        n值被放大后10倍的值是:<span v-big="n"></span></br>
+        <button @click="increaseValue">点我n值自加1</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        //全局注册对象式自定义指令
+        Vue.directive('big',
+                function(element,binding) {
+                    console.log(element instanceof HTMLElement)
+                    console.log(binding.value)
+                    //实现(将n值放大10倍)功能
+                    element.innerText = binding.value * 10
+                })
+
+        //创建第一个vue实例
+        new Vue({
+            el: '#app_1',
+            data: {
+                n:1
+            },
+            methods: {
+                increaseValue() {
+                    this.n++
+                }
+            },
+        })
+
+        //创建第二个vue实例
+        new Vue({
+            el: '#app_2',
+            data: {
+                n:1
+            },
+            methods: {
+                increaseValue() {
+                    this.n++
+                }
+            },
+        })
+    </script>
+</body>
+</html>

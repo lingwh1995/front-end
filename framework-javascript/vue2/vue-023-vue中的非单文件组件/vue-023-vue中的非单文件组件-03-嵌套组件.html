@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-023-vue中的非单文件组件-03-嵌套组件</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <h1>vue的嵌套组件</h1>
+    <div id="app">
+        <h2>使用School组件(School组件中包含了一个嵌套的Student组件)</h2>
+        <School></School>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        //第一步：定义student组件
+        const Student = Vue.extend({
+            template:
+            `<div>
+                学生名称:<span>{{studentName}}</span></br>
+                学生专业:<span>{{speciality}}</span></br>
+                学生学院:<span>{{college}}</span></br>
+                学生学号:<span>{{studentId}}</span></br>
+            </div>`,
+            data() {
+                return {
+                    studentName: '凌文豪',
+                    speciality:'电子商务',
+                    college:'信息学院',
+                    studentId:'1405230346'
+                }
+            }
+        })
+
+        //第一步：定义school组件
+        const School = Vue.extend({
+            template:
+            `<div>
+                学校名称:<span>{{schoolName}}</span></br>
+                学校地址:<span>{{address}}</span></br>
+                <!-- 在此处使用school组件的子组件student -->
+                <Student></Student>
+            </div>`,
+            data() {
+                return {
+                    schoolName: '西安财经学院',
+                    address: '陕西省西安市长安区韦常南路2号'
+                }
+            },
+            //将student组件注册为school组件的子组件
+            components: {
+                Student: Student
+            }
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            //将school组件作为vue实例的组件注册进来
+            components: {
+                School: School
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-011-监视属性-02-使用三目运算实现天气切换功能-1</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>今天天气很{{state}}</h1>
+        <button @click="toggleState">切换天气</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 不足之处: 此版本代码实现过于复杂
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                state: '炎热'
+            },
+            methods: {
+                toggleState() {
+                    if(this.state == '炎热') {
+                        const oldState = this.state
+                        this.state = this.state == '炎热' ? '凉爽' : this.state
+                        console.log('天气变化了,原来是:' + oldState + '，现在是:' + this.state)
+                    }else if(this.state == '凉爽') {
+                        const oldState = this.state
+                        this.state = this.state == '凉爽' ? '炎热' : this.state
+                        console.log('天气变化了,原来是:' + oldState + '，现在是:' + this.state)
+                    }else {
+
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

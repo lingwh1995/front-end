@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-023-vue中的非单文件组件-02-全局注册组件</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <h1>第一个vue容器</h1>
+    <div id="app_1">
+        <h2>使用School组件</h2>
+        <School></School>
+        <h2>使用StudentComponent</h2>
+        <Student-component></Student-component>
+    </div>
+    <h1>第二个vue容器</h1>
+    <div id="app_2">
+        <h2>使用School组件</h2>
+        <School></School>
+        <h2>使用StudentComponent</h2>
+        <Student-component></Student-component>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 全局注册组件:
+         *      所有的vue实例都可以使用该组件
+         */
+        //第一步：定义school组件
+        const School = Vue.extend({
+            template:
+            `<div>
+                学校名称:<span>{{schoolName}}</span></br>
+                学校地址:<span>{{address}}</span></br>
+                <button @click="showSchoolName">点击显示学校名称</button>
+            </div>`,
+            data() {
+                return {
+                    schoolName: '西安财经学院',
+                    address: '陕西省西安市长安区韦常南路2号'
+                }
+            },
+            methods: {
+                showSchoolName() {
+                    alert(this.schoolName)
+                }
+            },
+        })
+        //第一步：定义student组件
+        const Student = Vue.extend({
+            template:
+            `<div>
+                学生名称:<span>{{studentName}}</span></br>
+                学生专业:<span>{{speciality}}</span></br>
+                学生学院:<span>{{college}}</span></br>
+                学生学号:<span>{{studentId}}</span></br>
+            </div>`,
+            data() {
+                return {
+                    studentName: '凌文豪',
+                    speciality:'电子商务',
+                    college:'信息学院',
+                    studentId:'1405230346'
+                }
+            }
+        })
+
+
+        /**
+         * 注册组件第一种方式:单独注册每一个组件
+         */
+        /*
+        //单独注册第一个全局组件
+        Vue.component('School', School)
+        //单独注册第二个全局组件
+        Vue.component('StudentComponent', Student)
+        */
+
+
+        /**
+         * 注册组件第二种方式:循环遍历组件数组注册
+         */
+        const components = [
+            {name:'School', component:School},
+            {name:'StudentComponent', component:Student},
+        ]
+        components.forEach((component) => {
+            Vue.component(component.name,component.component)
+        })
+
+        //创建第一个vue实例
+        new Vue({
+            el: '#app_1',
+        })
+        //创建第二个vue实例
+        new Vue({
+            el: '#app_2',
+        })
+    </script>
+</body>
+</html>

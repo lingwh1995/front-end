@@ -1,0 +1,53 @@
+<html>
+      <head>
+	         <title>定位--position</title>
+			 <meta htp-equiv="Content-Type" content="text/html;cahraset=utf-8"/>
+			 <meta name="keywords" content=""/>
+			 <meta name="description" content=""/>
+			 <style type="text/css">
+			 /*
+			   position属性：
+			          static  ：默认值，没有定位
+					  relative：相对定位
+					  absolute：绝对定位					  
+			 */
+			 #f
+			 {
+			   border:2px solid red ;
+			   padding:40px ;
+			 }
+			 #id_1
+			 {
+			   background:yellow ;
+			   position:relative ;
+			   left: 50px ;
+			 }
+			 #id_2
+			 {
+			   background:blue ;
+			   position:relative ;
+			   right:50px ;
+			   bottom:10px ;
+			 }
+			 #id_3
+			 {
+			   background:red ;
+			 }
+			 #id_4
+			 {
+			   background:green ;
+			   position:absolute ;
+			   left:0px ;
+			   top:0px ;
+			 }
+			 </style>
+      </head>
+	  <body>
+	         <div id="f">
+	              <div id="id_1">第一个盒子</div>
+	              <div id="id_2">第二个盒子</div>
+	              <div id="id_3">第三个盒子</div>
+	              <div id="id_4">第四个盒子</div>
+			 </div>
+	  </body>
+</html>

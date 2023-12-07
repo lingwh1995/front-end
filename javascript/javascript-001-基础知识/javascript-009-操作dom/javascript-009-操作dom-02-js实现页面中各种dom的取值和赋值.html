@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>innerHTML的取值和赋值以及html的渲染</title>
+		<meta http-equiv="Content-Type" content="text/html;charaset=utf-8"/>
+		<meta name="keyword" content=""/>
+		<meta name="description" content=""/>
+		<script type="text/javascript">
+		/*
+			小发现：当标签名正确的时候，如<div>1111</div>，innerHTML仅仅可以获取div的中的内容
+					当标签名不争取（结束的时候），如<div>2222<div/>，innerHTML可以获取指定标签的源代码
+		*/
+
+		//取值
+		function show(){
+			var div = document.getElementById("div_1");
+			var text = div.innerHTML;
+			alert(text);
+		}
+		//赋值
+		function giveValue(){
+			var div = document.getElementById("div_2");
+			div.innerHTML = "这里是赋值的html内容，哈哈，还可以赋值";
+		}
+		//渲染--利用行内css可以渲染html内容（注意：行内css多个样式之间用;隔开）
+		//行内CSS样式格式： <span style="color:redl;font-size:50px">Hello World</span>
+		function change(){
+			var div = document.getElementById("div_3");
+			div.innerHTML = "<font style='color:red;font-size:50px'>html渲染效果展示</font>" ;
+		}
+		</script>
+	</head>
+
+	<body>
+		<div id="div_1">这里是显示的html内容</div>
+		<input type="button" name="" value="显示（取值）" onclick="show();"/>
+		<div id="div_2">这里是赋值的html内容</div>
+		<input type="button" name="" value="赋值" onclick="giveValue()"/>
+		<div id="div_3">html渲染效果展示</div>
+		<input type="button" name="" value="渲染" onclick="change()"/>
+	</body>
+</html>

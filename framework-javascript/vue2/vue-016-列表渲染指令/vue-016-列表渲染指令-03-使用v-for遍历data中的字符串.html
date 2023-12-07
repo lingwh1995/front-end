@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-016-列表渲染指令-03-使用v-for遍历data中的字符串</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>v-for指令遍历字符串</h1>
+        <ul>
+            <li v-for="(c,index) in str" :key="index">
+                <span>{{index}} - {{c}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 列表渲染指令-使用v-for遍历data中的字符串
+         *      1.:key必须写上,虚拟dom对比时会用到这个key
+         *      2.所有的v-for中的in都可以替换为of
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                //对象
+                str: 'abcde'
+            }
+        })
+    </script>
+</body>
+</html>

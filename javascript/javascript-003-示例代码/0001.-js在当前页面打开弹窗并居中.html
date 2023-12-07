@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<script type="text/javascript">
+        /**
+         * @param url 目标地址
+         * @param name 窗口名称
+         * @param iWidth 窗口宽度
+         * @param iHeight 窗口高度
+         */
+        function openWin(url,name,iWidth,iHeight) {
+            //获得窗口的垂直位置
+            var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+            //获得窗口的水平位置
+            var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+            window.open(url, name, 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

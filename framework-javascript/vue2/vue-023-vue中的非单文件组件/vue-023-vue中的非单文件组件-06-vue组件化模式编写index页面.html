@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-023-vue中的组件-05-vue组件化模式编写html页面</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+        .header {
+            background-color: yellow;
+            height: 100px;
+            width: 100%;
+        }
+        .content {
+            background-color: green;
+            height: 500px;
+            width: 100%;
+        }
+        .footer {
+            background-color: red;
+            height: 100px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <app></app>
+    </div>
+
+    <script type="text/javascript">
+        //定义header组件
+        const HeaderComponent = Vue.extend({
+            //name的巧妙使用
+            name:'header',
+            template:
+                `<div class="header">
+                    <h1>{{info}}</h1>
+                </div>`,
+            data() {
+                return {
+                    info: 'HEADER'
+                }
+            }
+        })
+
+        //定义content组件
+        const ContentComponent = Vue.extend({
+            //name的巧妙使用
+            name:'content',
+            template:
+                `<div class="content">
+                    <h1>{{info}}</h1>
+                </div>`,
+            data() {
+                return {
+                    info: 'CONTENT'
+                }
+            }
+        })
+        //定义footer组件
+        const FooterComponent = Vue.extend({
+            //name的巧妙使用
+            name:'footer',
+            template:
+                `<div class="footer">
+                    <h1>{{info}}</h1>
+                </div>`,
+            data() {
+                return {
+                    info: 'FOOTER'
+                }
+            }
+        })
+
+        //定义app组件
+        const app = Vue.extend({
+            template:
+                `<div>
+                    <HeaderComponent/>
+                    <ContentComponent/>
+                    <FooterComponent/>
+                </div>`,
+            //注册组件(局部注册)
+            components: {
+                //es5传统写法
+                    //将headerComponent组件作为app的子组件注册进来
+                HeaderComponent: HeaderComponent,
+                //es6提供的简写方式，推荐这种写法
+                    //将contentComponent组件作为app的子组件注册进来
+                ContentComponent,
+                //es6提供的简写方式，推荐这种写法
+                    //将footerComponent组件作为app的子组件注册进来
+                FooterComponent
+            }
+        })
+
+        //创建vue实例
+        new Vue({
+            el:'#app',
+            //注册组件(局部注册)
+            components: { app }
+        })
+    </script>
+</body>
+</html>

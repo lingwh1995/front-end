@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--注意:这里的css前面不能加斜杠-->
+		<link href="css/index.css" rel="stylesheet"/>
+		<style type="text/css">
+
+			/*对应base.css*/
+			* {
+				 margin: 0;
+				 padding: 0;
+				 text-decoration: none;
+				 list-style: none;
+			}
+			.cl {
+				clear: both;
+				margin: 0;
+				background: red;
+			}
+			.h10 {
+				height: 10px;
+			}
+			.w {
+				/*引入多个class样式，中间用空格隔开*/
+				width: 70%;
+				margin: 0 auto;
+			}
+			.w100 {
+				width: 100%;
+			}
+			.fl {
+				float: left;
+			}
+			.fr {
+				float: right;
+			}
+			.din {
+				display: inline;
+			}
+			/*logo部分的div*/
+			.header {
+				/*width: 90%; 使用公共类引入*//*注意:宽度的设置要用百分比，不能是固定长度,高度不要设置，通过子元素撑起来*/
+				/*margin: 0 auto; 使用公共类引入*/
+			}
+			.header div {/*这里使用后代选择器比较合适，代码最少，最清晰*/
+				float: left;
+				width: 33.33%;
+				height: 60px;
+				line-height: 60px;
+			}
+			.header a {
+				padding-left: 15px;/*这里用padding笔margin合适*/
+			}
+			.menu {
+				/*width: 90%;使用公共类引入*/
+				height: 60px;
+				margin: 0 auto;
+				background-color: #000;
+			}
+
+			.menu ul li {
+				/*设置li排列成一行，有两种方式*/
+				/*方式一:浮动*/
+				/*float: left;*/
+				/*方式二:display:inline;*/
+				display:inline;
+			}
+			.menu a {
+				display: block;
+				width: 50px;
+				height: 30px;
+				float: left;
+				font-size: 20px;
+				color: #fff;
+				/*padding-top:10px ;*/
+				padding: 15px 10px 10px 10px;
+			}
+			.pics {
+				/*width: 90%;使用公共类引入*/
+				/*margin: 0 auto;*/
+			}
+			.pics img {
+				width:100%;
+			}
+			.left {
+				float: left;
+				width: 16%;
+			}
+			.left img {
+				height: 500px;
+			}
+			.right {
+				float: left;
+				width: 84%;
+				height: 500px;
+				text-align: center;
+				height: 500px;
+			}
+			.middle {
+				float: left;
+				width: 50%;
+				height: 250px;
+			}
+			.middle img {
+				height: 250px;
+			}
+			.item {
+				float: left;
+				width: 16.66%;
+				height: 250px;
+			}
+			/*设置底部样式*/
+			.foot p{
+				text-align: center;		
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//创建一个定时器
+				setInterval("fun1()",1000);
+				
+				
+			}
+			//更改图片
+			//<img id="luboid" src="img/1.jpg"/>
+			var i=1;
+			function fun1(){
+				//获取图片元素
+				var imgObj=document.getElementById("luboid");
+				//修改图片元素的src属性
+				imgObj.src="img/"+i+".jpg";
+				//当i>3的时候 重置i
+				i++;
+				if(i>=3){
+					i = 1;
+				}
+//				alert(imgObj.src);
+			}
+		</script>
+	</head>
+	<body>
+		<!--一个大的div中放8个小的div-->
+		<div>
+			<!--logo
+				嵌套三个div
+			-->
+			<div class="header w">
+				<div><img src="img/logo2.png" height="40px" /></div>
+				<div><img src="img/header.jpg" height="40px" /></div>
+				<div>
+					<a href="#">登录</a>
+					<a href="#">注册</a>
+					<a href="#">购物车</a>        
+				</div>
+			</div>
+			<div class="cl"><!--清除浮动--></div>
+			<!--菜单-->
+			<div class="menu w">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">首页</a></li>
+				</ul>	
+			</div>
+			<div class="cl"><!--清除浮动--></div>
+			<div class="h10"></div>
+			<!--轮播图-->
+			<div class="pics w">
+				<img id="luboid" src="img/1.jpg"/>
+			</div>
+			<!--热门
+				划分为左右两个div
+			-->
+			<div class="hot w">
+				<div class="top">
+					<h2 class="din">热门商品</h2>
+					<img src="img/title2.jpg" />
+				</div>
+				<div class="left">
+					<!--左边的图片-->
+					<img src="img/big01.jpg" class="w100"/>
+				</div>
+				<div class="right">
+					<div class="middle"><img src="img/middle01.jpg" class="w100" /></div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					<div class="item">
+						<img src="img/small08.jpg" />
+						<p><a href="#">电饭煲</a></p>
+						<p>200</p>
+					</div>
+					
+				</div>
+			</div>
+			<!--广告-->
+			<div class="ad1 w"><img src="img/ad.jpg" class="w100"/></div>
+			<!--最新-->
+			<div></div>
+			<!--广告-->
+			<div class="w">
+				<img src="img/footer.jpg" width="100%" />
+			</div>
+			<!--版权-->
+			<div class="foot w">
+				<p align="center">
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+					</p>
+					<p>
+						Copyright &copy; 2005-2016 传智商城 版权所有
+					</p>
+			</div>
+		</div>
+	</body>
+</html>

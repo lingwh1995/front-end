@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>下拉列表增强之下拉选择框左右选择</title>
+	<script type="text/javascript">
+	    /*写代码的过程中发现一个问题，如果用JS原生方法。document.getElementsByTagName("子节点");获取子节点的话，有两个相同的父节点的时候，这种方法
+	    获取的是两个父节点中的所有子节点，为了解决这一问题可以先获取父节点，然后 获取的父节点.getElementsByTagName("子节点");来获取想要的子节点*/      
+		function moveToRight(){	
+		    var fNode1 = document.getElementById("fNode1");
+            var fNode2 = document.getElementById("fNode2");		
+			var option1 = fNode1.getElementsByTagName("option");			
+			var option2 = fNode2.getElementsByTagName("option");
+			for(var i=0;i<option1.length;i++){
+				if(option1[i].selected==true){
+                   fNode2.appendChild(option1[i]);
+				}
+			}
+		}
+		function moveAllToRight(){
+			var fNode1 = document.getElementById("fNode1");
+            var fNode2 = document.getElementById("fNode2");		
+			var option1 = fNode1.getElementsByTagName("option");			
+			var option2 = fNode2.getElementsByTagName("option");
+			for(var i=0;i<option1.length;i++){
+                   fNode2.appendChild(option1[i]);
+                   i--;
+			}
+		}
+		function moveToLeft(){
+			var fNode1 = document.getElementById("fNode1");
+            var fNode2 = document.getElementById("fNode2");		
+			var option1 = fNode1.getElementsByTagName("option");			
+			var option2 = fNode2.getElementsByTagName("option");
+			for(var i=0;i<option2.length;i++){
+				if(option2[i].selected==true){
+                   fNode1.appendChild(option2[i]);
+				}
+			}
+		}
+		function moveAllToLeft(){
+			var fNode1 = document.getElementById("fNode1");
+            var fNode2 = document.getElementById("fNode2");		
+			var option1 = fNode1.getElementsByTagName("option");			
+			var option2 = fNode2.getElementsByTagName("option");
+			for(var i=0;i<option2.length;i++){
+                   fNode1.appendChild(option2[i]);
+                   i--;
+			}
+		}
+	</script>
+</head>
+
+<body>
+<div id="s1" style="float:left">
+	 <div>
+	 <select name="" id="fNode1" multiple="multiple" style="width:135px;height:160px" size="6">
+	 	  <option>选项1</option>
+	 	  <option>选项2</option>
+	 	  <option>选项3</option>
+	 	  <option>选项4</option>
+	 	  <option>选项5</option>
+	 </select>
+	 </div>
+
+	 <div>
+		 <input type="button" value="选中添加到右边>>" onclick="moveToRight()"/>	 	
+	 </div>
+	 <div>
+	 	 <input type="button" value="全部添加到右边>>" onclick="moveAllToRight()"/>
+	 </div>
+</div>
+
+
+
+<div id="s2" style="margin-left:150px">
+	 <div>
+	 <select name="" id="fNode2" multiple="multiple" style="width:135px;height:160px" size="6">
+	 	  <option>选项8</option>
+	 </select>
+     </div>
+
+	 <div>
+		 <input type="button" value="<<选中添加到左边" onclick="moveToLeft()"/>
+	 </div>
+	 <div>
+		 <input type="button" value="<<全部添加到左边" onclick="moveAllToLeft()"/>
+	 </div>
+</div>
+ 
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script>
+		/**
+		 * js变量提升
+		 */
+		function foo() {
+			var x = 'Hello, ' + y;
+			console.log(x);
+			var y = 'Bob';
+		}
+		//对于上述foo()函数，JavaScript引擎看到的代码相当于：
+		function foo() {
+			var y; // 提升变量y的申明，此时y为undefined
+			var x = 'Hello, ' + y;
+			console.log(x);
+			y = 'Bob';
+		}
+		//所以:js代码书写应该遵循在函数头部声明所有变量这一原则
+
+		/**
+		 * 全局对象window
+		 */
+		 function a(){
+			var x = 10;
+			window.x = x;
+		 }
+
+		 function b(){
+			a();
+			//alert(x);
+			//alert(window.x);
+		 }
+		 b();
+
+		 /**
+		  * 全局变量污染/冲突解决:使用命名空间
+		  */
+		  //把和当前文件有关的全局变量放入到一个 	jjjjjj  这个对象中
+		 var jjjjjj = {};
+		 function c(){
+			var x = 101;
+			window.jjjjjj.x = x;
+		 }
+
+		 function d(){
+			c();
+			//alert(x);
+			alert(window.jjjjjj.x);
+		 }
+		 d();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

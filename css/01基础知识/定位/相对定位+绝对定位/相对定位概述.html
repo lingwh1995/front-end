@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>定位</title>
+	<style type="text/css">
+	/*
+      相对定位：position：relative;
+                1.就是相对自己原来的地方进行位置移动
+                2.不脱标，老家留坑，形影分离
+                3.相对定位有坑，一般不用于做压盖效果，就两个作用：微调元素或做绝对定位的参开
+      绝对定位：position: absolute;
+                1.脱标
+      固定定位：position: fixed;
+                1.脱标
+	*/
+	 div {
+	    width: 200px;
+	    height: 200px;
+      }
+      .box1 {
+      	background-color: yellowgreen;
+
+      }
+      .box2 {
+      	background-color: skyblue;
+      	position: relative;
+      	left: 100px;
+      	top: 150px;
+      }
+      .box3 {
+      	background-color: orange;
+      	      }
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+</body>
+</html>

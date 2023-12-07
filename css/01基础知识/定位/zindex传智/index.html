@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>z-index详解</title>
+	<style type="text/css">
+    /*z-index值：
+    1.表示谁压着谁。数值大的压着数值小的
+    2.只有定位了的元素才能有z-index值，不管绝对定位、相对定位、固定定位都可以使用z-index，而浮动的东西不能用
+    3.z-index值没有单位，就是一个整数。默认值为0*/
+    .box1 {
+    	width: 200px;
+    	height: 200px;
+    	background-color: yellowgreen;
+    	position: absolute;
+    	top: 100px;
+    	left: 100px;
+    	z-index: 1 ;
+    }
+    .box2 {
+    	width: 200px;
+    	height: 200px;
+    	background-color: skyblue;
+    	position: absolute;
+    	top: 100px;
+    	left: 180px;
+    	z-index: 0;	
+    }
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

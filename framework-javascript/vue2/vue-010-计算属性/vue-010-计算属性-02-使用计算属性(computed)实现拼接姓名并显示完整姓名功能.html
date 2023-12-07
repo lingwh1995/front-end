@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-010-计算属性-02-使用计算属性(computed)实现拼接姓名并显示完整姓名功能</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入姓:<input type="text" v-model:value="firstName"/><br/>
+        请输入名:<input type="text" v-model:value="lastName"/><br/>
+        <!-- 使用计算属性computed完成对属性的加工 -->
+        <!--
+             计算属性(computed)中相对于直接写在methods中写一个方法的优势计算属性是有缓存的，{{fullName}}不管调用几次，
+             只要计算属性(computed)中所依赖的属性的值没有发生改变，计算属性的操作就只会执行一次
+             注意: 直接写fullName就行，不用写fullName.get()，因为这个计算属性(computed)中get()方法是vue自动帮我们调用的
+         -->
+        姓名:<span>{{fullName}}</span><br/>
+        姓名:<span>{{fullName}}</span><br/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 计算属性:要使用的属性不存在，需要通过计算得来
+         *      computed使用要求:
+         *          1.返回一个对象
+         *          2.对象中要包含一个get()
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                fullName: {
+                    /**
+                     * 此get()方法被调用时机:
+                     *      1.初次读取fullName值时
+                     *      2.computed中fullName这个对象所依赖的属性的值发生变化时会被调用
+                     */
+                    get() {
+                        alert('fullName()被调用了...')
+                        return this.firstName.slice(0,3).toUpperCase() + '-' + this.lastName
+                    },
+                    /**
+                     * 这个set()方法一般不会执行，可以不用写这个方法，只会在fullName被调用时才会执行，
+                     *      如果要测试，则需要在浏览器控制台输入        vm.fullName='a-b'
+                     * 为什么一般不用写这个方法?
+                     *      因为这个方法所做的操作是计算属性，一般返回的结果也是计算后的结果，一般我们所做的修改是没有意义的，
+                     *      如果要直接修改也是直接修改执行计算的代码，所以这个set()一般不会执行，所以一般不用写这个方法
+                     */
+                    set(value) {
+                        const arr = value.split('-')
+                        this.firstName = arr[0]
+                        this.lastName = arr[1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

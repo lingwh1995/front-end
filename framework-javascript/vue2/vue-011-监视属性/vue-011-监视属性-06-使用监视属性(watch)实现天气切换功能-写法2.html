@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-011-监视属性-06-使用监视属性(watch)实现天气切换功能-写法2</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>今天天气很{{state}}</h1>
+        <button @click="toggleState">切换天气</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 监视属性写法2
+         *      特别注意: 监视属性可以监视data中的属性和计算属性(computed)中的属性
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                isHot: true
+            },
+            computed: {
+                state() {
+                    return this.isHot ? '炎热' : '凉爽'
+                }
+            },
+            methods: {
+                toggleState() {
+                    this.isHot = ! this.isHot
+                }
+            }
+        })
+
+        /**
+         * 完整写法
+         */
+        /**
+        //isHot是被监视的属性
+        vm.$watch('isHot',{
+                    //immediate用于配置是否当页面加载完成时就进行首次监视   true:页面加载完成后就进行首次监视   false:页面加载完成后不进行首次监视，只有当被监视的属性发生改变时才进行监视
+                     immediate: false,
+                    //这个形参随便写，第一个是改变后的(属性中的)值，第二个是改变前的(属性中的)值
+                    handler(afterChangeValue,beforeChangeValue) {
+                        console.log('天气变化了,原来是:' +
+                            (beforeChangeValue ? '炎热' : '凉爽') +
+                                '，现在是:' + (afterChangeValue ? '炎热' : '凉爽'))
+                    }
+        })
+        */
+
+        /**
+         * 简写形式
+         */
+        //isHot是被监视的属性
+        //当不需要配置 immediate(加载完成后就执行首次监视) 和 deep(是否启用深度监视)时，就可以使用这种简写形式
+        vm.$watch('isHot',function(afterChangeValue,beforeChangeValue) {
+            console.log('天气变化了,原来是:' +
+                            (beforeChangeValue ? '炎热' : '凉爽') +
+                                '，现在是:' + (afterChangeValue ? '炎热' : '凉爽'))
+        })
+    </script>
+</body>
+</html>

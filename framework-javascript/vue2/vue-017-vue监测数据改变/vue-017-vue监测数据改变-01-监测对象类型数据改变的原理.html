@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-017-vue监测数据改变-01-监测对象类型数据改变的原理</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 什么是数据代理:  通过一个对象代理对另一个对象中的属性操作(读/写)
+         *      实际上是代理对象给被代理对象中的属性生成了get()和set()方法，通过这两个方法来实现读/写操作的
+         */
+        let data = {
+                        id:'001',
+                        name:'张三',
+                        age: 15,
+                        school: 'ufe'
+                     }
+        /**
+         * vue监测对象类型数据改变的原理
+         *      通过Object.defineProperty给Observer对象添加属性，并自动生成get()和set()，然后通过set()方法的调用来监测数据的改变
+         */
+        function Observer(obj) {
+            //汇总对象中所有属性成为一个数组
+            const keys = Object.keys(obj)
+            //将Observer对象自身作为proxy对象，并给这个proxy对象上添加属性
+                //this指向Observer对象的实例
+            keys.forEach((key) => {
+                Object.defineProperty(this,key,{
+                    get() {
+                        console.log(`${key}被获取了`)
+                        return obj[key]
+                    },
+                    set(value) {
+                        console.log(`${key}的值被修改了，我要去解析模板，生成虚拟DOM去了...`)
+                        obj[key] = value
+                    }
+                })
+            })
+        }
+        const obs = new Observer(data)
+        //console.log(obs)
+        let vm = {}
+        vm._data = data = obs
+        //console.log(vm._data)
+        //console.log(data)
+
+        //测试vue通过set()方法的调用来监测数据的改变
+        data.name = 'xxx'
+    </script>
+</body>
+</html>

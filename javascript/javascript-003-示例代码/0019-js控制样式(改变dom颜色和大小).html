@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js控制盒子宽、高、颜色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 400px;
+            height: 400px;
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="demo"></div>
+    <button id="button1">改变宽度</button>
+    <button id="button2">改变高度</button>
+    <button id="button3">改变颜色</button>
+    <button>改变内容</button>
+</body>
+
+<script type="text/javascript">
+    var demo = document.getElementById("demo");
+    var button1 = document.getElementById("button1");
+    /*事件三要素   事件源.事件=function(){}*/
+    button1.onclick = function(){
+        demo.style.width = "600px";
+    }
+    var button2 = document.getElementById("button2");
+    button2.onclick = function(){
+        demo.style.height = "600px";
+    }
+    var button3 = document.getElementById("button3");
+    button3.onclick = function(){
+        demo.style.background = "green";
+    }
+</script>
+</html>

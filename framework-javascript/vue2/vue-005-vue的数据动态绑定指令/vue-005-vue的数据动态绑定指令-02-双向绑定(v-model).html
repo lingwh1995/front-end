@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-005-vue的数据动态绑定指令-02-双向绑定(v-model)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>vue的数据动态绑定指令-双向绑定(v-model):vue实例中的data中的数据和页面上的数据会支持一致，修改一个，另一个会发生改变</h1>
+        <h2>vue的数据动态绑定指令-双向绑定语法#v-model指令:<input type="text" v-model:value="content"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#v-model指令简写:<input type="text" v-model="content"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#调用方法:<input type="text" v-model:value="url.toUpperCase()"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#调用方法:<input type="text" v-model:value="getUrl()"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#级联获取值+调用方法:<input type="text" v-model:value="school.website.toUpperCase()"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#拼接值:<input type="text" v-model:value="concat.part1 + '-' + concat.part2"/></h2>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+         /**
+         * vue的数据动态绑定指令-双向绑定(v-model)
+         *      1.双向绑定指令语法常用于设置表单元类素的值，  如:     <input type="text" v-model:value="content"/>
+         *      2.双向绑定指令表达式中可以写方法名，如:    <input type="text" v-model:value="getUrl()"/>
+         *      3.v-model实际上是收集表单元素的value值，所以当用于收集单选框的值时，单选框代码一定要加value属性
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                content: '测试双向数据绑定~',
+                url: 'https://www.baidu.com',
+                school: {
+                    website: 'http://www.xaufe.edu.cn/'
+                },
+                concat: {
+                    part1: '第一部分',
+                    part2: '第二部分'
+                }
+            },
+            methods: {
+                getUrl() {
+                    return this.url
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-022-vue中的生命周期-02-mounted生命周期函数</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{n}}</h1>
+        <button @click="increaseValue">点我增加n的值</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                n: 1
+            },
+            methods: {
+                increaseValue() {
+                    this.n++
+                }
+            },
+            beforeCreate() {
+                //此阶段还无法获取到data中的值
+                console.log('beforeCreate...' + this.n)
+                console.log(this)
+                //debugger
+            },
+            created() {
+                //此阶段完成了数据代理，所以vm上已经获取到data中的值了
+                console.log('created...' + this.n)
+                console.log(this)
+                //debugger
+            },
+            beforeMount() {
+                //此时页面呈现的是未经vue编译的DOM,此时对dom所有操作是无效的
+                console.log('beforeMount...')
+                //debugger
+            },
+            mounted() {
+                //此时页面呈现的是由vue编译的dom,此时对dom的操作是有效的，但是尽量不要操作
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate...')
+                //debugger
+            },
+            updated() {
+                console.log('updated...')
+                //debugger
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy...')
+                //debugger
+            },
+            destroyed() {
+                console.log('destroyed...')
+                //debugger
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!-- 
+    Vue解决条件渲染文本框复用BUG
+        v-if
+        v-else
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <div v-if="show">
+            用户名：<input type="text" data-test="username" key="username"/>
+        </div>
+        <div v-else="show">
+            邮箱名：<input type="text" data-test="email" key="email"/>
+        </div>
+        <div>
+            <input type="button" @click="handleClick" value="点击切换显示用户名和邮箱名"/>
+        </div>    
+    </div>    
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            show: true
+        },
+        methods: {
+            handleClick: function(){
+                this.$data.show = !this.$data.show;
+            }
+        }
+    });
+   
+</script>    
+</html>

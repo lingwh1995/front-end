@@ -1,0 +1,48 @@
+<!-- 
+    1.Vue动态组件
+    2.v-once:加了这个属性的组件,被创建后就会被缓存到内存中
+-->        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            动态组件,会根据is值的不同,动态的加载不同的组件,
+            这一行代码可以实现下面两行代码的作用
+         -->
+        <component :is="type"></component>
+        <!-- 
+        <child-one v-if="type=='child-one'"></child-one>
+        <child-two v-if="type=='child-two'"></child-two> 
+        -->
+        <input type="button" @click="handleClick" value="点击切换组件隐藏显示"/>
+    </div> 
+</body>
+<script>
+    Vue.component('child-one',{
+        template:"<div v-once>childe-one</div>"
+    });
+    Vue.component('child-two',{
+        template:'<div v-once>childe-two</div>'
+    });
+
+    var app = new Vue({
+        el:'#app',
+        data: {
+            type: 'child-one'
+        },
+        methods: {
+            handleClick: function(){
+                this.type = this.type == 'child-one' ? 'child-two' : 'child-one';
+            }
+        }
+    });
+</script>    
+</html>

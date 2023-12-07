@@ -1,0 +1,47 @@
+<html>
+      <head>
+	         <title>获取鼠标点击坐标</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>	
+             <script type="text/javascript" src="js/jquery-3.1.1.js"></script>			 
+             <script type="text/javascript">
+				 function cursorLocation(event){
+                    var e = event ;
+					//获取相对于屏幕的位置
+					//'x':e.screenX,'y':screenY
+					
+					//获取鼠标点击相对浏览器窗口的位置
+					var x = e.clientX;
+					var y = e.clientY;
+				    //alert(x+","+y);
+					var div = $("div");
+					div.offset({top:y-100,left:x-100});
+					
+					
+					//获取div的高度和宽度，对应jqueryd的height()和width()方法
+					//div.offsetHeight  ;
+					//div.offsetWidth ;
+					
+					//js原生方法改变height和width
+					//div.style.height=100;   div.style.width=100; 
+					
+					
+				 }
+				
+             </script>
+             <style type="text/css">
+			       div
+				   {
+				      background:yellow;
+					  width:200px;
+					  height:200px;
+					  opacity:0.8;
+					  border-radius: 100%;
+					  
+				   }
+             </style>			 
+      </head>
+	  
+	  <body onmousemove="cursorLocation(event)"> 
+			<div id="d"></div>
+	  </body>
+</html>

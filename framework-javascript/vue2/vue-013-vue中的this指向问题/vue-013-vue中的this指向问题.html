@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-013-vue中的this指向问题</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="showTip">点击显示提示</button></br>
+        <button @click="showTipDelay">点击后延迟一秒显示提示</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * vue中this指向问题
+         *      1.所有被vue管理的函数，最好写成普通函数形式，这样this的指向才是vm实例或者实例对象
+         *      2.所有不被vue管理的函数(定时器回调函数、ajax回调函数、promise回调函数)最好写成箭头函数，这样this的指向才是vm实例或者实例对象,否则this指向window对象或其他对象
+         *          以定时器为例:定时器回调函数是由浏览器的定时器模块(js引擎)控制的，并不是由vue管理的
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: '用户名不能为空'
+            },
+            methods: {
+                //点击后显示提示
+                    //被vue管理的函数
+                showTip() {
+                    alert(this.message)
+                },
+                //点击后延迟一秒显示提示
+                    //不被vue管理的函数
+                showTipDelay() {
+                    setTimeout(() => {
+                        alert('延迟一秒后弹出了提示...' + this.message)
+                    }, 1000)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

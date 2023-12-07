@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-021-vue中的自定义指令-01-函数式</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        n的初始值是:<span>{{n}}</span></br>
+        n值被放大后10倍的值是:<span v-big="n"></span></br>
+        <button @click="increaseValue">点我n值自加1</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  vue-021-vue中的自定义指令-01-函数式
+         *      需求1:定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍。
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                n:1
+            },
+            directives: {
+                // big函数何时会被调用? 1.指令与元素成功绑定时(一上来，这个关系是在内存中建立的，并不是放入页面时）。2.指令所在的模板被重新解析时(data中任何数据改变时会触发模板重新解析)。
+                //element:页面原始dom元素
+                //binding:v-big="n"中的 v-big 会被封装到这个binding对象中
+                big(element,binding) {
+                    console.log(element instanceof HTMLElement)
+                    console.log(binding.value)
+                    //实现(将n值放大10倍)功能
+                    element.innerText = binding.value * 10
+                }
+            },
+            methods: {
+                increaseValue() {
+                    this.n++
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

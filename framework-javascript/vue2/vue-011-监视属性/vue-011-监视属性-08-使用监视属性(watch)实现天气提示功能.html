@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-011-监视属性-08-使用监视属性(watch)实现天气提示功能</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>当前温度：{{temperature}}{{tip}}</h1>
+        <button @click="increaseTemperature">增加温度</button>
+        <button @click="decreaseTemperature">降低温度</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 监视属性应用案例
+         *      监视data中温度属性的变化，从而提示用户加衣或者减衣
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                temperature: 28,
+                tip: ''
+            },
+            methods: {
+                increaseTemperature() {
+                    this.temperature++
+                },
+                decreaseTemperature() {
+                    this.temperature--
+                },
+            },
+            watch: {
+                temperature(afterChangeValue,beforeChangeValue) {
+                    const changeValue = afterChangeValue - beforeChangeValue
+                    if(changeValue > 0) {
+                        this.tip = '-温度上升了' + changeValue + '℃，提示您不要忘记减衣！'
+                    }
+                    if(changeValue < 0) {
+                        this.tip = '-温度下降了' + changeValue + '℃，提示您不要忘记加衣！'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

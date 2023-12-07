@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS各种选择器优先级</title>
+	<style type="text/css">
+	/*可以发现优先级：id>类>标签*/
+	/*
+	p
+	{
+	    color:red;
+	}
+	.pp
+	{
+		color:green;
+	}
+	#A
+	{
+		color:yellow;
+	}
+	*/
+
+	#box1 .div2 p{
+		 color:red;
+	}
+	div div #box3 p{
+		color:green;
+	}
+	div.div1 div.div2 div.div3 p{
+		color:yellow;
+	}
+	</style>
+</head>
+<body>
+	<!--<p class="pp" id="A">Hello World</p>-->
+	<div class="div1" id="box1">
+		<div class="div2" id="box2">
+			<div class="div3" id="box3">
+				<p>Hello World</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

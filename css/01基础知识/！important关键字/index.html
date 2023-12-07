@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>!importantg关键字</title>
+	<style type="text/css">
+	/*在样式后面加了 !important，这个样式的权重会被提高到无穷大,但是前提是这个元素本身的样式不是继承而来的，也就是说这个样式的权重不为零，下面有例子*/
+    P
+    {
+    	/*COLOR:red;*//*这个语句说明CSS属性名不区分大小写*/
+    	color:red!important;
+    }
+    .myclass
+    {
+    	color:green;
+    }
+	#myid
+	{
+	   color:yellow;
+	}
+
+	/*验证当样式的权重为0时，！important失效*/
+	div
+	{
+		color:yellow!important;
+	}
+	li
+	{
+		color:blue;
+	}
+	</style>
+</head>
+<body>
+	<p class="myclass" id="myid">Hello World</p>
+	<div>
+		<ul>
+			<li>Hello World</li>
+			<li>Hello World</li>
+			<li>Hello World</li>
+	    </ul>
+	</div>
+</body>
+</html>

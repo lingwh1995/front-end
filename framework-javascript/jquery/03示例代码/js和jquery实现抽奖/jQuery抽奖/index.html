@@ -1,0 +1,39 @@
+<html>
+     <head>
+	      <title>jQuery实现抽奖</title>
+		  <mate http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		  <meta name="keywords" content=""/>
+		  <meta name="deacription" content=""/>
+		  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+		  <script type="text/javascript">
+		        $(document).ready(function(){
+				   var myInterval ; 
+				   $("input[name='choice']").click(function(){
+					   if($(this).val()=="开始"){
+					      $(this).val("停止");
+						  myInterval = setInterval("start()","1000");
+					   }else if($(this).val()=="停止"){
+					      $(this).val("开始");
+						  clearInterval(myInterval);
+					   }				      
+				   });
+				});
+				
+				var names = ["张三","李四","王五","赵六","孙琦"] ;
+				var i = 0 ;
+				var num = Math.floor(Math.random()*5) ;
+				function start(){
+				    if(i==name.lenght){
+					   i = 0 ;
+					}
+					$("span").html(names[i]);
+					i++;
+				}
+		  </script>
+     </head>
+
+	 <body>
+	      <input type="button" name="choice" value="开始"/>
+	      幸运观众：<span></span>	     
+	 </body>
+</html>

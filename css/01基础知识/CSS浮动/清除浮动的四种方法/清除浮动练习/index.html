@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>清除浮动</title>
+	<style type="text/css">
+	      *{
+	      	padding:0px;
+	      	margin:0px;
+	      }
+          div{
+          	height:400px;
+          	height: 300px;
+          	border:1px solid red;
+          	margin:100px;
+          }
+          div ul{
+
+          	list-style: none;
+          	
+          }
+          div ul li{
+          	border:1px dashed gray;  
+          	overflow: hidden;    
+          	line-height: 40px;    	
+          }
+          div ul li .title{
+            float: left;
+          }
+          div ul li .data{
+          	float:right;
+          }
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>
+				<span class="title">动力火车1</span>
+				<span class="data">那就这样吧</span>
+			</li>
+			<li>
+				<span class="title">动力火车2</span>
+				<span class="data">那就这样吧</span>
+			</li>
+			<li>
+				<span class="title">动力火车3</span>
+				<span class="data">那就这样吧</span>
+			</li>
+			<li>
+			<span class="title">动力火车4</span>
+			<span class="data">那就这样吧</span>
+			</li>
+			<li>
+			<span class="title">动力火车5</span>
+			<span class="data">那就这样吧</span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

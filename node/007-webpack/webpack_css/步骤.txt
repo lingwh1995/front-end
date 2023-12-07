@@ -1,0 +1,6 @@
+1.npm init
+2.npm install --save-dev css-loader
+3.npm install --save-dev style-loader
+ --save-dev:代表开发时运行的时候需要此依赖，部署时运行不需要此依赖
+4.进入webpack.config.js所在目录,执行webpack命令
+5.查看生成的dist文件

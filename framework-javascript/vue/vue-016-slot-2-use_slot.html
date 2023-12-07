@@ -1,0 +1,39 @@
+<!-- 
+    不使用插槽:
+        注意页面中child组件传值的写法,是写在child组件中的,
+        如:<child>xxx</child>
+-->        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <child>
+            <p>Dell</p>
+            <p>Dell</p>
+       </child>
+    </div>    
+</body>
+<script>
+    Vue.component('child',{
+        props: {
+            content: String
+        },
+        //使用插槽
+        template:`<div>
+                    <p>AUSU</p>
+                    <slot></slot>
+                  </div>`,
+    });
+
+    var app = new Vue({
+        el:'#app',
+    });
+</script>    
+</html>

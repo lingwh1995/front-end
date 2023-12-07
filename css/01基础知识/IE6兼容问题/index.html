@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>IE6兼容问题</title>
+	<style type="text/css">
+	/*兼容问题1：微型盒子*/
+	/*注意：IE6、7不支持小于12px的盒子不能识别，具体体现为显示的比火狐谷歌中的盒子大很多*/
+	/*由于IE6不支持微型盒子，所以对一个微型盒子，设置CSS样式height的时候要加这个语句：_font-size: 0;*/
+            div{
+            	height:4px;
+            	/*_font-size: 0px;*/
+            	_font-size: 0;/*解决方法：将盒子的字号设置的小于盒子的大小*//*加上这句话就可以了*/
+            	background-color: yellow;
+            }
+    /*兼容问题2：IE6不支持overflow:hidden*/
+    /*
+            div{
+	           overflow:hidden;
+	           _zoom:1;/*将元素不放大也不缩小*/
+            }
+    */
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

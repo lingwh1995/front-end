@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fn(a,b){
+            console.log(a+b);
+            console.log(fn.length);/*获取函数形参个数*/
+            console.log(arguments.length);//获取函数实参个数
+            if(fn.length==arguments.length){
+                console.log("形参和实参个数相等");
+            }else{
+                console.error("形参和实参个数不相等");
+            }
+        }
+        fn(1,2);
+        console.log("---------");
+        fn(1,2,3);
+        /*补充*/
+        var a=10,b=10;//完全等价于
+        var a = 10;
+        var b = 10;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

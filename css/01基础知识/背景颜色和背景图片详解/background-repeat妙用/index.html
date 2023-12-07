@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>背景图片重复之repeat妙用</title>
+	<style type="text/css">
+          body{
+             background-image:url(bg1.png);
+             background-repeat: repeat-x;
+          }
+          *{
+          	margin: 0;
+          	padding: 0;
+          }
+          .nav{
+          	 height: 40px;
+          	 width: 960px;
+             margin: 100px auto;
+          }
+          .nav ul{
+          	list-style: none;
+          }
+          .nav ul li{
+          	float: left;
+          	width: 120px;
+          	height: 40px;
+          	text-align: center;
+          	line-height: 40px;
+          }
+          .nav ul li a{
+          	display: block;
+          	width: 120px;
+          	height: 40px;
+          	text-decoration: none;
+          	background-image: url(bg2.png);
+          }
+          .nav ul li a:hover{
+          	font-weight: bold;
+          	background-image: url(bg3.png);
+          }
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+			<li><a href="#">网页项目</a></li>
+		</ul>
+	</div>
+</body>
+</html>

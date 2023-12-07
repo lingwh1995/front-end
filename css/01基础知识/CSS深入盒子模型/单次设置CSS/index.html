@@ -1,0 +1,74 @@
+<html>
+       <head>
+	         <title>CSS深入之盒子模型</title>
+			 <meta http-equiv="Content-Type" Content="text/html;charaset=utf-8"/>
+			 <meta name="keywords" content=""/>
+			 <meta name="description" content=""/>
+			 <style type="text/css">
+			 /*
+			    边框：大小，颜色，样式
+				边框类型（实线，虚线等）：border-style:solid/dotted--点 /daned--短横线 /double--双横线
+				边框规格：border-top/bottom/rght/left-width：10px ;
+				         注意：设置边框规格有两种方式，1.利用单位 px 来设置 2.关键字 thin--瘦  middle--中 thick--胖
+				边框颜色：border-top/bottom/right/left-color ，多个颜色参数之间用空格隔开
+			 */
+			 #id_1  /*四个颜色参数*/
+			 { 
+			   border-style:solid;/*设置边框样式为实线*/
+			   border-top-color:red ;
+			   border-bottom-color:yellow ;
+			   border-right-color:orange ;
+			   border-left-color: blue ;
+			   
+			   border-width:10px ;/*设置边框规格*/
+			 }
+			 #id_2  /*一个颜色参数*/
+			 {
+			   border-style:solid ;
+			   border-color:red ;
+			   
+			   border-bottom-width:8px ;
+			 }
+			 #id_3  /*两个颜色参数，默认第一个参数影响上下颜色，第二个参数影响左右参数*/
+			 {
+			   /*注意：多个参数之间用空格隔开，而不是用逗号，用逗号隔开是错误语句*/
+			   border-style:solid ;
+			   border-color:red blue ;
+			   
+			   border-width:middle ;
+			 }
+			 #id_4  /*三个参数，上，左右，下*/
+			 { 
+			   border-style:solid ;
+			   border-color:red yellow blue ;			 
+			 }
+			 #id_5
+			 {
+			   border-style:solid ;
+			   border-color:red yellow blue green;/*顺时针展示*/
+			 }
+			 #id_6
+			 {
+			   border:3px solid green ;
+			   font-size:30px ;
+			   padding:4px ;
+			   margin-left:225px ;
+			 }
+			 </style>
+       </head>
+	   <body>
+	         <hr/>
+	         <span id="id_1">hello world</span>
+			 <br/><br/>
+			 <span id="id_2">hello world</span>
+			 <br/><br/>
+			 <span id="id_3">hello world</span>
+			 <br/><br/>
+			 <span id="id_4">hello world</span>
+			 <br/><br/>
+			 <span id="id_5">hello world</span>
+			 <br/><br/>
+			 <span id="id_6" valign=middle>盒子模型</span>
+			 <hr/>
+	   </body>
+</html>

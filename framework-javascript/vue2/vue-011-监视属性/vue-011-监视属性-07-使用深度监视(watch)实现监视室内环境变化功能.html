@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-011-监视属性-07-使用深度监视(watch)实现监视室内环境变化功能</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>当前室内温度:{{environment.temperature}},当前室内湿度:{{environment.humidity}}</h1>
+        <button @click="changeTemperature">改变温度</button>
+        <button @click="changeHumidity">改变湿度</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 深度监视
+         *      1.vue的watch默认不能监视级联属性发生的变化
+         *      2.深度监视可以监视级联属性的变化，需要在使用watch时配置deep属性值为true
+         *      3.vue默认不开启深度监视的原因是为了提升执行效率
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                environment: {
+                    //温度
+                    temperature: 20,
+                    //湿度
+                    humidity: 30
+                }
+            },
+            methods: {
+                //增加温度
+                changeTemperature() {
+                    this.environment.temperature++
+                },
+                //增加湿度
+                changeHumidity() {
+                    this.environment.humidity++
+                }
+            },
+            watch: {
+                environment: {
+                    //true:开启深度监视     false:不开启深度监视
+                    deep:true,
+                    handler() {
+                        console.log('室内环境发生改变了...');
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

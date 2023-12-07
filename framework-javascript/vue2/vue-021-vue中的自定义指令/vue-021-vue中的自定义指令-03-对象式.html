@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-021-vue中的自定义指令-01-函数式</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-fbind:value="n"/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  vue-021-vue中的自定义指令-01-函数式
+         *      需求2:定义一个v-fbind指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点。
+         *  directives配置项中的fbind对象的三个方法:bind()、inserted()、updated()是钩子方法
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                n:1
+            },
+            directives: {
+                fbind: {
+                    //指令与元素成功绑定时(一上来)
+                    //element:页面原始dom元素
+                    //binding:v-fbind="n"中的 v-big 会被封装到这个binding对象中
+                    bind(element,binding) {
+                        console.log(this)
+                        console.log('bind()...')
+                        element.value = binding.value
+                    },
+                    //指令所在元素被插入页面时
+                    //element:页面原始dom元素
+                    //binding:v-fbind="n"中的 v-big 会被封装到这个binding对象中
+                    inserted(element,binding) {
+                        console.log(this)
+                        console.log('inserted()...')
+                        element.focus()
+                    },
+                    //指令所在模板被重新解析时
+                    //element:页面原始dom元素
+                    //binding:v-fbind="n"中的 v-big 会被封装到这个binding对象中
+                    updated(element,binding) {
+                        console.log(this)
+                        console.log('updated()...')
+                        element.value = binding.value
+                        element.focus()
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

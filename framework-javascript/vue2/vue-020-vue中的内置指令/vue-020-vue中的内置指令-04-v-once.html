@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-020-vue中的内置指令-04-v-once</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 v-once>初始的n值是:{{n}}</h2>
+        <h2>当前的的n值是:{{n}}</h2>
+        <button @click="increaseValue">点我n自加1</button>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+
+        /**
+         *  v-once指令:
+         *      1.v-onc:所在节点在初次动态渲染后,就视为静态内容了。
+         *      2.以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                n: 1
+            },
+            methods: {
+                increaseValue() {
+                    this.n++
+                }
+            },
+        })
+    </script>
+</body>
+</html>

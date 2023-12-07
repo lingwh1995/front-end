@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+					var trs = document.getElementsByTagName("tr");
+					//如果想使得表头不受到影响,则i需要从开始,而不是从开始
+					/*
+					//表头样式受影响,i从0开始
+					for(var i=0;i<trs.length;i++){
+						if(i%2==0){
+							trs[i].style.background = "gray";
+						}else{
+							trs[i].style.background = "lightgoldenrodyellow";
+						}
+					}
+					*/
+					//表头样式不受受影响，保持原来,i从1开始
+					for(var i=1;i<trs.length;i++){
+						if(i%2==0){
+							trs[i].style.background = "gray";
+						}else{
+							trs[i].style.background = "lightgoldenrodyellow";
+						}
+					}
+					
+			}
+		</script>
+	</head>
+	<body>
+		<table border="1px solid black" cellspacing="0">
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</tr>
+			<tr>
+				<td>001</td>
+				<td>张三</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>李四</td>
+				<td>19</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td>王五</td>
+				<td>17</td>
+			</tr>
+			<tr>
+				<td>004</td>
+				<td>赵六</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>005</td>
+				<td>孙七</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>006</td>
+				<td>小明</td>
+				<td>18</td>
+			</tr>
+		</table>
+	</body>
+</html>

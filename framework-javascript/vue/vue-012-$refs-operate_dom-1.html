@@ -1,0 +1,33 @@
+<!-- 
+    vue使用$refs操作dom:
+        获取dom的引用,之后通过获取到的相关引用操作dom
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <div ref="hello" @click="handleClick">
+            hello world! 使用vue操作dom！
+        </div>
+    </div>  
+
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        methods:{
+            handleClick: function(){
+                alert(this.$refs.hello.innerHTML);
+            }
+        }
+    });
+   
+</script>    
+</html>

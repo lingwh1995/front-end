@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*定时器:
+			 * 设置定时器:
+			   	var id = setInterval(code,毫秒数):每隔指定的毫秒数执行一次函数，周期性的
+			   	var id = setTimeOut(code,毫秒数):只执行一次
+			   清空定时器:
+			   	clearInterval(id);//只清空setInterVal(code,毫秒数);的定时器
+			   	clearTimeout(id);//只清空setTimeOut(code,毫秒数);的定时器
+			 * */
+			//周期性的定时器
+//			var myInterval1 = setInterval("alert()",5000);
+			//只执行一次的定时器
+//			var myInterval2 = setTimeout("alert()",1000);
+			function test(){
+				alert();
+			}
+			var myInterval1;
+			var myInterval2;
+			function fun1(){
+				myInterval1 = setInterval("test()",2000);
+				alert("设置成功");
+			}
+			function fun2(){
+				clearInterval(myInterval1);
+				alert("清除成功");
+			}
+			function fun3(){
+				var myInterval2 = setTimeout("alert()",1000);
+				alert("设置成功");
+			}
+			function fun4(){
+				clearTimeout(myInterval2);
+				alert("清除成功");
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="测试周期性的定时器" onclick="fun1()"/><br />
+		<input type="button" value="清除周期性的定时器" onclick="fun2()"/><br />
+		<input type="button" value="测试只执行一次的定时器" onclick="fun3()"/><br />
+		<input type="button" value="清除只执行一次的定时器" onclick="fun4()"/><br />
+	</body>
+</html>

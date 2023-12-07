@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script>
+		/**
+		 * 使用const关键字实现真正定义常量
+		 */
+		 const a = 0;
+		 //a = 1;//Assignment to constant variable.
+
+		 (function(){
+			{
+				const b = 10;
+				var c = 100;
+			}
+			//console.log(b);//const和let一样，作用域在一个{}
+			console.log(c);
+		 })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

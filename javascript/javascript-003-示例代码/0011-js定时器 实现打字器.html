@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				setInterval("show()",1000);
+			}
+			var i = 0;
+			function show(){
+				var str = "只是因为在人群中多看了一眼，再也没能忘记那双眼！";	
+//				document.write("<span style='color:red;'>"+str.substring(i,i+1)+"</span>");
+				document.write(str.substring(i,i+1));
+				i++;
+				//下面代码设置轮循
+				if(i==str.length){
+					i = 0;
+					document.write("<br />");
+				}
+				//注意:定时器中一般不使用循环
+			}
+		</script>
+	</head>
+	<body>
+	<div id="div1"></div>
+	</body>
+</html>

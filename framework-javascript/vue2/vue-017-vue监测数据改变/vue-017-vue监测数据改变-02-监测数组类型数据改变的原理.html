@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-017-vue监测数据改变-02-监测数组类型数据改变的原理</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul v-for="person in persons" :key="person.id">
+            {{person.id}} - {{person.name}} - {{person.age}}
+        </ul>
+        <button @click="changeValue">点击修改id为003的数据</button></br>
+        <button @click="testWarrper">点击测试vue给data中的数组类型数据的常用操作方法做了一层包装</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * vue监测数组类型数据改变的原理
+         *      1.vue并没有像像处理属性一样给数组的每个元素添加了get()和set()方法
+         *      2.vue给data中的数组做了一个包装,比如当我们在方法中调用 this.persons.splice方法时，这个方法会先监测到数组元
+         *          素的变化，再去调用Array.prototype.splice方法
+         */
+        //创建vue实例
+        new Vue({
+            el:'#app',
+            data: {
+                persons: [
+                    {id:'001',name:'张三',age:18},
+                    {id:'002',name:'李四',age:18},
+                    {id:'003',name:'王五',age:18},
+                ]
+            },
+            methods: {
+                changeValue() {
+                    //无效修改
+                    //this.persons[2] = {id:'003',name:'王五修改后',age:36}
+
+                    //有效修改方式一
+                    //this.persons[2].name = '王五修改后'
+                    //this.persons[2].age = 36
+
+                    //有效修改方式二
+                    //this.persons.splice(2,3,{id:'003',name:'王五修改后',age:36})
+
+                    //有效修改方式三
+                        //写法一
+                    //Vue.set(this.persons,2,{id:'003',name:'王五修改后',age:36})
+                        //写法一
+                    this.$set(this.persons,2,{id:'003',name:'王五修改后',age:36})
+                },
+                testWarrper() {
+                    //vue实例中的data中的数组类型的数据操作的常用方法(可以修改原数组)会被vue做一层包装
+                    console.log(this.persons.splice === Array.prototype.splice)
+                    //正常数组类型的数据
+                    console.log(['a','b'].splice === Array.prototype.splice)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

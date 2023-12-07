@@ -1,0 +1,60 @@
+<!-- 
+   使用is解决使用组件时遇到的细节性bug,引起此问题的主要原因是不符合h5编码规范:
+        适用于下面场景:
+        1.
+            <table>
+                <tbody>
+                    <tr is="row"></tr>    
+                </tbody>    
+            </table>
+        2.
+            <select>
+                <option is="row"></option>
+            <select> 
+        3.     
+            <ul>
+                <li is="row"></li>
+            </ul>
+        4.
+            <ol>
+                <li is="row"></li>
+            </ol>                      
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+       <table>
+           <tbody>
+               <!-- 如果直接使用row组件,会导致渲染出来的dom结构异常,这是
+                    因为<tbody></tbody>中只能放<tr></tr>,<tr></tr>中只能放<td></td>,
+                    如果<tbody></tbody>中放的是row或者其他的标签,就会导致渲染出来的dom
+                    结构异常
+                    解决方法:使用 is 属性解决     
+                -->
+               <!-- <row></row> -->
+               <tr is="row"></tr>
+               <tr is="row"></tr>
+               <tr is="row"></tr>
+           </tbody>    
+       <table>    
+    </div>  
+
+</body>
+<script>
+    Vue.component('row',{
+        template:'<tr><td>This is content!</td></tr>',
+    });
+    var app = new Vue({
+        el:'#app',
+    });
+   
+</script>    
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-008-数据代理-03-vue中的数据代理</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{xxx}}是vue的插值表达式语法 -->
+        <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 测试vue实例vm是vue实例中的data属性的数据代理(代理是vm,被代理对象是vm.data)
+         *      1.通过vm对象来代理data对象中属性的操作(读/写)
+         *      2.好处是可以更加方便的操作data中的数据
+         *          不使用数据代理时的代码  <h1>{{_data.content}}</h1>
+         *            使用数据代理时的代码  <h1>{{content}}</h1>
+         *      3.基本原理
+         *          通过Object.defineProperty()把data对象中所有属性添加到vm上
+         *          为每一个添加到vm上的属性，都指定一个getter()/setter()方法
+         *          在getter()/setter()内部去操作(读/写)data中的属性
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello vue!'
+            }
+        })
+        //测试数据代理的getter方法,触发了vm这个对象的content的getter()方法的调用
+        console.log(vm.content)
+        //测试数据代理的setter方法,触发了vm这个对象的content的setter()方法的调用
+        vm.content = "测试数据代理setter()"
+    </script>
+</body>
+</html>

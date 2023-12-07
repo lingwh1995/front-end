@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分别暴露</title>
+
+    <!-- 第一种引入和调用方式 -->
+    <script type="module">
+        import {exportType,showExportType} from './module.js'
+        //调用模块中的属性
+        console.log(exportType)
+        //调用模块中的方法
+        showExportType()
+    </script>
+
+    <!-- 第二种引入和调用方式 -->
+    <script type="module">
+        import * as m from './module.js'
+        //调用模块中的属性
+        console.log(m.exportType)
+        //调用模块中的方法
+        m.showExportType()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

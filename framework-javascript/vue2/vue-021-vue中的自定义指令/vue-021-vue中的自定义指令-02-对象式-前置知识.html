@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-021-vue中的自定义指令-02-对象式-前置知识</title>
+    <style>
+        .demo {
+            background-color: orange;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = () => {
+            //创建按钮
+            const button = document.createElement('button')
+            button.setAttribute('id','btn')
+            button.innerText = '点我创建一个输入框'
+            document.body.append(button)
+
+            //bind()开始....
+            //创建输入框
+            const input = document.createElement('input')
+            input.className = 'demo'
+            input.value = 99
+            input.onclick = () => {
+                alert(input.value)
+            }
+            //bind()结束....
+
+
+            //inserted()开始...
+            document.body.appendChild(input)
+            //inserted()结束...
+
+
+            //让输入框自动获取焦点
+            input.focus()
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

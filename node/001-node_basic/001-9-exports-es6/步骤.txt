@@ -1,0 +1,4 @@
+babel插件运行es6步骤:
+1.npm install --save-dev babel-preset-es2015
+2.npm install --save-dev babel-cli babel-preset-es2015 -g
+3.babel-node a.js

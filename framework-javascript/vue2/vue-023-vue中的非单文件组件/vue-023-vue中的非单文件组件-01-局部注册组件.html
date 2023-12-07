@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-023-vue中的非单文件组件-01-局部注册组件</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>第三步：(第一次)使用组件</h1>
+        <School></School>
+        <h1>第三步：(第二次)使用组件</h1>
+        <School></School>
+        <h1>第三步：(第一次)使用组件(带有驼峰命名的组件)</h1>
+        <Student-component></Student-component>
+        <h1>第三步：(第二次)使用组件(带有驼峰命名的组件)</h1>
+        <Student-component></Student-component>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *
+         *  Vue中使用组件的三大步骤:
+         *      一、定义组件(创建组件)
+         *      二、注册组件
+         *      三、使用组件(写组件标签)
+         *  一、如何定义一个组件?
+         *      使用Vue.extend(options)创建，其中options和new Vue(options)时传入的那个options几乎一样，但也有点区别;
+         *      区别如下:
+         *          1.el不要写，为什么?—最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。
+         *          2.data必须写成函数，为什么?——避免组件被复用时，数据存在引用关系。
+         *      备注:使用template可以配置组件结构。
+         *  二、如何注册组件?
+         *      1.局部注册:靠new Vue的时候传入component选项
+         *      2.全局注册:靠Vue.component('组件名',组件)
+         *  三、编写组件标签:
+         *      <school>/school>
+         *
+         *  几个注意点:
+         *      1.关于组件名:
+         *      一个单词组成:
+         *          第一种写法(首字母小写):school
+         *          第二种写法(首字母大写):School
+         *      多个单词组成:
+         *          第一种写法(kebab-case命名):my-school
+         *          第二种写法(Camelcase命名):MySchool（需要Vue脚手架支持)
+         *      备注:
+         *          (1).组件名尽可能回避HTML中已有的元素名称，例如:h2、H2都不行。
+         *          (2).可以使用name配置项指定组件在开发者工具中呈现的名字。
+         *  2.关于组件标签:
+         *      第一种写法:<school></school>
+         *      第二种写法:<school/>
+         *      备注:不用使用脚手架时,<school/>会导致后续组件不能渲染。
+         *  3.一个简写方式:
+         *      const school = Vue.extend(options）可简写为: const school = options  
+         */
+        //第一步：定义school组件
+        const School = Vue.extend({
+            //为组件起一个名字，不起名字的话默认是new Vue()中components储配置的School
+            //name:'ABCDEFG',
+            template:
+            `<div>
+                学校名称:<span>{{schoolName}}</span></br>
+                学校地址:<span>{{address}}</span></br>
+                <button @click="showSchoolName">点击显示学校名称</button>
+            </div>`,
+            data() {
+                return {
+                    schoolName: '西安财经学院',
+                    address: '陕西省西安市长安区韦常南路2号'
+                }
+            },
+            methods: {
+                showSchoolName() {
+                    alert(this.schoolName)
+                }
+            },
+        })
+        //第一步：定义student组件
+        const Student = Vue.extend({
+            template:
+            `<div>
+                学生名称:<span>{{studentName}}</span></br>
+                学生专业:<span>{{speciality}}</span></br>
+                学生学院:<span>{{college}}</span></br>
+                学生学号:<span>{{studentId}}</span></br>
+            </div>`,
+            data() {
+                return {
+                    studentName: '凌文豪',
+                    speciality:'电子商务',
+                    college:'信息学院',
+                    studentId:'1405230346'
+                }
+            }
+        })
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            //第二步：注册组件(局部注册)
+            components: {
+                School: School,
+                StudentComponent: Student
+            },
+        })
+    </script>
+</body>
+</html>

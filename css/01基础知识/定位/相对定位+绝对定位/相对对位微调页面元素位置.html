@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>相对定位</title>
+	<style type="text/css">
+          .txt {
+          	font-size: 30px;
+          }
+          .btn {
+          	position: relative;
+          	/*相对定位：1.相对于自身原来的位置 2.在页面中微调元素  2.做绝对定位的参考*/
+          	top: -10px;/*right:10px 距离原来的右边向右移动10px*/
+          	left: 0;
+          }
+	</style>
+</head>
+<body>
+	<p>
+		<input type="text" class="txt"/>
+		<input type="button" class="btn" value="按钮"/>
+	</p>
+</body>
+</html>

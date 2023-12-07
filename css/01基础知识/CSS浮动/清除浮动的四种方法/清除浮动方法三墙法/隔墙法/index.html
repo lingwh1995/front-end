@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>清除浮动方法三隔墙法</title>
+	<style type="text/css">
+	/*经测试：此时margin并未失效，可以用分隔墙的高度撑起高度*/
+	       *{
+	          padding:0px;
+	          margin:0px;
+	       }
+	       body{
+	       	  background-color:skyblue ;
+	       }
+           li{
+              width:50px;
+              height:25px;
+              background-color:gold ;
+              float:left;
+              font-size: 18px;
+              font-weight: bold
+              text-align: center;
+           }
+          
+          
+          /* 分割墙的一般写法，优点是.cl 和 和h10可以分别被多个标签携带，重复利用率很高*/
+          /*
+           .cl{
+           	  clear:both;
+           	  background-color: yellow;
+           }
+           .h10{
+           	  height:20px;
+           }*/
+           
+           /*分割墙的高级写法:缺点是利用率不高*/
+          .blank10{
+          	  clear:both;
+           	  height:10px;
+           	  background-color: yellow;
+           }
+	</style>
+</head>
+<body>
+	<div>
+		<ul type="none">
+			<li>星座</li>
+			<li>音乐</li>
+			<li>视频</li>
+			<li>新闻</li>
+			<li>贴吧</li>
+			<li>本地</li>
+			<li>趣图</li>
+	    </ul>
+	</div>	
+
+	<div class="cl h10"></div>
+	<div class="blank10"></div>
+
+	<div class="box2">
+		<ul type="none">
+			<li>星座</li>
+			<li>音乐</li>
+			<li>视频</li>
+			<li>新闻</li>
+			<li>贴吧</li>
+			<li>本地</li>
+			<li>趣图</li>
+	    </ul>
+	</div>
+</body>
+</html>

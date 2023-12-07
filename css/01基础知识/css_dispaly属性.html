@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*
+			 * diaplay的属性：
+			   none:此元素不会被显示
+			   block:此元素会被显示为块级元素,此元素前后都会带有换行符
+			   inline:此元素会被显示为内联元素,此元素前后都没有换行符
+			 * */
+			div {
+				width: 50px;
+				height: 50px;
+				border: 1px dashed red;
+			}
+			.div1 {
+				/*display: none; */ 	/*隐藏元素，并且不占位置*/
+				/*display: inline;*/	/*把块级元素转换为内联元素*/
+				/*display: inline-block;*/ 	/*不把块级元素转换为内联元素，但是可以使会计元素具有内联元素的特征*/
+			}
+			.span1 {
+				display: block;/*把内联元素转换为块级元素，之后就可以设置宽高了*/
+				/*
+				width: 50px;
+				height: 50px;
+				border: 1px dashed red;
+				*/
+			}
+			h1 {
+				display:inline;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>CSS的displa属性:设置是否及如何显示元素</h2>
+		<div>111</div>
+		xxxxxxxxxxxxxxxxxxxxxxx
+		<div class="div1">222</div>
+		xxxxxxxxxxxxxxxxxxxxxxx
+		<div>333</div>
+		<div>444</div>
+		<span>555</span>
+		<span class="span1">666</span>
+		<span>777</span>
+		<div>888</div>
+		<hr />
+		<h1>热门商品</h1>你好啊
+	</body>
+</html>

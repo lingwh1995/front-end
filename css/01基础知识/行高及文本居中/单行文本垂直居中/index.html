@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>单行文本居中</title>
+	<style type="text/css">
+            .A{
+           	/*当行高和盒子高度相同时，文字默认居中*/
+            /*当行高大于盒子高的时候，文字会下沉*/
+           	height:60px;
+           	line-height: 60px;
+           	background-color: yellow;
+           } 
+           .B{
+           	/*当盒子高度大于行高的时候，利用padding处理*/
+           	/*第一步：设置padding-top   padding-top=height减去line-height的结果除以二*/
+           	/*第二步： 为了保持盒子大小不变，加padding就要减height或者width*/
+           	height:50px;
+           	line-height: 40px;
+           	background-color: green;
+           	padding-top: 10px;
+           }
+	</style>
+</head>
+<body>
+	<p class="A">哈哈都是发生的护发素的话费卡是否</p>
+	<p class="B">哈哈都是发生的护发素的话费卡是否</p>
+</body>
+</html>

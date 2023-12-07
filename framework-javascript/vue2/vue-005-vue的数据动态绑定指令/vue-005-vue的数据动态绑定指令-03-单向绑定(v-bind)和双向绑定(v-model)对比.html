@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-005-vue的数据动态绑定指令-03-单向绑定(v-bind)和双向绑定(v-model)对比</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>vue的数据动态绑定指令-单向绑定(v-bind)和双向绑定(v-model)对比</h1>
+        <h2>单向绑定(v-bind)语法</h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令:<a v-bind:href="vBindContent" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令简写:<a :href="vBindContent" target="_blank">跳转到百度</a></h2>
+
+        <h2>双向绑定(v-model)语法</h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#v-model指令:<input type="text" v-model:value="vModelContent"/></h2>
+        <h2>vue的数据动态绑定指令-双向绑定语法#v-model指令简写:<input type="text" v-model="vModelContent"/></h2>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * v-bind指令
+         *      单向数据绑定:   数据只能从vue实例中data流向页面
+         *      使用场景:       一般用于展示类元素，如 <h1></h1>
+         * v-model指令
+         *      双向数据绑定:   数据不仅可以从vue实例中data流向页面，还可以从页面流向vue实例中的data
+         *      使用场景:       一般用于表单类元素(input、select)/输入类元素,因为输入类元素可以捕获用户的输入,v-model默认收集的就是value的值
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                vBindContent: 'https://www.baidu.com',
+                vModelContent: '测试双向数据绑定~',
+            }
+        })
+    </script>
+</body>
+</html>

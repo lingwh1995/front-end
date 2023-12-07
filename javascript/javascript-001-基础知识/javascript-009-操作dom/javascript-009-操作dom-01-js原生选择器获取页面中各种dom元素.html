@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<script type="text/javascript">
+			/*	获取页面dom元素有三种方式：1.根据id 2.根据name 3.根据标签名称
+			 *	获取标签属性值和标签具体值用value，获取div中的值则要用innerHTML
+			 *	注意事项：1.根据id获取的值是单个值（getElementById），根据name和标签获取的值是数组类型的（getElementsBy...）
+			 *		 2.单个值直接用，数组值要么array[i]要么直接遍历使用
+			 *		 3.获取标签的属性值：.value ，获取标签的包含的具体值：.innerHTML，注意value不是value()，innnerHTML不是innerHTML()
+			 *		 4.总结：注意观察Element和Elements区分是否数组，不是value/innerHTML就是value()/innerHTML()，记不住可以思考思考
+			 */
+
+			/**
+			 * 根据id获取dom元素
+			 */
+			function getNameById(){
+				var name = document.getElementById("uName").value;//注意是value而不是value()
+				alert(name);
+			}
+			/**
+			 * 根据name获取dom元素
+			 */
+			function getUserInfo(){
+				var user = document.getElementsByName("userInfo") ;
+				for(var i=0;i<user.length;i++){
+					alert(user[i].value);
+				}
+			}
+			/**
+			 * 根据标签名称获取dom元素
+			 */
+			function testTag(){
+				var tags = document.getElementsByTagName("input");
+				for(var i=0;i<tags.length;i++){
+					alert(tags[i].value);
+					//alert(tags[i].name); 不仅可以获取value，也可以获取name等的具体值,测试发现，type获取不到,目前只能获取到name
+				}
+			}
+			/**
+			 * 通用选择器： 用于获取单个元素
+			 * querySelector()
+			 */
+			function testQuerySelector(){
+				//获取文档中的第一个id=uName的元素
+				var uName = document.querySelector("#uName").value;
+				console.log(uName);
+				//获取文档中的第一个type="button"的input标签
+				var firstButtonValue = document.querySelector("input[type=button]").value;
+				console.log(firstButtonValue);
+			}
+			/**
+			 * 通用选择器：	用于获取多个元素，并将返回的值存放在一个数组中
+			 * querySelectorAll()
+			 */
+			function testQuerySelectoAll(){
+				var buttons = document.querySelectorAll("input[type=button]");
+				for(var i=0; i<buttons.length; i++) {
+					console.log(buttons[i].value)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		用户名：<input type="text" name="userInfo" id="uName"/>
+		<input type="button" name="" value="获取用户名" onclick="getNameById()"/><br/>
+		密码：<input type="password" name="userInfo" />
+		<input type="button" name="" value="获取多个信息" onclick="getUserInfo()"/><br/>
+		<input type="button" value="根据标签获取值" onclick="testTag()"/><br/>
+		<input type="button" value="测试通用选择器querySelector()" onclick="testQuerySelector()"/><br/>
+		<input type="button" value="测试通用选择器querySelectorAll()" onclick="testQuerySelectoAll()"/><br/>
+	</body>
+</html>

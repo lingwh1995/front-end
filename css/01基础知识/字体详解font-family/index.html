@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>字体详解</title>
+	<style type="text/css">
+	/*选择网页字体时要注意，并不是所有的字体都可以用来制作网页，就
+	要看用户的电脑里面有没有装这个字体，如果用户电脑中没有这个字
+	体，默认显示为宋体*/
+
+	/*为了保证所有浏览用户都能正常显示字体，有一下处理方式：
+	 1.选用一下字体：微软雅黑、宋体、黑体，但是如果真的用使用其他字体，就需要切图
+	 2.设置备用字体，如：font-family:"微软雅黑"，"宋体";（注意1.两个字体中间用英文逗号隔开 2.可以设置多个备选字体） 
+	 3.对于英文字母的字体,需要先声明，如： font-family:"Arial","微软雅黑"; 
+	 4.所有的中文字体都有英文别名，如  微软雅黑 和 Microsoft YaHei    宋体 和 SimSun
+	 5.行高可以用百分比描述*/
+	body{
+	    /*font-family:"Arial","华文行楷";注意：英语字体一定要放在最前面，英语字体字库中没有中，到汉字的时候自动选用备选字体*/
+	    font:20px/30px"Times New Roman","微软雅黑";
+	}
+	p{
+		font:20px/30px"微软雅黑";
+		font-size: 50px;
+		line-height: 200%;/*代表行高是字体的二百，注意：使用百分比描述的时候，必须要先写字体*/
+		font-family: monospace;
+		background-color: yellow;
+	}
+	div{
+		font-size: 50px;
+		line-height:20px;
+		background-color: yellow;
+	}
+
+	</style>
+</head>
+<body>
+	dasfafa这是华文行楷fasfas
+	<p>
+		dasfafa这是华文行楷fasfas
+	</p>
+	<div>
+		上风官司奉公守法帝国时代分公司的公司发的
+	</div>
+</body>
+</html>

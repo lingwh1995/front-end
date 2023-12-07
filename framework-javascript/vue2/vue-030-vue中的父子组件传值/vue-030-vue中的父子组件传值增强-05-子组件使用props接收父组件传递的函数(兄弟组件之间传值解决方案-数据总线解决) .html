@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-030-vue中的父子组件传值增强-05-子组件使用props接收父组件传递的函数(兄弟组件之间传值解决方案-数据总线解决)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child-son></child-son>
+        <child-daughter></child-daughter>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 子组件使用props接收父组件传递的函数(兄弟组件之间传值解决方案-数据总线解决)
+         *      父组件给子组件1传递一个函数，用于接收子组件传递给父组件的值,再把这个接收的值传递给子组件2
+         * 注意：此种解决方案并非最佳解决方案，可以使用数据总线来解决
+         */
+        //第一步：定义ChildSon组件
+        const ChildSon = Vue.extend({
+            template:
+            `<div>
+                <input v-model="inputValue"/>
+                <button @click='getInputeValueAndMonteInBus'>点击获取输入用户数据并将组件中国所有数据挂在数据总线bus对象上</button>
+            </div>`,
+            data() {
+                return {
+                    inputValue: ''
+                }
+            },
+            methods: {
+                //点击获取输入用户数据并将组件中国所有数据挂在数据总线bus对象上
+                getInputeValueAndMonteInBus() {
+                    Vue.prototype.bus = {
+                        //key为当前组件名称，value为当前组件中的data中的数据
+                        ChildSon:this.$data
+                    }
+                    //打印挂在数据总线上的数据
+                    console.log(Vue.prototype.bus.ChildSon)
+                }
+            },
+        })
+
+        //第一步：定义ChildDaughter组件
+        const ChildDaughter = Vue.extend({
+            template:
+            `<div>
+                <button @click='showInputValueFromBus'>点击获取父组件传递给子组件的值(父组件中这个值也是当前组件的兄弟组件传递给父组件的)</button>
+            </div>`,
+            props: ['inputValueFromBus'],
+            methods: {
+                showInputValueFromBus() {
+                    console.log(Vue.prototype.bus.ChildSon)
+                    alert(Vue.prototype.bus.ChildSon.inputValue)
+                }
+            },
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+            },
+            //第二步：注册组件(局部注册)
+            components: { 
+                ChildSon,
+                ChildDaughter
+            },
+        })
+    </script>
+</body>
+</html>

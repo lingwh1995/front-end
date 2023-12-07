@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script type="text/javascript">
+			//1.初始化数组
+			var arr = new Array(4);
+			arr[0] = ["北京","西安","上海","广东","天津"];
+			arr[1] = ["广岛","长崎","福岛","北海道","东京"];
+			arr[2] = ["狼堡","慕尼黑","德黑兰","汉堡","汉诺威"];
+			arr[3] = ["底特律","德克萨斯","纽约","华盛顿","阿拉斯加"];
+			
+			//2.选中每一个国家后都可以得到一个数组,遍历这个数组
+			function selectCountry(index){
+				var cities = arr[index];
+				//3.获取城市的下拉选
+				var city = document.getElementsByName("cities")[0];
+				//先初始化：这个操作的作用是清空上一次选择的结果,不会导致多次追加
+				city.innerHTML="<option >-请选择-</option>";
+				//遍历数组 组装成option 追加到select
+				if(cities!=null){
+					for(var i=0;i<cities.length;i++){
+					city.innerHTML+= ("<option>"+cities[i]+"</option>");
+				}
+				}
+			}
+		</script>	
+	</head>
+	<body>
+		<h2>省市联动一维数组版</h2>
+		<hr />
+		<select onchange="selectCountry(this.value)">
+			<option selected="selected" >--请选择--</option>
+			<option value="0">中国</option>
+			<option value="1">日本</option>
+			<option value="2">德国</option>
+			<option value="3">美国</option>
+		</select>
+		<select name="cities">
+			<option selected="selected" >--请选择--</option>
+		</select>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-022-vue中的生命周期-02-mounted生命周期函数</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{n}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  vue-022-vue中的生命周期-02-mounted生命周期函数
+         *      当将定时器写在mounted()时
+         *          1.从头到尾内存中只会创建出一个定时器对象
+         *          2.也不用在页面上写  {{changeValue()}}   这种代码来触发定时器的执行
+         *  生命周期:
+         *      1.又名:生命周期回调函数、生命周期函数、生命周期钩子。
+         *      2.是什么: Vue在关键时刻帮我们调用的一些特殊名称的函数。
+         *      3.生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。
+         *      4.生命周期函数中的this指向是vm或组件实例对象。
+         */
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                n: 10
+            },
+            methods: {
+            },
+            //Vue完成模板的解析并把真实的DOM元素放入页面后（挂载完毕）调用mounted
+            mounted() {
+                setInterval(()=>{
+                        console.log(this.n);
+                        this.n -= 1
+                        if(this.n == 0) {
+                            this.n = 10
+                        }
+                },2000)
+            },
+        })
+    </script>
+</body>
+</html>

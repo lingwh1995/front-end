@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       let checkLogin = function(){
+           return new Promise((resolve,reject)=>{
+               var flag = true;
+               if(flag){
+                   resolve({
+                       status: 200,
+                       result: true
+                   })
+               }else{
+                   reject({
+                       status: 500,
+                       result: false
+                   })
+               }
+           });
+       }
+
+       let getUser = function(){
+           return new Promise((resolve,reject)=>{
+               let userInfo = {id:'001',name:'zhangsan'};
+               resolve(userInfo);
+           });
+       }
+       
+       /**
+        * 如果第二个函数的执行需要第一个函数执行结果作为参数,则不适合使用Promise.all()这个方法
+        */ 
+       Promise.all([checkLogin(),getUser()]).then(([res1,res2]) => {
+           console.log(res1);
+           console.log(res2);
+       });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

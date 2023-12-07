@@ -1,0 +1,49 @@
+<html>
+      <head>
+	         <title>CSS和HTML结合的四种方式+伪类选择器</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>		
+             <style type="text/css">
+			    /*  @import url("mycss.css")  */
+				span
+				{
+				   color:orange;				   
+				}
+				a:link
+				{
+				   background-color:yellow;
+				}
+				a:hover
+				{
+				  background-color:green;
+				}
+				a:active
+				{
+				  background-color:red;
+				}
+				a:visited
+				{
+				  background-color:pink; 
+				}
+			 </style>
+      </head>
+	  
+	  <body>
+	        <!--
+			    1.行内：每个html标签都有一个style属性
+				2.写在head中
+				3.外部引入<link></link>标签：<link rel="stylesheet" type="text/css" href="css文件路径"/>
+				4.@import url("mycss.css")，这种方式的缺点是有的浏览器不支持
+				注意：一般情况下后加载的css样式优先级高于先加载的
+				
+				伪类选择器：css里面提供了一些定义好的样式，可以直接拿来用，比如超链接
+				          超链接的四种状态
+						  原始状态              ：link
+						  悬停状态              ：hover
+						  点击                  ：active
+						  点击之后              ：visited
+			-->
+			<div style="background-color:yellow;color:green;">天之道，损有余而补不足。</div>
+		    <span>Hello World</span><br/>
+			<a href="https://www.baidu.com/index" target="_blank">百度一下</a>
+	  </body>
+</html>

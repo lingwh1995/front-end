@@ -1,0 +1,2 @@
+js：<input type="button" name="" value="" onclick="方法1；方法2；...">
+jQuery：ready()中可以写多个方法

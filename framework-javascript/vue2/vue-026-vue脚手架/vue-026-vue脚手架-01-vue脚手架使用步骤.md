@@ -1,0 +1,28 @@
+# 1.安装node环境
+##    1.1.本地全局仓库管理
+        安装时命令中带有 -g 的语句都会把下载的文件安装到本地全局仓库中
+        获取本地全局仓库的位置:
+            npm config get prefix
+        设置本地全局仓库的地址:
+            npm config set prefix 这里写具体的文件夹位置
+##    1.2.设置远程仓库
+        设置远程仓库为taobao:
+            npm config set registry https://registry.npm.taobao.org
+        设置远程仓库为设置远程仓库为taobao::
+            npm config set registry https://mirrors.cloud.tencent.com/npm/
+        查看远程仓库的地址:
+            npm config get registry
+##    1.3.管理npm仓库地址:使用nrm
+        安装nrm: npm install -g nrm 或 npm i -g nrm
+        查看镜像仓库列表: nrm ls 或 nrm list
+        切换仓库镜像源: nrm use taobao 或 npmn use npm
+
+# 2.安装npm
+# 3.全局安装@vue/cli(安装vue脚手架)
+    安装最新版本    npm install -g @vue/cli
+    安装指定版本    npm install -g @vue/cli@4.0
+    报错的话使用    npm install -g @vue/cli --force
+# 4.切换到项目所在目录，使用命令行创建项目
+    vue create xxx
+# 5.启动项目
+    npm run server

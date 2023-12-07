@@ -1,0 +1,74 @@
+<html>
+      <head>
+	         <title>jQuery过滤选择器</title>
+			 <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+			 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+			 <script type="text/javascript">
+			 /*准备知识：选择器是写在reday()中的*/
+			 /*
+			   一.基本过滤选择器
+			      最开头:first
+                  最后:last
+                  第n个:eq(n)
+                  大于第n个:gt(n)
+                  小于第n个:lt(n)
+                  奇数个(从0开始):odd
+                  偶数个(从0开始):even
+                  取反:not()
+               二.可见性过滤选择器
+                  不可见:hidden
+                  可  见:visible
+			  
+			 */
+			 $(document).ready(function(){
+			   //最开头:first
+			   $("li:first").css("color","red");
+			   
+			   //最后:last
+			   $("li:last").css("background","red");
+			   
+			   //第n个:eq(n)
+			   $("li:eq(1)").css("color","blue");
+			   
+			   //大于第n个:gt(n)
+			   $("li:gt(3)").css("color","yellow");
+			   
+			   //小于第n个:lt(n)
+			   $("li:lt(3)").css("background","green");
+			   
+			   //奇数个(从0开始):odd
+			   $("li:odd").css("font-size","80px");
+			   
+			   //偶数个(从0开始):even
+			   $("li:even").css("font-size","50px");
+			   
+			   //取反:not()
+			   //$("li:not(li:first)").css("background","pink");//会覆盖前面设置的效果，所以注释掉，用的时候需要打开注释
+			 });
+			   
+			      
+			 </script>
+			 <!--外部导入CSS方法一：-->
+			 <!-- <link href="mycss.css" rel="stylesheet" type="text/css"/> -->
+			 <!--外部导入CSS方法二：@import"样式名称"-->
+			 <style type="text/css">
+			       @import "mycss.css";
+			 </style>
+      </head>
+	  
+	  <body>
+	       <ul type="none">
+		      <li id="a">H</li>
+		      <li>e</li>
+		      <li>l</li>
+		      <li>l</li>
+		      <li>o</li>
+		      <li>W<li>
+		      <li>o</li>
+		      <li>r</li>
+		      <li>l</li>
+		      <li>d</li>
+		   <ul>
+		  
+	  </body>
+</html>

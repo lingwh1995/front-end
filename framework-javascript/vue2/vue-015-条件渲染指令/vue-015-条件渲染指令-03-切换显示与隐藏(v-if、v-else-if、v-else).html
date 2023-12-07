@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-015-条件渲染指令-03-切换显示与隐藏(v-if、v-else-if、v-else)</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="number == 1">我是数字1~</h1>
+        <h1 v-else-if="number == 2">我是数字2~</h1>
+        <h1 v-else-if="number == 3">我是数字3~</h1>
+        <h1 v-else>我是数字大于3~</h1>
+        <button @click="toggleShowAndHiddenNumber">点击切换显示与隐藏数字</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 条件渲染指令-切换显示与隐藏(v-if、v-else-if、v-else)
+         *      1.效率比直接使用多个v-if要高
+         *      2.这三个指令要连着使用
+         *      3.隐藏后页面中dom元素会被彻底删除
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                number: 1
+            },
+            methods: {
+                toggleShowAndHiddenNumber() {
+                    this.number++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

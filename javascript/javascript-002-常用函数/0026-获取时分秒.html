@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>JS日期对象(Date)详解</title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<script type="text/javascript">
+			/*准备知识：1.提到对象，首先要想到，对象是new出来的  2.数据data 日期date 3.div是系统关键字，不可以用来命名*/
+			/*获取时分秒*/
+			var date = new Date() ;
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			var timestr = "现在时间是："+hours+":"+minutes+":"+seconds ;
+			alert(hours+":"+minutes+":"+seconds);	
+			function mytime(){//不可以直接写，因为不放在函数中的话，程序还没有加载出body中的div标签，所以根本获取不到
+				var myTimeDiv = document.getElementById("A");
+				alert(myTimeDiv.innerHTML);
+				myTimeDiv.innerHTML = "timestr" ;
+			}
+			//产生12进制的时间
+			var h12 = date.getHours() - 12;
+			alert(h12);
+		</script>
+	</head>
+
+	<body>
+		<div id="A">buha</div>
+		<input type="button" name="" value="设置时间" onclick="mytime()">
+	</body>
+</html>

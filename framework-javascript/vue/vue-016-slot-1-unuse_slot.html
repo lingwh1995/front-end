@@ -1,0 +1,55 @@
+<!-- 
+    不使用插槽:
+        注意页面中child组件传值的写法,是通过content属性传递值的
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <child content='<p>Dell</p>'></child>
+    </div>    
+</body>
+<script>
+    Vue.component('child',{
+        props: {
+            content: String
+        },
+        /**
+         * 我们需要的效果是:
+         *       <div id="app">
+         *          <div>
+         *              <p>AUSU</p> 
+         *              <p>Dell</p>
+         *          </div>
+         *       </div> 
+         * 下面这种写法可以将content传递的html渲染出来，但是在渲染的时候
+         * 会在html中将最外层的div也渲染到html结构中,最终渲染结果如下:
+         *       <div id="app">
+         *          <div>
+         *              <p>AUSU</p> 
+         *              <div>
+         *                  <p>Dell</p>
+         *              </div>
+         *          </div>
+         *       </div>
+         */
+        
+        //不使用插槽
+        template:`<div>
+                    <p>AUSU</p>
+                    <div v-html="this.content">{{content}}</div>
+                  </div>`,
+    });
+
+    var app = new Vue({
+        el:'#app',
+    });
+</script>    
+</html>

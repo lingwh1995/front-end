@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-014-绑定样式-01-绑定class样式</title>
+    <style>
+        .basic {
+            height: 50px;
+            width: 100%;
+        }
+        .bg-yellow {
+            background-color: yellow;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app" class="basic" :class="color">
+        <button @click="bindClass">点击绑定样式</button></br>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 绑定样式
+         */
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                color: 'bg-yellow'
+            },
+            methods: {
+                /**
+                 * 绑定class样式
+                 */
+                bindClass() {
+                    this.color = 'bg-blue'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

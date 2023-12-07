@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*id选择器*/
+			#id1 {
+				color:blue;
+				font-size: 20px;
+			}
+			/*class选择器*/
+			.class1 {
+				color:red;
+				font-size: 20px;
+			}
+			/*元素(标签)选择器*/
+			font {
+				color:chartreuse;
+				font-size: 20px;
+			}
+			/*全局选择器*/
+			* {
+				background: skyblue;
+			}
+			/*属性选择器*/
+			span[att="val"] {
+				color:green;
+				font-size: 20px;
+			}
+			span[abc="abc"] {
+				color:red;
+				font-size: 20px;
+			}
+			/*后代选择器*/
+			div .xxx {
+				color:red;
+				font-size: 20px;
+			}
+			div .yyy {
+				color:green;
+				font-size: 20px;
+			}
+			div .zzz {
+				color:blue;
+				font-size: 20px;
+			}
+			/*锚伪类选择器
+			 * 注意：顺序不能乱
+			 * 记忆方法：爱恨准则
+			 * love hate
+			 * l---a:link
+			 * v---a:visited
+			 * 
+			 * h---a:hover
+			 * a--a:active
+			 * /
+			a:link {color: #FF0000}	/* 未访问的链接 */
+			a:visited {color: #00FF00}	/* 已访问的链接 */
+			a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+			a:active {color: #0000FF}	/* 选定的链接 */
+			/*
+			 选择器使用小结:
+			id选择器:一个元素(标签)
+			class选择器:一类元素 
+			元素选择器:一种元素
+			属性选择器:元素选择器的特殊用法
+			
+			使用的时候注意:(了解)
+			若多个样式作用于一个元素的时候
+				不同的样式,会叠加
+				相同的样式,最近原则
+			若多个选择器作用于一个元素的时候
+				越特殊优先级越高 id优先级最高
+			 */
+		</style>
+	</head>
+	<body>
+		<h1>CSS选择器</h1>
+		<hr />
+		<h4>1.id选择器</h4>
+			<span id="id1">测试id选择器</span>
+		<h4>2.class选择器</h4>
+			<span class="class1">测试class选择器</span>
+		<h4>3.元素(标签)选择器</h4>
+			<font>测试元素(标签)选择器</font>
+		<h4>4.派生选选择器</h4>
+			<h5>①属性选择器</h5>
+				<span att="val">测试属性选择器xxx</span><br />
+				<span abc="abc">测试属性选择器yyy</span>
+			<h5>②后代选择器</h5>
+			<div>
+				<span class="xxx">测试后代选择器xxx</span><br />
+				<span class="yyy">测试后代选择器yyy</span><br />
+				<span class="zzz">测试后代选择器zzz</span><br />
+			</div>
+		<h4>5.了解的选择器</h4>
+			<h5>①全局选择器</h5>
+			<h5>②(锚)伪类选择器</h5>
+				<h6>a:link {color: #FF0000}	/* 未访问的链接 */</h6>
+				<h6>a:visited {color: #00FF00}	/* 已访问的链接 */</h6>
+				<h6>a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */</h6>
+				<h6>a:active {color: #0000FF}	/* 选定的链接 */</h6>
+			<a href="#">测试(锚)伪类选择器</a>
+	</body>
+</html>

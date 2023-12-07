@@ -1,0 +1,47 @@
+<!-- 
+    使用作用域插槽实现同样效果
+-->        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <child>
+           <!-- 子组件怎么显示,不由子组件中的template属性决定,而是由父组件决定,父组件传递什么,子组件就显示什么 -->
+           <template slot-scope="props">
+               <h1>{{props.item}}</h1>
+               <!-- <li>{{props.item}}</li> -->
+           </template>
+       </child>
+    </div> 
+</body>
+<script>
+    Vue.component('child',{
+        data: function(){
+            return {
+                list: [1,2,3,4]
+            } 
+        },
+        //使用插槽
+        template:`<div>
+                    <ul>
+                        <slot 
+                            v-for="item in list"
+                            :item="item">
+                            {{item}}
+                        </slot>
+                    </ul>
+                  </div>`,
+    });
+
+    var app = new Vue({
+        el:'#app',
+    });
+</script>    
+</html>

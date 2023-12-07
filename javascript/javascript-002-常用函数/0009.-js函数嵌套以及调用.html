@@ -1,0 +1,26 @@
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<script>
+		/**
+		 * js函数嵌套:目的是为了防止外部调用，达到封装的效果
+		 */
+		function a(){
+			var x = 1;
+			function b(){
+				var y = 1;
+				console.log('内部调用:'+x+y);
+			}
+			//内部调用可以调用
+			b();
+			//var z = y+1;//ReferenceError! foo不可以访问bar的变量y!
+		}
+		a();
+		//外部调用会报错
+		//b();
+    </script>
+</head>
+<body>
+	
+</body>
+</html>

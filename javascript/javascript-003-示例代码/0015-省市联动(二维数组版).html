@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>省市联动案例</title>
+	<script type="text/javascript">
+		   var arr = new Array(4);
+		   arr[0] = ["中国","北京","西安","上海","广东","天津"]
+		   arr[1] = ["日本","广岛","长崎","福岛","北海道","东京"]
+		   arr[2] = ["德国","狼堡","慕尼黑","德黑兰","汉堡","汉诺威"]
+		   arr[3] = ["美国","底特律","德克萨斯","纽约","华盛顿","阿拉斯加"]
+		   function mychoice(element){
+		   	  var city = document.getElementById("city");
+		   	  var myoption1 =city.getElementsByTagName("option")
+		   	  for(var x=0;x<myoption1.length;x++){
+		   	  	  city.removeChild(myoption1[x]);
+		   	  	  x--;//与循环删除节点有关的都要注意避免数组的长度变化引起的改变
+		   	  }
+		   	  var val = element.value;
+		   	  for(var i=0;i<arr.length;i++){
+		   	  	for(var j=1;j<arr[i].length;j++){
+		   	  		if(val==arr[i][0]){
+		   	  			//创建子节点
+		   	  			var myoption = document.createElement("option");
+		   	  			//创建子节点文本内容
+		   	  			var myvalue = document.createTextNode(arr[i][j]);
+		   	  			//把节点内容添加到刚才创建的子节点中
+		   	  			myoption.appendChild(myvalue);
+		   	  			//把带有内容的子节点添加到父节点中
+		   	  			city.appendChild(myoption);
+		   	  		}
+		   	  	}		   	  	
+		   	  }
+		   }
+	</script>
+</head>
+<body>
+	<h2>省市联动二维数组版</h2>
+	<hr />
+	省份：
+	<select id="country"  onchange="mychoice(this)">	
+	        <option selected="selected" >--请选择--</option>
+	        <option>中国</option>
+	        <option>日本</option>
+	        <option>德国</option>
+	        <option>美国</option>
+	</select>
+	城市：
+	<select id="city">
+			<option selected="selected">请选择</option>	
+	</select>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- 
+   template模板:
+        只会将template标签中包含的内容渲染到页面,而不会将tempate标签渲染到页面
+        但是如果使用的是div标签进行包裹，也会将最外层的这个div标签渲染到页面
+    外层使用div标签进行包裹渲染出来的dom：
+        <div id="app">
+            <div>
+                <div>zhangsan</div>
+            </div>
+            <div>
+                <div>lisi</div>
+            </div>
+            <div>
+                <div>wangwu</div>
+            </div>  
+        </div>
+    外层使用template标签进行包裹渲染出来的dom：(与上面相比，少了一层div标签)    
+        <div id="app">
+            <div>zhangsan</div>
+            <div>lisi</div>
+            <div>wangwu</div>
+        </div>
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <!--
+        <div v-for="item in list">
+            <div>{{item}}</div>
+        </div>
+        -->
+        <template v-for="item in list">
+            <div>{{item}}</div>
+        </template>
+    </div>  
+
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            list:['zhangsan','lisi','wangwu']
+        },
+    });
+   
+</script>    
+</html>

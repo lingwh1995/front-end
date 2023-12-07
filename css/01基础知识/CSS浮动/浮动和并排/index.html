@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS浮动和并排</title>
+	<style type="text/css">
+           /*为什么北大案例中中间部分的三个盒子没有浮动也实现了并排效果，因为他们的父级盒子设置了浮动，会带着他们浮动，中间那个父级盒子中存在标准文档流*/
+           .box1{
+	           	width:400px;
+	           	height:400px;
+	           	background-color:orange
+           }
+           .box2{
+	           	width:400px;
+	           	height:400px;
+	           	background-color:skyblue
+           }
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

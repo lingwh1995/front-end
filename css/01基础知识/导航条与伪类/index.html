@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>制作导航条</title>
+	<style type="text/css">
+	/*a标签中设置盒子样式，文字样式在伪类中设置*/
+            *{
+            	margin:0;
+            	padding:0;
+            }
+            .nav{
+            	height: 40px;
+            	width: 960px;
+            	margin:100px auto;
+            }
+            .nav ul{
+            	list-style: none;
+            }
+            .nav ul li{
+            	float: left;
+            	width:120px;
+            	height:40px;
+            	text-align: center;
+            	line-height: 40px;
+            }
+            .nav ul li a{
+            	display:block;
+            	width:120px;
+            	height: 40px;
+            }
+            .nav ul li a:link , .nav ul li a:visited{
+            	background-color: purple;
+            	color:white;
+            	text-decoration: none;
+            }
+            .nav ul li a:hover{
+            	font-weight: bold;
+            	background-color: gold;
+            }
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			<li><a href="#">网站栏目</a></li>
+			</ul>
+	</div>
+</body>
+</html>

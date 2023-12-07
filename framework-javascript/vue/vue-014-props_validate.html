@@ -1,0 +1,49 @@
+<!-- 
+    组件参数校验和非Props特性
+    非props特性:
+        1.父组件传递了,但是子组件没有接收,即子组件props中没有相关的属性
+        2.渲染成功的dom中会包含 content="hello" 这个形式的内容
+-->   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <!-- 只有传递字符串类型的数据的时候不需要v-bind,其他卡类型数组、数字、对象都需要v-bind -->
+        <child content="hel" ></child>
+        <child content="world" ></child>
+    </div>  
+
+</body>
+<script>
+    Vue.component('child',{
+        //props:['content'],
+        props:{
+            //简单版
+            //content: [Number,String]
+
+            //复杂版
+            content:{
+                hel:{
+                    type: String,
+                    required: false,
+                    default: 'default value',
+                    validator: function(value){
+                        return value.length >3;
+                    }
+                }
+            }
+        },
+        template:'<div>{{content}}</div>'
+    });
+    var app = new Vue({
+        el:'#app',
+    }); 
+</script>    
+</html>

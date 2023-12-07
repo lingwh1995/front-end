@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>利用form(type="button"，而非submit)进行表单提交</title>
+	<script type="text/javascript">
+		function test(){
+			//获取form
+			var myform = document.getElementById('formid');
+			//设置action
+			myform.action = "https://www.baidu.com" ;
+			//提交form表单
+			myform.method=post;
+			myform.submit();
+		}
+	</script>
+</head>
+<body>
+	<form id="formid">
+		<input type="text" name="username" value=""/>
+		<input type="button" onclick="test()" value="提交"/>
+	</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>控制显示与隐藏的两种方法</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			margin: 100px;
+		}
+		.A {
+			display: none;/*隐藏后不占据位置*/
+			/*visibility: hidden;*//*隐藏后仍然会占据位置*/
+		}
+	</style>
+	<script type="text/javascript"></script>
+</head>
+<body>
+	<div class="A">A</div>
+	<div class="B">B</div>
+</body>
+</html>

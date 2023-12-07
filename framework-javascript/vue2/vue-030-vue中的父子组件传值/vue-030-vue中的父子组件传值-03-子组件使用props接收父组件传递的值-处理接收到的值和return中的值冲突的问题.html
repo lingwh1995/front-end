@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-030-vue中的父子组件传值-03-子组件使用props接收父组件传递的值-处理接收到的值和return中的值冲突的问题</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 注意:props中配置studentName，这里要将驼峰命名改为使用-拼接 -->
+        <!-- age属性是可传可不传的 -->
+        <Child student-name="王五" :age="30"/>
+        <!-- <Child student-name="王五"/> -->
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 处理接收到的值和return中的值冲突的问题
+         *      1.这里子组件接收到的父组件传递过来的值，正常是不能直接修改的，会报错，也不能出现在return中
+         *      2.如果需要修改，则需要在return中接收这个值，然后修改return中的值，
+         *          如使用updatedStudentName接收this.studentName的值,再去修改updatedStudentName的值
+         *        为什么这样这样做?
+         *          数据流向: 父组件传递一个属性->子组件使用props接收该属性->让VueComponent函数实例作为该数据的数据代理
+         *              ->在子组件的data中可以获取该属性的值->如需修改就修改data中的属性，从而实现间接修改接收到的属性的值
+         */
+        //第一步：定义Child组件
+        const Child = Vue.extend({
+            template:
+            `<div>
+                {{msg}}</br>
+                接收到的驼峰命名属性的值:<span>{{studentName}}</span></br>
+                接收到的非驼峰命名属性的值:<span>{{age}}</span></br>
+                修改后的接收到的驼峰命名属性的值:<span>{{updatedStudentName}}</span></br>
+                修改后的接收到的非驼峰命名属性的值:<span>{{updatedAge}}</span></br>
+                <button @click="showReviceValue">点击显示接收到的值</button></br>
+                <button @click="updateReviceValue">点击修改接收到的值(不会报错)</button>
+            </div>`,
+            data() {
+                return {
+                    msg: '子组件使用props接收父组件传递的值',
+                    updatedStudentName: this.studentName,
+                    updatedAge: this.age
+                }
+            },
+            methods: {
+                showReviceValue() {
+                    console.log(this.studentName,this.age)
+                },
+                updateReviceValue() {
+                    console.log(this)
+                    this.updatedStudentName = 'xx'
+                    this.updatedAge = 88
+                }
+            },
+            //完整版写法
+            props: {
+                studentName: {
+                    //studentName的数据类型是String类型
+                    type:String,
+                    //studentName属性是必须的
+                    required:true
+                },
+                age: {
+                    //age的数据类型是Number类型
+                    type: Number,
+                    //如果不传的话，默认接收的值就是99(required和default一般只会出现一个)
+                    default: 99
+                }
+            }
+            //完整版的简写形式
+            /*
+            props: {
+                studentName:String,
+                age:Number
+            }
+            */
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            //第二步：注册组件(局部注册)
+            components: { Child },
+        })
+    </script>
+</body>
+</html>

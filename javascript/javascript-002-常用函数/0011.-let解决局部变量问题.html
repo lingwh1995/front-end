@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<script>
+		/**
+		 * 测试var的作用域
+		 */
+		(function a(){
+			for(var i=0;i<5;i++){
+
+			}
+			//在
+			console.log(i);
+		})();
+
+		/**
+		 * 测试let的作用域
+		 */
+		(function a(){
+			for(let i=0;i<5;i++){
+
+			}
+			//ReferenceError: i is not defined
+			console.log(i);
+		})();
+
+
+		/*
+		//在Java语言中在循环体外获取i会报异常，在js中不会报异常，因为
+			java中一个定义在{}中变量的作用域是{}之内，而js离开了这个范围，在函数内，也可以访问该局部变量
+		public void test(){
+			for(int i=0;i<10;i++){
+
+			}
+			//编译器会报异常
+			System.out.println(i);
+		}
+		*/
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

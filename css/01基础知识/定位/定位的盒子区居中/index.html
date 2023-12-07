@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>定位的盒子居中的问题</title>
+	<style>
+		.A {
+			width: 400px;
+			height: 200px;
+			background-color: yellow;
+			position: relative;
+		}
+		.a {
+			width: 200px;
+			height: 100px;
+			background-color: pink;
+			/*margin: 0 auto;*/ /*如果盒子不定位，这个语句可以实现盒子居中*/
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="A">
+		<div class="a"></div>
+	</div>
+</body>
+</html>
