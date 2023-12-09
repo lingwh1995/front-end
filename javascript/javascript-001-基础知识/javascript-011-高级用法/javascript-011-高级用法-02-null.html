@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>javascript-011-高级用法-02-null</title>
+	<script type="text/javascript">
+		if(null) {
+			//不会执行，null在if中会被判定为false
+			alert()
+		}
+		//在某些条件下可以用来替代三目运算符
+		const num = null
+		const i = num == null ? 5 :num
+		alert(i)
+		i = null || 5
+		alert(i)
+	</script>
+</head>
+<body>
+
+</body>
+</html>

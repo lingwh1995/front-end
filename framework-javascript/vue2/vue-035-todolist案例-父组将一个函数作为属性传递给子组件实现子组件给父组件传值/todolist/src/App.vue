@@ -9,7 +9,8 @@
     <MyFooter 
         :items="items" 
         :delete-completed-items-bus="deleteCompletedItemsBus"
-        :switch-items-checked-state-bus="switchItemsCheckedStateBus"></MyFooter>
+        :switch-items-checked-state-bus="switchItemsCheckedStateBus">
+    </MyFooter>
   </div>
 </template>
 
@@ -24,17 +25,21 @@ export default {
   name: 'App',
   data() {
     return {
-      items:[
-        {id:nanoid(),todo:'吃饭',completed:true},
-        {id:nanoid(),todo:'睡觉',completed:true},
-        {id:nanoid(),todo:'打豆豆',completed:true}
-      ]
+      items: JSON.parse(localStorage.getItem('items')) || []
     }
   },
   components: {
     MyHeader,
     MyItemList,
     MyFooter
+  },
+  watch: {
+    items: {
+      deep: true,
+      handler(afterChangeValue) {
+        localStorage.setItem('items',JSON.stringify(afterChangeValue))
+      }
+    }
   },
   methods: {
     //接收MyHeader组件中输入的数据并添加到当前组件的data中的items对象上

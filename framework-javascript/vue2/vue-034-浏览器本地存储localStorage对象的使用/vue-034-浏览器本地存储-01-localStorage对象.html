@@ -19,6 +19,7 @@
         }
         function read() {
             alert(localStorage.getItem('person'))
+            console.log(JSON.parse(localStorage.getItem('person')))
         }
         function remove() {
             localStorage.removeItem('person')
