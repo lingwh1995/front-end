@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-035-浏览器本地存储-01-localStorage对象</title>
+</head>
+<body>
+    <button onclick="store()">点我在浏览器本地存储值</button>
+    <button onclick="read()">点我读取在浏览器本地存储的值</button>
+    <button onclick="remove()">点我删除在浏览器本地存储的值</button>
+    <button onclick="clear()">点我清空在浏览器本地存储的值</button>
+    <button onclick="getLocalStorageLength()">点我查询localStorage中存储的内容的个数</button>
+    <script type="text/javascript">
+        function store() {
+            //存储一个对象到localStorage对象中
+            let person = {id:'001',name:'zhagnsan',age:28}
+            localStorage.setItem('person',JSON.stringify(person))
+        }
+        function read() {
+            alert(localStorage.getItem('person'))
+        }
+        function remove() {
+            localStorage.removeItem('person')
+        }
+        //特别注意:这个clear()方法是无法正常使用的
+        function clear(){
+            localStorage.clear()
+        }
+        function getLocalStorageLength() {
+            alert(localStorage.length)
+        }
+    </script>
+</body>
+</html>

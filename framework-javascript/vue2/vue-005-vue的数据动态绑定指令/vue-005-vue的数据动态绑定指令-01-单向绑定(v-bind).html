@@ -12,10 +12,12 @@
         <h1>vue的数据动态绑定指令-单向绑定(v-bind):只能由vue实例中的data中的数据来影响页面上的数据</h1>
         <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令:<a v-bind:href="url" target="_blank">跳转到百度</a></h2>
         <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令简写:<a :href="url" target="_blank">跳转到百度</a></h2>
-        <h2>vue的数据动态绑定指令-单向绑定语法#调用方法:<a :href="url.toUpperCase()" target="_blank">跳转到百度</a></h2>
-        <h2>vue的数据动态绑定指令-单向绑定语法#调用方法:<a :href="getUrl()" target="_blank">跳转到百度</a></h2>
-        <h2>vue的数据动态绑定指令-单向绑定语法#级联获取值+调用方法:<a :href="school.website.toUpperCase()" target="_blank">跳转到西安财经大学首页</a></h2>
-        <h2>vue的数据动态绑定指令-单向绑定语法#拼接值:<a :href="concat.part1 + concat.part2" target="_blank">跳转到百度首页</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用方法:<a :href="url.toUpperCase()" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用方法:<a :href="getUrl()" target="_blank">跳转到百度</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令中级联获取值+调用方法:<a :href="school.website.toUpperCase()" target="_blank">跳转到西安财经大学首页</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令中拼接值:<a :href="concat.part1 + concat.part2" target="_blank">跳转到百度首页</a></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态:<input type="checkbox" v-bind:checked="isChecked"/></h2>
+        <h2>vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态简写:<input type="checkbox" :checked="isChecked"/></h2>
     </div>
 
     <script type="text/javascript">
@@ -40,7 +42,9 @@
                 concat: {
                     part1: 'https:/',
                     part2: '/www.baidu.com'
-                }
+                },
+                //设置单选框是否选中
+                isChecked:true
             },
             methods: {
                 getUrl() {
