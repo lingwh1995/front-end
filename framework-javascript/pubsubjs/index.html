@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pubsub.js</title>
+    <script type="text/javascript" src="./pubsub.js"></script>
+    <script type="text/javascript">
+        // 创建一个订阅主题的函数
+        var mySubscriber = function (msg, data) {
+            console.log( msg, data );
+        };
+
+        // 将该函数添加到特定主题的订阅者列表中
+        // 我们保留返回的令牌，以便稍后能够取消订阅
+
+        var token = PubSub.subscribe('MY TOPIC', mySubscriber);
+
+        // publish a topic asynchronously
+        PubSub.publish('MY TOPIC', 'hello world!');
+
+        // 同步发布一个主题
+        PubSub.publishSync('MY TOPIC', 'hello world!');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
