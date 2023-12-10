@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-036-$emit实现子组件给父组件传值-02-给组件绑定事件方式二和解绑事件[单个事件]</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child ref="child"></child>
+        <!-- 在页面展示子组件传递给父组件的数据 -->
+        在页面展示子组件传递给父组件的数据：{{msg}}
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 使用$refs实现子组件向父组件传值这种写法灵活性很强
+         */ 
+        const Child = Vue.extend({
+            template:`<div>
+                        <button @click="sendDataToParent">点击向父组件传递数据</button>
+                        <button @click="unbind">解绑子组件上的自定义事件</button>
+                      </div>`,
+            methods: {
+                sendDataToParent() {
+                    this.$emit('get-child-data','hello parent,i am data send by $emit from child!')
+                },
+                unbind() {
+                    this.$off('get-child-data')
+                }
+            },
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data:{
+                msg:''
+            },
+            components: { Child },
+            methods: {
+                getChildData(data) {
+                    console.log(data)
+                    this.msg = data
+                }
+            },
+            mounted() {
+                //给Child组件绑定一个事件
+                //this.$refs.child.$on('get-child-data',this.getChildData)
+                //给Child组件绑定一个once事件
+                this.$refs.child.$once('get-child-data',this.getChildData)
+            },
+        })
+    </script>
+</body>
+</html>

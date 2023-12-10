@@ -4,8 +4,7 @@
         v-for="item in items" :key="item.id"
         :item="item" 
         :switch-item-checked-state-bus="switchItemCheckedStateBus"
-        :delete-item-bus="deleteItemBus"
-        :delete-completed-items-bus="deleteCompletedItemsBus">
+        :delete-item-bus="deleteItemBus">
     </my-item>
   </div>
 </template>
@@ -19,8 +18,7 @@ export default {
   props: {
     items: Array,
     switchItemCheckedStateBus:Function,
-    deleteItemBus:Function,
-    deleteCompletedItemsBus:Function
+    deleteItemBus:Function
   }
 }
 </script>

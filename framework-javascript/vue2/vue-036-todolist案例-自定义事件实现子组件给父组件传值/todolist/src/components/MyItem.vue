@@ -20,15 +20,14 @@ export default {
   //下面这种写法无法接收到父组件传递的boolean类型的数据
   props: {
     item: Object,
-    switchItemCheckedStateBus:Function,
-    deleteItemBus:Function,
   },
   methods: {
     switchItemCheckedState(itemId) {
-      this.switchItemCheckedStateBus(itemId)
+      //当子组件中switchItemCheckedState()方法执行时会会触发子组件向父组件MyItemList.vue中发射一个参数
+      this.$emit('switch-item-checked-state-bus',itemId)
     },
     deleteItem(itemId) {
-      this.deleteItemBus(itemId)
+      this.$emit('delete-item-bus',itemId)
     }
   },
 }

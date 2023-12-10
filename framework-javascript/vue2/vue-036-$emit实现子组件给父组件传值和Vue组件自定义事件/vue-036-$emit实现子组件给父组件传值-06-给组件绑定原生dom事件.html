@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-036-$emit实现子组件给父组件传值-06-给组件绑定原生dom事件</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>给组件绑定原生DOM事件</h1>
+        <child @click.native="show"></child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 把组件看成一个dom元素，为其绑定原生dom事件，需要使用native修饰符
+         */ 
+        const Child = Vue.extend({
+            template:`<div style="width:20%;height:80px;background:yellow">
+                        我是Child组件
+                      </div>`,
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                msg:''
+            },
+            components: { Child },
+            methods: {
+                show() {
+                    alert('绑定在组件上的原生dom事件')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

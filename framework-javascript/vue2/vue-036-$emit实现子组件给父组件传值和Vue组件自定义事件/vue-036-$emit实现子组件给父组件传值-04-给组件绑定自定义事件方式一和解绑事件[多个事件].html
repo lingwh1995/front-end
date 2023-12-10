@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-036-$emit实现子组件给父组件传值-03-给组件绑定事件方式一和解绑事件[多个事件]</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 简略写法-->
+        <child @get-child-data1="getChildData1" @get-child-data2="getChildData2"></child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 解绑多个事件写法:this.$off(['get-child-data1','get-child-data2'])
+         */
+        const Child = Vue.extend({
+            template:`<div>
+                        <button @click="sendDataToParent">点击向父组件传递数据</button>
+                        <button @click="unbind">解绑组件上的自定义事件</button>
+                      </div>`,
+            methods: {
+                sendDataToParent() {
+                    this.$emit('get-child-data1','Child组件上绑定的第一个事件触发的方法的返回值...')
+                    this.$emit('get-child-data2','Child组件上绑定的第二个事件触发的方法的返回值...')
+                },
+                unbind() {
+                    //解绑多个事件的写法
+                    this.$off(['get-child-data1','get-child-data2'])
+                }
+            },
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            components: { Child },
+            methods: {
+                getChildData1(data) {
+                    console.log(data)
+                },
+                getChildData2(data) {
+                    console.log(data)
+                }
+            },
+        })
+    </script>
+</body>
+</html>
