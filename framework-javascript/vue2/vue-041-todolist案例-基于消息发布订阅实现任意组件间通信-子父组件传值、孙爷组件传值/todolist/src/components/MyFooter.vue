@@ -34,12 +34,12 @@ export default {
           deletedItemIndexs.push(index)
         }
       })
-      //当子组件中的deleteCompletedItems()方法执行时会触发子组件向事件总线组件$bus中发射一个参数
-      this.$bus.$emit('delete-completed-items-bus',deletedItemIndexs)
+      //当子组件中的deleteCompletedItems()方法执行时会触发子组件向消息订阅者发布一条消息
+      PubSub.publish('delete-completed-items-pubsub',deletedItemIndexs)
     },
     switchItemsCheckedState(event) {
-      //当子组件中的switchItemsCheckedState()方法执行时会触发子组件向事件总线组件$bus中发射一个参数
-      this.$bus.$emit('switch-items-checked-state-bus',event.target.checked)
+      //当子组件中的switchItemsCheckedState()方法执行时会触发子组件向消息订阅者发布一条消息
+      PubSub.publish('switch-items-checked-state-pubsub',event.target.checked)
     }
   },
 }

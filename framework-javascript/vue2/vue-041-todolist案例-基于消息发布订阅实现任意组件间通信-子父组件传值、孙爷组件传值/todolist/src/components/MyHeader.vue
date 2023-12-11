@@ -9,7 +9,6 @@ import {nanoid} from 'nanoid'
 
 export default {
   name:'MyHeader',
-  //接收父组App.vue传来的addItemBus函数
   data() {
     return {
       inputValue: '',
@@ -21,8 +20,7 @@ export default {
       //把输入对象封装成一个对象传递给父组件
       const item = {id:nanoid(),todo:this.inputValue,completed:false}
       //当子组件中的addItem()方法执行时会触发子组件向消息订阅者发布一条消息
-      PubSub.publish('add-item-bus',item)
-      //this.$bus.$emit('add-item-bus',item)
+      PubSub.publish('add-item-pubsub',item)
       this.inputValue = ''
     }
   },

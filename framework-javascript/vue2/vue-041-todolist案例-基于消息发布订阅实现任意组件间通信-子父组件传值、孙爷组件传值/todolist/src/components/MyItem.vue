@@ -23,12 +23,12 @@ export default {
   },
   methods: {
     switchItemCheckedState(itemId) {
-      //当子组件中的switchItemCheckedState()方法执行时会触发子组件向事件总线组件$bus中发射一个参数
-      this.$bus.$emit('switch-item-checked-state-bus',itemId)
+      //当子组件中的switchItemCheckedState()方法执行时会触发子组件向消息订阅者发布一条消息
+      PubSub.publish('switch-item-checked-state-pubsub',itemId)
     },
     deleteItem(itemId) {
-      //当子组件中的deleteItem()方法执行时会触发子组件向事件总线组件$bus中发射一个参数
-      this.$bus.$emit('delete-item-bus',itemId)
+      //当子组件中的deleteItem()方法执行时会触发子组件向消息订阅者发布一条消息
+      PubSub.publish('delete-item-pubsub',itemId)
     }
   },
 }
