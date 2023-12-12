@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-042vue中的$nextTick-01-dom元素显示后立即获取dom元素内容</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-if="isShow" ref="dom">{{content}}</span>
+        <button @click="getDomContentImmediate">dom元素显示后立即获取dom元素内容</button>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data: {
+                content:'hello $nextTick~',
+                isShow: false
+            },
+            methods: {
+                getDomContentImmediate() {
+                    this.isShow = true
+                    //直接执行获取dom元素内容的代码会报错，因为vue为了节省资源，此时还没有更新页面dom
+                    //本方法中代码执行完成后，vue才会执行更新dom操作
+                    //alert(this.$refs.dom.innerHTML)
+
+                    //下面代码的执行时机:当下一次dom更新完成后立即执行
+                    this.$nextTick(() => {
+                        alert(this.$refs.dom.innerHTML)
+                    })
+                    
+                }
+            },
+        })
+    </script>
+</body>
+</html>

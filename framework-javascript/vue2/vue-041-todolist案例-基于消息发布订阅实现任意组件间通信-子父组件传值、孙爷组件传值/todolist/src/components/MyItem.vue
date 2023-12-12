@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="item">
     <!-- 
       监控checkbox数据改变，这里有三种实现思路:
           1.@change事件：用于监控表单数据的变化
@@ -9,8 +9,10 @@
     -->
     <input type="checkbox" :checked="item.completed" @change="switchItemCheckedState(item.id)"/>
     <!-- <input type="checkbox" v-model="item.completed"/> -->
-    {{item.todo}}
-    <button @click="deleteItem(item.id)">删除</button>
+    <span v-show="! item.isEdit">{{item.todo}}</span>
+    <input v-show="item.isEdit" @blur="handleBlur(item)" type="text" v-model="item.todo" ref="inputTodo"/>
+    <button class="edit" @click="editItem(item)">编辑</button>
+    <button class="delete" @click="deleteItem(item.id)">删除</button>
   </div>
 </template>
 
@@ -29,10 +31,39 @@ export default {
     deleteItem(itemId) {
       //当子组件中的deleteItem()方法执行时会触发子组件向消息订阅者发布一条消息
       PubSub.publish('delete-item-pubsub',itemId)
+    },
+    editItem(item) {
+      if(item.hasOwnProperty('isEdit')){
+        item.isEdit = true
+      }else {
+        this.$set(item,'isEdit',true)
+      }
+      this.$nextTick(() => {
+        this.$refs.inputTodo.focus()
+      })
+    },
+    //失去焦点时关闭修改状态
+    handleBlur(item) {
+      item.isEdit = false
     }
   },
 }
 </script>
 
-<style>
+<style scoped>
+  .item {
+    background: lightgray;
+    display: flex;
+    align-items: center;     /* 垂直居中 */
+    width: 400px;
+    margin-top: 1px;
+  }
+  .item .edit {
+    background: skyblue;
+    margin-left: auto;
+  }
+  .item .delete {
+    background: gray;
+    margin-left: auto;
+  }
 </style>

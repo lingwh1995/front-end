@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-043vue中的动画效果-04-具名transitionvue标签实现动画-appear实现页面加载完自动执行</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+    <style>
+        .div {
+            width: 500px;
+            height: 200px;
+            background-color: orange;
+        }
+        /*进入的时候要激活的样式*/
+        .hello-enter-active {
+          animation: content 2s;  
+        }
+        .hello-leave-active  {
+            animation: content 2s reverse; 
+        }
+        @keyframes content {
+            from {
+                transform: translateX(-100px);
+            }
+            to {
+                transform: translateX(-0px);
+            }
+        }
+    </style>    
+</head>
+<body>
+    <div id="app">
+        <button @click="toogle">测试动画效果</button>
+        <transition name="hello" :appear="true">
+            <div class="div" v-if="isShow">{{content}}</span>
+        </transition>
+    </div>
+
+    <script>
+        /**
+         * vue中的动画
+         *      1.使用<transition></transition>标签包裹元素
+         *      2.appear属性实现页面加载完自动执行
+         */ 
+        new Vue({
+            el:'#app',
+            data: {
+                content:'vue动画~',
+                isShow:true
+            },
+            methods: {
+                toogle() {
+                    this.isShow = ! this.isShow
+                }
+            },
+        })
+    </script>
+</body>
+</html>

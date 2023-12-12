@@ -11,16 +11,18 @@
             console.log( msg, data );
         };
 
-        // 将该函数添加到特定主题的订阅者列表中
-        // 我们保留返回的令牌，以便稍后能够取消订阅
-
-        var token = PubSub.subscribe('MY TOPIC', mySubscriber);
-
-        // publish a topic asynchronously
+        // 同步发布一个主题
         PubSub.publish('MY TOPIC', 'hello world!');
 
         // 同步发布一个主题
         PubSub.publishSync('MY TOPIC', 'hello world!');
+
+        // 将该函数添加到特定主题的订阅者列表中
+        // 我们保留返回的令牌，以便稍后能够取消订阅
+        var token = PubSub.subscribe('MY TOPIC', mySubscriber);
+
+        //取消订阅一个主题，参数为subscribe()方法的返回值
+        PubSub.unsubscribe(token)
     </script>
 </head>
 <body>

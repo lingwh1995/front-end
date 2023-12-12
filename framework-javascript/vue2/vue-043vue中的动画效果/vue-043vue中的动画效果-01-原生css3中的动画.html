@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-043vue中的动画效果-01-原生css3中的动画</title>
+    <style>
+        .div {
+            width: 500px;
+            height: 200px;
+            background-color: orange;
+        }
+        .come {
+          animation: content 2s;  
+        }
+        .go {
+            animation: content 2s reverse; 
+        }
+        @keyframes content {
+            from {
+                transform: translateX(-100px);
+            }
+            to {
+                transform: translateX(-0px);
+            }
+        }
+    </style>    
+</head>
+<body>
+    <div>
+        <div class="div come">原生css3动画</span>
+    </div>
+</body>
+</html>
