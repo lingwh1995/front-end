@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-046-vue中的插槽-01-默认插槽</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Child>
+            我是插槽内容一
+        </Child>
+
+        <Child>
+            我是插槽内容二
+        </Child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 默认插槽
+         *      如果不使用插槽，直接在div写多次Child组件，如下:
+         *          <div id="app">
+         *              <Child/>
+         *              <Child/>
+         *              <Child/>
+         *          </div>
+         *      vue处理时只会展示一次Child组件
+         */ 
+        const Child = Vue.extend({
+            template:`<div>
+                        <h1><------------</h1>
+                            <slot></slot>
+                        <h1>------------></h1>
+                      </div>`
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            components: { Child }
+        })
+    </script>
+</body>
+</html>

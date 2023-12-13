@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-046-vue中的插槽-02-具名插槽</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>不给插槽里放内容</h3>
+        <Child>
+
+        </Child>
+
+        <h3>给插槽里放内容</h3>
+        <Child>
+            <div slot="header">HEADER-1</div>
+            <span slot="center">CENTER-1</span>
+            <a slot="footer" href="#">FOOTER-1</a><br/>
+        </Child>
+
+        <h3>给插槽里放内容并实现换行</h3>
+        <Child>
+            <div slot="header">HEADER-2</div>
+            <span slot="center">CENTER-2</span><br/>
+            <div slot="footer">
+                <a href="#">FOOTER-2</a>
+            </div>    
+        </Child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 具名插槽
+         *    1.在组件中使用插槽时 slot属性可以写在任何标签上
+         *    2.使用插槽时无法直接换行，如：<a slot="footer" href="#">FOOTER-1</a><br/>
+         *      要换行，使用下面的写法:
+         *          <div slot="footer">
+         *              <a href="#">FOOTER-2</a>
+         *          </div>  
+         */ 
+        const Child = Vue.extend({
+            template:`<div>
+                        <h1><------------</h1>
+                            <slot name="header">具名插槽header</slot>
+                            <slot name="center">具名插槽center</slot>
+                            <slot name="footer">具名插槽footer</slot>
+                        <h1>------------></h1>
+                      </div>`
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            components: { Child }
+        })
+    </script>
+</body>
+</html>
