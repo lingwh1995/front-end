@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-046-vue中的插槽-03-具名插槽之template标签中使用插槽写法一</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>给插槽里放内容并实现换行</h3>
+        <Child>
+            <div slot="header">HEADER(父组件)</div>
+            <span slot="center">CENTER(父组件)</span><br/>
+            <h4>template标签写法一</h4>
+            <template slot="footer">
+                <div>
+                    <a href="#">FOOTER(父组件)</a>
+                    <a href="#">FOOTER(父组件)</a>
+                    <div>FOOTER(父组件)</div>
+                </div>    
+            </template>      
+        </Child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 具名插槽之template标签写法一
+         *    <template slot="footer">
+         *    </template>  
+         */ 
+        const Child = Vue.extend({
+            template:`<div>
+                        <h1><------------</h1>
+                            <slot name="header">具名插槽header(子组件)</slot>
+                            <slot name="center">具名插槽center(子组件)</slot>
+                            <slot name="footer">具名插槽footer(子组件)</slot>
+                        <h1>------------></h1>
+                      </div>`
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            components: { Child }
+        })
+    </script>
+</body>
+</html>

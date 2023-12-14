@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-046-vue中的插槽-06-作用域插槽-传递一个对象</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Child>
+            <!-- 这里的xxx随便写的-->
+            <template slot-scope="xxx">
+                <div>作用域插槽传递的全部内容:{{xxx}}</div>
+                <div>作用域插槽传递的myfilms对象:{{xxx.myfilms}}</div>
+            </template>    
+        </Child>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         * 作用域插槽
+         *    父组件通过作用域插槽使用子组中的数据(子组件通过作用域插槽给父组件传值)
+         */ 
+        const Child = Vue.extend({
+            template:`<div>
+                        <h1><------------</h1>
+                            <slot :myfilms="films">作用域插槽</slot>
+                        <h1>------------></h1>
+                      </div>`,
+            data() {
+                return {
+                    films:['精武门','中南海保镖','方世玉']
+                }
+            }          
+        })
+
+        //创建vue实例
+        new Vue({
+            el: '#app',
+            components: { Child }
+        })
+    </script>
+</body>
+</html>

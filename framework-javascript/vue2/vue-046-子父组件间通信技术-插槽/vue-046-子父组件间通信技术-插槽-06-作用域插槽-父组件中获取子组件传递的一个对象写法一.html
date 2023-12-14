@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vue-046-vue中的插槽-01-默认插槽</title>
+    <title>vue-046-vue中的插槽-05-作用域插槽-传递一个对象</title>
     <!-- 引入vue -->
     <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
     <div id="app">
         <Child>
-            我是插槽内容一
-        </Child>
-
-        <Child>
-            我是插槽内容二
+            <!-- 这里的xxx随便写的-->
+            <template slot-scope="xxx">
+                <div>作用域插槽传递的全部内容:{{xxx}}</div>
+                <div>作用域插槽传递的films对象:{{xxx.films}}</div>
+            </template>    
         </Child>
     </div>
 
@@ -25,21 +25,20 @@
         Vue.config.productionTip = false
 
         /**
-         * 默认插槽
-         *      如果不使用插槽，直接在div写多次Child组件，如下:
-         *          <div id="app">
-         *              <Child/>
-         *              <Child/>
-         *              <Child/>
-         *          </div>
-         *      vue处理时只会展示一次Child组件
+         * 作用域插槽
+         *    父组件通过作用域插槽使用子组中的数据(子组件通过作用域插槽给父组件传值)
          */ 
         const Child = Vue.extend({
             template:`<div>
                         <h1><------------</h1>
-                            <slot></slot>
+                            <slot :films="films">作用域插槽</slot>
                         <h1>------------></h1>
-                      </div>`
+                      </div>`,
+            data() {
+                return {
+                    films:['精武门','中南海保镖','方世玉']
+                }
+            }          
         })
 
         //创建vue实例

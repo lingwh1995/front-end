@@ -16,17 +16,17 @@
 
         <h3>给插槽里放内容</h3>
         <Child>
-            <div slot="header">HEADER-1</div>
-            <span slot="center">CENTER-1</span>
-            <a slot="footer" href="#">FOOTER-1</a><br/>
+            <div slot="header">HEADER-1(父组件)</div>
+            <span slot="center">CENTER-1(父组件)</span>
+            <a slot="footer" href="#">FOOTER-1(父组件)</a><br/>
         </Child>
 
         <h3>给插槽里放内容并实现换行</h3>
         <Child>
-            <div slot="header">HEADER-2</div>
-            <span slot="center">CENTER-2</span><br/>
+            <div slot="header">HEADER-2(父组件)</div>
+            <span slot="center">CENTER-2(父组件)</span><br/>
             <div slot="footer">
-                <a href="#">FOOTER-2</a>
+                <a href="#">FOOTER-2(父组件)</a>
             </div>    
         </Child>
     </div>
@@ -49,9 +49,9 @@
         const Child = Vue.extend({
             template:`<div>
                         <h1><------------</h1>
-                            <slot name="header">具名插槽header</slot>
-                            <slot name="center">具名插槽center</slot>
-                            <slot name="footer">具名插槽footer</slot>
+                            <slot name="header">具名插槽header(子组件)</slot>
+                            <slot name="center">具名插槽center(子组件)</slot>
+                            <slot name="footer">具名插槽footer(子组件)</slot>
                         <h1>------------></h1>
                       </div>`
         })
