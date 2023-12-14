@@ -17,8 +17,7 @@ export default {
   name: 'Count',
   data() {
     return {
-      number:1,
-      sum:0
+      number:1
     }
   },
   methods: {
