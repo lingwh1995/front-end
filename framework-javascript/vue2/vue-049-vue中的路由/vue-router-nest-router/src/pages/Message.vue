@@ -1,14 +1,8 @@
 <template>
   <div>
     <ul>
-      <li>
-        <a href="/message1">message001</a>&nbsp;&nbsp;
-      </li>
-      <li>
-        <a href="/message2">message002</a>&nbsp;&nbsp;
-      </li>
-      <li>
-        <a href="/message/3">message003</a>&nbsp;&nbsp;
+      <li v-for="message in messages" :key="message.id">
+        <a href="#">{{message.title}}</a>
       </li>
     </ul>
   </div>
@@ -16,7 +10,16 @@
 
 <script>
 export default {
-  name: 'Message'
+  name: 'Message',
+  data(){
+    return {
+      messages:[
+        {id:'001',title:'message001'},
+        {id:'002',title:'message002'},
+        {id:'003',title:'message003'}
+      ]
+    }
+  }
 }
 </script>
 
