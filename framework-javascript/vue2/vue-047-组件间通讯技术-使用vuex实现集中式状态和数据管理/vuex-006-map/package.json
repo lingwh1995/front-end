@@ -1,5 +1,5 @@
 {
-  "name": "store-getters",
+  "name": "vuex-006-map",
   "version": "0.1.0",
   "private": true,
   "scripts": {

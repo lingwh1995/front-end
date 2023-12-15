@@ -1,5 +1,5 @@
 {
-  "name": "store",
+  "name": "vuex-003-ministore",
   "version": "0.1.0",
   "private": true,
   "scripts": {

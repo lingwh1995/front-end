@@ -1,5 +1,5 @@
 {
-  "name": "store-dispatch",
+  "name": "vuex-007-namespace",
   "version": "0.1.0",
   "private": true,
   "scripts": {
