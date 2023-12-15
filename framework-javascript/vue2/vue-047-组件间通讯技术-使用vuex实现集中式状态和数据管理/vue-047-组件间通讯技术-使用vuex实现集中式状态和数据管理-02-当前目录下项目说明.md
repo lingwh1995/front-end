@@ -10,3 +10,5 @@
     搭建好了vuex的开发环境 + 求和案例 + getters配置项(用于加工state中的数据)
 6.store_map
     搭建好了vuex的开发环境 + 求和案例 + 简化从state中取值(mapState、mapGetters)
+7.store_namespace
+    搭建好了vuex的开发环境 + 求和案例 + 模块化 + 命名空间

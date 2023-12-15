@@ -83,7 +83,7 @@ const state = {
 //准备getters用于加工state中的数据
 //getters可以理解为 多组件 公共都可以使用的 计算属性computed
 const getters = {
-    bigSum() {
+    bigSum(state) {
         return state.sum * 10
     }
 }
