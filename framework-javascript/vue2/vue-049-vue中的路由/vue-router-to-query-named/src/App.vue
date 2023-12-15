@@ -39,8 +39,6 @@ export default {
   name: 'App',
   components: {
     Banner
-  },
-  mounted() {
   }
 }
 </script>

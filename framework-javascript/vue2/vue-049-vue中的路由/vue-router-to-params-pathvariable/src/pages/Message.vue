@@ -3,27 +3,17 @@
     <ul>
       <li v-for="message in messages" :key="message.id">
         <!--
-          使用to传递参数的第一种写法：字符串写法:
+          使用to传递参数的第三种写法：基于to的字符串写法的路径传参
               1.to前面要加:
               2.to后面的内容是用es6语法 `` 和 模板字符串完成传值
               3.模板字符串外面要套一层 '' 或者 “”，否则无法解析
-          使用to传递参数的第一种写法：对象写法
-        -->
-        <!--
-        <router-link active-class="active" :to="`/home/message/detail?id=${message.id}&content=${message.content}`">
-          to的字符串写法-{{message.title}}
-        </router-link>
+              4.在路由配置界面要进行特别的配置
+                  path: 'detail/:id/:content'
+              5.接收参数时使用params接收
         -->
 
-        <router-link active-class="active"
-          :to="{
-                path:'/home/message/detail',
-                query: {
-                  id: message.id,
-                  content: message.content
-                }
-              }">
-          to的对象写法-{{message.title}}
+        <router-link active-class="active" :to="`/home/message/detail/${message.id}/${message.content}`">
+          to的路径传参风格-{{message.title}}
         </router-link>
       </li>
     </ul>
