@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router-start'
 import ElementUI from 'element-ui'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 

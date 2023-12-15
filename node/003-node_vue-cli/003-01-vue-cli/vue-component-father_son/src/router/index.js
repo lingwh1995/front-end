@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router from 'vue-router-start'
 import HelloWorld from '@/components/HelloWorld'
 import P2C from '@/components/p2c/Parent'
 import C2P from '@/components/c2p/Parent'

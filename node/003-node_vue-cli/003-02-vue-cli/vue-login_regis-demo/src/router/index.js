@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router from 'vue-router-start'
 
 Vue.use(Router)
 
@@ -19,7 +19,7 @@ export default new Router({
       component: () => import('@/views/main/main.vue'),
       meta: {
         authentication: true
-      } 
+      }
     },
     {
       path: '/',

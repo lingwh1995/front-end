@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router from 'vue-router-start'
 import GooldList from '@/views/GoodsList.vue'
 import Title from '@/views/Title.vue'
 import Photo from '@/views/Photo.vue'
