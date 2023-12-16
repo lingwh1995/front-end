@@ -4,10 +4,12 @@
     <div>
       <ul class="nav nav-tabs">
         <li>
-          <router-link active-class="active" to="/home/message">Message</router-link>
+          <!-- vue中使用编程式路由完成路由跳转 -->
+          <button class="list-group-item" active-class="active" @click="toMessage">Message</button>
         </li>
         <li>
-          <router-link active-class="active" to="/home/news">News</router-link>
+          <!-- vue中使用编程式路由完成路由跳转 -->
+          <button class="list-group-item" active-class="active" @click="toNews">News</button>
         </li>
       </ul>
       <router-view></router-view>
@@ -18,6 +20,18 @@
 <script>
 export default {
   name: 'Home',
+  methods: {
+    toMessage() {
+      this.$router.push({
+        path:'/home/message'
+      })
+    },
+    toNews(){
+      this.$router.push({
+        path:'/home/news'
+      })
+    }
+  }
 }
 </script>
 

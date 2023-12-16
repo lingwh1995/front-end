@@ -12,11 +12,9 @@
           <a class="list-group-item" href="./home.html">Home</a>
           -->
 
-          <!-- vue中使用<router-link></router-link>标签实现路由的切换 -->
+          <!-- vue中使用编程式路由完成路由跳转 -->
           <button class="list-group-item" active-class="active" @click="toHome">Home</button>
           <button class="list-group-item" active-class="active" @click="toAbout">About</button>
-<!--          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>-->
-<!--          <router-link class="list-group-item" active-class="active" to="/about">About</router-link>-->
         </div>
       </div>
       <div class="col-xs-6">

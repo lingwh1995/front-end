@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="message in messages" :key="message.id">
+      <li v-for="message in messageList" :key="message.id">
         <!--
           vue路由使用props简化接收路由传递的参数
             基于to的对象式写法的 + 使用params传递参数
@@ -36,7 +36,7 @@ export default {
   name: 'Message',
   data(){
     return {
-      messages:[
+      messageList:[
         {id:'001',title:'message001',content:'我是第一条Message的内容'},
         {id:'002',title:'message002',content:'我是第二条Message的内容'},
         {id:'003',title:'message003',content:'我是第三条Message的内容'}
