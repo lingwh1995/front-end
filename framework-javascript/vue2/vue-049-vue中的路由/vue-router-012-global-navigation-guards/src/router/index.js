@@ -28,7 +28,10 @@ const router =  new VueRouter({
     routes:[
         {
             path: '/about',
-            component: About
+            component: About,
+            meta: {
+                title:'关于'
+            }
         },
         {
             path: '/home',
@@ -78,8 +81,18 @@ const router =  new VueRouter({
     ]
 })
 
-//路由守卫
+//全局前置路由守卫:初始化时被调用、每一次路由切换之前
 router.beforeEach((to,from,next) => {
-    console.log(to,from)
+    console.log('前置路由守卫-beforeEach',to,from)
+    if(JSON.parse(localStorage.getItem('authentication'))) {
+        next()
+    }else {
+        alert('请登录后再执行路由跳转操作')
+    }
+})
+
+//全局后置路由守卫:初始化时被调用、每一次路由切换之前
+router.afterEach((to,from) => {
+    console.log('后置路由守卫-afterEach',to,from)
 })
 export default router
