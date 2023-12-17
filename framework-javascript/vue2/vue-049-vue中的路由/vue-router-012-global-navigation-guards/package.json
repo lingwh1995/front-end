@@ -1,5 +1,5 @@
 {
-  "name": "vue-router-012-navigation-guards",
+  "name": "vue-router-012-global-navigation-guards",
   "version": "0.1.0",
   "private": true,
   "scripts": {

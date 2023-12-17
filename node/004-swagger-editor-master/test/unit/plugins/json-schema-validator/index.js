@@ -86,5 +86,5 @@ function assertCaseExpectations(currentCase, result) {
     itFn("should equal expected value", function() {
       expect(result).toEqual(currentCase.output.equal)
     })
-  } 
+  }
 }

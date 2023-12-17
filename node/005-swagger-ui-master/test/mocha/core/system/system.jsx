@@ -704,7 +704,7 @@ describe("bound system", function(){
   describe("rootInjects", function() {
     it("should attach a rootInject function as an instance method", function() {
       // This is the same thing as the `afterLoad` tests, but is here for posterity
-      
+
       // Given
       const system = new System({
         plugins: [

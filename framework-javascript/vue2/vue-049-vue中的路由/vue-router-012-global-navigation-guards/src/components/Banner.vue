@@ -6,6 +6,8 @@
       <button class="btn btn-default" active-class="active" @click="forward">前进</button>
       <button class="btn btn-default" active-class="active" @click="back">后退</button>
       <button class="btn btn-default" active-class="active" @click="go">测试go用法</button>
+      <button class="btn btn-default" active-class="active" @click="addAuthentication">在localstorage中添加用户登陆成功标记</button>
+      <button class="btn btn-default" active-class="active" @click="removeAuthentication">在localstorage中移除用户登陆成功标记</button>
     </div>
   </div>
 </template>
@@ -22,6 +24,12 @@ export default {
     },
     go() {
       this.$router.go(-2)
+    },
+    addAuthentication() {
+      localStorage.setItem('authentication',true)
+    },
+    removeAuthentication() {
+      localStorage.setItem('authentication',false)
     }
   }
 }
