@@ -90,7 +90,7 @@
       b.使用to + query  进行路由传参 + 使用props简化参数接收
     + vue编程式路由导航
     + 使用<keep-alive></keep-alive>缓存路由组件
-    + 路由组件独有的两个生命周期(activated和deactivated)
+    + 路由组件独有的两个生命周期/两个新的生命周期钩子(activated和deactivated)
     + 全局导航守卫 beforeEach和afterEach (路由守卫:可以用于执行校验用户是否登陆了等操作)
     + 路由元信息
 14.vue-router-014-pre-route-guards
@@ -103,6 +103,17 @@
     + vue编程式路由导航
     + 使用<keep-alive></keep-alive>缓存路由组件
     + 路由组件独有的两个生命周期(activated和deactivated)
-    + 全局导航守卫 beforeEach和afterEach (路由守卫:可以用于执行校验用户是否登陆了等操作)
+    + 组件独享路由守卫 beforeEnter    
     + 路由元信息
-    + 独享路由守卫 beforeEnter
+15.vue-router-015-component-route-guards
+    搭建好了vue-router的开发环境
+    + 企业开发中将组件分为路由组件和一般组件
+    + 验证一个项目中有多个路由规则$router，但是只有一个路由器
+    + 嵌套路由/多级路由
+    + a.使用to + params 进行路由传参 + 使用props简化参数接收
+      b.使用to + query  进行路由传参 + 使用props简化参数接收
+    + vue编程式路由导航
+    + 使用<keep-alive></keep-alive>缓存路由组件
+    + 路由组件独有的两个生命周期(activated和deactivated)
+    + 组件内路由守卫 beforeRouteEnter beforeRouteLeave
+    + 路由元信息

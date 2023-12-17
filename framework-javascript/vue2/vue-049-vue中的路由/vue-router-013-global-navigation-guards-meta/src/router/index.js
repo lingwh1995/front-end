@@ -94,7 +94,7 @@ const router =  new VueRouter({
     ]
 })
 
-//前置路由守卫:每一次路由切换之前
+//前置路由守卫:初始化时被调用、每一次路由切换之前
 router.beforeEach((to,from,next) => {
     //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
     document.title = to.meta.title
@@ -106,7 +106,7 @@ router.beforeEach((to,from,next) => {
     }
 })
 
-//后置路由守卫:每一次路由切换之前
+//后置路由守卫:初始化时被调用、每一次路由切换之前
 router.afterEach((to,from) => {
     console.log('后置路由守卫-afterEach',to,from)
 })

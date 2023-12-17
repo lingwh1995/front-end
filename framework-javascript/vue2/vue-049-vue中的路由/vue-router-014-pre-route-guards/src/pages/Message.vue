@@ -31,7 +31,7 @@
 
         <!-- vue中使用编程式路由完成路由跳转 -->
         <button class="btn btn-default" active-class="active" @click="toMessageDetail(message)">
-          vue路由使用props简化接收路由传递的参数 + 使用编程式路由写法 + 使用params传递参数 + 缓存路由组件 - {{message.title}}
+          vue路由使用props简化接收路由传递的参数 + 使用编程式路由写法 + 使用params传递参数 + 缓存路由组件 路由元信息 + 组件独享路由守卫 - {{message.title}}
           <input type="text"/>
         </button>
       </li>

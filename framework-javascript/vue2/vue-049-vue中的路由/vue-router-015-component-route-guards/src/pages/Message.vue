@@ -30,10 +30,7 @@
         -->
 
         <!-- vue中使用编程式路由完成路由跳转 -->
-        <button class="btn btn-default" active-class="active" @click="toMessageDetail(message)">
-          vue路由使用props简化接收路由传递的参数 + 使用编程式路由写法 + 使用params传递参数 + 缓存路由组件 + 路由元信息 + 全局导航守卫- {{message.title}}
-          <input type="text"/>
-        </button>
+        vue路由使用props简化接收路由传递的参数 + 使用编程式路由写法 + 使用params传递参数 + 路由元信息 + 组件内路由组件 - {{message.title}}
       </li>
     </ul>
     <router-view></router-view>
@@ -52,25 +49,38 @@ export default {
       ]
     }
   },
-  methods: {
-    toMessageDetail(message) {
-      this.$router.push({
-        name: 'message_detail_',
-        params: {
-          id: message.id,
-          content: message.content
-        }
-      })
+  //通过路由规则进入该组件时调用
+  beforeRouteEnter(to,from,next){
+    console.log('beforeRouteEnter...')
+    console.log(to,from)
+
+    //执行当前页面独有的业务逻辑一:修改当前页面的标题
+    document.title = to.meta.title
+
+    //执行当前页面独有的业务逻辑二:输入密码正确允许访问当前页面
+    // const password = prompt('请输入页面访问密码（密码是123）')
+    // if(password != '123') return
+
+    //执行当前页面独有的业务逻辑三:判断用户是否登录了
+    if(JSON.parse(localStorage.getItem('authentication'))) {
+      next()
+    }else {
+      alert('请登录后再执行路由跳转操作')
     }
   },
-  beforeDestroy() {
-    console.log('Message组件将被销毁...')
-  },
-  activated() {
-    console.log('Message组件被激活了...')
-  },
-  deactivated() {
-    console.log('Message组件失活了...')
+  //通过路由离开进入该组件时调用
+  beforeRouteLeave(to,from,next) {
+    console.log('beforeRouteLeave...')
+    console.log(to,from)
+
+    //执行当前页面独有的业务逻辑一：修改要去的目标页面的标题
+    document.title = to.meta.title
+
+    //执行当前页面独有的业务逻辑二：将是否登录标识切换为未登录，下次再进入此页面时要先登录
+    //localStorage.setItem('authentication',false)
+
+    //放行 一定不要忘记写
+    next()
   }
 }
 </script>

@@ -36,7 +36,7 @@ const router =  new VueRouter({
             beforeEnter:(to,from,next) => {
                 //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                 document.title = to.meta.title
-                console.log('前置路由守卫-beforeEach',to,from)
+                console.log('独享路由守卫-beforeEach',to,from)
                 if(JSON.parse(localStorage.getItem('authentication'))) {
                     next()
                 }else {
@@ -55,7 +55,7 @@ const router =  new VueRouter({
             beforeEnter:(to,from,next) => {
                 //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                 document.title = to.meta.title
-                console.log('前置路由守卫-beforeEach',to,from)
+                console.log('独享路由守卫-beforeEach',to,from)
                 if(JSON.parse(localStorage.getItem('authentication'))) {
                     next()
                 }else {
@@ -75,7 +75,7 @@ const router =  new VueRouter({
                     beforeEnter:(to,from,next) => {
                         //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                         document.title = to.meta.title
-                        console.log('前置路由守卫-beforeEach',to,from)
+                        console.log('独享路由守卫-beforeEach',to,from)
                         if(JSON.parse(localStorage.getItem('authentication'))) {
                             next()
                         }else {
@@ -95,7 +95,7 @@ const router =  new VueRouter({
                             beforeEnter:(to,from,next) => {
                                 //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                                 document.title = to.meta.title
-                                console.log('前置路由守卫-beforeEach',to,from)
+                                console.log('独享路由守卫-beforeEach',to,from)
                                 if(JSON.parse(localStorage.getItem('authentication'))) {
                                     next()
                                 }else {
@@ -124,7 +124,7 @@ const router =  new VueRouter({
                     beforeEnter:(to,from,next) => {
                         //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                         document.title = to.meta.title
-                        console.log('前置路由守卫-beforeEach',to,from)
+                        console.log('独享路由守卫-beforeEach',to,from)
                         if(JSON.parse(localStorage.getItem('authentication'))) {
                             next()
                         }else {
@@ -144,7 +144,7 @@ const router =  new VueRouter({
                             beforeEnter:(to,from,next) => {
                                 //路由跳转前更新组件页面的title，从meta可以中获取到配置的title
                                 document.title = to.meta.title
-                                console.log('前置路由守卫-beforeEach',to,from)
+                                console.log('独享路由守卫-beforeEach',to,from)
                                 if(JSON.parse(localStorage.getItem('authentication'))) {
                                     next()
                                 }else {
