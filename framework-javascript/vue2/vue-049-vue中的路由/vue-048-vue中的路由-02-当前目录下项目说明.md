@@ -91,8 +91,8 @@
     + vue编程式路由导航
     + 使用<keep-alive></keep-alive>缓存路由组件
     + 路由组件独有的两个生命周期/两个新的生命周期钩子(activated和deactivated)
-    + 全局导航守卫 beforeEach和afterEach (路由守卫:可以用于执行校验用户是否登陆了等操作)
     + 路由元信息
+    + 全局导航守卫 beforeEach和afterEach (路由守卫:可以用于执行校验用户是否登陆了等操作)
 14.vue-router-014-pre-route-guards
     搭建好了vue-router的开发环境
     + 企业开发中将组件分为路由组件和一般组件
@@ -103,8 +103,8 @@
     + vue编程式路由导航
     + 使用<keep-alive></keep-alive>缓存路由组件
     + 路由组件独有的两个生命周期(activated和deactivated)
-    + 组件独享路由守卫 beforeEnter    
     + 路由元信息
+    + 组件独享路由守卫 beforeEnter    
 15.vue-router-015-component-route-guards
     搭建好了vue-router的开发环境
     + 企业开发中将组件分为路由组件和一般组件
@@ -115,5 +115,5 @@
     + vue编程式路由导航
     + 使用<keep-alive></keep-alive>缓存路由组件
     + 路由组件独有的两个生命周期(activated和deactivated)
-    + 组件内路由守卫 beforeRouteEnter beforeRouteLeave
     + 路由元信息
+    + 组件内路由守卫 beforeRouteEnter beforeRouteLeave
