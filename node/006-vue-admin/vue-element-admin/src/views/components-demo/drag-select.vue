@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ElDragSelect from '@/components/DragSelect' // base on element-ui
+import ElDragSelect from '@/components/DragSelect' // base on element-ui-fully-import
 
 export default {
   name: 'DragSelectDemo',

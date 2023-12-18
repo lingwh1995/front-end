@@ -117,7 +117,7 @@
       <div>placeholder</div>
       <div>placeholder</div>
     </div>
-    <!-- you can add element-ui's tooltip -->
+    <!-- you can add element-ui-fully-import's tooltip -->
     <el-tooltip placement="top" content="tooltip">
       <back-to-top :custom-style="myBackToTopStyle" :visibility-height="300" :back-position="50" transition-name="fade" />
     </el-tooltip>

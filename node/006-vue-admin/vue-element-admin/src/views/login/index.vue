@@ -214,7 +214,7 @@ $cursor: #fff;
   }
 }
 
-/* reset element-ui css */
+/* reset element-ui-fully-import css */
 .login-container {
   .el-input {
     display: inline-block;

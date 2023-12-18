@@ -113,7 +113,16 @@
     + a.使用to + params 进行路由传参 + 使用props简化参数接收
       b.使用to + query  进行路由传参 + 使用props简化参数接收
     + vue编程式路由导航
-    + 使用<keep-alive></keep-alive>缓存路由组件
-    + 路由组件独有的两个生命周期(activated和deactivated)
     + 路由元信息
     + 组件内路由守卫 beforeRouteEnter beforeRouteLeave
+15.vue-router-016-route-mode
+    搭建好了vue-router的开发环境
+    + 企业开发中将组件分为路由组件和一般组件
+    + 验证一个项目中有多个路由规则$router，但是只有一个路由器
+    + 嵌套路由/多级路由
+    + a.使用to + params 进行路由传参 + 使用props简化参数接收
+      b.使用to + query  进行路由传参 + 使用props简化参数接收
+    + vue编程式路由导航
+    + 路由元信息
+    + 组件内路由守卫 beforeRouteEnter beforeRouteLeave
+    + 路由工作的两种模式

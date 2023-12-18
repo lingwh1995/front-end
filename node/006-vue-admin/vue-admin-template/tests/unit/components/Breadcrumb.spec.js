@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router-start'
-import ElementUI from 'element-ui'
+import ElementUI from 'element-ui-fully-import'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 
 const localVue = createLocalVue()

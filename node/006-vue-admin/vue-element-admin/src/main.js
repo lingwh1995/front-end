@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
-import Element from 'element-ui'
+import Element from 'element-ui-fully-import'
 import './styles/element-variables.scss'
 
 import '@/styles/index.scss' // global css
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'medium' // set element-ui-fully-import default size
 })
 
 // register global utility filters
