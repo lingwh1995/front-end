@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-004-vue2和vue3中的相应式原理对比-02-vue2中的响应式原理</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 什么是数据代理:  通过一个对象代理对另一个对象中的属性操作(读/写)
+         *      实际上是代理对象给被代理对象中的属性生成了get()和set()方法，通过这两个方法来实现读/写操作的
+         *
+         * Object.defineProperty缺点:
+         * 只能捕获读取对象中属性的操作和修改对象中属性的操作，所以vue2是无法直接给对象添加一个响应式属性的
+         */
+
+        //原对象
+        let data = {
+                        id:'001',
+                        name:'张三',
+                        age: 15,
+                        school: 'ufe'
+                     }
+        /**
+         * 模拟vue的数据代理实现
+         */
+        function Observer(obj) {
+            //汇总对象中所有属性成为一个数组
+            const keys = Object.keys(obj)
+            //将Observer对象自身作为proxy对象，并给这个proxy对象上添加属性
+                //this指向Observer对象的实例
+            keys.forEach((key) => {
+                Object.defineProperty(this,key,{
+                    //设置为true后删除代理中的属性，原对象中属性也会被删除
+                    configurable:true,
+                    //读取target中某个属性时调用
+                    get() {
+                        console.log(`${key}被获取了`)
+                        return obj[key]
+                    },
+                    //修改target中某个属性时调用
+                    set(value) {
+                        //在这里执行响应式处理操作
+                        console.log('开始执行响应式处理操作...')
+                        console.log(`${key}的值被修改了，我要去解析模板，生成虚拟DOM去了...`)
+                        console.log('结束执行响应式处理操作...')
+                        obj[key] = value
+                    }
+                })
+            })
+        }
+
+        //代理对象
+        const obs = new Observer(data)
+        console.log(obs)
+
+        //把代理挂在vm上
+        let vm = {}
+        vm._data = data = obs
+        console.log(vm._data)
+        //放开注释后查看更新效果(或者在控制台执行下面代码)
+        //vm._data.name = 'lisi'
+        //console.log('原对象:' + JSON.stringify(target))
+        //放开注释后查看删除效果(或者在控制台执行下面代码)
+        //delete vm._data.id
+        //console.log('原对象:' + JSON.stringify(target))
+    </script>
+</body>
+</html>

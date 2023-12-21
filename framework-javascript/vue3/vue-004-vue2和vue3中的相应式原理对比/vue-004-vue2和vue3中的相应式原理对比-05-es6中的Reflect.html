@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-004-vue2和vue3中的相应式原理对比-05-es6中的Reflect</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * ES6中new Reflect:
+         *      1.Reflect的很多api移植自Object对象
+         *      2.Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法，这些方法与处理器对象的方法相同。
+         *        Reflect不是一个函数对象，因此它是不可构造的。
+         */
+
+        //原对象
+        let person = {
+                        id:'001',
+                        name:'张三',
+                        age: 15,
+                        school: 'ufe'
+                     }
+
+        //放开注释后查看更新效果(或者在控制台执行下面代码)
+
+            //读取对象中的属性
+        console.log(Reflect.get(person,'id'))
+        console.log('原对象:' + JSON.stringify(person))
+            //修改对象中的属性
+        Reflect.set(person,'id','010')
+        console.log('原对象:' + JSON.stringify(person))
+
+            //删除对象中的属性
+        Reflect.deleteProperty(person,'id')
+        console.log('原对象:' + JSON.stringify(person))
+
+            //新增对象中的属性
+        Reflect.set(person,'newField','newField')
+        console.log('原对象:' + JSON.stringify(person))
+
+    </script>
+</body>
+</html>

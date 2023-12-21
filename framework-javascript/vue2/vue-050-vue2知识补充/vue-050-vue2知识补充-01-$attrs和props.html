@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-050-vue2知识补充-01-$attrs和props</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Child name="zhangsan"/>
+    </div>
+
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        /**
+         *  $attrs和props
+         *      1.如果子组件不使用props接收对象，则可以在$attr中获取到父组件传递给子组件的属性
+         *      2.如果使用props接收对象，则$attr中为空
+         */
+
+        const Child = Vue.extend({
+            name:'Child',
+            template:'<div><h1>{{$attrs.name}}</h1></div>',
+            mounted() {
+                console.log(this)
+            },
+            //props:['name']
+        })
+        //创建vue实例
+        const vm = new Vue({
+            el: '#app',
+            components: {Child}
+        })
+    </script>
+</body>
+</html>

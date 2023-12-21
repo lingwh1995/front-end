@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-004-vue2和vue3中的相应式原理对比-04-vue3中的响应式原理</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 什么是数据代理:  通过一个对象代理对另一个对象中的属性操作(读/写)
+         *      实际上是代理对象给被代理对象中的属性生成了get()和set()方法，通过这两个方法来实现读/写操作的
+         *
+         * Object.defineProperty缺点:
+         *      只能捕获读取对象中属性的操作和修改对象中属性的操作，所以vue2是无法直接给对象添加一个响应式属性的
+         *
+         * ES6中new Proxy优点:
+         *      可以捕获对 对象属性的增删改查四个操作
+         */
+
+        //原对象
+        let target = {
+                        id:'001',
+                        name:'张三',
+                        age: 15,
+                        school: 'ufe'
+                     }
+
+        //代理对象
+        const proxy =  new Proxy(target,{
+            //读取target中某个属性时调用
+            get(target,propName){
+                //在这里执行响应式操作
+                console.log(target,propName)
+                console.log(`有人读取了${target}身上的${propName}属性`)
+                return target[propName]
+            },
+            //修改或新增target中某个属性时调用
+            set(target,propName,value){
+                //在这里执行响应式操作
+                console.log(target,propName,value)
+                console.log(`有人修改了${target}身上的${propName}属性`)
+                target[propName] = value
+            },
+            //删除target中某个属性时调用
+            deleteProperty(target, propName) {
+                //在这里执行响应式操作
+                console.log(target,propName)
+                console.log(`有人删除了${target}身上的${propName}属性`)
+                //删除对象中属性时要调用这个方法才能真正删除对象中的属性
+                return delete target[propName]
+            }
+        })
+
+        //放开注释后查看更新效果(或者在控制台执行下面代码)
+
+            //读取对象中的属性
+        console.log(proxy.id)
+        console.log('原对象:' + JSON.stringify(target))
+            //修改对象中的属性
+        // proxy.id = '005'
+        // console.log('原对象:' + JSON.stringify(target))
+
+            //删除对象中的属性
+        // delete proxy.id
+        // console.log('原对象:' + JSON.stringify(target))
+
+            //新增对象中的属性
+        // proxy.newField = 'newField'
+        // console.log('原对象:' + JSON.stringify(target))
+
+    </script>
+</body>
+</html>

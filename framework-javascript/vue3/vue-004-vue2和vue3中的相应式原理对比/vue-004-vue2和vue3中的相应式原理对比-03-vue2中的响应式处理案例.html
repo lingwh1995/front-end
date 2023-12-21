@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-004-vue2和vue3中的相应式原理对比-03-vue2中的响应式处理案例</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        id:{{person.id}}<br/>
+        name:{{person.name}}<br/>
+        sex:{{person.sex}}<br/>
+        <button @click="addField">添加一个属性</button><br/>
+        <button @click="deleteField">删除一个属性</button><br/>
+        <button @click="updateField">更新一个属性</button>
+    </div>
+    <script type="text/javascript">
+        //验证vue是够被引入，直接打印Vue这个变量
+        console.log(Vue)
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: '#app',
+            data: {
+                person: {id:'001', name:'张三'}
+            },
+            methods: {
+                addField() {
+                    //方式一
+                    //this.$set(this.person,'sex','男')
+                    //方式二
+                    Vue.set(this.person,'sex','男')
+                },
+                deleteField() {
+                    //方式一
+                    //this.$delete(this.person,'sex')
+                    //方式二
+                    Vue.delete(this.person,'sex')
+                },
+                updateField() {
+                    //方式一
+                    //this.$set(this.person,'sex','未知性别')
+                    //方式二
+                    Vue.set(this.person,'sex','未知性别')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
