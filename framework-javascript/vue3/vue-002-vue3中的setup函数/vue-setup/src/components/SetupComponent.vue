@@ -9,7 +9,7 @@
 <script>
 
 export default {
-  name: 'HelloWorld',
+  name: 'SetupComponent',
   setup() {
     let name = '张三'
     let age = 10

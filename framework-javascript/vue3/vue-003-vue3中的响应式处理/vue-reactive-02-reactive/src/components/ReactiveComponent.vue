@@ -11,7 +11,7 @@
 import {reactive} from "vue";
 
 export default {
-  name: 'HelloWorld',
+  name: 'ReactiveComponent',
   setup() {
     let item = reactive({
       itemId:'001',

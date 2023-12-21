@@ -11,8 +11,9 @@
     <div id="app">
         请输入姓:<input type="text" v-model:value="firstName"/><br/>
         请输入名:<input type="text" v-model:value="lastName"/><br/>
-        <!-- 不推荐的写法:在插值表达式中实现复杂操作(vue框架不推荐这样做) -->
+        <h4>不推荐的写法:在插值表达式中实现复杂操作(vue框架不推荐这样做)</h4>
         姓名:<span>{{firstName.slice(0,3).toUpperCase()}}-{{lastName}}</span><br/>
+        <h4>推荐的写法</h4>
         <!-- 推荐的写法
                 直接使用插值表达式调用有返回值的方法，把复杂的操作在方法中完成
                 缺点:只要vue实例中的data的值发生任何一次改变，这个 fullName() 方法就会调用一次，效率不高，也比较耗费性能
