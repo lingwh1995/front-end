@@ -10,6 +10,9 @@
 <script>
 import {reactive} from "vue";
 
+/**
+ * 注意:如果使用ref定义了一个引用类型的响应式数据，这个数据vue3最终也会交给reactive处理
+ */
 export default {
   name: 'ReactiveComponent',
   setup() {
