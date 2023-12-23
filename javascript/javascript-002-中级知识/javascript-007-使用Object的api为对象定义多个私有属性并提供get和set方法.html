@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用Object的api为对象定义多个私有属性并提供get和set方法</title>
+    <script type="text/javascript">
+        /**
+         * 实现类似于java中封装javabean的效果
+         * @type {{_name: string, _id: string, _age: number}}
+         */
+        const obj = {
+            _id:'001',
+            _name:'张三',
+            _age: 18,
+        };
+        /**
+         * 使用Object.defineProperty()来实现对象中一个属性的私有并提供外部访问方法
+         *     1.cnfigurable:false      配置对象中该属性是否可以被删除
+         *     2.enumerable:false       配置对象中该属性是否可以被枚举，但是直接使用 obj._age 是可以直接访问到该属性的
+         *     3.writable:false         配置对象中该属性的值是否可以被修改
+         *     4.value                  配置对象中该属性的默认值
+         *     5.get()和set()用于设置访问器属性
+         *  使用Object.defineProperties()来实现对象中一个属性的私有并提供外部访问方法
+         */
+        Object.defineProperties(obj,{
+            _id: {
+                configurable:false,//配置对象中该属性是否可以被删除
+                enumerable:false, //配置对象中该属性是否可以被枚举，直接使用 obj._id 是可以直接访问到该属性的
+                writable:true  //配置对象中该属性的值是否可以被修改
+            },
+            _name: {
+                configurable:false,//配置对象中该属性是否可以被删除
+                enumerable:false, //配置对象中该属性是否可以被枚举直接使用 obj._name 是可以直接访问到该属性的
+                writable:true  //配置对象中该属性的值是否可以被修改
+            },
+            _age: {
+                configurable:false,//配置对象中该属性是否可以被删除
+                enumerable:false, //配置对象中该属性是否可以被枚举,直接使用 obj._age 是可以直接访问到该属性的
+                writable:true  //配置对象中该属性的值是否可以被修改
+            },
+        })
+
+        Object.defineProperties(obj,{
+            id: {
+                set(value){
+                    console.log('set方法被调用了...');
+                    this._id = value;
+                },
+                get() {
+                    console.log('get方法被调用了...');
+                    return this._id;
+                }
+            },
+            name: {
+                set(value){
+                    console.log('set方法被调用了...');
+                    this._name = value;
+                },
+                get() {
+                    console.log('get方法被调用了...');
+                    return this._name;
+                }
+            },
+            age: {
+                set(value){
+                    console.log('set方法被调用了...');
+                    this._age = value;
+                },
+                get() {
+                    console.log('get方法被调用了...');
+                    return this._age;
+                }
+            },
+        })
+
+        console.log('开始枚举对象...')
+        //obj中所有属性都是不能被枚举的
+        for(const key in obj) {
+            console.log(key);
+        }
+        console.log('结束枚举对象...')
+
+        //调用set方法修改对象属性
+        obj.id = '002'
+        //调用set方法修改对象属性
+        obj.name = '李四'
+        //调用set方法修改对象属性
+        obj.age = 88
+
+        //调用get方法获取对象属性
+        console.log(obj.id)
+        //调用get方法获取对象属性
+        console.log(obj.name)
+        //调用get方法获取对象属性
+        console.log(obj.age)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

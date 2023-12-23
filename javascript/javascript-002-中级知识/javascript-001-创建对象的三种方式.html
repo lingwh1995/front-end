@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建对象的三种方式</title>
+    <script type="text/javascript">
+        //方式一：使用对象字面值创建对象
+        const obj1 = {
+            id:'001',
+            name:'张三',
+            show(){
+                console.log(`id:${this.id},name:${this.name}`)
+            }
+        };
+        //访问对象属性
+        console.log(obj1.id);
+        console.log(obj1['name']);
+        obj1.show();
+        console.log('--------------------')
+
+
+        //方式二：使用new Object()创建对象
+        const obj2 = new Object()
+        obj2.id = '002';
+        obj2.name = '李四';
+        obj2.show = function() {
+            console.log(`id:${this.id},name:${this.name}`)
+        };
+
+        //访问对象属性
+        console.log(obj2.id);
+        console.log(obj2['name']);
+        obj2.show();
+        console.log('--------------------')
+
+
+        //方式三：使用构造函数创建对象
+        function Student(id,name) {
+            this.id = id,
+            this.name = name,
+            this.show = function(){
+                console.log(`id:${this.id},name:${this.name}`)
+            }
+        }
+        const obj3 = new Student('003','王五')
+        console.log(obj3.id);
+        console.log(obj3['name']);
+        obj3.show();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

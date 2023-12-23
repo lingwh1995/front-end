@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>构造函数的实例成员和静态成员</title>
+    <script type="text/javascript">
+        function Student(id,name) {
+            this.id = id;
+            this.name = name;
+            this.show = function (){
+                console.log(`id:${id},name:${name}`);
+            }
+        }
+        const student = new Student('001','张三');
+        //访问构造函数的实例成员
+        console.log(student.id)
+        //访问构造函数的实例成员
+        console.log(student.name)
+        //访问构造函数的实例方法
+        student.show();
+
+        //添加构造函数的 静态成员
+        Student.gender = '男'
+        //添加构造函数的 静态方法
+        Student.eat = function () {
+            console.log('eat...')
+        }
+        //访问构造方法的静态成员
+        console.log(Student.gender)
+        //访问构造方法的静态方法
+        Student.eat()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断方法是在对象上还是在原型对象上</title>
+    <script type="text/javascript">
+        function Student(id,name) {
+            this.id = id;
+            this.name = name;
+            this.run = function (){
+                console.log('run...')
+            }
+        }
+        //在构造函数的原型上创建show(),每个实例对象都可以访问到该方法，这样可以节省内存空间
+        Student.prototype.show =function (){
+            console.log(`id:${this.id},name:${this.name}`);
+        }
+        const student = new Student('001','张三');
+
+        //验证实例的原型对象和构造函数的原型对象指向是相同的
+        console.log(student.hasOwnProperty('run'))
+        console.log(student.hasOwnProperty('show'))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

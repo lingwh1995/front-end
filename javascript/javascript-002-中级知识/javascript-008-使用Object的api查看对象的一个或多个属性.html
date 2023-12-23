@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用Object的api查看对象的一个或多个属性</title>
+    <script type="text/javascript">
+        /**
+         * 使用Object.getOwnPropertyDescriptor()查看对象的一个属性
+         * 使用Object.getOwnPropertyDescriptors()查看对象的全部属性
+         * @type {{_name: string, _id: string, _age: number}}
+         */
+        const obj = {
+            id:'001',
+            name:'张三',
+            age: 18,
+        };
+
+        //查看对象中的id属性
+        console.log(Object.getOwnPropertyDescriptor(obj,'id'))
+        //查看对象中的全部属性
+        console.log(Object.getOwnPropertyDescriptors(obj))
+    </script>
+</head>
+<body>
+
+</body>
+</html>
