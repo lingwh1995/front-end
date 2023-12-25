@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用bind改变this指向</title>
+    <script type="text/javascript">
+        var obj = {
+            name: '张三'
+        }
+
+        function sum(a,b) {
+            console.log(this)
+            return a + b;
+        }
+
+        //函数中this指向Window
+        console.log(sum(1,2))
+
+        //bind()会改变原始函数的调用者，但是不会执行原始函数
+        var fun = sum.bind(obj,1,2);
+        //真正执行函数
+        var result = fun();
+        console.log(result)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

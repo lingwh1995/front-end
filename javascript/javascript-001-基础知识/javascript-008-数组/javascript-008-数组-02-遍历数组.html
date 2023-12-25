@@ -12,7 +12,7 @@
 			alert(num[i]);
 		}
 		*/
-		//foreach遍历
+		//foreach遍历 :没有返回值
 		//注意：这个forEach()只能遍历这中已知的数组,但是不能遍历通过DOM操作拿到的元素
 		/*
 		num.forEach(function(value,index,array){
@@ -22,13 +22,17 @@
 			alert(value+"---"+index)
 		});
 		*/
-		//方式三：使用map方式遍历
+		//方式三：使用map方式遍历： 会返回一个数组
 		//注意：这个也只能遍历这中已知的数组,但是不能遍历通过DOM操作拿到的元素
 		/*
 		num.map(function(index,value,arr){
 			alert(index+"---"+value+"---"+arr);
 		});
 		*/
+		var newArr = num.map(function(index,value,arr){
+			return value + 10;
+		});
+		console.log(newArr)
 		//方式四,for(x in xx)，其中x为index
 		/*
 		for(x in num){
