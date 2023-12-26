@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的some、every方法</title>
+    <script type="text/javascript">
+        /**
+         * some: 给出查询条件，查询数组中的元素，如果有符合查询条件的元素存在，返回true,否则返回false
+         * @type {number[]}
+         */
+        let numbers = [12,5,8,89,78,105]
+        //如果数组中有大于100的值就返回true
+        let b1 = numbers.some(function (value,index) {
+            return value > 100
+        })
+        console.log(b1)
+
+        /**
+         * every: 给出查询条件，查询数组中的元素，如果全部符合查询条件的元素存在，返回true,否则返回false
+         * @type {number[]}
+         */
+        let b2 = numbers.every(function (value,index) {
+            return value > 100
+        })
+        console.log(b2)
+    </script>
+</head>
+<body>
+
+</body>
+</html>
