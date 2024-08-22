@@ -1,20 +1,46 @@
 <html>
-      <head>
-	        <title>HTML转义字符</title>
-			<meta http-equiv="Content-Type" content="text/html;cahrset=utf-8"/>
-			<meta name="keywords" content="H"/>
-			<meta name="description" content="H是一个大写字母"/>
-	  </head>
-      <body>
-	    <!--
-		    基础知识：    1.html文件的后缀有两种html或hml 
-               		      2.html标签开始标签和结束标签成对出现
-						  3.html代码不区分大小写
-						  4.有些标签没有结束标签，如：<br/>
-			html操作思想：在网页中有很多数据，不同的数据有实现不同的显示效果，这时需要使用使用标签把数据包起来（封装起来），通过
-                          修改标签的属性值实现标签内数据样式的改变，一个标签就相当于一个容器。			
-						 -->
-	       <!--注释写在这里-->
+	<head>
+		<title>HTML其他标签的常用标签+页面自动跳转</title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<!-- <meta http-equiv="refresh" content="3;url=http://www.baidu.com"/> -->
+		<!--meta标签可以实现自动跳转，但是跳转后不可返回 http-equiv="refresh" 模拟自动刷新-->
+		<base target="_blank">			
+		<link/><!--link标签可以从外部引入文件-->
+		<script></script>
+	</head>
+	
+	<body>
+		<!--
+		    基础知识：    
+				1.html文件的后缀有两种html或hml 
+				2.html标签开始标签和结束标签成对出现
+				3.html代码不区分大小写
+				4.有些标签没有结束标签，如：<br/>
+				5.要在网页显示 < > 这类符号需要使用转义字符实现
+			html操作思想：
+				在网页中有很多数据，不同的数据有实现不同的显示效果，这时需要使用使用标签把数据包起来（封装起来），
+				通过修改标签的属性值实现标签内数据样式的改变，一个标签就相当于一个容器。			
+		-->
+	    <!--注释写在这里-->
+		
+		<b>天之道，——加粗标签b</b><br/>
+		<u>损有余而补不足，——下划线标签u</u><br/>
+		<i>是故虚而胜实，——倾斜标签i</i><br/>
+		<s>不足胜有于——删除线标签s</s><br/>
+		<pre>原样输出标签——pre
+			public static void main(String[] args){
+					System.out.println("Hello World");
+			}   
+		</pre>
+		下标标签（bottom：底部的）：3<sub>100</sub><br/>
+		上标标签：3<sup>100</sup>
+		<br/>
+		设置页面跳转的方式：有两种方式（请查看源代码）1.在body的超链接中设置2.在head中的base标签中设置，base常用于批量设置超链接打开方式
+		类似于jQuery的批量设置属性
+		<br/>
+		<!--<a href="http://www.baidu.com" target="_blank">百度</a> 不设置target代表在当前页面打开-->
+		<a href="https://www.baidu.com">百度</a><br/>
+		框架标签：可以把html一个页面分成独立的区域，可以提高程序可维护性，目前应用不多，已经被div取代
 		   
 		   <!--comment-->
 		   利用size属性设置文字大小：
