@@ -7,12 +7,15 @@
 <form action="www.baidu.com">
 	注册邮箱：<input type="text" size=4 name="email"/><br/>
 	密码：    <input type="password" maxlength=4 name="pwd"><br/>
-	性别（单选+表单元素的标注）：    <label for="male">男</label>
+	性别（单选+表单元素的标注）：    
+	<label for="male">男</label>
 	<input id="male"  type="radio" name="sex" checked="checked"/>
 	<label for="famale">女</label>
 	<input id="famale" type="radio" name="sex" />
 	<br/>
-	国籍：	 中国<input type="radio" name="country" checked="checked"/>日本<input type="radio" name="country"/></br>
+	国籍：	 
+	中国<input type="radio" name="country" checked="checked"/>
+	日本<input type="radio" name="country"/></br>
 	城市：
 	<select>
 		<option>请选择</option>
@@ -29,9 +32,22 @@
 	<input type="submit" name="" value="注册"/>
 	<input type="image" src="..\\a\\a.png" height=200px width=100px/><br/><!--配合submit和action=""使用-->
 	隐藏域：---|<input type="hidden" name=""/>|--- <!--表面不需要，实际需要就放在这里，不要存放重要信息，因为这个很不安全-->
-	文本域： <input type="textarea" name="" values="123456"/><br/>
 	只读文本框：<input type="text" readonly="readonly" value="这是一个只读的文本框"name="email"/><br/><!--不可写入-->
 	禁用文本框：<input type="text" disabled="disabled" value="这是一个禁用的文本框"/><br/><!--可以通过查看源文件实现复制粘贴-->
+	文本域： 
+	<textarea name="" cols="20" rows="20">
+		使用cols和rows属性来控制文本域的宽度和高度
+	</textarea>
+
+	<hr/>
+	<h5>表单提交按钮的写法一：input写法</h5>
+	<form action="xxx">
+		<input type="submit" value="input-提交"/>
+	</form>
+	<h5>表单提交按钮的写法二：button写法</h5>
+	<form action="xxx">
+		<button type="submit">button-提交</button>
+	</form>	
 </form>
 </body>
 </html>
