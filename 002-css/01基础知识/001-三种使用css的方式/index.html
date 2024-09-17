@@ -1,0 +1,24 @@
+﻿<html>
+      <head>
+	        <title>三种使用css的方式</title>
+			<meta http-equiv="Content-Type" content="text/html ;charset=utf-8"/>
+			
+			<!-- 方式一：引入外部编写的css文件,主要作用:实现内容和样式分离，提高显示效果，便于维护 -->
+			<!--格式： link href="" rel="stylesheet" type="text/css" -->
+			<link href="index.css" rel="stylesheet" type="text/css"/>
+
+			<!-- 方式二： 内部编写css文件 -->
+			<style type="text/css">
+				.inner-css {
+					color:green;
+					font-size:50px;
+				}
+			</style>
+      </head>
+	  <body>
+	        <p class="outer-css">hello world</p>
+	        <p class="inner-css">hello world</p>
+			<!-- 方式三： 行内css样式 -->
+	        <p style="color:orange;font-size:50px">hello world</p>
+	  </body>
+</html>
