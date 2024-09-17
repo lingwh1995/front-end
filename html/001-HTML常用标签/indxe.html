@@ -1,0 +1,254 @@
+<html>
+	<head>
+		<title>HTML其他标签的常用标签+页面自动跳转</title>
+		<meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+		<base target="_blank">			
+		<link/><!--link标签可以从外部引入文件-->
+		<script></script>
+	</head>
+	
+	<body>
+		<h2>锚点锚定区域-top</h2>
+		<p id="top">顶部</p>
+		<h2>html注释标签&lt;!-- --&gt;</h2>
+		<!--
+		    基础知识：    
+				1.html文件的后缀有两种html或hml 
+				2.html标签开始标签和结束标签成对出现
+				3.html代码不区分大小写
+				4.有些标签没有结束标签，如：<br/>
+				5.要在网页显示 < > 这类符号需要使用转义字符实现
+			html操作思想：
+				在网页中有很多数据，不同的数据有实现不同的显示效果，这时需要使用使用标签把数据包起来（封装起来），
+				通过修改标签的属性值实现标签内数据样式的改变，一个标签就相当于一个容器。			
+		-->
+	    <!--注释写在这里-->
+		
+		<h2>加粗标签-&lt;b&gt;&lt;/b&gt;</h2>
+		<b>天之道，——加粗标签b</b><br/>
+
+		<h2>加粗标签-&lt;strong&gt;&lt;/strong&gt;</h2>
+		<strong>天之道，——加粗标签strong</strong><br/>
+
+		<h2>下划线标签-&lt;u&gt;&lt;/u&gt;</h2>
+		<u>损有余而补不足，——下划线标签u</u><br/>
+
+		<h2>斜体标签-&lt;i&gt;&lt;/i&gt;</h2>
+		<i>是故虚而胜实，——倾斜标签i</i><br/>
+
+		<h2>斜体标签-&lt;em&gt;&lt;/em&gt;</h2>
+		<em>是故虚而胜实，——倾斜标签em</em><br/>
+
+		<h2>删除线标签&lt;s&gt;&lt;/s&gt;</h2>
+		<s>不足胜有于——删除线标签s</s><br/>
+
+		<h2>原样输出标签-&lt;pre&gt;&lt;/pre&gt;</h2>
+<pre>
+	西安财经学院 信息学院
+
+	《Web开发技术》实验报告
+	实验名称：        编写一个字符编码过滤器
+	实验室：      421                  实验日期：    2016/11/3          
+	---------------------------------------------------------------------
+	一、实验目的：   
+	1．熟悉过滤器的应用范围。
+	2．掌握创建和配置过滤器的基本步骤。
+	二、实验要求： 
+	实现图书信息的添加功能，并创建字符编码过滤器，避免中文乱码现象的产生。
+	三、实验内容及步骤
+	1．创建字符编码过滤器对象，其名称为CharacterFilter类。此类继承Javax.servlet.Filter接口，并在doFilter()方法中对请求的字符编码格式进行设置。在创建过滤器对象后，还需对过滤器进行配置。参考代码如下：
+	package edu.ec.exp06;
+	import java.io.*;
+	import javax.servlet.*;
+
+	public class CharacterFilter implements Filter {
+		String charset = null;
+		public void init(FilterConfig config) throws ServletException {
+			charset = config.getInitParameter("charset");
+		}
+		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+			if( charset != null){
+				request.setCharacterEncoding(charset);
+				response.setContentType("text/html; charset="+ charset);
+			}
+			chain.doFilter(request, response);
+		}
+		public void destroy() {
+			charset = null;
+		}
+	}
+</pre>
+
+		<h2>下标标签&lt;sub&gt;&lt;/sub&gt;</h2>
+		3<sub>2</sub><br/>
+
+		<h2>上标标签&lt;sup&gt;&lt;/sup&gt;</h2>
+		3<sup>2</sup><br/>
+		
+		<!--
+			超链接标签的作用：
+			1.链接到指定资源
+				taget:设置打开页面方式，默认是在当前页面打开
+				blank：在一个新的页面打开，语法： target="_blank"
+				self：在当前页面打开(默认)
+			2.锚点功能定位资源，可以锚定到当前页面的某个为止和其他页面的某个位置
+				如果想要定位资源，先要定义一个想要回到的位置，使用name或者id标识锚点锚定区域，锚定区域可以使用<a></a>、<p></p>或者其他标签
+					锚定区域：
+						<a name="top">顶部</a>或
+						<p name="top">顶部</p>或
+						<p id="top">顶部</p>
+					锚点：
+						<a href="#top">超链接实现锚点效果-回到当前页面顶部</a>
+						<a href="./anchor.html#top">超链接实现锚点效果-回到其他页面顶部</a>
+			3.不设置target时标签默认打开位置与head中base标签配置的值有关	
+				<base target="_blank">
+		-->
+		<h2>超链接标签&lt;a&gt;&lt;/a&gt;-使用target属性设置新链接打开方式</h2>
+		<a href="https://www.baidu.com" target="_self">超链接-在当前窗口中打开链接</a><br/>
+		<a href="https://www.baidu.com">超链接-在新的窗口或标签页中打开链接（不设置target时默认情况）</a><br/>
+		<a href="https://www.baidu.com" target="_blank">超链接-在新的窗口或标签页中打开链接</a><br/>
+		<a href="#top">超链接实现锚点效果-回到当前页面顶部</a><br/>
+		<a href="./anchor.html#top">超链接实现锚点效果-回到其他页面顶部</a><br/>
+
+		<h2>设置字体标签&lt;font&gt;&lt;/font&gt;-使用size属性设置文字大小</h2>
+		<font size=50px color="red">这是一个html页面！</font><br/><!--直接在标签中设置字体样式-->
+		<font size="7" color="red">这是一个html页面！</font><br/><!--size范围1~7-->
+		<font size="5" color="red">这是一个html页面！</font><br/>
+		<font size="1" color="red">这是一个html页面！</font><br/>
+
+		<h2>水平线标签&lt;hr/&gt;-使用size、color属性设置粗细和颜色</h2>
+		<hr size="1" color="red"/>
+		<hr size="2" color="red"/>
+		<hr size="3" color="red"/>
+		<hr size="4" color="red"/>
+		<hr size="5" color="red"/>
+		<hr size="6" color="red"/>
+		<hr size="7" color="red"/>
+
+		<h2>转义字符-地址符</h2>
+		&amp;<br/>
+
+		<h2>转义字符-版权符</h2>
+		&copy;<br/>
+
+		<h2>图片标签-&lt;img&gt;&lt;/img&gt;</h2>
+		<img src="./a.png" height=400px width=400px title="这是图片的内容"/><!--px可加可不加，不加默认单位px-->
+		<img src="./aa.png" height=400px width=400px alt="当图片不显示时会出现这几个文字"/>
+        
+		<h2>有序列表标签-&lt;ol&gt;&lt;/ol&gt;</h2>
+		<ol>
+			<li>城市</li>
+			<li>上海</li>
+			<li>北京</li>	
+			<li>天津</li>			
+		</ol>
+
+		<h2>无序列表标签-&lt;ul&gt;&lt;/ul&gt;</h2>
+		<ul>
+			<li>城市</li>
+			<li>上海</li>
+			<li>北京</li>	
+			<li>天津</li>				
+		</ul>
+
+		<h2>自定义列表标签-&lt;dl&gt;&lt;/dl&gt;</h2>
+		<dl>
+			<dt>城市</dt>
+			<dd>上海</dd>		
+			<dd>北京</dd>	
+			<dd>天津</dd>		
+		</dl>
+	
+		<h2>表格标签-基础版</h2>
+		<!-- 
+			1.cellspacing:设置表格中每个单元格之间的间距
+			2.<tr></tr>标签设置表格行，几个<tr></tr>标签表格就有几行
+			3.<th></th>标签设置显示效果为表格头格式（显示效果为加粗并居中）
+			4.<td></td>标签设置显示效果为表格体格式（显示效果为页面默认样式）
+			5.colspan属性：跨行，colspan：跨列
+		-->
+		<table border="2px" bordercolor="red" cellspacing=0 width="400" height="400">
+			<tr>
+				<th colspan="3">员工信息</th>
+			</tr>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>爱好</th>
+			</tr>
+			<tr>
+				<td>张三</td>
+				<td>18</td>
+				<td>吸烟</td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>19</td>
+				<td>饮酒</td>
+			</tr>
+			<tr>
+				<td>王五</td>
+				<td>19</td>
+				<td>上网</td>
+			</tr>
+		</table>
+
+		<h2>表格标签-完全版</h2>
+		<table border="1" width="500" height="500" cellspacing="0">
+			<!-- 表格标题 -->
+			<caption>学生信息</caption>
+			<!-- 表格头部 -->
+			<thead height="50" align="center" valign="middle">
+				<tr>
+					<th width="50" height="50" align="right" valign="bottom">姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+					<th>名族</th>
+					<th>政治面貌</th>
+				</tr>
+			</thead>
+			<!-- 表格主体 -->
+			<tbody height="520" align="center" valign="middle">
+				<tr height="50" align="left" valign="top">
+					<td>张三</td>
+					<td>男</td>
+					<td>18</td>
+					<td>汉族</td>
+					<td>团员</td>
+				</tr>
+				<tr>
+					<td>李四</td>
+					<td>女</td>
+					<td>20</td>
+					<td>满族</td>
+					<td>群众</td>
+				</tr>
+				<tr>
+					<td>王五</td>
+					<td>男</td>
+					<td>19</td>
+					<td>回族</td>
+					<td>党员</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">赵六</td>
+					<td>女</td>
+					<td>21</td>
+					<td>壮族</td>
+					<td>团员</td>
+				</tr>
+			</tbody>
+			<!-- 表格脚注 -->
+			<tfoot height="50" align="center" valign="middle">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>共计: 4人</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>
