@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_伸缩盒模型_主轴方向</title>
+    <style>
+        .outer {
+            width: 1000px;
+            height: 600px;
+            background-color: #888;
+
+            /* 伸缩盒模型相关属性-start */
+            
+            /* 将该元素变成了伸缩容器(开启了flex布局) */
+            display: flex;
+            
+            /* 调整主轴方向 */
+            /* row:水平方向从左往右(默认方向) */
+            /*flex-direction: row;*/
+
+            /* row-reverse:水平方向从右往左 */
+            /* flex-direction: row-reverse; */
+
+            /* column:垂直方向从上往下 */
+            /* flex-direction: column; */
+
+            /* column:垂直方向从下往上 */
+            flex-direction: column-reverse;
+
+            /* 伸缩盒模型相关属性-end */
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+</body>
+</html>
