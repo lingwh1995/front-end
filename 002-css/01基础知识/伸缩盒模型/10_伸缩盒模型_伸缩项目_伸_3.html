@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>07_伸缩盒模型_元素水平垂直居中_01</title>
+    <title>10_伸缩盒模型_伸缩项目_伸_3</title>
     <style>
         .outer {
-            width: 800px;
+            width: 1200px;
             height: 800px;
             background-color: #888;
 
@@ -14,17 +14,10 @@
             
             /* 将该元素变成了伸缩容器(开启了flex布局) */
             display: flex;
-            
-            /* 元素垂直水平居中方式一: 只设置父元素 */
-
-            /* 设置元素水平方向居中 */
-            justify-content: center;
-
-            /* 设置元素垂直方向居中 */
-            align-items: center;
 
             /* 伸缩盒模型相关属性-end */
         }
+
 
         .inner {
             width: 200px;
@@ -32,11 +25,28 @@
             background-color: skyblue;
             border: 1px solid black;
         }
+
+        .inner1 {
+            /* 使用flex-grow决定flex容器中的flex项目如何分配剩余空间，默认值是0 */
+            flex-grow: 1;
+        }
+
+        .inner2 {
+            /* 使用flex-grow决定flex容器中的flex项目如何分配剩余空间，默认值是0 */
+            flex-grow: 2;
+        }
+
+        .inner3 {
+            /* 使用flex-grow决定flex容器中的flex项目如何分配剩余空间，默认值是0 */
+            flex-grow: 3;
+        }
     </style>
 </head>
 <body>
     <div class="outer">
-        <div class="inner"></div>
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+        <div class="inner inner3"></div>
     </div>
 </body>
 </html>

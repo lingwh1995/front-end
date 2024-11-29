@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>09_伸缩盒模型_基准元素_02_不使用基准元素设置伸缩容器高度</title>
+    <title>09_伸缩盒模型_基准元素_04_使用基准元素(覆盖)设置伸缩容器高度(主轴上的伸缩项目的基准尺寸大小)</title>
     <style>
         .outer {
             width: 800px;
@@ -14,7 +14,14 @@
             
             /* 将该元素变成了伸缩容器(开启了flex布局) */
             display: flex;
+
+            /* 调整主轴方向为垂直方向 */
+            /* column:垂直方向从上往下 */
+            flex-direction: column;
+
+            /* 伸缩盒模型相关属性-end */
         }
+
 
         .inner {
             width: 200px;
@@ -24,8 +31,8 @@
         }
 
         .inner2 {
-            /* 不使用基准元素设置伸缩容器高度 */
-            height: 500px;
+            /* 使用基准元素设置(覆盖)伸缩容器高度，默认值是 auto  */
+            flex-basis: 500px;
         }
     </style>
 </head>

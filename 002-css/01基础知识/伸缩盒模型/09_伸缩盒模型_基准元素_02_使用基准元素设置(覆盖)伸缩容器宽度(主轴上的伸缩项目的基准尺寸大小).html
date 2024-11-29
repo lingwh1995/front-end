@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>09_伸缩盒模型_基准元素_03_不使用基准元素设置伸缩容器宽度</title>
+    <title>09_伸缩盒模型_基准元素_02_使用基准元素设置(覆盖)伸缩容器宽度(主轴上的伸缩项目的基准尺寸大小)</title>
     <style>
         .outer {
             width: 800px;
@@ -18,6 +18,8 @@
             /* 调整主轴方向为水平方向 */
             /* row:水平方向从左往右(默认方向) */
             flex-direction: row;
+
+            /* 伸缩盒模型相关属性-end */
         }
 
         .inner {
@@ -28,7 +30,7 @@
         }
 
         .inner2 {
-            /* 使用基准元素设置伸缩容器宽度 */
+            /* 使用基准元素设置(覆盖)伸缩容器宽度，默认值是 auto */
             flex-basis: 500px;
         }
     </style>

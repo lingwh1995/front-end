@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>09_伸缩盒模型_基准元素_04_使用基准元素设置伸缩容器高度</title>
+    <title>10_伸缩盒模型_伸缩项目_缩_1</title>
     <style>
         .outer {
-            width: 800px;
+            width: 300px;
             height: 800px;
             background-color: #888;
 
@@ -15,9 +15,8 @@
             /* 将该元素变成了伸缩容器(开启了flex布局) */
             display: flex;
 
-            /* 调整主轴方向为垂直方向 */
-            /* column:垂直方向从上往下 */
-            flex-direction: column;
+
+            /* 伸缩盒模型相关属性-end */
         }
 
 
@@ -26,19 +25,25 @@
             height: 200px;
             background-color: skyblue;
             border: 1px solid black;
+
+            /* 使用flex-shrink决定flex容器中的flex项目如何分配压缩空间，默认值是1 */
+            flex-shrink: 1;
         }
 
         .inner2 {
-            /* 使用基准元素设置伸缩容器高度 */
-            flex-basis: 500px;
+            width: 300px;
+        }
+
+        .inner3 {
+            width: 200px;
         }
     </style>
 </head>
 <body>
     <div class="outer">
-        <div class="inner"></div>
+        <div class="inner inner1"></div>
         <div class="inner inner2"></div>
-        <div class="inner"></div>
+        <div class="inner inner3"></div>
     </div>
 </body>
 </html>
