@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10_伸缩盒模型_伸缩项目_伸_4</title>
+    <title>12_伸缩盒模型_伸缩项目排序</title>
     <style>
         .outer {
-            width: 1200px;
+            width: 800px;
             height: 800px;
             background-color: #888;
 
@@ -14,7 +14,6 @@
             
             /* 将该元素变成了伸缩容器(开启了flex布局) */
             display: flex;
-
 
 
             /* 伸缩盒模型相关属性-end */
@@ -26,14 +25,22 @@
             height: 200px;
             background-color: skyblue;
             border: 1px solid black;
+            /* 使用order属性为伸缩项目排序，默认值是0 */
+            order: 0;
+        }
 
-            /* 使用flex-grow决定flex容器中的flex项目如何分配剩余空间，默认值是0 */
-            flex-grow: 1;
+        .inner1 {
+            order: 1
         }
 
         .inner2 {
-            width: 300px;
+            order: 3
         }
+
+        .inner3 {
+            order: 2
+        }
+
     </style>
 </head>
 <body>
