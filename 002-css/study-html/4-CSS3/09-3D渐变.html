@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>09-3D渐变</title>
+    <style>
+        .outer {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+        } 
+        .inner {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            transform: rotateX(50deg);
+        }
+        .outer2 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+             /* 修改透视点位置 */
+             perspective-origin: 102px 102px;
+        } 
+        .inner3 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            transform: rotateX(50deg);
+        }
+        /* 3D位移 */
+        .outer3 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+             /* 修改透视点位置 */
+             perspective-origin: 102px 102px;
+        } 
+        .inner3 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            /* 只能写像素值 */
+            /* transform: translateZ(50px); */
+
+            /* translate3d必须同时3个值 */
+            transform: translate3d(50px,50px,100px);
+        }
+        /* 3D旋转 */
+        .outer4 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 200px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+             /* 修改透视点位置 */
+             perspective-origin: 102px 102px;
+        } 
+        .inner4 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            /* transform: rotateX(45deg); */
+            /* transform: rotateY(45deg); */
+            /* 写4个值 */
+            transform: rotate3d(1,1,1,30deg)
+        }
+        /* 3D缩放 */
+        .outer5 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 200px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+             /* 修改透视点位置 */
+             perspective-origin: 400px 102px;
+        } 
+        .inner5 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            /* transform: scaleZ(2) rotateY(60deg); */
+            transform: scale3D(1.5,1.5,1.5) rotateY(60deg);
+        }
+        /* 3D多重变换 */
+        .outer6 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 200px;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 */
+            perspective: 500px;
+             /* 修改透视点位置 */
+             perspective-origin: 400px 102px;
+        } 
+        .inner6 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            transform-origin: 50px;
+            transform: scalex(1.5) rotateX(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+    <div class="outer2">
+        <div class="inner2">你好啊</div>
+    </div>
+    <div class="outer3">
+        <div class="inner3">你好啊</div>
+    </div>
+    <div class="outer4">
+        <div class="inner4">你好啊</div>
+    </div>
+    <div class="outer5">
+        <div class="inner5">你好啊</div>
+    </div>
+    <div class="outer6">
+        <div class="inner6">你好啊</div>
+    </div>
+    <div style="height: 2000px;"></div>
+</body>
+</html>

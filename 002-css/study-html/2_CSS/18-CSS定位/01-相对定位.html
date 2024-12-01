@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位</title>
+   <style>
+    .outer {
+        height: 600px;
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+    }
+    .box {
+        height: 150px;
+        width: 150px;
+       
+    }
+    .box1 {
+        background-color: blue;
+        
+    }
+    .box2 {
+        /* 应用场景：对元素微调，不脱离文档流；配合绝对定位 */
+        background-color: red;
+        position: relative;
+        left: 100px;
+    }
+    .box3 {
+        background-color: yellow;
+    }
+   </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+</body>
+</html>

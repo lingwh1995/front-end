@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位</title>
+   <style>
+    .outer {
+        height: 600px;
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+        position: relative;
+    }
+    .box {
+        height: 150px;
+        width: 150px;
+        font-size: 20px;
+       
+    }
+    .box1 {
+        background-color: blue;
+    }
+    .box2 {
+        background-color: red;
+        position: relative;
+        top: -100px;
+        left: 50px;
+        z-index: 1;
+    }
+    .box3 {
+        background-color: yellow;
+        position: absolute;
+        top: 110px;
+        left: 110px;
+        z-index: 2;
+    }
+    .box4 {
+        background-color: rgb(76, 20, 189);
+        position: fixed;
+        top: 170px;
+        left: 170px;
+        z-index: 3;
+    }
+   </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+    </div>
+</body>
+</html>

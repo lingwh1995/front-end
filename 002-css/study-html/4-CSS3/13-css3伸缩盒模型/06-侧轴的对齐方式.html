@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>06-侧的对齐方式-一行的情况</title>
+    <style>
+        .outer {
+            height: 600px;
+            width: 1000px;
+            background-color: rgb(209, 211, 211);
+            /* 将该元素变为伸缩容器 */
+            display: flex;
+            flex-wrap: wrap;
+
+            /* 侧轴的对齐方式:起始位置 */
+            align-items: flex-start;
+
+            /* 侧轴的对齐方式:结束位置 */
+            /* align-items: flex-end; */
+
+            /* 侧轴的对齐方式:中间位置 */
+            /* align-items: center; */
+
+            /* 侧轴的对齐方式:基线位置对齐（几乎不用） */
+            /* align-items: baseline; */
+
+            /* 侧轴的对齐方式:拉伸到整个父容器，前提是项目不能给高度（默认） */
+            /* align-items: stretch; */
+            
+        }
+        .inner {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(11, 179, 236);
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        .inner2 {
+            height: 300px;
+        }
+        .inner3 {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+    </div>
+</body>
+</html>

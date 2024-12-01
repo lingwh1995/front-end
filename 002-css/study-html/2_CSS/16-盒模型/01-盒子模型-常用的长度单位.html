@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>01-盒子模型-常用的长度单位</title>
+    <style>
+        #d1 {
+            /* 第一种长度单位,px(像素) */
+            width: 200px;
+            height:200px;
+            font-size: 40px;
+            background-color: skyblue;
+        }
+        #d2 {
+            /* 第二种长度单位,em（相对于当前元素的倍数） */
+            width: 5em;
+            height:5em;
+            font-size: 40px;
+            background-color:silver;
+        }
+        #d3 {
+            /* 第三种长度单位,rem（相对于根元素的倍数） */
+            width: 10rem;
+            height:10rem;
+            font-size: 2rem;
+            background-color: greenyellow;
+        }
+        #d4 {
+            width: 400px;
+            height:400px;
+            font-size:20px;
+            background-color: gray;
+        }
+        .inside {
+            /* 第四种长度单位,%（相对于其父元素的倍数） */
+            width: 50%;
+            height:50%;
+            font-size: 100%;
+            background-color: salmon;
+        }
+        .test {
+            text-indent: 2em;
+            font-size: 40px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">1</div>
+    <div id="d2">2</div>
+    <div id="d3">3</div>
+    <div id="d4">
+        <div class="inside">
+        6
+        </div>
+    </div>
+    <div class="test">好爱好说服力哈酸辣粉哈上开间</div>
+</body>
+</html> 

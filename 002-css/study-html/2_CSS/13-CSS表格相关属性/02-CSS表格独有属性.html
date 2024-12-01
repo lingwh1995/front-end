@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS表格相关属性</title>
+    <style>
+        table {
+            border: 1px solid #000;
+            width: 500px;
+            /* 控住列宽 */
+            table-layout: fixed;
+            /* 控制单元格间距（生效的前提是不能合并边框） */
+            border-spacing: 1px;
+            /* 合并相邻单元格的边框 */
+            border-collapse: collapse;
+            /* 隐藏没有内容的单元格 */
+            empty-cells: hide;
+            /* 设置表格标题的位置 */
+            caption-side: top;
+        }
+        td,th {
+        border: 2px skyblue solid;
+        }
+        .ge {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th class="ge">序号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>政治面貌</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+                <td>男</td>
+                <td>14</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>萨芬</td>
+                <td>女</td>
+                <td>18</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>男</td>
+                <td>17</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>奥堤</td>
+                <td>男</td>
+                <td>18</td>
+                <td>党员</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>王五</td>
+                <td>男</td>
+                <td>20</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>卡乐</td>
+                <td>男</td>
+                <td>21</td>
+                <td>团员</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>合计:6人</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

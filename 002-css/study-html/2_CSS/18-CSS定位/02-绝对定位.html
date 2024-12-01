@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>绝对定位</title>
+   <style>
+    .outer {
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+        position: relative;
+    }
+    .box {
+        height: 150px;
+        width: 150px;
+       
+    }
+    .box1 {
+        background-color: blue;
+        
+    }
+    .box2 {
+        background-color: red;
+        position: absolute;
+        top: 160px;
+        left: 10px;
+        
+        /* 绝对定位与浮动不能共存 */
+        /* 绝对定位元素默认宽高可以由内容撑开，也可以设置宽高（不管该是不是块元素，行内元素也可以） */
+        /* float: right; */
+    }
+    .outer:hover .box2 {
+        left: 150px;
+    }
+    .box3 {
+        background-color: yellow;
+    }
+   </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+</body>
+</html>

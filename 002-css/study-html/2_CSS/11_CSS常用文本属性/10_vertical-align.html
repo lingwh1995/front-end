@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>10_vertical-align</title>
+    <style>
+       div {
+        font-size: 100px;
+        height: 300px;
+        background-color: rgba(19, 172, 189, 0.453);
+       }
+       span {
+        font-size: 40px;
+        background-color: yellow;
+        vertical-align: middle;
+       }
+       img {
+        height: 250px;
+        vertical-align:middle;
+       }
+       .san {
+        vertical-align: middle;
+       }
+    </style>
+</head>
+<body>
+    <div>甲方和三等偶分好坏发地X
+        <span>x前端</span>
+    </div>
+    <hr>
+    <div>甲方和三等偶分好坏发地X
+        <img src="../../资料/图片/你瞅啥.jpg" alt="我的自拍">
+    </div>
+    <table border="1" cellspacing="0">
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr height="100px">
+                    <td class="san">张三</td>
+                    <td>男</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>李四</td>
+                    <td>女</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>王五</td>
+                    <td>男</td>
+                    <td>24</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+    </table>
+</body>
+</html>

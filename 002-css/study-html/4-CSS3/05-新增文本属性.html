@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>05-新增文本属性</title>
+    <style>
+        .box1 {
+            font-size: 80px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 20px black;
+        }
+        .box2 {
+            height: 400px;
+            width: 400px;
+            border: 1px solid black;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .box3 {
+            height: 400px;
+            width: 400px;
+            border: 1px solid black;
+            font-size: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+        .box3 li {
+            margin-bottom: 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .box4 {
+            font-size: 80px;
+            text-decoration: overline dashed red;
+        }
+        .box5 {
+            font-size: 80px;
+            -webkit-text-stroke: 3px red;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- 文本阴影 -->
+    <div class="box1">你好啊</div>
+    <!-- 文本换行 -->
+    <div class="box2">
+        山回路转不见君山回路转不见君
+        雪上空留马行处
+        山回路转不见君
+        雪上空留马行处
+        山回路转不见君
+        雪上空留马行处
+    </div>
+    <!-- 文本溢出 -->
+    <ul class="box3">
+        <li>开始觉得是解放军富士康流动快速的</li>
+        <li>案发生纠纷静安寺饭卡刷卡积分Kafka时间付款啦奥斯卡交罚款 啊书法大赛</li>
+        <li> 啊分厘卡即使方式打开房门但凡是结合公司是开发经理副经理会计分录就案说法实打实打算打啊发达发达是多少</li>
+        <li>发觉两个哈哈刮风还是激活方法和虚拟方式安抚酒啊后发附件三反复结案报告副书记按水库大坝九点八四八九分节哀顺便发生部分哈比哈阿坝师范八号三百</li>
+    </ul>
+    <!-- 文本修饰 -->
+    <h1 class="box4">你好啊,偶是个好事都荒废时间</h1>
+    <!-- 文本描边 -->
+    <h1 class="box5">案发后四安徽发is和碘伏看奥核酸核算发挥速回速度</h1>
+</body>
+</html>

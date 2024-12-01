@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子外边距注意事项</title>
+    <style>
+        /* 第一个注意点，子元素的margin是参考父元素的content来计算的 */
+        /* .d1 {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+            padding: 50px;
+        }
+        .d2 {
+            width: 150px;
+            height: 150px;
+            background-color: black;
+            padding: 10px;
+        } */
+
+        /* 第二注意点：margin上、左会影响自身位置，margin下、右影响兄弟元素位置 */
+        /* div {
+            width: 400px;
+            height:400px;
+        }
+        .d3 {
+            background-color: brown;
+        }
+        .d4 {
+            background-color: yellow;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .d5 {
+            background-color: greenyellow;
+        } */
+        
+        /* 第三注意点对于行内元素，左右margin是可以设置的，上下margin设置是无效的 */
+        /* div {
+            width: 400px;
+            height:400px;
+            background-color: aqua;
+            margin: 50px;
+        }
+        img {
+            margin: 50px;
+        }
+        #g1 {
+            background-color: forestgreen;
+        }
+        #g2 {
+            background-color: blueviolet;
+            margin-left: 36px;
+            margin-right: 40px;
+        }
+        #g3 {
+            background-color:rgb(178, 138, 45);
+        } */
+
+        /* 第四个注意点五：margin的值可以设置auto，实现水平居中 */
+        /* div {
+            background-color: cadetblue;
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+        } */
+
+        /* 第五个注意点：margin的值可以为负值 */
+        #q3 {
+            background-color: black;
+            width: 300px;
+            height: 300px;
+
+        }
+        .das {
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+            margin-top: -150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="d1">
+        <div class="d2">你好啊</div>
+    </div> -->
+    <!-- <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div> -->
+
+    <!-- <div>啊哈附属复核撒娇发</div>
+    <hr>
+    <img src="../../资料/图片/悟空.jpg" alt="悟空">
+    <hr>
+    <span id="g1">沙发上交罚款</span>
+    <span id="g2">as发您了看法</span>
+    <span id="g3">爱上噶几是</span> -->
+
+    <!-- <div>你好啊</div> -->
+
+    <div id="q3">案发哈市就很烦</div>
+    <div class="das">什么 阿Sa</div>
+</body>
+</html>

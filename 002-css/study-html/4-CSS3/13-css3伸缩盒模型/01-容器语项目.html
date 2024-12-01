@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>容器与项目</title>
+    <style>
+        .outer {
+            height: 600px;
+            width: 1000px;
+            background-color: aqua;
+            /* 将该元素变为伸缩容器 */
+            display: flex;
+        }
+        .inner {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+</body>
+</html>

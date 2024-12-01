@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>06-CSS定位可以越过padding</title>
+    <style>
+        .outer {
+            width: 800px;
+            height: 600px;
+            background-color: aqua;
+            padding: 10px;
+            position: relative;
+        }
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

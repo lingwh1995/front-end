@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>margin塌陷问题</title>
+    <style>
+        .in1 {
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+
+            /* 第一种解决方案，不推荐 */
+            /* border: 1px solid red; */
+
+            /* 第二种解决方案，不推荐 */
+            /* padding: 1px; */
+
+            /*  */
+            overflow: hidden;
+
+        }
+        .ot1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 下面这行代码设计margin塌陷问题 */
+            margin-top: 50px;
+        }
+        .ot2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            /* 下面这行代码设计margin塌陷问题 */
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="in1">
+        <div class="ot1">花非花</div>
+        <div class="ot2">雾非雾</div>
+    </div>
+</body>
+</html>

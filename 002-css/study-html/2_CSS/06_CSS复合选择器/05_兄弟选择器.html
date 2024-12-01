@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟选择器</title>
+    <style>
+        /* 选中div后紧紧相邻的兄弟元素，往下找，不会往上找 */
+        /* div+p {
+            color: red;
+        } */
+        /* 选中div后所有的兄弟元素，往下找，不会往上找 */
+        div~p {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div>尚硅谷</div>
+    <p>前端</p>
+    <p>后端</p>
+    <p>大数据</p>
+</body> 
+</html>

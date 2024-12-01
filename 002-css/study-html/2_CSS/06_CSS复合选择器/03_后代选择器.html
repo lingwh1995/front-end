@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>后代选择器</title>
+    <style>
+       ul li {
+        color: brown;
+       } 
+       ol li {
+        color: blue;
+       }
+       ul li a {
+        color: yellow;
+       }
+       ol li a {
+        color: aqua;
+       }
+       .subject li {
+        color: aquamarine;
+       }
+    </style>
+</head>
+<body>
+  <ul>
+    <li>抽烟</li>
+    <li>喝酒</li>
+    <li>
+        <a href="#">烫头</a>
+    </li>
+   </ul> 
+    <hr>
+    <ol>
+        <li>张三</li>
+        <li>李四</li>
+        <li>
+            <a href="#">王五</a>
+        </li>
+    </ol>
+    <hr>
+    <ol class="subject">
+        <li>前端</li>
+        <li>后端</li>
+        <li>大数据</li>
+    </ol>
+</body> 
+</html>

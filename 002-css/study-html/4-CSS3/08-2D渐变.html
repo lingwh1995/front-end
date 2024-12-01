@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>08-2D渐变</title>
+    <style>
+        /* 位移 */
+        .outer {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(124, 124, 234);
+            /* 位移translate */
+            /* transform: translateX(50px); */
+            /* transform: translateY(50px); */
+            /* transform: translate(50px,50px); */
+        }
+        .outer2 {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+        .inner2 {
+            height: 100px;
+            width: 100px;
+            background-color: rgb(124, 234, 133);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        /* 缩放 */
+        .outer3 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner3 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(160, 118, 19);
+            transform: scaleX(50%);
+            transform: scaleY(50%);
+            transform: scale(0.8);
+        }
+        /* 旋转 */
+        .outer4 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner4 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(160, 118, 19);
+            transform: rotateZ(30deg);
+            transform: rotate(30deg);
+        }
+        /* 扭曲 */
+        .outer5 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner5 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(160, 118, 19);
+            /* transform: skewX(80deg); */
+            /* transform: skewY(80deg); */
+            transform: skew(30deg,30deg);
+        }
+        /* 多重变换 */
+        .outer6 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner6 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(160, 118, 19);
+            /* 一般把旋转放在最后，因为旋转改变坐标系 */
+            transform: translate(100px,100px) scale(0.5) rotateZ(30deg);
+        }
+        /* 变换原点 */
+        .outer7 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner7 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(160, 118, 19);
+            /* 通过关键词调整旋转原点 */
+            /* transform-origin: left bottom; */
+
+            /* 通过像素调整旋转原点 */
+            /* transform-origin: 50px 50px; */
+
+            /* 通过百分比调整旋转原点 */
+            /* transform-origin: 50% 50%; */
+
+            /* 一个值代表该方向(数值默认X方向），另外方向默认取50% */
+            /* transform-origin: 50px/left; */
+
+            /* 变换原点对位移没有影响 */
+
+            /* 变换原点对缩放有影响 */
+            
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+    <div class="outer2">
+        <div class="inner2">你好啊</div>
+    </div>
+    <div class="outer3">
+        <div class="inner3">你好啊</div>
+    </div>
+    <div class="outer4">
+        <div class="inner4">你好啊</div>
+    </div>
+    <div class="outer5">
+        <div class="inner5">你好啊</div>
+    </div>
+    <div class="outer6">
+        <div class="inner6">你好啊</div>
+    </div>
+    <div class="outer7">
+        <div class="inner7">你好啊</div>
+    </div>
+    <div style="height: 2000px;"></div>
+</body>
+</html>

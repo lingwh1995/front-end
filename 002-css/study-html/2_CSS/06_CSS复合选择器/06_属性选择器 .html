@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟选择器</title>
+    <style>
+        /* 第一种写法：选择具有特定属性的元素 */
+        /* [title] {
+            color: blue;
+        }
+        /* 第二种写法:选择特定元素并且加上其属性值 */
+        /* [title="mao"] {
+            color: blueviolet;
+        } */
+        /* 第三种写法：选择特定属性并且属性值以X开头 */
+        /* [title^="b"] {
+            color: red;
+        } */
+        /* 第四种写法：选择特定属性并且属性值以X结尾头 */
+        /* [title&="t"] {
+            color: red;
+        } */  
+        /* 第无种写法：选择特定属性并且属性值包含X的元素 */
+        /* [title*="a"] {
+            color: red;
+        } */ 
+    </style>
+</head>
+<body>
+    <div title="maot">尚硅谷</div>
+    <p title="maot">前端</p>
+    <p title="bao">后端</p>
+    <p title="bao">大数据</p>
+</body> 
+</html>

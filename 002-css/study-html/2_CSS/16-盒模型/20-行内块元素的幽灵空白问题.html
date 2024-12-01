@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>20-行内块元素的幽灵空白问题</title>
+    <style>
+        div {
+            background-color: grey;
+            /* font-size: 0px; */
+        }
+        img {
+            /* vertical-align: bottom; */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../../资料/图片/喜羊羊.jpg" alt="喜羊羊">
+        <span>产生原因是行内块与文本基线对齐</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>07-CSS地位的特性</title>
+    <style>
+        .outer {
+            height: 400px;
+            width:800px;
+            background-color: blanchedalmond;
+            position: relative;
+        }
+        .inner {
+            background-color: blue;
+            width: 400px;
+            height: 100px;
+            font-size: 20px;
+            position: absolute;
+            /* 定位居中 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+
+            /* 方案二 */
+            /* left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -50px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+</body>
+</html>
