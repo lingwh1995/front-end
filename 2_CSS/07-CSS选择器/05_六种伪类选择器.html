@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六种伪类选择器</title>
+    <style type="text/css">
+        /* 
+            高级选择器-伪类选择器
+                1. 动态交互伪类选择器
+                    1.1. link选中的是没有访问过的a元素(原始状态)
+                    1.2. visited选中的是访问过的a元素(点击之后)
+                    1.3. hover选中的是鼠标悬浮状态的a元素(悬停状态)
+                    1.4. active选中的是鼠标悬浮状态的a元素(点击)
+                2. 结构伪类选择器
+                    2.1. 结构伪类选择器-基础
+                        2.1.1. :first-child 所有兄弟元素中第一个元素
+                        2.1.2. :last-child 所有兄弟元素中最后一个元素
+                        2.1.3. :nth-child(n) 所有兄弟元素中第 n 个元素
+                        2.1.4. :first-of-type 所有同类型兄弟元素中第一个元素
+                        2.1.5. :last-of-type 所有同类型兄弟元素中最后一个元素
+                        2.1.6. :nth-of-type(n) 所有同类型兄弟元素中第 n 个元素
+                    2.2. 结构伪类选择器-高级    
+                        2.2.1. 结构伪类选择器练习 :nth-child(-n+3) 所有兄弟元素中前3个元素
+                        2.2.2. 结构伪类选择器练习 :nth-child(n+3) 所有兄弟元素中最后两个元素
+                        2.2.3. 结构伪类选择器练习 :nth-child(2n+1) 所有兄弟元素中奇数元素-方式一
+                        2.2.4. 结构伪类选择器练习 :nth-child(2n) 所有兄弟元素中偶数数元素-方式一
+                        2.2.5. 结构伪类选择器练习 :nth-child(odd) 所有兄弟元素中奇数元素-方式二
+                        2.2.6. 结构伪类选择器练习 :nth-child(even) 所有兄弟元素中偶数元素-方式二
+                        2.2.7. 结构伪类选择器练习 :nth-child(0) 所有兄弟元素都不选中
+                        2.2.8. 结构伪类选择器练习 :nth-child(n) 所有兄弟元素都选中
+                        以下选择器仅做补充:
+                            :nth-last-child(n) 所有兄弟元素中的倒数第 n 个
+                            :nth-last-of-type(n) 所有同类型兄弟元素中的 倒数第n个
+                            :only-child 选择没有兄弟的元素（独生子女）
+                            :only-of-type 选择没有同类型兄弟的元素
+                            :root 根元素
+                            :empty 内容为空元素（空格也算内容）
+
+                3. 否定伪类选择器(排除满足括号中条件的元素)
+                    p:not(.dog)
+                4. UI伪类选择器
+                    4.1. :checked 被选中的复选框或单选按钮
+                    4.2. :enable 可用的表单元素（没有 disabled 属性）--  暂时没有看出来效果
+                    4.3. :disabled 不可用的表单元素（有 disabled 属性）
+                5. 目标伪类
+                6. 语言伪类    
+        */
+
+        /* 1. 伪类选择器-动态交互伪类选择器 */
+        /* 1.1. link选中的是没有访问过的a元素 */
+        .pseudo-classes a:link {
+            color: blue;
+            font-size: 30px;
+        }
+
+        /* 1.2. visited选中的是访问过的a元素 */
+        .pseudo-classes a:visited {
+            color: green;
+            font-size: 30px;
+        }
+
+        /* 1.3. hover选中的是鼠标悬浮状态的a元素 */
+        .pseudo-classes a:hover {
+            color: red;
+            font-size: 30px;
+        }
+
+        /* 1.4. 伪类选择器-active选中的是鼠标悬浮状态的a元素 */
+        .pseudo-classes a:active {
+            color: gold;
+            font-size: 30px;
+        }
+
+
+        /* 2. 伪类选择器-结构伪类选择器 */
+        /* 2.1. 伪类选择器-结构伪类选择器-基础 */
+        /* 2.1.1. :first-child 所有兄弟元素中第一个元素 */
+        .pseudo-classes>p:first-child {
+            color: blue;
+            font-size: 30px;
+        }
+        
+        /* 2.1.2. :last-child 所有兄弟元素中最后一个元素 */
+        .pseudo-classes>p:last-child {
+            color: red;
+            font-size: 30px;
+        }
+        
+        /* 2.1.3. :nth-child(n) 所有兄弟元素中第 n 个元素 */
+        .pseudo-classes>p:nth-child(3) {
+            color: green;
+            font-size: 30px;
+        }
+        
+        /* 2.1.4. :first-of-type 所有同类型兄弟元素中第一个元素 */
+        .pseudo-classes>div:first-of-type {
+            color: blue;
+            font-size: 30px;
+        }
+        
+        /* 2.1.5. :last-of-type 所有同类型兄弟元素中最后一个元素 */
+        .pseudo-classes>div:last-of-type {
+            color: red;
+            font-size: 30px;
+        }
+        
+        /* 2.1.6. :nth-of-type(n) 所有同类型兄弟元素中第 n 个元素 */
+        .pseudo-classes>div:nth-of-type(3) {
+            color: green;
+            font-size: 30px;
+        }
+        
+        /* 2.2. 伪类选择器-结构伪类选择器-高级 */
+        /* 2.2.1. 结构伪类选择器练习 :nth-child(-n+2) 所有兄弟元素中前两个元素 */
+        .pseudo-classes>h1:nth-child(-n+2) {
+            color: green;
+            font-size: 30px;
+        }
+
+        /* 2.2.2. 结构伪类选择器练习 :nth-child(n+2) 所有兄弟元素中最后两个元素 */
+        .pseudo-classes>h1:nth-child(n+4) {
+            color: red;
+            font-size: 30px;
+        }
+        
+        /* 2.2.3. 结构伪类选择器练习 :nth-child(2n+1) 所有兄弟元素中奇数元素-方式一 */
+        .pseudo-classes>h2:nth-child(2n+1) {
+            color: blue;
+            font-size: 30px;
+        }
+
+        /* 2.2.4. 结构伪类选择器练习 :nth-child(2n) 所有兄弟元素中偶数数元素-方式一 */
+        .pseudo-classes>h2:nth-child(2n) {
+            color: green;
+            font-size: 30px;
+        }
+        
+        /* 2.2.5. 结构伪类选择器练习 :nth-child(odd) 所有兄弟元素中奇数元素-方式二 */
+        .pseudo-classes>h3:nth-child(odd) {
+            color: gold;
+            font-size: 30px;
+        }
+
+        /* 2.2.6. 结构伪类选择器练习 :nth-child(even) 所有兄弟元素中偶数元素-方式二 */
+        .pseudo-classes>h3:nth-child(even) {
+            color: green;
+            font-size: 30px;
+        }
+
+        /* 2.2.7. 结构伪类选择器练习 :nth-child(0) 所有兄弟元素都不选中 */
+        .pseudo-classes>h4:nth-child(0) {
+            color: blue;
+            font-size: 30px;
+        }
+        
+        /* 2.2.8. 结构伪类选择器练习 :nth-child(n) 所有兄弟元素都选中 */
+        .pseudo-classes>h5:nth-child(n) {
+            color: blue;
+            font-size: 30px;
+        }
+
+
+        /* 3. 否定伪类选择器(排除满足括号中条件的元素) */
+        .reject-pseudo-classes>p:not(.dog) {
+            color: green;
+            font-size: 30px;
+        }
+
+        /* 4. UI伪类选择器 */
+        /* 4.1. :checked 被选中的复选框或单选按钮 */
+        div form input:checked {
+            width: 20px;
+            height: 20px;
+        }
+        /* 4.2. :enable 可用的表单元素（没有 disabled 属性） */
+        div form input:enable {
+            color: blue;
+            font-size: 30px;
+        }
+        /* 4.3. :disabled 不可用的表单元素（有 disabled 属性） */
+        div form input:disabled {
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>1. 动态伪类选择器</h2>
+    <div class="pseudo-classes">
+        <a href="https://www.baidu.com" target="_blank">点击访问百度</a><br/>
+        <a href="https://www.jd.com" target="_blank">点击访问京东</a>
+    </div>
+
+    <h2>2. 结构伪类选择器</h2>
+    
+    <h2>2.1. 结构伪类选择器-基础</h2>
+    <h2>child方式选择</h2>
+    <div class="pseudo-classes">
+        <p>hello world~</p>
+        <p>hello world~</p>
+        <p>hello world~</p>
+        <p>hello world~</p>
+        <p>hello world~</p>
+    </div>
+
+    <h2>type方式选择</h2>
+    <div class="pseudo-classes">
+        <div>hello world~</div>
+        <div>hello world~</div>
+        <div>hello world~</div>
+        <div>hello world~</div>
+        <div>hello world~</div>
+    </div>
+
+    <h2>2.2. 结构伪类选择器-高级</h2>
+    <h2>选中前两个和选中后两个</h2>
+    <div class="pseudo-classes">
+        <h1>hello world~</h1>
+        <h1>hello world~</h1>
+        <h1>hello world~</h1>
+        <h1>hello world~</h1>
+        <h1>hello world~</h1>
+    </div>
+
+    <h2>选中奇数个或选中偶数个-方式一</h2>
+    <div class="pseudo-classes">
+        <h2>hello world~</h2>
+        <h2>hello world~</h2>
+        <h2>hello world~</h2>
+        <h2>hello world~</h2>
+        <h2>hello world~</h2>
+    </div>
+
+    <h2>选中奇数个或选中偶数个-方式二</h2>
+    <div class="pseudo-classes">
+        <h3>hello world~</h3>
+        <h3>hello world~</h3>
+        <h3>hello world~</h3>
+        <h3>hello world~</h3>
+        <h3>hello world~</h3>
+    </div>
+
+    <h2>所有兄弟元素都不选中</h2>
+    <div class="pseudo-classes">
+        <h4>hello world~</h4>
+        <h4>hello world~</h4>
+        <h4>hello world~</h4>
+        <h4>hello world~</h4>
+        <h4>hello world~</h4>
+    </div>
+
+    <h2>所有兄弟元素都选中</h2>
+    <div class="pseudo-classes">
+        <h5>hello world~</h5>
+        <h5>hello world~</h5>
+        <h5>hello world~</h5>
+        <h5>hello world~</h5>
+        <h5>hello world~</h5>
+    </div>
+
+    <h2>3. 否定伪类选择器</h2>
+    <div class="reject-pseudo-classes">
+        <p>hello world~</p>
+        <p>hello world~</p>
+        <p class="dog">hello world~</p>
+        <p>hello world~</p>
+        <p>hello world~</p>
+    </div>
+
+    <h2>4. UI伪类选择器</h2>
+    <div>
+        <form>
+            账户：<input type="text" name="username" disabled value="admin"><br/>
+            密码：<input type="text" name="password"><br/>
+            运动：
+            <input type="checkbox" name="sport" value="basketball"/> 篮球
+            <input type="checkbox" name="sport" value="football"/> 足球
+            <input type="checkbox" name="sport" value="baseball "/> 棒球
+        </form>
+    </div>
+</body>
+</html>

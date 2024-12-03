@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css高内聚-使用css高内聚</title>
+    <style>
+        /* child样式直接嵌套写在parent样式中 */
+        .parent {
+            width: 1000px;
+            height: 500px;
+            background-color: skyblue;
+            display: flex;
+            justify-content: space-evenly;
+            .child {
+                width: 300px;
+                height: 200px;
+                background-color: green;
+                border: 1px solid red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">CHILD-1</div>
+        <div class="child">CHILD-2</div>
+        <div class="child">CHILD-3</div>
+    </div>
+</body>
+</html>

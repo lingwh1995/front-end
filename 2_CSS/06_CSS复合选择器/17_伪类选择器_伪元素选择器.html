@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器_伪元素选择器</title>
+    <style>
+        div::first-letter {
+            color: red;
+        }
+        div::first-line {
+            background-color: blue;
+        }
+        div::selection {
+            background-color: blueviolet;
+        }
+        input::placeholder {
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div>Lorem Ex odiodkfghdsfjhgsdhgoishgisdhgcshvbjkdsbhjfdhghdfghdlvnxcjkvndjbgjdsfhgjdfhgjdfhbj,sdnbcnbjkdhfbhdjbhjfdbhdjxncvjdksrgkdslbha;sja/,v/,b;dgjdvkldbjbsjkfbsjvdb</div>
+    <input type="text" placeholder="输入">
+</html>
