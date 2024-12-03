@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>14_伸缩盒模型_伸缩盒案例_3_多个伸缩项目在多行居中排列且最后一行实现左对齐-方式二</title>
+    <title>14_伸缩盒模型_伸缩盒案例_4_多个伸缩项目在多行居中排列且最后一行实现左对齐-方式三</title>
     <style>
         /*
-         * 方式二： 给最后一个伸缩项目设置 margin-right = 被补齐元素的宽度 * 2 (适用于知道最后一行要补齐几个元素的情况或行数和列数固定的情况)
+         * 方式三： 使用grid布局 (适用于不知道最后一行要补齐几个元素的情况或行数和列数都不固定的情况)
          *   第一步. 查看每一个伸缩项目的宽度是多少，这里是250px
-         *   第二步. 给最后一个伸缩项目设置宽度为 250px * 2 = 500px
+         *   第二步. 使用grid布局,设置 grid-template-columns: repeat(auto-fill, 100px); 即可实现最后一行左对齐
          */
         .outer {
-            width: 800px;
+            width: 1200px;
             height: 900px;
             background-color: gold;
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
             justify-content: space-evenly;
+            grid-template-columns: repeat(auto-fill, 200px);
         }
 
         .inner {
             width: 200px;
             height: 250px;
             background-color: blue;
-            border: 2px solid green;
-        }
-
-
-        .outer .inner:last-child {
-            margin-right: 500px;
+            border: 1px solid green;
         }
     </style>
 </head>
