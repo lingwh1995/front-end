@@ -15,8 +15,13 @@
                 a.选择器之间没有任何的连接符号
                 b.选择器可以是标签名称,也可以是id、class名称
         */
+        /* 直接使用交集选择器选中元素 */
         p.hello {
             color: green;
+        }
+        /* 选择器的子元素为交集选择器选中元素 */
+        div span.hello {
+            color: red;
         }
 
         /* 
@@ -38,8 +43,14 @@
 </head>
 <body>
     <h2>交集选择器</h2>
+    <h3>直接使用交集选择器选中元素</h3>
     <p class="hello">hello world~</p>
     <span class="hello">hello world~</span>
+    <h3>交集选择器作为子选择器选中元素</h3>
+    <div>
+        <span class="hello">hello world~</span>
+    </div>
+    
 
     <h2>并集选择器</h2>
     <div class="div">hello world~</p>
