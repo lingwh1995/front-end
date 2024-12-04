@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>CSS颜色第二种表示</title>
     <style>
-        /* 第二种表示:rgb或者rgba */
+        /* 
+         * 第二种表示:rgb或者rgba
+         * 1.rgb是24-bit图，rgba是32-bit图 
+         * 2.rgb->红、绿、蓝三通道，rgba->红、绿、蓝、Alpha(透明度，取值：0-255或0%-100%)四通道
+         */
         .color-1 {
             color: rgb(255,0,0);
         }
@@ -24,7 +28,9 @@
             color: rgb(0,0,0);
         }
         .color-7 {
-            color: rgba(185,24,105,55%);
+            /* color: rgba(255,0,0,10%); */
+            color: rgba(255,0,0,55%);
+            /* color: rgba(255,0,0,100%); */
         }
     </style>
 </head>
