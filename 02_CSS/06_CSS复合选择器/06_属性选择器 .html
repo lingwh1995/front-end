@@ -7,29 +7,29 @@
         /* 第一种写法：选择具有特定属性的元素 */
         /* [title] {
             color: blue;
-        }
-        /* 第二种写法:选择特定元素并且加上其属性值 */
-        /* [title="mao"] {
-            color: blueviolet;
         } */
-        /* 第三种写法：选择特定属性并且属性值以X开头 */
+        /* 第二种写法:选择特定元素并且加上其属性值 */
+        /* [title="course"] {
+            color: green;
+        } */
+        /* 第三种写法：选择特定属性并且属性值以xxx开头 */
         /* [title^="b"] {
             color: red;
         } */
-        /* 第四种写法：选择特定属性并且属性值以X结尾头 */
-        /* [title&="t"] {
+        /* 第四种写法：选择特定属性并且属性值以xxx结尾头 */
+        /* [title$="d"] {
             color: red;
-        } */  
-        /* 第无种写法：选择特定属性并且属性值包含X的元素 */
-        /* [title*="a"] {
-            color: red;
-        } */ 
+        }   */
+        /* 第无种写法：选择特定属性并且属性值包含xxx的元素 */
+        [title*="-"] {
+            color: blue;
+        } 
     </style>
 </head>
 <body>
-    <div title="maot">尚硅谷</div>
-    <p title="maot">前端</p>
-    <p title="bao">后端</p>
-    <p title="bao">大数据</p>
+    <div title="course">课程列表</div>
+    <p title="front-end">前端</p>
+    <p title="back-end">后端</p>
+    <p title="big-data">大数据</p>
 </body> 
 </html>
