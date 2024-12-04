@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>CSS表格相关属性</title>
     <style>
         table {
-            border: 1px solid #000;
-            width: 500px;
-            /* 控住列宽 */
-            table-layout: fixed;
-            /* 控制单元格间距（生效的前提是不能合并边框） */
-            border-spacing: 1px;
-            /* 合并相邻单元格的边框 */
-            border-collapse: collapse;
-            /* 隐藏没有内容的单元格 */
-            empty-cells: hide;
-            /* 设置表格标题的位置 */
-            caption-side: top;
+            /* 分开定义 */
+            /* border-width: 2px;
+            border-color: green;
+            border-style: solid; */
+
+            /* 使用border复合属性定义 */
+            border: 2px green solid;
         }
-        td,th {
-        border: 2px skyblue solid;
+
+        td,
+        th {
+            border: 2px skyblue solid;
         }
-        .ge {
-            height: 40px;
+
+        h2 {
+            border: 2px red solid;
+        }
+
+        span {
+            border: 2px indigo solid;
+
         }
     </style>
 </head>
+
 <body>
     <table>
         <caption>人员信息</caption>
         <thead>
             <tr>
-                <th class="ge">序号</th>
+                <th>序号</th>
                 <th>姓名</th>
                 <th>性别</th>
                 <th>年龄</th>
@@ -88,9 +93,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>合计:6人</td>
+                <td>合计:5人</td>
             </tr>
         </tfoot>
     </table>
+    <h2>陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</h2>
+    <span>陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</span>
 </body>
+
 </html>

@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>CSS表格相关属性</title>
     <style>
+        /* 特别注意：这里是用CSS控制表格的样式，如：border-spacing: 5px; 而不是使用表格属性控制表格样式，如cellSpacing="5px" */
         table {
-            /* border-width: 2px;
-            border-color: aqua;
-            border-style: solid;
-        } */
-        border: 2px skyblue solid;
+            border: 2px solid blue;
+            width: 500px;
+            /* 控制列宽 */
+            table-layout: fixed;
+            /* 控制单元格间距(生效的前提是不能合并边框) */
+            border-spacing: 5px;
+            /* 合并相邻单元格的边框 */
+            /* border-collapse: collapse; */
+            /* 隐藏没有内容的单元格(生效的前提是不能合并边框) */
+            empty-cells: hide;
+            /* 设置表格标题的位置，可选的值：top、bottom */
+            caption-side: top;
         }
-        td,th {
-        border: 2px skyblue solid;
-        }
-        h2 {
-        border: 2px red solid;
-        }
-        span {
-        border: 2px indigo solid;
 
+        td,
+        th {
+            border: 1px gold solid;
+        }
+
+        /* 单独设置单元格的高度或者宽度 */
+        .ge {
+            height: 40px;
+            width: 200px;
         }
     </style>
 </head>
+
 <body>
     <table>
         <caption>人员信息</caption>
         <thead>
             <tr>
-                <th>序号</th>
+                <th class="ge">序号</th>
                 <th>姓名</th>
                 <th>性别</th>
                 <th>年龄</th>
@@ -85,11 +96,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>合计:5人</td>
+                <td>合计:6人</td>
             </tr>
         </tfoot>
     </table>
-    <h2>asfohahfajfaj</h2>
-    <span>ajfhajfansf</span>
 </body>
+
 </html>
