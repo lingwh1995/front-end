@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS第三种长度单位</title>
+    <style>
+        /* 
+         *  第三种长度单位：em
+         *      1.如果当前元素设置了font-size属性，则相对于当前元素的font-size的倍数   
+         *      2.如果当前元素没有设置font-size，则相当于当前元素的父元素的font-size的倍数 
+         */
+        .element-size {
+            font-size: 16px;
+            /* 相当于20 * 16 = 320px */
+            width: 20em;
+            /* 相当于10 * 16 = 160px */
+            height: 10em;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-size">hello world~</div>
+</body>
+</html>

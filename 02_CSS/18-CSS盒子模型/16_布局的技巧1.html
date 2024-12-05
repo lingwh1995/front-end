@@ -2,28 +2,30 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>16-布局的技巧3</title>
+    <title>布局的技巧1</title>
     <style>
         #d1 {
             width: 400px;
             height: 400px;
             background-color: gray;
-            text-align: center;
-            line-height: 400px;
+            overflow: hidden;
         }
         #d2 {
+            width: 200px;
+            height: 100px;
             background-color: yellow;
-            font-size: 20px;
-            vertical-align: middle;
-        }
-        img {
-            vertical-align: middle;
+            padding: 5px;
+            border: 10px;
+            margin: 0 auto;
+            margin-top: 135px;
+            text-align: center;
+            line-height: 100px;
         }
     </style>
 </head>
 <body>
     <div id="d1">
-        <span id="d2">你好啊</span><img src="../../资料/图片/悟空.jpg" alt="悟空">
+        <div id="d2">inner</div>
     </div>
 </body>
 </html>
