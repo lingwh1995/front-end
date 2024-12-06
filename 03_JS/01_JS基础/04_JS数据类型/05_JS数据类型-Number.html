@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS数据类型-Number</title>
+  <script type="text/javascript">
+    /*  
+     *  Number类型用来表示整数和浮点数，最常用的功能就是用来表示10进制的整数和浮点数
+     *
+     *  Number类型深入了解
+     *    - JS中所有的数值都是Number类型，包括整数和浮点数（小数）
+     *    - JS中整数运算可以保证精度，浮点数运算不能保证精度，这一点和java是一样的
+     *    - JS中可以表示的数字的最大值：Number.MAX_VALUE，最小值：Number.MIN_VALUE
+     *    - 如果使用Number表示的数字超过了最大值，则会返回一个Infinity(正无穷)
+     *    - NaN是一个特殊的数字，表示not a Number
+     * 
+     *  Number类型数值转换
+     *    - Number()      将任意类型的数据转换为Number类型
+     *    - parseInt()    将字符串转换为Number类型(具体是转换为整型数据)
+     *    - parseFloat()  将字符串转换为Number类型(具体是转换为浮点类型数据)
+     */
+
+		 //数字123
+		 let a = 123;
+     console.log(typeof(a));
+		 //字符串123
+		 let b = "123";
+		 console.log(typeof(b));
+
+     console.log('Number.MAX_VALUE:' + Number.MAX_VALUE);
+     console.log('Number.MIN_VALUE:' + Number.MIN_VALUE);
+
+     /**
+      * 在JS中整数的运算基本可以保证精确
+      */
+		 let c = 1865789 + 7654321;
+     console.log(c);
+   
+     /**
+      * 在JS中浮点数的运算基本可以保证精确
+      */
+     let d = 0.1 + 0.2;
+     console.log(d);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

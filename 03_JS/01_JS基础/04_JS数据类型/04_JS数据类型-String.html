@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS数据类型-String</title>
+  <script type="text/javascript">
+    /**
+     *  String用于表示一个字符序列，即字符串,字符串需要使用''或者""括起来
+     *    
+     *  将其他的数据类型转换String
+     *   方式一
+     *     - 调用被转换数据类型的toString()方法
+     *     - 该方法不会影响到原变量，它会将转换的值返回
+     *     - 但是注释：null和undefined这两个值没有toString()方法，如果调用它们的方法，会报错
+     *   方式二
+     *     - 调用String()方法，并将被转换的数据作为参数传递给函数
+     *     - 使用String()函数做强制类型转换
+     *       对于Number和Boolean实际上就是调用的toString()方法
+     *       对于null和undefined,就不会调用toString()方法，它会将null直接转换为"null",将undefined直接转换为"undefined" 
+     *   方式三
+     *     - 拼接字符串
+     */
+
+    // 方式一: 使用toString()转换
+    // Number类型转换字符串
+    let a = 123;
+    a = a.toString();
+    console.log(typeof(a));
+
+    // Boolean类型转换字符串
+    let b = true
+    b = b.toString();
+    console.log(typeof(b));
+
+    // null类型 
+    // let c = null;
+    // c = c.toString();
+    // Uncaught TypeError: Cannot read property 'toString' of null
+
+    // undefined转换字符串
+    // let d = undefined;
+    // d = d .toString()
+    // 报错 03-强制类型装.html:47 Uncaught TypeError: Cannot read property 'toString' of undefined
+
+    // 方式二: String(e) 转换
+    let e = 123;
+    e = String(e);
+    console.log(typeof(e));
+
+    let f = null;
+    f = String(f);
+    console.log(typeof(f));
+    
+    let g = undefined;
+    g = String(g);
+    console.log(typeof(g));
+
+    // 方式三: String(a) 转换
+    let h = 123;
+    h = h + '';
+    console.log(typeof(h));
+
+    let i = null;
+    i = i + '';
+    console.log(typeof(i));
+    
+    let j = undefined;
+    j = j + '';
+    console.log(typeof(j));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
