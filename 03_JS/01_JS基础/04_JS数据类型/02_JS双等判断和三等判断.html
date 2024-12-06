@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS双等判断和三等判断</title>
+  <script type="text/javascript">
+    /**
+     *  == 和 === 区别
+     *    == 运算符在比较值之前会自动转换数据类型，允许不同类型的值进行比较。(字面量相等)
+     *    === 运算符进行严格相等比较，即比较值本身以及数据类型。如果两个值既相等又类型相同，则返回 true，否则返回 false。(严格相等)
+     */
+    console.log(1 == '1');
+    console.log(1 === '1');
+
+    console.log(NaN == NaN);
+    console.log(NaN === NaN);
+
+    console.log(null == undefined);
+    console.log(null === undefined);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
