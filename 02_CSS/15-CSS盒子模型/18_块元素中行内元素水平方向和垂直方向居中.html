@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>块元素中行内元素水平方向和垂直方向居中</title>
+    <style>
+        /*
+            块元素中行内元素水平方向和垂直方向居中
+                水平方向居中：父元素加上  text-align: center;
+                垂直方向居中：让父元素的line-height值等于父元素的height值
+        */
+        .parent {
+            width: 400px;
+            height: 400px;
+            background-color: green;
+            /* 处理子元素水平方向居中 */
+            text-align: center;
+            /* 处理子元素垂直方向居中 */
+            line-height: 400px;
+        }
+        .parent .child {
+            width: 200px;
+            height: 100px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h2>子元素为行内元素时水平方向和垂直方向居中</h2>
+    <div class="parent">
+        <span class="child">陈涉世家</span>
+        <span class="child">陈涉世家</span>
+    </div>
+</body>
+</html>
