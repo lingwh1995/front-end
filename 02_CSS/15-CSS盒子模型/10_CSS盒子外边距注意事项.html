@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS盒子外边距</title>
+    <style>
+        /* 第一个注意点，子元素的margin是参考父元素的content来计算的 */
+        .parent {
+            width: 400px;
+            height: 400px;
+            background-color: green;
+            padding: 50px;
+        }
+        .child {
+            width: 150px;
+            height: 150px;
+            background-color: gold;
+            padding: 10px;
+        }
+
+        /* 第二注意点：margin上、左会影响自身位置，margin下、右影响兄弟元素位置 */
+        div {
+            width: 400px;
+            height:400px;
+        }
+        .brother-1 {
+            background-color: brown;
+        }
+        .brother-2 {
+            background-color: yellow;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .brother-3 {
+            background-color: greenyellow;
+        }
+        
+        /* 第三注意点对于行内元素，左右margin是可以设置的，上下margin设置是无效的 */
+        .block {
+            width: 400px;
+            height:400px;
+            background-color: aqua;
+            margin: 50px;
+        }
+        .inline-block {
+            margin: 50px;
+        }
+        #inline-1 {
+            background-color: forestgreen;
+        }
+        #inline-2 {
+            background-color: blue;
+            margin-left: 36px;
+            margin-right: 40px;
+        }
+        #inline-3 {
+            background-color:orange;
+        }
+
+        /* 第四个注意点五：margin的值可以设置auto，实现水平居中 */
+        .center {
+            background-color: gray;
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+        }
+
+        /* 第五个注意点：margin的值可以为负值 */
+        .tea-1 {
+            background-color: gold;
+            width: 300px;
+            height: 300px;
+
+        }
+        .tea-2 {
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            margin-top: -150px;
+        }
+    </style>
+</head>
+<body>
+    <h2>第一个注意点，子元素的margin是参考父元素的content来计算的</h2>
+    <div class="parent">
+        <div class="child">陈胜者，阳城人也，字涉。</div>
+    </div>
+
+    <h2>第二注意点：margin上、左会影响自身位置，margin下、右影响兄弟元素位置</h2>
+    <div class="brother-1">陈胜者，阳城人也，字涉。</div>
+    <div class="brother-2">陈胜者，阳城人也，字涉。</div>
+    <div class="brother-3">陈胜者，阳城人也，字涉。</div>
+
+    <h2>第三注意点对于行内元素，左右margin是可以设置的，上下margin设置是无效的</h2>
+    <div class="block">陈胜者，阳城人也，字涉。</div>
+    <hr>
+    <img class="inline-block" src="../images/悟空.jpg" alt="悟空">
+    <hr>
+    <span class="inline-1">陈胜者，阳城人也，字涉。</span>
+    <span class="inline-2">陈胜者，阳城人也，字涉。</span>
+    <span class="inline-3">陈胜者，阳城人也，字涉。</span>
+
+    <h2>第四个注意点五：margin的值可以设置auto，实现水平居中</h2>
+    <div class="center">你好啊</div>
+
+    <h2>第五个注意点：margin的值可以为负值</h2>
+    <div class="tea-1">陈胜者，阳城人也，字涉。</div>
+    <div class="tea-2">陈胜者，阳城人也，字涉。</div>
+</body>
+</html>

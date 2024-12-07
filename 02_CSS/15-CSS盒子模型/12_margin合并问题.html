@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <title>margin合并问题</title>
     <style>
-        .in1 {
+        /*
+            margin合并问题：这个问题只存在于垂直方向上的兄弟元素之间，不存在于水平方向上的兄弟元素之间
+        */
+        .parent {
             width: 400px;
             height: 400px;
         }
-        .ot1 {
+        .child-1 {
             width: 100px;
             height: 100px;
             background-color: red;
             margin-bottom: 50px;
         }
-        .ot2 {
+        .child-2 {
             width: 100px;
             height: 100px;
-            background-color: yellow;
+            background-color: gold;
             margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="in1">
-        <div class="ot1">花非花</div>
-        <div class="ot2">雾非雾</div>
+    <div class="parent">
+        <div class="child-1">陈涉世家</div>
+        <div class="child-2">陈涉世家</div>
     </div>
 </body>
 </html>

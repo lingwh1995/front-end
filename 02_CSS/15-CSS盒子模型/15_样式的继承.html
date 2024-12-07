@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <title>样式的继承</title>
     <style>
-        #d1 {
-            background-color: aqua;
+        .parent {
+            background-color: green;
             height: 600px;
             padding: 50px;
         }
-        #d2 {
-            background-color: rgb(134, 27, 183);
+        .child {
+            background-color: gold;
             height: 300px;
             padding: 50px;
-            font-size: 40px;
+            font-size: 30px;
             color: yellow;
-            font-weight: bold;
         }
-        #d3 {
-            background-color: rgb(27, 183, 108);
+        .grandson {
+            background-color: red;
             height: 200px;
-            
         }
     </style>
 </head>
 <body>
-    <div id="d1">
-        <div id="d2">
-            <div id="d3">你好啊</div>
+    <div class="parent">
+        <div class="child">
+            <div class="grandson">陈胜者，阳城人也，字涉。</div>
         </div>
     </div>
 </body>
