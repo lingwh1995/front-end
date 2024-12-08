@@ -6,30 +6,28 @@
   <title>JS数据类型-Number</title>
   <script type="text/javascript">
     /*  
-     *  Number类型用来表示整数和浮点数，最常用的功能就是用来表示10进制的整数和浮点数
-     *
-     *  Number类型深入了解
-     *    - JS中所有的数值都是Number类型，包括整数和浮点数（小数）
-     *    - JS中整数运算可以保证精度，浮点数运算不能保证精度，这一点和java是一样的
-     *    - JS中可以表示的数字的最大值：Number.MAX_VALUE，最小值：Number.MIN_VALUE
-     *    - 如果使用Number表示的数字超过了最大值，则会返回一个Infinity(正无穷)
-     *    - NaN是一个特殊的数字，表示not a Number
-     * 
-     *  Number类型数值转换
-     *    - Number()      将任意类型的数据转换为Number类型
-     *        字符串 -> 数字
-     *        1、纯数字的字符串，则直接将其转换数字
-     *          2、如果字符串中有非数字的内容，则转换为NaN
-     *          3、如果字符串是一个空串或者是一个个空格的字符串，转换为0
-     *       布尔值->数字
-         *          true-》1
-         *          false-》0
-         *       null->数字 0
-         *       undefined -》 数字 NaN
-
-
-     *    - parseInt()    将字符串转换为Number类型(具体是转换为整型数据)
-     *    - parseFloat()  将字符串转换为Number类型(具体是转换为浮点类型数据)
+     *  1.Number类型介绍
+            Number类型用来表示整数和浮点数，最常用的功能就是用来表示10进制的整数和浮点数
+     *  2.Number类型补充
+     *    1.JS中所有的数值都是Number类型，包括整数和浮点数（小数）
+     *    2.JS中整数运算可以保证精度，浮点数运算不能保证精度，这一点和java是一样的
+     *    3.JS中可以表示的数字的最大值：Number.MAX_VALUE，最小值：Number.MIN_VALUE
+     *    4.如果使用Number表示的数字超过了最大值，则会返回一个Infinity(正无穷)
+     *    5.NaN是一个特殊的数字，表示not a Number
+     *  3.将其他类型数据转换为Number类型数据
+     *    1.调用Number()函数：将任意类型的数据转换为Number类型
+     *      字符串 -> 数字
+     *        1.纯数字的字符串，则直接将其转换数字
+     *        2.如果字符串中有非数字的内容，则转换为NaN
+     *        3.如果字符串是一个空串或者是一个个空格的字符串，转换为0
+     *      布尔值 -> 数字
+     *        true  -> 1
+     *        false -> 0
+     *      null或undefined -> 数字
+     *        null  -> 0
+     *        undefined -> 数字 NaN
+     *    2.parseInt()    将字符串转换为Number类型(具体是转换为整型数据)
+     *    3.parseFloat()  将字符串转换为Number类型(具体是转换为浮点类型数据)
      */
 
 		 //数字123
@@ -53,6 +51,32 @@
       */
      let d = 0.1 + 0.2;
      console.log(d);
+
+
+     //方式一：调用Number()函数将其他类型数据转换为Number类型
+     let e = '123'
+     e = Number(e)
+     console.log(typeof(e));
+
+        // a = false;
+        // a = Number(a) // 0
+
+        // a = null;
+        // a = Number(a) // 0
+
+        // a = undefined;
+        // a = Number(a) // NaN
+
+        // a = "132423sdpx";
+        // a = parseInt(a) // 132423
+
+        // a = "32749lj2.923px";
+        // a = parseFloat(a) // 32749
+
+        // a = 234.234;
+        // a = parseInt(a); // 234
+        // document.writeln(typeof a)
+        // document.writeln(a)
   </script>
 </head>
 <body>

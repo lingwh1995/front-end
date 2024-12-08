@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <title>CSS粘性定位</title>
     <style>
+        /*
+            1.设置粘性定位：
+                给元素设置 position:sticky 即可实现粘性定位。
+                可以使用 left 、 right 、 top 、 bottom 四个属性调整位置，不过最常用的是 top 值。
+            2.粘性定位的参考点 ---- 离它最近的一个拥有“滚动机制”的祖先元素，即便这个祖先不是最近的真实可滚动祖先。
+            3.粘性定位元素的特点
+                不会脱离文档流，它是一种专门用于窗口滚动时的新的定位方式。
+                最常用的值是 top 值。
+                粘性定位和浮动可以同时设置，但不推荐这样做。
+                粘性定位的元素，也能通过 margin 调整位置，但不推荐这样做。
+                粘性定位和相对定位的特点基本一致，不同的是：粘性定位可以在元素到达某个位置时将其固定
+        */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +33,7 @@
         .item {
             background-color: grey;
         }
-        .frist {
+        .first {
             background-color: skyblue;
             font-size: 40px;
             position: sticky;
@@ -36,7 +48,7 @@
     <div class="content">
         <!-- 每一项 -->
         <div class="item">
-            <div class="frist">A</div>
+            <div class="first">A</div>
             <h2>A1</h2>
             <h2>A2</h2>
             <h2>A3</h2>
@@ -48,7 +60,7 @@
             <h2>A9</h2>
         </div>
         <div class="item">
-            <div class="frist">B</div>
+            <div class="first">B</div>
             <h2>B1</h2>
             <h2>B2</h2>
             <h2>B3</h2>
@@ -60,7 +72,7 @@
             <h2>B9</h2>
         </div>
         <div class="item">
-            <div class="frist">C</div>
+            <div class="first">C</div>
             <h2>C1</h2>
             <h2>C2</h2>
             <h2>C3</h2>

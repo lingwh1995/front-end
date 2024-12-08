@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <title>CSS定位可以越过padding</title>
     <style>
-        .outer {
+        /*
+            当定位和padding同时写时，padding的效果会被定位覆盖
+        */
+        .parent {
             width: 800px;
             height: 600px;
-            background-color: aqua;
+            background-color: gold;
             padding: 10px;
             position: relative;
         }
-        .inner {
+        .child {
             width: 200px;
             height: 200px;
-            background-color: brown;
+            background-color: green;
             position: absolute;
             left: 0px;
             top: 0px;
@@ -22,8 +25,8 @@
     </style>
 </head>
 <body>
-    <div class="outer">
-        <div class="inner"></div>
+    <div class="parent">
+        <div class="child"></div>
     </div>
 </body>
 </html>
