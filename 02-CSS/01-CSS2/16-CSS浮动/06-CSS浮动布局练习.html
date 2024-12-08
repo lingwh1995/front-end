@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS浮动布局练习</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .leftfix {
+            float: left;
+        }
+        .rightfix {
+            float: right;
+        }
+        .clearfix::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .container {
+            margin: 0px auto;
+            width: 960px;
+            text-align: center;
+        }
+        .logo,.banner1,.banner2 {
+            background-color: skyblue;
+            height: 80px;
+            line-height: 80px;
+        }
+        .logo {
+            width: 200px;
+        }
+        .banner1 {
+            width: 540px;
+            margin:0 10px;
+        }
+        .banner2 {
+            width: 200px;
+        }
+    .caidan {
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+        background-color: chartreuse;
+        margin: 10px 0px;
+    }
+    .lanmu1,.lanmu2 {
+        width: 368px;
+        margin-right: 10px;
+        height: 198px;
+        border: 1px solid black;
+        line-height: 198px;
+        background-color: chocolate;
+    }
+    .lanmu3,.lanmu4,.lanmu5,.lanmu6 {
+        width: 178px;
+        height: 198px;
+        background-color: blueviolet;
+        line-height: 198px;
+        border: 1px solid black;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .lanmu7,.lanmu8,.lanmu9 {
+        height: 128px;
+        line-height: 128px;
+        width: 198px;
+        border: 1px solid black;
+        background-color: rgb(255, 0, 0);
+        margin-bottom: 10px;
+    }
+    .foot {
+        height: 60px;
+        width: 960px;
+        background-color: hotpink;
+        line-height: 60px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="page-header clearfix">
+            <div class="logo leftfix">logo</div>
+            <div class="banner1 leftfix">banner1</div>
+            <div class="banner2 leftfix">banner2</div>
+        </div>
+        <!-- 菜单 -->
+        <div class="caidan">菜单</div>
+        <!-- 内容区 -->
+        <div class="content clearfix">
+            <!-- 左侧 -->
+            <div class="left leftfix">
+                <!-- 左侧上部 -->
+                <div class="top clearfix">
+                    <div class="lanmu1 leftfix">栏目一</div>
+                    <div class="lanmu2 leftfix">栏目二</div>
+                </div>
+                <!-- 左侧下部 -->
+                <div class="bottom clearfix">
+                    <div class="lanmu3 leftfix">栏目三</div>
+                    <div class="lanmu4 leftfix">栏目四</div>
+                    <div class="lanmu5 leftfix">栏目五</div>
+                    <div class="lanmu6 leftfix">栏目六</div>
+                </div>
+            </div>
+            <!-- 右侧 -->
+            <div class="right rightfix">
+                <div class="lanmu7">栏目七</div>
+                <div class="lanmu8">栏目八</div>
+                <div class="lanmu9">栏目九</div>
+            </div>
+        </div>
+        <!-- 页脚 -->
+        <div class="foot">页脚</div>
+    </div>
+</body>
+</html>

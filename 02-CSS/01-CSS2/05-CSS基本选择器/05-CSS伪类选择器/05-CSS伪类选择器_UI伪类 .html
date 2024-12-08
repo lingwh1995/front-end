@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类选择器_UI伪类</title>
+    <style>
+        /* :checked 被选中的复选框或单选按钮(可以用来识别选中的单选框或者多选框) */
+        form input:checked {
+            width: 20px;
+            height: 20px;
+        }
+        /* :enabled 可用的表单元素（没有 disabled 属性） */
+        form input:enabled {
+            color: blue;
+            font-size: 30px;
+        }
+        /* :disabled 不可用的表单元素（有 disabled 属性） */
+        form input:disabled {
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>伪类选择器_UI伪类</h2>
+    <form>
+        账户：<input type="text" name="username" disabled value="admin"><br/>
+        密码：<input type="text" name="password"><br/>
+        运动：
+        <input type="checkbox" name="sport" value="basketball"/> 篮球
+        <input type="checkbox" name="sport" value="football"/> 足球
+        <input type="checkbox" name="sport" value="baseball "/> 棒球
+    </form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类选择器_伪元素选择器</title>
+    <style>
+        /* 伪元素选择器(可以选中元素特殊位置的文字，如第一个字符、第一行文字、选中的文字) */
+        
+        /* 选中div中div标签中的第一行的第一个字符 */
+        .element .select-first-letter::first-letter {
+            color: blue;
+        }
+
+        /* 选中div中div标签中的第一行的第一个字符 */
+        .element .price::first-letter {
+            color: red;
+            font-size: 20px;
+        }
+        
+        /* 选中div中div标签中的第一行 */
+        .element .select-first-line::first-line {
+            color: green;
+        }
+        
+        /* 选中div中div标签中被鼠标选中的字符 */
+        .element .select-selection-letter::selection {
+            color: blue;
+            background-color: gold;
+        }
+        
+        /* 选中的是div中input标签中的提示文字(即placeholder提示文字) */
+        .element input::placeholder {
+            color: red;
+            background-color: gold;
+        }
+
+        /* 使用伪元素选择器在文字前后生成内容 */
+        /* 在内容前面生成文字(在元素开始的位置创建一个伪元素) */
+        .element .generate::before {
+            content: "这是在内容前面生成的文字，无法选中";
+            color: green;
+        }
+
+        /* 在内容后面生成文字(在元素结束的位置创建一个伪元素) */
+        .element .generate::after {
+            content: "这是在内容后面生成的文字，无法选中";
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>伪元素选择器</h2>
+    <div class="element">
+        <h3>选中div中div标签中的第一行的第一个字符</h3>
+        <div class="select-first-letter">Hello, I am a cat!</div>
+        <div class="price">￥100</div>
+
+        <h3>选中div中div标签中的第一行</h3>
+        <div class="select-first-line">
+            Hello, I am a cat!<br/>
+            I live in Xi’an.
+        </div>
+
+        <h3>选中div中div标签中被鼠标选中的字符</h3>
+        <div class="select-selection-letter">
+            Hello, I am a cat!
+            I live in Xi’an.
+        </div>
+
+        <h3>选中的是div中input标签中的提示文字(即placeholder提示文字)</h3>
+        用户名：<input type="text" placeholder="请输入用户名"/>
+
+        <h3>使用伪元素选择器在文字前后生成内容</h3>
+        <div class="generate">
+            https://www.baidu.com
+        </div>    
+    </div>
+</body>
+</html>

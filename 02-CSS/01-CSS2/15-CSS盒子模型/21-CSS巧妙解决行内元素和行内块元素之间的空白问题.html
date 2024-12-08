@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS巧妙解决行内元素和行内块元素之间的空白问题</title>
+    <style>
+        /* 
+             font-size: 0px; 可以解决行内元素和行内块元素之间的空白问题的原理：空格本质上也是问题     
+        */
+        div {
+            height: 500px;
+            background-color: green;
+            font-size: 0px;
+        }
+        span {
+            font-size: 40px;
+        }
+        .bg-red {
+            background-color: red;
+        }
+        .bg-gold {
+            background-color: gold;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="bg-red">人之初</span>
+        <span class="bg-gold">性本善</span>
+        <span class="bg-blue">性相近</span>
+        <hr>
+        <img src="../images/悟空.jpg" alt="">
+        <img src="../images/悟空.jpg" alt="">
+        <img src="../images/悟空.jpg" alt="">
+    </div>
+</body>
+</html>

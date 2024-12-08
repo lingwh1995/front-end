@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS块元素中文本和行内块元素水平方向和垂直方向居中练习</title>
+    <style>
+        /*
+            1.实现块元素中的文本水平方向和垂直方向居中
+            2.实现块元素中的行内块元素水平方向和垂直方向居中
+            3.实现块元素中的行内块元素中的文本水平方向和垂直方向居中
+        */
+        .parent {
+            width: 600px;
+            height: 400px;
+            background-color: green;
+            /* 处理文本和子元素水平方向居中 */
+            text-align: center;
+            /* 处理文本和子元素垂直方向居中 */
+            line-height: 400px; 
+        }
+
+        .parent .child {
+            /* 转换为行内块元素 */
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            background-color: gold;
+            /* 处理子元素垂直方向居中 */
+            vertical-align: middle;
+            /* 处理子元素中文本垂直方向居中 */
+            line-height: 50px;
+        }
+
+        .parent img {
+            /* 处理子元素垂直方向居中 */
+            vertical-align: middle; 
+        }
+    </style>
+</head>
+<body>
+    <h2>子元素为行内块元素时水平方向和垂直方向居中(子元素只包含文本)</h2>
+    <div class="parent">
+        陈涉世家
+        <div class="child">陈涉世家</div>
+        <img src="../images/悟空.jpg"/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS并集选择器</title>
+    <style type="text/css">
+        /* 
+            并集选择器
+            格式：
+                选择器1,选择器2,...{
+                    属性:值;
+                }
+            注意点：
+                a.选择器之间利用,连接
+                b.选择器可以是标签名称,也可以是id、class名称
+                c.为了看的更清晰，建议选择器每个class值单独占据一行
+        */
+        .div,
+        .span {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>并集选择器</h2>
+    <div class="div">hello world~</p>
+    <span class="span">hello world~</span>
+</body>
+</html>

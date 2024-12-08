@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类选择器_语言伪类</title>
+    <style>
+        /* 语言伪类选择器：第2行代码规定了本页面默认语言为 zh-CN<html lang="zh-CN"> */
+        
+        .language div:lang(en){
+            color:red;
+        }
+        .language div:lang(zh-CN){
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    <h2>语言伪类选择器</h2>
+    <div class="language">
+        <div lang="zh-CN">西安财经大学</div>
+        <div lang="en">Xi’an University of Finance and Economics</div>
+        <div>西安财经学院</div>
+    </div>
+</body>
+</html>

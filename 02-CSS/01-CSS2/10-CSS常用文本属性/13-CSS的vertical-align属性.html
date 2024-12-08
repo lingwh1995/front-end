@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS的vertical-align属性</title>
+    <style>
+        /*
+        * vertical-align深入
+        *   1.vertical-align不能控制块元素中的块元素或行内块元素在垂直方向居中
+        *       <div>
+        *           <div>xxx</div>
+        *       </div>
+        *   2.vertical-align不能控制块级元素中的文本在垂直方向居中
+        *       <div>
+        *           xxx
+        *       </div>        
+        *   3.vertical-align可以控制行内元素中的文本在一行范围中在垂直方向居中
+        *       <span>xxx</span>
+        *   4.vertical-align可以控制表格的单元格中的文本在垂直方向居中
+        *   5.vertical-align可以写的值：top、middle、bottom、baseline
+        */
+
+        /* vertical-align不能控制块元素中的块元素或行内块元素在垂直方向居中 */
+        .block-child-element {
+            font-size: 100px;
+            height: 300px;
+            background-color: gold;
+            /* 加上下面这行没有任何作用 */
+            /* vertical-align: middle; */
+        }
+
+        /* vertical-align不能控制父容器中的行内块元素在垂直方向居中 */
+        .inline-block-child-element {
+            font-size: 100px;
+            height: 300px;
+            background-color: tomato;
+            /* 加上下面这行没有任何作用 */
+            /* vertical-align: middle; */
+        }
+
+        /* vertical-align不能控制块级元素中的文本在垂直方向居中 */
+        .block-child-text {
+            font-size: 100px;
+            height: 300px;
+            background-color: green;
+            /* 加上下面这行没有任何作用 */
+            /* vertical-align: middle; */
+        }
+
+        /* vertical-align不能控制块级元素中的文本在垂直方向居中 */
+        .inline-block-child-text {
+            /* 转为行内块元素 */
+            display: inline-block;
+            font-size: 100px;
+            height: 300px;
+            background-color: red;
+            /* 加上下面这行没有任何作用 */
+            /* vertical-align: middle; */
+        }
+
+        /* vertical-align可以控制表格的单元格中的文本在垂直方向居中 */
+        .td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>vertical-align不能控制块元素中的块元素或行内块元素在垂直方向居中</h2>
+    <div class="block-child-element">
+        <div>陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    </div>
+
+    <h2>vertical-align不能控制父容器中的行内块元素在垂直方向居中</h2>
+    <div class="inline-block-child-element">
+        <img src="../images/悟空.jpg"/>
+    </div>
+
+    <h2>vertical-align不能控制块级元素中的文本在垂直方向居中</h2>
+    <div class="block-child-text">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。
+    </div>
+
+    <h2>vertical-align不能控制行内块元素中的文本在垂直方向居中</h2>
+    <div class="inline-block-child-text">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。
+    </div>
+    
+    <h2>vertical-align可以控制表格的单元格中的文本在垂直方向居中</h2>
+    <table border="1" cellspacing="0">
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr height="100px">
+                <td class="td">张三</td>
+                <td>男</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>女</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>男</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

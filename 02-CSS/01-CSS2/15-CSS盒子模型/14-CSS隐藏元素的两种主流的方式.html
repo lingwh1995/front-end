@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS隐藏元素的两种主流的方式</title>
+    <style>
+        .visibility {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            /* 占位隐藏：可选的值show、hidden */
+            visibility: hidden;
+        }
+        .display {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            /* 不占位隐藏 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="visibility">陈胜者，阳城人也，字涉。</div>
+    <div class="display">陈胜者，阳城人也，字涉。</div>
+</body>
+</html>

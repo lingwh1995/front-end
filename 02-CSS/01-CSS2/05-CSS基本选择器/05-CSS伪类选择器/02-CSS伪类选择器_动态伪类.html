@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类选择器_动态伪类</title>
+    <style>
+        /* 
+            link选中的是没有访问过的a元素(原始状态)
+            visited选中的是访问过的a元素(点击之后)
+            hover选中的是鼠标悬浮状态的a元素(悬停状态)
+            active选中的是鼠标悬浮状态的a元素(点击)
+        */            
+
+        /* link选中的是没有访问过的a元素 */
+        a:link {
+            color: blue;
+            font-size: 30px;
+        }
+
+        /* visited选中的是访问过的a元素 */
+        a:visited {
+            color: green;
+            font-size: 30px;
+        }
+
+        /* hover选中的是鼠标悬浮状态的a元素 */
+        a:hover {
+            color: red;
+            font-size: 30px;
+        }
+
+        /* 伪类选择器-active选中的是鼠标悬浮状态的a元素 */
+        a:active {
+            color: gold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>伪类选择器_动态伪类</h2>
+    <a href="https://www.baidu.com" target="_blank">点击访问百度</a><br/>
+    <a href="https://www.jd.com" target="_blank">点击访问京东</a>
+</body> 
+</html>

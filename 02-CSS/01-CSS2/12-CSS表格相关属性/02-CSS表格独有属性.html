@@ -12,7 +12,7 @@
         table {
             border: 2px solid blue;
             width: 500px;
-            /* 控制列宽 */
+            /* 控制表格布局 */
             table-layout: fixed;
             /* 控制单元格间距(生效的前提是不能合并边框) */
             border-spacing: 5px;
@@ -24,6 +24,9 @@
             caption-side: top;
         }
 
+        table col:last-child {
+  width: 100px;
+}
         td,
         th {
             border: 1px gold solid;

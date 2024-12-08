@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS块元素中块元素水平方向和垂直方向居中</title>
+    <style>
+        /*
+            块元素中块元素水平方向和垂直方向居中
+                水平方向居中：子元素加上  margin:0 auto;
+                垂直方向居中：子元素加上 margin-top,值为(父元素content高度-子元素盒子总高度)/2
+        */
+        .parent {
+            width: 400px;
+            height: 400px;
+            background-color: green;
+            /* 因为子元素加上了 margin-top: 135px; 如果不加下面这行，会出现margin塌陷问题 */
+            overflow: hidden;
+        }
+        .parent .child {
+            width: 200px;
+            height: 100px;
+            background-color: gold;
+            padding: 5px;
+            border: 10px;
+            /* 处理子元素水平方向居中 */
+            margin: 0 auto;
+            /* 处理子元素垂直方向居中 */
+            margin-top: 135px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>子元素为块元素时水平方向和垂直方向居中</h2>
+    <div class="parent">
+        <div class="child">陈涉世家</div>
+    </div>
+</body>
+</html>

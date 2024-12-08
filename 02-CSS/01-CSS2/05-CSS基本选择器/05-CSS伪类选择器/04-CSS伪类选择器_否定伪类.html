@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类选择器_否定伪类</title>
+    <style>
+        .score>p:not([title^="你要加油啊！"]) {
+            color:red;
+        }
+        .course>p:not(.language) {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h2>伪类选择器_否定伪类</h2>
+    <div class="score">
+        <p>张三:98分</p>
+        <p>王五:95分</p>
+        <p>李四:94分</p>
+        <p>王五:48分</p>
+        <p title="你要加油啊！">赵六:52分</p>
+    </div>
+
+    <div class="course">
+        <p class="language">中文：Chinese</p>
+        <p>数学：Math</p>
+        <p class="language">英语：English</p>
+        <p class="language">德语：German</p>
+        <p class="language">法语：French</p>
+    </div>
+</body>
+</html>

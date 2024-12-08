@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS相对定位</title>
+   <style>
+    /* 
+        相对定位
+            1.相对定位相对的是自己原来的位置
+            2.开启相对定位的元素不会脱离文档流
+            3.相对定位的值可以是负值
+            4.开启相对定位后的元素层级(z-index)会比没有开定位的元素层级(z-index)高
+            5.开启相对定位后元素依然可以和margin或浮动一起使用，不过不推荐这种写法，尤其是和浮动一起使用
+        应用场景
+            1.用于元素位置的微调
+            2.相对定位90%场景和绝对定位一起配合使用
+        注意事项
+            1.left和right不能同时用，同时用的话left生效，right不生效
+            2.top和bottom不能同时用，同时用的话top生效，bottom不生效     
+    */
+    .outer {
+        height: 600px;
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+    }
+    .box {
+        height: 150px;
+        width: 150px;
+       
+    }
+    .box-1 {
+        background-color: blue;
+        
+    }
+    .box-2 {
+        /* 应用场景：对元素微调，不脱离文档流；配合绝对定位 */
+        background-color: red;
+        position: relative;
+        /* left和right不能同时用，同时用的话left生效，right不生效 */
+        left: 100px;
+        /* right: 100px; */
+        /* top和bottom不能同时用，同时用的话top生效，bottom不生效 */
+        top: 20px;
+        /* bottom: 20px; */
+        /* 开启相对定位后元素依然可以和margin或浮动一起使用，不过不推荐这种写法，尤其是和浮动一起使用 */
+        /* margin-left: 100px; */
+        /* float: left; */
+    }
+    .box-3 {
+        background-color: yellow;
+    }
+   </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box-1">1</div>
+        <div class="box box-2">2</div>
+        <div class="box box-3">3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS五种属性选择器</title>
+    <style type="text/css">
+        /* 
+            五种属性选择器
+                1. 选中所有属性名为某个值的元素
+                2. 选中所有属性名为某个值且属性值为某个值的元素
+                3. 选中所有属性名是某个值且属性值以某个值开头的元素
+                4. 选中所有属性名是某个值且属性值以某个值结尾的元素
+                5. 选中所有属性名是某个值且属性值包含某个值的元素
+        */
+
+        /* 1. 属性选择器-选中所有属性名为 tag 的标签 */
+        [tag] {
+            color: slateblue;
+            font-size: 30px;
+        }
+
+        /* 2. 属性选择器-选中所有属性名为 title，属性值为 music 的标签 */
+        [title = 'music'] {
+            color: red;
+            font-size: 30px;
+        }
+
+        /* 3. 属性选择器-选中所有属性名为 address，属性值为 a开头 的标签 */
+        [address ^= 'a'] {
+            color: orange;
+            font-size: 30px;
+        }
+
+        /* 4. 属性选择器-选中所有属性名为 address，属性值为 x结尾 的标签 */
+        [address $= 'z'] {
+            color: purple;
+            font-size: 30px;
+        }
+
+        /* 5. 属性选择器-选中所有属性名为 address，属性值包含 u开头 的标签 */
+        [address *= 'u'] {
+            color: green;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>1. 属性选择器-选中所有属性名为 tag 的标签</h2>
+    <div>
+        <div tag="div">hello world~</div>
+        <p tag="p">hello world~</div>
+    </div>
+
+    <h2>2. 属性选择器-选中所有属性名为 title，属性值为 music 的标签</h2>
+    <div>
+        <div title="music">hello world~</div>
+        <div title="movie">hello world~</div>
+    </div>
+
+    <h2>3. 属性选择器-选中所有属性名为 address，属性值为 a开头 的标签</h2>
+    <div>
+        <div address="abb">hello world~</div>
+        <div address="acc">hello world~</div>
+    </div>
+
+    <h2>4. 属性选择器-选中所有属性名为 address，属性值为 x结尾 的标签</h2>
+    <div>
+        <div address="xxz">hello world~</div>
+        <div address="yyz">hello world~</div>
+    </div>
+
+    <h2>5. 属性选择器-选中所有属性名为 address，属性值包含 u开头 的标签</h2>
+    <div>
+        <div address="aua">hello world~</div>
+        <div address="bub">hello world~</div>
+    </div>
+</body>
+</html>
