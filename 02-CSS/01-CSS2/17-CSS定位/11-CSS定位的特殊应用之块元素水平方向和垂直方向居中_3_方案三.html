@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS定位的特殊应用之块元素水平方向和垂直方向居中_3_方案三</title>
+    <style>
+        /*
+            推荐:因为子元素不用设置固定的margin-top或margin-top和margin-left
+        */
+        .parent {
+            height: 400px;
+            width:800px;
+            background-color: green;
+            position: relative;
+        }
+        .child {
+            background-color: gold;
+            font-size: 20px;
+            /* 子元素需要设置宽和高 */
+            width: 400px;
+            height: 100px;
+            
+            position: absolute;
+            /* 定位居中方案二 */
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            /* 实现子元素中文本水平和垂直居中 */
+            /* text-align: center;
+            line-height: 100px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">你好啊</div>
+    </div>
+</body>
+</html>
