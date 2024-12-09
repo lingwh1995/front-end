@@ -16,67 +16,127 @@
      *    5.NaN是一个特殊的数字，表示not a Number
      *  3.将其他类型数据转换为Number类型数据
      *    1.调用Number()函数：将任意类型的数据转换为Number类型
-     *      字符串 -> 数字
-     *        1.纯数字的字符串，则直接将其转换数字
+     *      String -> Number
+     *        1.纯数字的字符串，则直接将其转换数字(可以转换为整形数据或浮点型数据)
      *        2.如果字符串中有非数字的内容，则转换为NaN
-     *        3.如果字符串是一个空串或者是一个个空格的字符串，转换为0
-     *      布尔值 -> 数字
+     *        3.如果字符串是一个空字符串或者是一个空格，转换为数字后值为0(积极的会被转换为数字1，消极的会被转换为数字0，不支持的会被转换为NaN)
+     *      Boolean -> Number (积极的会被转换为数字1，消极的会被转换为数字0，不支持的会被转换为NaN)
      *        true  -> 1
      *        false -> 0
-     *      null或undefined -> 数字
+     *      null或undefined -> Number (积极的会被转换为数字1，消极的会被转换为数字0，不支持的会被转换为NaN)
      *        null  -> 0
      *        undefined -> 数字 NaN
      *    2.parseInt()    将字符串转换为Number类型(具体是转换为整型数据)
      *    3.parseFloat()  将字符串转换为Number类型(具体是转换为浮点类型数据)
+     *    4.使用算数运算符  任何值做- * /运算时都会自动转换为Number,原理和Number()函数
      */
 
-		 //数字123
-		 let a = 123;
-     console.log(typeof(a));
-		 //字符串123
-		 let b = "123";
-		 console.log(typeof(b));
+		//数字123
+		let a = 123
+    console.log(typeof(a));
+		//字符串123
+		let b = "123"
+		console.log(typeof(b));
 
-     console.log('Number.MAX_VALUE:' + Number.MAX_VALUE);
-     console.log('Number.MIN_VALUE:' + Number.MIN_VALUE);
+    console.log('Number.MAX_VALUE:' + Number.MAX_VALUE)
+    console.log('Number.MIN_VALUE:' + Number.MIN_VALUE)
 
-     /**
-      * 在JS中整数的运算基本可以保证精确
-      */
-		 let c = 1865789 + 7654321;
-     console.log(c);
+    /**
+     * 在JS中整数的运算基本可以保证精确
+     */
+		let c = 1865789 + 7654321;
+    console.log(c)
    
-     /**
-      * 在JS中浮点数的运算基本可以保证精确
-      */
-     let d = 0.1 + 0.2;
-     console.log(d);
+    /**
+     * 在JS中浮点数的运算基本可以保证精确
+     */
+    let d = 0.1 + 0.2;
+    console.log(d)
 
 
-     //方式一：调用Number()函数将其他类型数据转换为Number类型
-     let e = '123'
-     e = Number(e)
-     console.log(typeof(e));
+    //其他类型数据转换为Number类型数据方式1：调用Number()函数将其他类型数据转换为Number类型
+    //纯数字的字符串到数字
+    let e = '123'
+    e = Number(e)
+    console.log(typeof(e))
+    console.log(e)
+     
+    //纯数字的字符串到数字
+    let f = '123.456'
+    f = Number(f)
+    console.log(typeof(f))
+    console.log(f)
 
-        // a = false;
-        // a = Number(a) // 0
+    //字符串中有非数字的内容到数字
+    let g = 'hello你好啊'
+    g = Number(g)
+    console.log(typeof(g))
+    console.log(g)
 
-        // a = null;
-        // a = Number(a) // 0
+    //如果字符串是一个空字符串或者是一个空格，转换为数字后值为0
+    let h = '' //空字符串转为数字
+    h = Number('')
+    console.log(typeof(h))
+    console.log(h)
+    h = ' '    //空格转为数字
+    h = Number(h)
+    console.log(typeof(h))
+    console.log(h)
 
-        // a = undefined;
-        // a = Number(a) // NaN
+    //布尔值转为数字
+    let i = true
+    i = Number(i)
+    console.log(typeof(i))
+    console.log(i)
+    i = false
+    i = Number(i)
+    console.log(typeof(i))
+    console.log(i)
 
-        // a = "132423sdpx";
-        // a = parseInt(a) // 132423
+    //null和undefined
+    j = null
+    j = Number(j)
+    console.log(typeof(j))
+    console.log(j);
+    j = undefined
+    j = Number(j)
+    console.log(typeof(j))
+    console.log(j)
 
-        // a = "32749lj2.923px";
-        // a = parseFloat(a) // 32749
+    //其他类型数据转换为Number类型数据方式2：parseInt()    将字符串转换为Number类型(具体是转换为整型数据)
+    let k = '123'
+    k = parseInt(k)
+    console.log(typeof(k))
+    console.log(k)
 
-        // a = 234.234;
-        // a = parseInt(a); // 234
-        // document.writeln(typeof a)
-        // document.writeln(a)
+    let l = '234.456'
+    l = parseInt(l)
+    console.log(typeof(l))
+    console.log(l)
+
+    let m = '234.5啦啦啦'
+    m = parseInt(m)
+    console.log(typeof(m))
+    console.log(m)
+
+    //其他类型数据转换为Number类型数据方式3： parseFloat()  将字符串转换为Number类型(具体是转换为浮点类型数据)
+    let n = '234.456'
+    n = parseFloat(n)
+    console.log(typeof(n))
+    console.log(n)
+
+    let o = '234.456啦啦啦'
+    o = parseFloat(o)
+    console.log(typeof(o))
+    console.log(o)
+
+    //其他类型数据转换为Number类型数据方式4： 使用算数运算符快速将其他类型数据转换为Number类型
+    let p = "100"
+    // p = p - 0
+    // p = p * 1
+     p = p / 1
+    console.log(typeof(p))
+    console.log(p)
   </script>
 </head>
 <body>

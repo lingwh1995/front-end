@@ -16,7 +16,7 @@
      *   方式二：调用String()函数做强制类型转换，并将被转换的数据作为参数传递给函数
      *     对于Number和Boolean实际上就是调用的toString()方法
      *     对于null和undefined,就不会调用toString()方法，它会将null直接转换为"null",将undefined直接转换为"undefined" 
-     *   方式三：拼接字符串
+     *   方式三：拼接字符串(底层调用的实际上是String()函数)，这是一种隐式类型转换
      */
 
     // 方式一: 使用toString()转换

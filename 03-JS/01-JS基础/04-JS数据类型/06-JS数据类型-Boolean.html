@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS数据类型-Boolean</title>
+  <script type="text/javascript">
+    /**
+     *  1.Boolean类型介绍
+     *    1.布尔类型也称为逻辑值类型或者真假值类型
+     *    2.布尔类型只能够取真和假两种数值，除此之外其他值不支持
+     *    3.其他的数据类型也可以通过Boolean()函数转换布尔类型
+     *    
+     *  2.将其他类型数据类型转换为Boolean类型数据
+     *    使用Boolean()函数可以将其他类型的数据转换为Boolean类型
+     *      String -> Boolean (积极的会被转换为true，消极的会被转换为false)
+     *      Number -> Boolean (积极的会被转换为true，消极的会被转换为false)
+     *      null和undefined -> Boolean  (积极的会被转换为true，消极的会被转换为false)
+     *  3.数据类型转换过程中的积极和消极
+     *    String : 非空字符串积极，空字符串消极
+     *    Number : 数字非0积极，数字为0消极
+     *    null和undefined：全部消极
+     */
+    
+    //String -> Boolean
+    let a = 'hello'
+    a = Boolean(a)
+    console.log(typeof(a))
+    console.log(a)
+
+    let b = ''
+    b = Boolean(b)
+    console.log(typeof(b))
+    console.log(b)
+
+    //Number -> Boolean
+    let c = 1
+    c = Boolean(c)
+    console.log(typeof(c))
+    console.log(c)
+
+    let d = 0
+    d = Boolean(d)
+    console.log(typeof(d))
+    console.log(d);
+
+    //null和undefined -> Boolean
+    let f = null
+    f = Boolean(f)
+    console.log(typeof(f))
+    console.log(f)
+
+    let g = undefined
+    g = Boolean(g)
+    console.log(typeof(g))
+    console.log(g)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
