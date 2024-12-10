@@ -1,120 +1,201 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CSS浮动布局练习</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-        .leftfix {
-            float: left;
-        }
-        .rightfix {
-            float: right;
-        }
-        .clearfix::after {
-            content: '';
-            clear: both;
-            display: block;
-        }
-        .container {
-            margin: 0px auto;
-            width: 960px;
-            text-align: center;
-        }
-        .logo,.banner1,.banner2 {
-            background-color: skyblue;
-            height: 80px;
-            line-height: 80px;
-        }
-        .logo {
-            width: 200px;
-        }
-        .banner1 {
-            width: 540px;
-            margin:0 10px;
-        }
-        .banner2 {
-            width: 200px;
-        }
-    .caidan {
-        font-size: 20px;
-        height: 30px;
-        line-height: 30px;
-        background-color: chartreuse;
-        margin: 10px 0px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 通用样式start */
+    * {
+      margin: 0;
+      padding: 0;
     }
-    .lanmu1,.lanmu2 {
-        width: 368px;
-        margin-right: 10px;
-        height: 198px;
-        border: 1px solid black;
-        line-height: 198px;
-        background-color: chocolate;
+    /* 通用样式end */
+
+    /* 页面整体样式start */
+    .container {
+      width: 1800px;
+      margin: 0 auto;
     }
-    .lanmu3,.lanmu4,.lanmu5,.lanmu6 {
-        width: 178px;
-        height: 198px;
-        background-color: blueviolet;
-        line-height: 198px;
-        border: 1px solid black;
-        margin-top: 10px;
-        margin-right: 10px;
+    /* 页面整体样式end */
+    
+    /* 清除浮动 */
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
     }
-    .lanmu7,.lanmu8,.lanmu9 {
-        height: 128px;
-        line-height: 128px;
-        width: 198px;
-        border: 1px solid black;
-        background-color: rgb(255, 0, 0);
-        margin-bottom: 10px;
+
+    /* 页面头部样式start */
+    .header {
+      width: 100%;
+      text-align: center;
+      .logo {
+        height: 80px;
+        width: 20%;
+        background-color: skyblue;
+        line-height: 80px;
+        float: left;
+        margin-right: 1%;
+      }
+      .banner-1 {
+        height: 80px;
+        width: 58%;
+        background-color: skyblue;
+        line-height: 80px;
+        float: left;
+        margin-right: 1%;
+      }
+      .banner-2 {
+        height: 80px;
+        width: 20%;
+        background-color: skyblue;
+        line-height: 80px;
+        float: left;
+      }
     }
-    .foot {
-        height: 60px;
-        width: 960px;
-        background-color: hotpink;
-        line-height: 60px;
+    /* 页面头部样式end */
+
+    /* 菜单样式start */
+    .menu {
+      height: 80px;
+      width: 100%;
+      text-align: center;
+      background-color: green;
+      line-height: 80px;
+      margin-top: 20px;
     }
-    </style>
+    /* 菜单样式end */
+    
+    /* 内容部分样式start */
+    .content {
+      width: 100%;
+      float: left;
+      text-align: center;
+      margin-top: 20px;
+      .left {
+        width: 79%;
+        float: left;
+        margin-right: 1%;
+        .item-1 {
+          height: 300px;
+          width: 49.5%;
+          background-color: tomato;
+          line-height: 300px;
+          float: left;
+          margin-right: 1%;
+        }  
+        .item-2 {
+          height: 300px;
+          width: 49.5%;
+          background-color: tomato;
+          line-height: 300px;
+          float: left;
+        }  
+        .item-3 {
+          height: 600px;
+          width: 24.25%;
+          background-color: gold;
+          line-height: 600px;
+          float: left;
+          margin-right: 1%;
+          margin-top: 20px;
+        }  
+        .item-4 {
+          height: 600px;
+          width: 24.25%;
+          background-color: gold;
+          line-height: 600px;
+          float: left;
+          margin-right: 1%;
+          margin-top: 20px;
+        }  
+        .item-5 {
+          height: 600px;
+          width: 24.25%;
+          background-color: gold;
+          line-height: 600px;
+          float: left;
+          margin-right: 1%;
+          margin-top: 20px;
+        }  
+        .item-6 {
+          height: 600px;
+          width: 24.25%;
+          background-color: gold;
+          line-height: 600px;
+          float: left;
+          margin-top: 20px;
+        } 
+      }
+      .right {
+        height: 920px;
+        width: 20%;
+        float: right;
+        .item-7 {
+          height: 300px;
+          width: 100%;
+          background-color: red;
+          line-height: 300px;
+          float: right;
+          margin-bottom: 10px;
+        }
+        .item-8 {
+          height: 300px;
+          width: 100%;
+          background-color: red;
+          line-height: 300px;
+          float: right;
+          margin-bottom: 10px;
+        }
+        .item-9 {
+          height: 300px;
+          width: 100%;
+          background-color: red;
+          line-height: 300px;
+          float: right;
+        }
+      }
+    }
+    /* 内容部分样式end */
+
+    /* 页脚部分样式start */
+    .footer {
+      height: 80px;
+      width: 100%;
+      background-color: pink;
+      float: left;
+      text-align: center;
+      line-height: 80px;
+      margin-top: 20px;
+    }
+    /* 页脚部分样式end */
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 头部 -->
-        <div class="page-header clearfix">
-            <div class="logo leftfix">logo</div>
-            <div class="banner1 leftfix">banner1</div>
-            <div class="banner2 leftfix">banner2</div>
-        </div>
-        <!-- 菜单 -->
-        <div class="caidan">菜单</div>
-        <!-- 内容区 -->
-        <div class="content clearfix">
-            <!-- 左侧 -->
-            <div class="left leftfix">
-                <!-- 左侧上部 -->
-                <div class="top clearfix">
-                    <div class="lanmu1 leftfix">栏目一</div>
-                    <div class="lanmu2 leftfix">栏目二</div>
-                </div>
-                <!-- 左侧下部 -->
-                <div class="bottom clearfix">
-                    <div class="lanmu3 leftfix">栏目三</div>
-                    <div class="lanmu4 leftfix">栏目四</div>
-                    <div class="lanmu5 leftfix">栏目五</div>
-                    <div class="lanmu6 leftfix">栏目六</div>
-                </div>
-            </div>
-            <!-- 右侧 -->
-            <div class="right rightfix">
-                <div class="lanmu7">栏目七</div>
-                <div class="lanmu8">栏目八</div>
-                <div class="lanmu9">栏目九</div>
-            </div>
-        </div>
-        <!-- 页脚 -->
-        <div class="foot">页脚</div>
+  <div class="container">
+    <div class="header clearfix">
+      <div class="logo">logo</div>
+      <div class="banner-1">banner-1</div>
+      <div class="banner-2">banner-2</div>
     </div>
+    <div class="menu">menu</div>
+    <div class="content clearfix">
+      <div class="left">
+        <div class="item-1">栏目一</div>
+        <div class="item-2">栏目二</div>
+        <div class="item-3">栏目三</div>
+        <div class="item-4">栏目四</div>
+        <div class="item-5">栏目五</div>
+        <div class="item-6">栏目六</div>
+      </div>
+      <div class="right">
+        <div class="item-7">栏目七</div>
+        <div class="item-8">栏目八</div>
+        <div class="item-9">栏目九</div>
+      </div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
 </body>
 </html>
