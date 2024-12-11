@@ -10,44 +10,43 @@
 .topbar {
   height: 30px;
   background-color: #ECECEC;
-  .welcome {
-    height: 30px;
-    line-height: 30px;
-    font-size: 0;
-    color: #666;
-  }
-  .welcome span,
-  .welcome a {
-    font-size: 12px;
-  }
-  .welcome .hello {
-    margin-right: 28px;
-  }
-  .welcome .login {
-    padding-right: 10px;
-    border-right: 1px solid #666;
-  }
-  .welcome .register {
-    padding-left: 10px;
-  }
-  .nav .list {
-    height: 30px;
-    line-height: 30px;
-  }
-  .nav .list li {
-    float: left;
-  }
-  .nav .list li a {
-    padding: 0 15px;
-    border-right: 1px solid #666;
-  }
-  .nav .list li:first-child a {
-    padding-left: 0;
-  }
-  .nav .list li:last-child a {
-    padding-right: 0;
-    border: none;
-  }
+}
+.topbar .welcome {
+  height: 30px;
+  line-height: 30px;
+  font-size: 0;
+  color: #666;
+}
+.topbar .welcome span,
+.topbar .welcome a {
+  font-size: 12px;
+}
+.topbar .welcome .hello {
+  margin-right: 28px;
+}
+.topbar .welcome .login {
+  padding-right: 10px;
+  border-right: 1px solid #666;
+}
+.topbar .welcome .register {
+  padding-left: 10px;
+}
+.topbar .nav .list {
+  height: 30px;
+  line-height: 30px;
+}
+.topbar .nav .list li {
+  float: left;
+}
+.topbar .nav .list li a {
+  padding: 0 15px;
+  border-right: 1px solid #666;
+}
+.topbar .nav .list li:first-child a {
+  padding-left: 0;
+}
+.topbar .nav .list li:last-child a {
+  padding-right: 0;
+  border: none;
 }
 /* 顶部导航条结束 */
-/* #endregion */

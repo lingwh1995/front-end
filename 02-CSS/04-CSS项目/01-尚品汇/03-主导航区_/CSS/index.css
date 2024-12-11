@@ -48,23 +48,22 @@
 /* #region头部开始 */
 .header {
     height: 120px;
-    background-color: skyblue;
 }
 .logo img {
     width: 190px;
 }
-.search form {
-    margin-top: 42px;
+.header .search form {
     font-size: 0;
+    margin-top: 42px;
 }
 .header .search input {
-    width: 508px;
     height: 34px;
+    width: 508px;
     border: 1px solid #DD302D;
 }
 .header .search button {
-    height: 36px;
     width: 80px;
+    height: 36px;
     background-color: #DD302D;
     vertical-align: top;
     background-image: url('../images/serch_icon.png');
@@ -72,3 +71,28 @@
     background-position: 28px 6px;
 }
 /* #endregion头部结束 */
+
+/* #region主导航区开始 */
+.main-nav {
+    height: 48px;
+    border-bottom: 1px solid #DD302D;
+}
+.main-nav .all-list {
+    height: 48px;
+    width: 190px;
+    line-height: 48px;
+    background-color: #DD302D;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+}
+.mian-li-nav {
+    height: 48px;
+    line-height: 48px;
+}
+.mian-li-nav ul li {
+    float: left;
+    font-size: 16px;
+    margin: 0 10px;
+}
+/* #endregion主导航区结束 */
