@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS构造函数创建对象改造</title>
+  <script>
+    /**
+     * 为什么要优化构造方法?
+     *  如果不改进的话，当创建十万个对象，构造函数里面的方法就会被创建十万次 
+     * 优化方式
+     *  把之前在构造函数中的方法定义在全局函数中，在构造函数中保存方法的引用，缺点 1.会污染全局作用域 2.很不安全，多人协同开发时很容易被其他人修改
+     */
+
+    //优化前
+    /*
+    function Person(name,age,gender) {
+      this.name = name
+      this.age = age
+      this.gender = gender
+      this.sayName = function() {
+        console.log(this.name)
+      }
+    }
+    */
+
+    
+    //优化后：通过chrome浏览器可以观察到节省了将近一半内存
+    /* */
+    function Person(name,age,gender) {
+      this.name = name
+      this.age = age
+      this.gender = gender
+      this.sayName = sayName
+    }
+    
+    function sayName() {
+      console.log(this.name)
+    }
+
+    console.log('十万个对象创建开始...')
+    for(let i=0; i<100000; i++) {
+      new Person('张三',i,'男')
+    }
+    console.log('十万个对象创建完成...')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
