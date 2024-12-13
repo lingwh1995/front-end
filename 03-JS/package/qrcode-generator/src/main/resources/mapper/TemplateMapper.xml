@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xa8bit.dao.ITemplateDao">
+    <insert id="addTemplate" parameterType="com.xa8bit.domain.Template">
+        insert into t_template (scheme_id, scheme_name, rule_id, rule_name, template_name,template_status,template_type,template_content,create_time,update_time)
+        values (#{schemeId}, #{schemeName}, #{ruleId}, #{ruleName},#{templateName}, #{templateStatus}, #{templateType}, #{templateContent},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="getTemplates" parameterType="com.xa8bit.domain.Template" resultType="com.xa8bit.domain.Template">
+        select * from t_template where scheme_id in (select scheme_id from t_scheme where scheme_status = '0') and rule_id in (select rule_id from t_rule where rule_status = '0')
+        and
+        <if test="schemeId != 'null'">
+            scheme_id = #{schemeId} and
+        </if>
+        <if test="ruleId != 'null'">
+            rule_id = #{ruleId} and
+        </if>
+        <if test="templateType != 'null'">
+            template_type = #{templateType} and
+        </if>
+        1 = 1
+        order by create_time asc
+    </select>
+
+    <delete id="deleteTemplateBySchemeId" parameterType="String">
+        delete from t_template where scheme_id = #{schemeId}
+    </delete>
+
+    <delete id="deleteTemplatesByRuleId" parameterType="String">
+        delete from t_template where rule_id = #{ruleId}
+    </delete>
+
+    <delete id="deleteTemplatesById" parameterType="int">
+        delete from t_template where id = #{id}
+    </delete>
+
+    <insert id="updateTemplate" parameterType="com.xa8bit.domain.Template">
+        update t_template set template_content = #{templateContent} where id = #{id}
+    </insert>
+</mapper>

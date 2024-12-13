@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xa8bit.dao.ProductDao">
+    <insert id="addProduct" parameterType="com.xa8bit.domain.Product">
+        insert into t_product
+        values (#{productName}, #{productModel}, #{productModelId}, #{createTime}, #{updateTime});
+    </insert>
+
+    <update id="updateProduct" parameterType="com.xa8bit.domain.Product">
+        update t_product
+        set productName    = #{productName},
+            productModel   = #{productModel},
+            productModelId = #{productModelId},
+            createTime     = #{createTime},
+            updateTime     = #{updateTime}
+            where id = #{id}
+    </update>
+
+    <delete id="deleteProductById" parameterType="int">
+        delete
+        from t_product
+        where id = #{id}
+    </delete>
+
+    <select id="getProductById" parameterType="int" resultType="com.xa8bit.domain.Product">
+        select *
+        from t_product
+        where id = #{id}
+    </select>
+
+    <select id="getProducts" resultType="com.xa8bit.domain.Product">
+        select *
+        from t_product
+    </select>
+
+</mapper>
+
+

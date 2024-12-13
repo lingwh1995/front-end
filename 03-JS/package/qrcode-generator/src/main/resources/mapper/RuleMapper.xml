@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xa8bit.dao.IRuleDao">
+    <insert id="addRule" parameterType="com.xa8bit.domain.Rule">
+        insert into t_rule(rule_name,rule_number,scheme_id,rule_status,rule_id,rule_comments,create_time,update_time)
+        values (#{ruleName},#{ruleNumber},#{schemeId},#{ruleStatus},#{ruleId},#{ruleComments},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="getRulesBySchemeId" parameterType="String" resultType="com.xa8bit.domain.Rule">
+        select rule_name,rule_id from t_rule where scheme_id = #{schemeId} order by create_time asc
+    </select>
+
+    <select id="getRulesBySchemeIdForSelect" parameterType="String" resultType="com.xa8bit.domain.Rule">
+        select rule_id,rule_name,update_time from t_rule where scheme_id = #{schemeId} and rule_status = '0' order by create_time asc
+    </select>
+
+    <resultMap id="getRulesResultMap" type="com.xa8bit.domain.Rule">
+        <!--规定主键列-->
+        <id column="id" property="id"/>
+        <result column="rule_name" property="ruleName"/>
+        <result column="rule_number" property="ruleNumber"/>
+        <result column="rule_status" property="ruleStatus"/>
+        <result column="rule_comments" property="ruleComments"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="scheme_id" property="schemeId"/>
+
+        <!--
+            使用association实现一对一查询
+            fetchType lazy:懒加载 eager:立即查询
+        -->
+        <association
+            property="scheme"
+            select="com.xa8bit.dao.ISchemeDao.getSchemeBySchemeId"
+            column="scheme_id"
+            fetchType="eager">
+        </association>
+
+        <!--
+            使用collection实现一对多查询
+            property	关联集合的属性名
+            ofType		指定集合里面元素的类型
+            //TODO 解决开启懒加载之后jackson序列化异常问题
+            fetchType lazy:懒加载 eager:立即查询
+        -->
+        <collection
+                property="ruleFieldList"
+                select="com.xa8bit.dao.IRuleFieldDao.getRuleFieldsByRuleId"
+                column="rule_id"
+                fetchType="eager">
+        </collection>
+    </resultMap>
+    <select id="getRules" resultMap="getRulesResultMap">
+        select * from t_rule where scheme_id in (select scheme_id from t_scheme where scheme_status = '0') order by create_time asc
+    </select>
+
+    <select id="getRulesByRuleName" parameterType="String" resultType="com.xa8bit.domain.Rule">
+        select * from t_rule where
+        <if test="ruleName != 'null' and ruleName!= ''">
+            rule_name like concat('%',#{ruleName},'%') and
+        </if>
+        1 = 1
+        order by create_time asc
+    </select>
+
+    <delete id="deleteRuleById" parameterType="int">
+        delete from t_rule where id = #{id}
+    </delete>
+
+    <update id="updateRule">
+        update t_rule set rule_name = #{ruleName},rule_number = #{ruleNumber},scheme_id = #{schemeId},
+            rule_status = #{ruleStatus},rule_id = #{ruleId},rule_comments = #{ruleComments},create_time = #{createTime},update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <select id="getRuleById" parameterType="int" resultType="com.xa8bit.domain.Rule">
+        select * from t_rule where id = #{id}
+    </select>
+
+    <select id="getRuleByRuleId" parameterType="String" resultType="com.xa8bit.domain.Rule">
+        select * from t_rule where rule_id = #{ruleId}
+    </select>
+
+    <delete id="deleteRuleBySchemeId" parameterType="String">
+        delete from t_rule where scheme_id = #{schemeId}
+    </delete>
+</mapper>

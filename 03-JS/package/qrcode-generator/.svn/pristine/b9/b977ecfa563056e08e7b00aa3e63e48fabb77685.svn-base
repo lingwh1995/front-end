@@ -1,0 +1,23 @@
+server:
+  port: 8060
+  servlet:
+    context-path: /qrcode-generator
+spring:
+  profiles:
+    active: pro
+  web:
+    resources:
+      static-locations: classpath:/public/
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.xa8bit.domain
+  configuration:
+    map-underscore-to-camel-case: true
+configurations:
+  # jwt配置
+  jwt:
+    header: authorization #token在header中的key
+    secret: xa8bit  #token加密秘钥
+    expire-time: 30 #token过期时间
+    time-unit: MINUTE #token过期时间单位 HOUR：小时 MINUTE：分钟 SECOND：秒

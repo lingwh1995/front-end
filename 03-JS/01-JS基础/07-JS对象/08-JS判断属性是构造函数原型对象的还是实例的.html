@@ -15,12 +15,14 @@
     function MyClass() {
 
     }
+    MyClass.prototype.name = 'zhangsan'
 
     const mc1 = new MyClass()
     const mc2 = new MyClass()
+    mc2.age = 23
 
-    MyClass.prototype.name = 'zhangsan'
-    console.log(name in mc1)
+    console.log('name' in mc1)
+    console.log('age' in mc2);
   </script>
 </head>
 <body>

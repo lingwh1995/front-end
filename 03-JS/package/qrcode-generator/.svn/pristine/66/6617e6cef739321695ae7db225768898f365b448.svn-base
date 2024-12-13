@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xa8bit.dao.IDictDao">
+    <select id="getDictsForTreeBySchemeIdAndLevelForCascader" parameterType="Map" resultType="com.xa8bit.domain.Dict">
+        select *
+        from t_dict
+        where scheme_id = #{schemeId}
+          and level &lt;= #{level}
+          and dict_status = '0'
+        order by id asc
+    </select>
+
+    <select id="getDictsForTreeBySchemeIdForTree" parameterType="String" resultType="com.xa8bit.domain.Dict">
+        select *
+        from t_dict
+        where scheme_id = #{schemeId}
+        order by id asc
+    </select>
+
+    <!-- 返回自增主键使用 useGeneratedKeys = "true" keyProperty="id" -->
+    <insert id="addDict" parameterType="com.xa8bit.domain.Dict" useGeneratedKeys = "true" keyProperty="id">
+        insert into t_dict(dict_name,dict_code,dict_data,dict_sort,dict_desc,dict_status,parent_id,level,scheme_id) values
+            (#{dictName},#{dictCode},#{dictData},#{dictSort},#{dictDesc},#{dictStatus},#{parentId},#{level},#{schemeId});
+    </insert>
+
+    <delete id="deleteDictByIdRecursive" parameterType="int">
+--         -- 递归查询
+--         WITH RecursiveQuery AS (
+--             SELECT *
+--             FROM t_dict
+--             WHERE id = 59 -- 递归起始条件
+--             UNION ALL
+--             SELECT td.*
+--             FROM t_dict td
+--                      INNER JOIN RecursiveQuery R ON td.parent_id = R.id -- 递归公式
+--         )
+--         SELECT R.* FROM RecursiveQuery R
+        <!-- 思路一：直接递归删除 -->
+        <!-- 思路二：先递归查询出所有的需要删除的数据，再一次删除所有数据 -->
+
+        -- 递归查询
+        WITH RecursiveQuery AS (
+            SELECT *
+            FROM t_dict
+            WHERE id = #{id} -- 递归起始条件
+            UNION ALL
+            SELECT td.*
+            FROM t_dict td
+                     INNER JOIN RecursiveQuery R ON td.parent_id = R.id -- 递归公式
+        )
+        DELETE FROM T_DICT WHERE EXISTS (SELECT ID FROM RECURSIVEQUERY WHERE RECURSIVEQUERY.ID = T_DICT.ID)
+    </delete>
+
+    <update id="updateDict" parameterType="com.xa8bit.domain.Dict">
+<!--     处理字典类型可用状态   -->
+<!--        update t_dict set dict_name = #{dictName},dict_desc = #{dictDesc},dict_status = #{dictStatus} where id = #{id}-->
+        update t_dict set dict_name = #{dictName},dict_data = #{dictData},dict_desc = #{dictDesc},dict_status = #{dictStatus} where id = #{id}
+    </update>
+
+    <select id="getDictsForSelectOptionsByParentIdFromSchemeIdAndDictCode" parameterType="Map" resultType="com.xa8bit.domain.Dict">
+        select t.* from t_dict t
+        where t.dict_status = '0'
+          and scheme_id = #{schemeId}
+          and t.parent_id = (select ti.id from t_dict ti where ti.dict_code = #{dictCode} and ti.scheme_id = #{schemeId})
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(id) from t_dict
+    </select>
+</mapper>
