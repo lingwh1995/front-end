@@ -1,7 +1,0 @@
-spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://47.100.102.121:5639;databaseName=LoRaWandb;useUnicode=true;characterEncoding=UTF-8;encrypt=false
-    username: bbtuser1
-    password: BTnb035-zenner+

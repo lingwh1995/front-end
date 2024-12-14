@@ -1,0 +1,21 @@
+.tac {
+    text-align: center;
+}
+.pd10-lr {
+    padding: 0 10px;
+}
+.dark-border {
+    background-color: #D4D7DE;
+}
+.page-background {
+    background-color: #F2F3F5;
+}
+.display-ib {
+    display: inline-block;
+}
+.font-b {
+    font-weight: bold;
+}
+.mt5 {
+    margin-top: 5px;
+}
