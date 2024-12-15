@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS字符串与数组转换方法</title>
+  <script type="text/javascript">
+    let numStr = '1,2,3,4,5'
+    let letters = 'ABCDE'
+
+    /**
+     * split():把字符串(带有分隔符的)转为数组
+     */
+    const numArr = numStr.split(',')
+    console.log(numArr)
+    const letterArr = letters.split('')
+    console.log(letterArr);
+    console.log('------------01------------')
+
+
+    /**
+     * join():把数组转换为字符串
+     */
+    numStr = numArr.join('-')
+    console.log(numStr)
+    console.log('------------02------------')
+
+
+    /**
+     * Array.from():从可迭代或类数组对象创建一个新的浅拷贝的数组实例，也可以用于把字符串(没带有分隔符的)转为数组
+     */
+    console.log(Array.from('12345'));
+    console.log('------------03------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -6,23 +6,38 @@
   <title>JS判断属性是构造函数原型对象的还是实例的</title>
   <script>
     /**
-     * 原型对象相当于一个公共的区域，所有类的实例都可以访问到这个原型对象，我们可以将对象中的公共内容，统一设置到原型对象中
+     * 1.原型对象相当于一个公共的区域，所有类的实例都可以访问到这个原型对象，我们可以将对象中的公共内容，统一设置到原型对象中
+     * 2.原型对象也是对象，它也有原型
+     * 3.当我们访问一个对象的属性或方法时，它会首先在自身寻找，如果有则直接使用，如果没有则直接去原型对象中找，找到则直接使用
+     *    还是没有找到就到原型对象的原型对象中去查找，最终会一直查找到Object对象为止
+     * 4.以后我们创建构造函数时，可以将这些对象共有的方法和属性，统一添加到构造函数的原型对象中，这样不用分别为每一个对象这些属性和方法，也不会影响到全局作用域
      * 
-     * 当我们访问一个对象的属性或方法时，它会首先在自身寻找，如果有则直接使用，如果没有则直接去原型对象中找，找到则直接使用
-     * 
-     * 以后我们创建构造函数时，可以将这些对象共有的方法和属性，统一添加到构造函数的原型对象中，这样不用分别为每一个对象这些属性和方法，也不会影响到全局作用域
      */ 
     function MyClass() {
 
     }
     MyClass.prototype.name = 'zhangsan'
 
-    const mc1 = new MyClass()
-    const mc2 = new MyClass()
-    mc2.age = 23
+    const mc = new MyClass()
+    mc.age = 23
 
-    console.log('name' in mc1)
-    console.log('age' in mc2);
+    //用in检查某个对象中是否包含某个属性，如果对象中没有，原型对象中有也会返回true
+    console.log('name' in mc)
+    console.log('age' in mc)
+
+    //用hasOwnProperty检查某个对象中是否包含某个属性，如果对象中有会返回true,如果对象中没有，原型对象中有会返回false
+    console.log(mc.hasOwnProperty('name'))
+    console.log(mc.hasOwnProperty('age'))
+    console.log('----');
+    console.log(MyClass.prototype.hasOwnProperty('name'))
+    console.log(MyClass.prototype.hasOwnProperty('age'))
+    console.log('----');
+
+    //如果在对象的原型对象中查找属性没有找到，就到对象的原型对象的原型对象中查找属性，直到找到Object对象为止
+    console.log(mc.hasOwnProperty('hasOwnProperty'))
+    console.log(mc.__proto__.__proto__.hasOwnProperty('hasOwnProperty'))
+    console.log(MyClass.prototype.__proto__.hasOwnProperty('hasOwnProperty'))
+    //console.log(Object.prototype);
   </script>
 </head>
 <body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS数组的flat和flatMap方法</title>
+  <script type="text/javascript">
+    let nums = [10, 20, [30, 40], 50]
+
+    /**
+     * flat():创建一个新的数组，并根据指定深度递归地将所有子数组元素拼接到新的数组中。():反向迭代数组，并返回满足提供的测试函数的第一个元素的值。如果没有找到对应元素，则返回 undefined。
+     *  flat()
+     *  flat(depth)
+     */
+    console.log(nums.flat())
+    nums = [10, [[20, [30, 40]], 50]]
+    console.log(nums.flat())
+    console.log(nums.flat(2))
+    console.log(nums.flat(3))
+    console.log('------------01------------')
+
+
+    /**
+     * flatMap():对数组中的每个元素应用给定的回调函数，然后将结果展开一级，返回一个新数组。它等价于在调用 map() 方法后再调用深度为 1 的 flat() 方法（arr.map(...args).flat()），但比分别调用这两个方法稍微更高效一些。
+     */
+     nums = [10, 20, 30, 40, 50]
+     console.log(nums.flatMap((element) => (element === 20 ? [20, 20] : element)))
+     console.log('------------02------------')
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
