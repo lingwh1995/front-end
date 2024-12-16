@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS数组的slice和splice方法</title>
+  <script type="text/javascript">
+    let nums = [10,20,30,40,50]
+    console.log(nums)
+    console.log('------------01------------')
+
+
+    /**
+     * slice(): 方法返回一个新的数组对象，这一对象是一个由start和end决定的原数组的浅拷贝（包括 start，不包括 end），其中 start 和 end 代表了数组元素的索引。原始数组不会被改变。
+     */
+    console.log(nums.slice(2))
+    console.log(nums)
+    console.log('------------02------------')
+
+    nums = [10,20,30,40,50]
+    console.log(nums.slice(2,3))
+    console.log(nums)
+    console.log('------------03------------')
+
+    nums = [10,20,30,40,50]
+    console.log(nums.slice(2,-1))
+    console.log(nums)
+    console.log('------------04------------')
+
+    nums = [10,20,30,40,50]
+    console.log(nums.slice(-2))
+    console.log(nums)
+    console.log('------------05------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
