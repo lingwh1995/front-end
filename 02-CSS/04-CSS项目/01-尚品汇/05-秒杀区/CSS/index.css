@@ -1,272 +1,274 @@
+/* 基础样式开始 */
 .container {
-    width: 1190px;
-    margin: 0 auto;
+  width: 1190px;
+  margin: 0 auto;
 }
-/* #region顶部导航条 */
-.topbar {
-    background-color: #ececec;
-}
-.welcome {
-    height: 30px;
-    line-height: 30px;
-    font-size: 0;
-    color: #666;
-}
-.welcome span,.welcome a {
-    font-size: 12px;
-}
-.welcome .hello {
-    margin-right: 28px;
-}
-.welcome .login {
-    padding-right: 10px;
-    border-right: 1px solid #666;
-}
-.welcome .sign-in {
-    padding-left: 10px;
-}
-.topbar-nav .list {
-    line-height: 30px;
-    height: 30px;
-}
-.topbar-nav .list li {
-    float: left;
-}
-.topbar-nav .list li a {
-    padding: 0 15px;
-    border-right: 1px solid #666;
-}
-.topbar-nav .list li:first-child a {
-    padding-left: 0;
-}
-.topbar-nav .list li:last-child a {
-    padding-right: 0;
-    border: 0;
-}
-/* #endregion顶部导航条end */
+/* 基础样式结束 */
 
-/* #region头部 */
-.header {
-    height: 120px;
+/* #region */
+/* 顶部导航条开始 */
+.topbar {
+  height: 30px;
+  background-color: #ECECEC;
 }
-.logo img {
-    width: 190px;
+.topbar .welcome {
+  height: 30px;
+  line-height: 30px;
+  font-size: 0;
+  color: #666;
 }
+.topbar .welcome span,
+.topbar .welcome a {
+  font-size: 12px;
+}
+.topbar .welcome .hello {
+  margin-right: 28px;
+}
+.topbar .welcome .login {
+  padding-right: 10px;
+  border-right: 1px solid #666;
+}
+.topbar .welcome .register {
+  padding-left: 10px;
+}
+.topbar .nav .list {
+  height: 30px;
+  line-height: 30px;
+}
+.topbar .nav .list li {
+  float: left;
+}
+.topbar .nav .list li a {
+  padding: 0 15px;
+  border-right: 1px solid #666;
+}
+.topbar .nav .list li:first-child a {
+  padding-left: 0;
+}
+.topbar .nav .list li:last-child a {
+  padding-right: 0;
+  border: none;
+}
+/* 顶部导航条结束 */
+/* #endregion */
+
+/* #region */
+/* 头部开始 */
 .header .search form {
-    font-size: 0;
-    margin-top: 42px;
+  margin-top: 42px;
+  font-size: 0;
 }
 .header .search input {
-    height: 34px;
-    width: 508px;
-    border: 1px solid #DD302D;
+  height: 34px;
+  width: 508px;
+  border: 1px solid #DD302D;
 }
 .header .search button {
-    width: 80px;
-    height: 36px;
-    background-color: #DD302D;
-    vertical-align: top;
-    background-image: url('../images/serch_icon.png');
-    background-repeat: no-repeat;
-    background-position: 28px 6px;
+  width: 80px;
+  height: 36px;
+  background-color: #DD302D;
+  vertical-align: top;
+  /* 引入背景图 */
+  background-image: url('../images/serch_icon.png');
+  background-repeat: no-repeat;
+  background-position: 28px 6px;
 }
-/* #endregion头部结束 */
+/* 头部结束 */
+/* #endregion */
 
-/* #region主导航区 */
+/* #region主导航区开始 */
 .main-nav {
-    height: 48px;
-    border-bottom: 1px solid #DD302D;
+  border-bottom: 1px solid #DD302D;
 }
-.main-nav .all-list {
-    height: 48px;
-    width: 190px;
-    line-height: 48px;
-    background-color: #DD302D;
-    font-size: 16px;
-    text-align: center;
-    color: #fff;
+.main-nav .all-types {
+  height: 48px;
+  width: 190px;
+  line-height: 48px;
+  background-color: #DD302D;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
 }
 .mian-li-nav {
-    height: 48px;
-    line-height: 48px;
+  height: 48px;
+  line-height: 48px;
 }
 .mian-li-nav ul li {
-    float: left;
-    font-size: 16px;
-    margin: 0 10px;
+  float: left;
+  font-size: 16px;
+  margin: 0 10px;
 }
 /* #endregion主导航区结束 */
 
-/* #region主内容区 */
+
+/* #region主内容区开始 */
 .mian-content {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-/* 左侧侧边栏 */
-.slide-nav {
-    height: 458px;
-    width: 190px;
-    background-color: #F4F4F4;
-    position: relative;
+.mian-content .slide-nav {
+  height: 458px;
+  width: 190px;
+  background-color: #F4F4F4;
 }
 .mian-content .slide-nav li {
-    height: 28px;
-    line-height: 28px;
-    padding-left: 16px;
-    font-size: 14px;
-}
-.mian-content .slide-nav li:first-child {
-    margin-top: 5px;
+  font-size: 14px;
+  height: 28px;
+  line-height: 28px;
+  /* CSS高级技巧-特别注意：背景色可以填充padding，不能填充margin，所以这里不能用margin-left */
+  padding-left: 16px;
 }
 .mian-content .slide-nav li:hover {
-    background-color: #DD302D;
+  background-color: #DD302D;
+  color: #FFFFFF;
+  cursor: pointer;
 }
+/* CSS高级技巧-鼠标放在li上面的时候，去找li中的a，让这个a中文字的颜色变成白色，不能写.slide-nav li a:hover，这样是鼠标放在a上面的时候，让a中文字颜色变成白色 */
 .mian-content .slide-nav li:hover>a {
-    color: #F4F4F4;
+  color: #FFFFFF;
 }
-.second-menu {
-    width: 680px;
-    height: 458px;
-    background-color: #F4F4F4;
-    position: absolute;
-    left: 190px;
-    top:0;
-    padding-left: 20px;
-    display: none;
+.mian-content .banner {
+  height: 458px;
+  width: 690px;
+  margin: 0 10px;
+}
+.mian-content .slide-other {
+  width: 290px;
+  height: 458px;
+}
+.mian-content .slide-nav {
+  position: relative;
+}
+.mian-content .slide-nav .second-menu {
+  width: 680px;
+  height: 458px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 190px;
+  display: none;
+  background-color: #F4F4F4;
+  /* 整个内容区的左侧边距 */
+  padding-left: 20px;
 }
 .mian-content .slide-nav li:hover .second-menu {
-    display: block;
+  display: block;
 }
-.second-menu dl {
-    font-size: 14px;
-    height: 36px;
-    line-height: 36px;
-    margin-top: 10px;
+.mian-content .slide-nav .second-menu dl {
+  padding-left: 20px;
 }
-.second-menu dt {
-    float: left;
-    height: 20px;
-    width: 70px;
-    font-weight: bold;
-    margin-right: 10px;
+.mian-content .slide-nav .second-menu dt {
+  float: left;
+  width: 70px;
+  font-weight: bold;
+  height: 36px;
+  line-height: 36px;
+  margin-right: 10px;
 }
-.second-menu dd {
-    float: left;
+.mian-content .slide-nav .second-menu dd {
+  float: left;
+  height: 36px;
+  line-height: 36px;
 }
-.second-menu dd a {
-    padding: 0 10px;
-    border-left: 1px solid #666;
+.mian-content .slide-nav .second-menu dd a {
+  padding: 0 10px;
+  border-left: 1px solid #999999;
 }
-/* 中间滚动图片区 */
-.banner {
-    height: 458px;
-    width: 690px;
-    margin: 0 10px;
+.mian-content .container .slide-other .message {
+  width: 260px;
+  height: 156px;
+  border: 1px solid #D9D9D9;
+  padding: 0 14px;
 }
-/* 右侧侧边栏 */
-.slide-other {
-    height: 458px;
-    width: 290px;
+.mian-content .container .slide-other .message .title {
+  height: 39px;
+  line-height: 39px;
+  border-bottom: 1px solid #999999;;
+}  
+.mian-content .container .slide-other .message .message-list li {
+  height: 26px;
+  line-height: 26px;
+}  
+.mian-content .container .slide-other .other-nav {
+  width: 290px;
+  height: 290px;
+  margin-top: 10px;
+  overflow: hidden;
 }
-.slide-other .title {
-    height: 156px;
-    width: 260px;
-    padding: 0 14px;
-    border: 1px solid #D9D9D9;
+.mian-content .container .slide-other .other-nav ul {
+  margin-top: 10px;
+}  
+.mian-content .container .slide-other .other-nav ul li {
+  float: left;
+  width: 48px;
+  height: 70px;
+  margin: 0 11px;
+  text-align: center;
 }
-.slide-other .title .top-msg {
-    height: 38px;
-    line-height: 38px;
-    border-bottom: 1px solid #D9D9D9;
+.mian-content .container .slide-other .other-nav ul:first-child {
+  margin-top: 16px;
 }
-.title .top-msg span {
-    font-size: 14px;
-    font-weight: bold;
-}
-.title .indulgence li {
-    height: 26px;
-    line-height: 26px;
-}
-.title .indulgence li a {
-    font-size: 12px;
-}
-.title .indulgence li:first-child {
-    margin-top: 2px;
-}
-.slide-other .msg-nav {
-    margin-top: 10px;
-    height: 290px;
-    width: 290px;
-    text-align: center;
-} 
-.msg-nav-list li {
-    height: 70px;
-    width: 48px;
-    float: left;
-    margin: 0 11px;
-    cursor: pointer;
-}
-.msg-nav-list:first-child {
-    padding-top: 16px;
-}
-.msg-nav-list:nth-child(2) {
-    padding: 17px 0;
-}
-.msg-nav-list li:first-child {
-    margin-left: 16px;
-}
-.msg-nav-list li div {
-    height: 48px;
-    width: 48px;
-    background-image: url('../images/精灵图-侧边功能.png');
-}
-.msg-nav-list:nth-child(1) li:nth-child(1) div {
-    background-position: 0 0;
-}
-.msg-nav-list:nth-child(1) li:nth-child(2) div {
-    background-position: -48px 0;
-}
-.msg-nav-list:nth-child(1) li:nth-child(3) div {
-    background-position: -96px 0;
-}
-.msg-nav-list:nth-child(1) li:nth-child(4) div {
-    background-position: -144px 0;
-}
-.msg-nav-list:nth-child(2) li:nth-child(1) div {
-    background-position: 0 -48px;
-}
-.msg-nav-list:nth-child(2) li:nth-child(2) div {
-    background-position: -48px -48px;
-}
-.msg-nav-list:nth-child(2) li:nth-child(3) div {
-    background-position: -96px -48px;
-}
-.msg-nav-list:nth-child(2) li:nth-child(4) div {
-    background-position: -144px -48px;
-}
-.msg-nav-list:nth-child(3) li:nth-child(1) div {
-    background-position: 0 -96px;
-}
-.msg-nav-list:nth-child(3) li:nth-child(2) div {
-    background-position: -48px -96px;
-}
-.msg-nav-list:nth-child(3) li:nth-child(3) div {
-    background-position: -96px -96px;
-}
-.msg-nav-list:nth-child(3) li:nth-child(4) div {
-    background-position: -144px -96px;
-}
-/* #endregion主内容区 */ 
 
-/* #region秒杀区 */
+.mian-content .container .slide-other .other-nav ul li:first-child {
+  margin-left: 16px;
+}
+.mian-content .container .slide-other .other-nav ul li div {
+  height: 48px;
+  width: 48px;
+}
+.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(1) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat 0 0;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(2) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -48px 0;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(3) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -96px 0;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(4) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -144px 0;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(1) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat 0 -48px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(2) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -48px -48px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(3) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -96px -48px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(4) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -144px -48px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(1) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat 0 -96px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(2) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -48px -96px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(3) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -96px -96px;
+} 
+.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(4) div {
+  background: url(../images/精灵图-侧边功能.png) no-repeat -144px -96px;
+} 
+/*
+.mian-content .container .slide-other .other-nav ul li span {
+  text-align: center;
+  vertical-align: middle;
+  color: gold;
+} */
+/* #endregion主内容区结束 */
+
+
+/* #region秒杀区开始 */
 .seckill {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-.seckill img {
-    float: left;
-    margin-right: 11px;
-    cursor: pointer;
+.seckill .container img {
+  float: left;
+  margin-right: 11px;
 }
-.seckill img:last-child {
-    margin-right:0;
+.seckill .container img:last-child {
+  margin-right: 0;
 }
-/* #endregion秒杀区 */
+/* #endregion秒杀区结束 */

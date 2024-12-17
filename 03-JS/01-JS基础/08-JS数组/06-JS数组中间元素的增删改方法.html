@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS数组中间元素的增删方法</title>
+  <title>JS数组中间元素的增删改方法</title>
   <script type="text/javascript">
     let nums = [10,20,30,40,50]
     console.log(nums)
@@ -35,6 +35,15 @@
     nums = [10,20,30,40,50]
     nums.splice(2,0,'hello')
     console.log(nums)
+    console.log('------------04------------')
+
+    /**
+    * with():会返回一个新数组，其指定索引处的值会被新值替换。
+    */
+    nums = [10,20,30,40,50]
+    console.log(nums.with(2,'XXX'))
+    console.log(nums)
+    console.log('------------05------------')
   </script>
 </head>
 <body>

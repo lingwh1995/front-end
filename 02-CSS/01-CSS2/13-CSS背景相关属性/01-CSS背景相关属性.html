@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>CSS背景相关属性</title>
     <style>
-        div {
+        /* 背景属性入门 */
+        .background {
             border: 2px black solid;
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             font-size: 40px;
             /* 设置背景颜色，默认值是transparent */
             /* background-color: skyblue; */
@@ -23,9 +24,39 @@
             /* background: url(../images/悟空.jpg) skyblue no-repeat center; */
             background: url(../images/悟空.jpg) skyblue no-repeat 50px 80px;
         }
+
+        /* 背景属性高级之精灵图 */
+        .genie dl dd {
+            width: 48px;
+            text-align: center;
+        }
+        .genie dl dd:first-child div{
+            width: 48px;
+            height: 48px;
+            background: url(../images/精灵图.png) no-repeat 0 -48px;
+        }
+        .genie dl dd:nth-child(2) div{
+            width: 48px;
+            height: 48px;
+            background: url(../images/精灵图.png) no-repeat -48px -48px;
+        }
     </style> 
 </head>
 <body>
-    <div>你好啊！</div>
+    <h2>背景属性入门</h2>
+    <div class="background">你好啊！</div>
+    <h2>背景属性高级之精灵图</h2>
+    <div class="genie">
+        <dl>
+            <dd>
+                <div></div>
+                <span>电影</span>
+            </dd>
+            <dd>
+                <div></div>
+                <span>酒店</span>
+            </dd>
+        <ul>
+    </div>
 </body>
 </html>
