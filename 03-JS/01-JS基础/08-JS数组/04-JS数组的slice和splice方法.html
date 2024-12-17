@@ -31,6 +31,31 @@
     console.log(nums.slice(-2))
     console.log(nums)
     console.log('------------05------------')
+
+    /**
+     * splice(): 在原数组中移除或者替换已存在的元素和/或添加新的元素，会改变原数组的内容
+     *  splice(start) 从start位置开始截取元素，并返回截取的出来的元素
+     *  splice(start, deleteCount) 从start位置开始截取元素，一共截取deleteCount个元素，并返回截取的出来的元素
+     *  splice(start, deleteCount, item1) 从start位置开始截取元素，一共截取deleteCount个元素，并将item1元素插入到原数组中，并返回截取的出来的元素
+     *  splice(start, deleteCount, item1, item2) 从start位置开始截取元素，一共截取deleteCount个元素，并将item1、item2元素插入到原数组中，并返回截取的出来的元素
+     *  splice(start, deleteCount, item1, item2, itemN)
+     */
+     nums = [10,20,30,40,50]
+     console.log(nums.splice(1))
+     console.log(nums)
+     console.log('------------06------------')
+     
+
+     nums = [10,20,30,40,50]
+     console.log(nums.splice(1,2))
+     console.log(nums)
+     console.log('------------07------------')
+     
+
+     nums = [10,20,30,40,50]
+     console.log(nums.splice(1,2,'XXX'))
+     console.log(nums)
+     console.log('------------07------------')
   </script>
 </head>
 <body>
