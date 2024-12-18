@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5表单input新增type属性</title>
+</head>
+<body>
+  <h2>email: 1.校验用户输入的内容是否符合邮箱格式 2.应该与required一起连用，因为输入项为空的时候，校验不会生效</h2>
+  <h2>number: 1.校验用户输入的内容是否符合数值格式 2.应该与required一起连用，因为输入项为空的时候，校验不会生效</h2>
+  <h2>search: 1.一键清空用户输入的内容 2.应该与required一起连用，因为输入项为空的时候，清空按钮不会出现</h2>
+  <h2>phone: 1.在移动端输入时调出数字键盘 2.可以与required一起连用，这个不做强制性要求</h2>
+  <h2>range: 1.如果设置了max和min，提交时不在这个范围之内的，会自动把提交的值设置为最大值或最小值 2.不用与required一起连用</h2>
+  <form action="#">
+    <!-- 邮箱：<input type="email" name="email" required/><br/> -->
+    <!-- 数值：<input type="number" name="number" required step="2" max="80" min="20"/><br/> -->
+    <!-- 搜索：<input type="search" name="keyword" required/><br/> -->
+    <!-- 电话：<input type="tel" name="phone" required/><br/> -->
+    范围：<input type="range" name="range" max="80" min="20" value="50" /><br/>
+    <input type="submit" value="提交"/>
+  </form>
+</body>
+</html>
