@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5新增视频标签</title>
+</head>
+<body>
+  <!-- 
+    1.width：设置宽度(一般只设置宽度就行了，高度会同比例放大或缩小，使用width属性或者css样式进行设置)
+    2.controls：设置视频控制条
+    3.muted：设置视频静音
+    4.autoplay：设置自动播放(前提是设置了静音) 谷歌浏览器媒体活跃度查询：chrome://media-engagement 
+    5.loop：循环播放
+    6.poster：设置视频封面(注意：不能和autoplay一起连用)
+    7.preload：设置视频预加载(注意：不能和autoplay一起连用)
+               auto：由浏览器决定
+               none：不进行预加载
+               metadata：只加载视频时长等基本信息
+  -->
+  <video src="./video/小电影.mp4" width="600" controls muted autoplay loop poster="./video/封面.png" preload="none"></video>
+</body>
+</html>
