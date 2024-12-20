@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增盒模型属性_box-sizing</title>
+  <style>
+    /**
+     * box-sizing两个可选值
+     *  content-box(标准盒模型-扩展主义)：设置盒子的内容区的宽度和高度
+     *  border-box(怪异盒模型-压缩主义)： 设置盒子的总大小
+     */
+    .box-1 {
+      width: 400px;
+      height: 400px;
+      padding: 50px;
+      border: 50px;
+      background-color: gold;
+      /* 设置盒子的内容区的宽度和高度 */
+      box-sizing: content-box;
+    }
+    .box-2 {
+      width: 400px;
+      height: 400px;
+      padding: 50px;
+      border: 50px;
+      background-color: tomato;
+      /* 设置盒子的总大小 */
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-1"></div>
+  <hr/>
+  <div class="box-2"></div>
+</body>
+</html>

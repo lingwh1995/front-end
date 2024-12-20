@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增盒模型属性_resize</title>
+  <style>
+    /**
+     * resize：使得盒子的大小可以调节
+     *  horizontal：调节水平方向大小
+     *  vertical： 调节垂直方向大小
+     * 注意：必须加上 overflow:hidden;/overflow: scroll;等overflow属性 才能使用，因为子元素大小有时会超过父元素
+     */
+    .box-1 {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+      overflow: hidden;
+      /* 水平方向可以调节大小 */
+      /* resize: horizontal; */
+      /* 垂直方向可以调节大小 */
+      resize: vertical;
+    }
+    .box-2 {
+      width: 600px;
+      height: 200px;
+      background-color: tomato;
+    }  
+  </style>
+</head>
+<body>
+  <div class="box-1">
+    <div class="box-2"></div>
+  </div>
+</body>
+</html>
