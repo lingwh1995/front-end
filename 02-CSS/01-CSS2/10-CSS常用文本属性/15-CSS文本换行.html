@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS文本换行</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            background-color: gold;
+            margin: 10px;
+        }
+        /* 确保文本在容器边界内换行 */
+        .text-wrap {
+            white-space: normal;  /* 允许换行 */
+            overflow-wrap: break-word;  /* 在必要时单词内部断行 */
+        }
+        
+        /* 强制文本在单词间断行，不考虑容器宽度 */
+        .text-no-wrap {
+            white-space: nowrap;  /* 不允许换行 */
+            overflow-wrap: normal;  /* 不在单词内部断行 */
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<div class="box text-wrap">这是一段将会在容器边界内自动换行的文本。</div>
+<div class="box text-no-wrap">这是一段不会换行的文本，即使它超过了容器的宽度。</div>
+</html>
