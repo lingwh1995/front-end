@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增边框属性-边框外轮廓_outline</title>
+  <style>
+    /*
+     * 注意：outline-offset不是outline的子属性，是一个独立的属性
+     */
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+      margin: 100px auto;
+
+      /* 分开写 */
+      /*
+      outline-width: 50px;
+      outline-color: green;
+      outline-style: solid;
+      */
+
+      /* 复合写法 */
+      outline: 50px solid tomato;
+
+      /* 边框偏移量 */
+      outline-offset: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    知识就是力量。
+  </div>
+</body>
+</html>
