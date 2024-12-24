@@ -7,21 +7,21 @@
         /* text-align：设置块元素或者单元格框的行内内容的水平对齐 */
 
         /* 块元素中文本水平方向对齐：生效 */
-        .text-align-block {
+        .box-1 {
             font-size: 30px;
             background-color: rgba(0, 58, 85, 0.27);
             text-align: center;
         }
 
         /* 行内元素中文本水平方向对齐：不生效 */
-        .text-align-inline {
+        .box-2 {
             font-size: 30px;
             background-color: rgba(0, 58, 85, 0.27);
             text-align: center;
         }
 
         /* 行内块元素中文本水平方向对齐：不生效 */
-        .text-align-inline-block {
+        .box-3 {
             /* 转换为行内块元素 */
             display: inline-block;
             font-size: 30px;
@@ -31,15 +31,15 @@
     </style>
 </head>
 <body>
-    <div class="text-align-block">
+    <div class="box-1">
         陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
     </div>
     <hr/>
-    <span class="text-align-inline">
+    <span class="box-2">
         陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
     </span>
     <hr/>
-    <div class="text-align-inline-block">
+    <div class="box-3">
         陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
     </div>
 </body>

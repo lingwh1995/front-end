@@ -19,6 +19,7 @@
       border: 50px dashed red;
       background: gold url(../images/bg02.jpg) no-repeat;
       font-size: 80px;
+      color: transparent;
       
       /* 从 border 区域开始向外裁剪背景，border以外的背景图是不可见的(默认值) */
       /* background-clip: border-box; */
@@ -28,6 +29,7 @@
       
       /* 从 content 区域开始向外裁剪背景，content以外的背景图是不可见的 */
       background-clip: content-box;
+      -webkit-background-clip: text;
     }
   </style>
 </head>
