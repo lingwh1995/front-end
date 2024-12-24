@@ -28,8 +28,12 @@
       /* background-clip: padding-box; */
       
       /* 从 content 区域开始向外裁剪背景，content以外的背景图是不可见的 */
-      background-clip: content-box;
-      -webkit-background-clip: text;
+      /* background-clip: content-box; */
+
+      /* 使用图片作为文字的背景，前提是文字的背景颜色为透明色，否则看不出来效果 */
+      background-clip: text;
+      /* 兼容性写法 */
+      /* -webkit-background-clip: text; */
     }
   </style>
 </head>
