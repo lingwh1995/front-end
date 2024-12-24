@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3背景渐变_径向渐变</title>
+  <style>
+    /*
+     * 特别注意：不是只可以设置三个渐变颜色，可以设置很多个颜色
+     */
+    .box {
+      width: 400px;
+      height: 400px;
+      border: 1px solid black;
+    }
+    .box-1 {
+      /* 多个颜色之间的渐变，默认从圆心开始向四周扩散(注意：不一定是正圆，要看容器本身宽高比例) */
+      background-image: radial-gradient(red,green,blue);
+    }
+    .box-2 {
+      /* 使用关键词调整渐变圆心的位置 */
+      /* background-image: radial-gradient(at left,red,green,blue); */
+      background-image: radial-gradient(at top left,red,green,blue);
+    }
+    .box-3 {
+      /* 使用像素调整渐变圆心的位置 */
+      /* background-image: radial-gradient(at 0px 0px,red,green,blue); */
+      /* background-image: radial-gradient(at 200px 0px,red,green,blue); */
+      background-image: radial-gradient(at 0px 200px,red,green,blue);
+    }
+    .box-4 {
+      /* 调整渐变形状为正圆 */
+      background-image: radial-gradient(circle,red,green,blue);
+    }
+    .box-5 {
+        /* 调整渐变形状的半径 */
+        /* background-image: radial-gradient(100px,red,green,blue); */
+        background-image: radial-gradient(50px 200px,red,green,blue);
+    }
+    .box-6 {
+        /* 调整开始渐变的位置 */
+        background-image: radial-gradient(red 50px,green 200px,blue 300px);
+    }
+  </style>
+</head>
+<body>
+  <div class="box box-1">
+    山回路转不见君，雪上空留马行处。
+  </div>
+  <div class="box box-2">
+    山回路转不见君，雪上空留马行处。
+  </div>
+  <div class="box box-3">
+    山回路转不见君，雪上空留马行处。
+  </div>
+  <div class="box box-4">
+    山回路转不见君，雪上空留马行处。
+  </div>
+  <div class="box box-5">
+    山回路转不见君，雪上空留马行处。
+  </div>
+  <div class="box box-6">
+    山回路转不见君，雪上空留马行处。
+  </div>
+</body>
+</html>
