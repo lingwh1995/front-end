@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3过渡高级使用</title>
+  <style>
+    .parent {
+      width: 1800px;
+      height: 900px;
+      border: 1px solid black;
+    }
+    .child {
+      width: 600px;
+      height: 100px;
+    }
+    .parent:hover .child {
+      /* 设置所有属性过渡 */
+      transition-property: all;
+      /* 一次设置所有属性的过渡时间 */
+      transition-duration: 5s;
+      width: 1800px;
+    }
+    .child-1 {
+      background-color: gold;
+      /* 慢、快、慢 */
+      transition-timing-function: ease;
+    }
+    .child-2 {
+      background-color: green;
+      /* 线性变换(匀速变换) */
+      transition-timing-function: linear;
+    }
+    .child-3 {
+      background-color: tomato;
+      /* 先慢后快 */
+      transition-timing-function: ease-in;
+    }
+    .child-4 {
+      background-color: purple;
+      /* 先快后慢 */
+      transition-timing-function: ease-out;
+    }
+    .child-5 {
+      background-color: orange;
+      /* 慢、快、慢 */
+      transition-timing-function: ease-in-out;
+    }
+    .child-6 {
+      background-color: blue;
+      /* 不考虑过渡的时间，直接就到终点 */
+      transition-timing-function: step-start;
+    }
+    .child-7 {
+      background-color: chocolate;
+      /* 考虑过渡的时间，但无过渡效果，过渡时间到了后，瞬间到达终点 */
+      transition-timing-function: step-end;
+    }
+    .child-8 {
+      background-color: skyblue;
+      /* 分成20份分步骤过渡 */
+      /* transition-timing-function: steps(20,start); */
+      transition-timing-function: steps(20,end);
+    }
+    .child-9 {
+      background-color: black;
+      /* 贝塞尔曲线 */
+      cubic-bezier(.17,.67,.83,.67);
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child child-1">ease：慢、快、慢</div>
+    <div class="child child-2">linear：线性变换(匀速变换)-最常用</div>
+    <div class="child child-3">ease-in：先慢后块</div>
+    <div class="child child-4">ease-out：先块后慢</div>
+    <div class="child child-5">ease-in-out：慢、快、慢</div>
+    <div class="child child-6">step-start：不考虑过渡的时间，直接就到终点</div>
+    <div class="child child-7">step-end：考虑过渡的时间，但无过渡效果，过渡时间到了后，瞬间到达终点</div>
+    <div class="child child-8">steps(20,end)：分成20份分步骤过渡</div>
+    <div class="child child-9">cubic-bezier(.17,.67,.83,.67)：贝塞尔曲线(https://cubic-bezier.com/)</div>
+  </div>
+</body>
+</html>

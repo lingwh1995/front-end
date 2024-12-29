@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3过渡基本使用</title>
+  <style>
+    .box-1 {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      /* 分别设置哪个属性需要过渡 */
+      transition-property: width,height,background-color;
+      /* 分别设置过渡时间 */
+      transition-duration: 2s,5s,8s;
+    }
+    .box-1:hover {
+      width: 400px;
+      height: 400px;
+      background-color: green;
+    }
+
+    .box-2 {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      overflow: hidden;
+      /* 设置所有属性过渡 */
+      transition-property: all;
+      /* 一次设置所有属性的过渡时间 */
+      transition-duration: 5s;
+    }
+    .box-2:hover {
+      width: 400px;
+      height: 400px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-1"></div>
+  <hr/>
+  <div class="box-2"></div>
+</body>
+</html>
