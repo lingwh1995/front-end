@@ -36,6 +36,13 @@
     console.log(Array.of('foo', 2, 'bar', true));
     console.log(Array.of());
     console.log('------------04------------')
+
+    /**
+     * Array.from():从可迭代或类数组对象创建一个新的浅拷贝的数组实例，也可以用于把字符串(没带有分隔符的)转为数组
+     */
+     console.log(Array.from('12345'));
+     console.log(Array.from(new Set([1,2,2,3,4])));
+    console.log('------------05------------')
   </script>
 </head>
 <body>

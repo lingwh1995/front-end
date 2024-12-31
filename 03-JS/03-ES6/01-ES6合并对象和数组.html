@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6合并对象和数组</title>
+  <script>
+    // 合并对象
+    const obja = {
+      name: 'zhangsan',
+      age: 18,
+    }
+    const objb = {
+      name: 'lisi',
+      gender: '男',
+    }
+    const mergeObj = {...obja,...objb}
+    console.log(mergeObj)
+
+    // 合数数组
+    const arr1 = [1,2,3]
+    const arr2 = [2,3,4]
+    let mergeArray = [...arr1,...arr2]
+    console.log(mergeArray)
+
+    // 合并数组并去重
+    mergeArray = Array.from(new Set([...arr1,...arr2]))
+    console.log(mergeArray)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -39,6 +39,7 @@
     console.log(nums)
     console.log('------------06------------')
 
+
     /**
      * splice(): 在原数组中移除或者替换已存在的元素和/或添加新的元素，会改变原数组的内容
      *  splice(start) 从start位置开始截取元素，并返回截取的出来的元素
@@ -69,6 +70,13 @@
      console.log(nums.splice(1,2,'XXX','YYY'))
      console.log(nums)
      console.log('------------10------------')
+     
+
+     /* 使用splice()清空原数组 */ 
+     nums = [10,20,30,40,50]
+     console.log(nums.splice(0))
+     console.log(nums)
+     console.log('------------11------------')
   </script>
 </head>
 <body>
