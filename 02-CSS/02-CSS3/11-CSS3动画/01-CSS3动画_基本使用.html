@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3动画_基本使用</title>
+  <style>
+    .parent {
+      width: 1000px;
+      height: 100px;
+      border: 1px solid black;
+    }
+
+    /* 定义一个动画(定义一组关键帧)方式一(简单定义方式) */
+    @keyframes moveToRight1 {
+      /* 第一帧 */
+      from {
+        background-color: green;
+      }
+      /* 最后一帧 */
+      to {
+        transform: translate(900px);
+        background-color: red;
+      }
+    }
+
+    /* 定义一个动画(定义一组关键帧)方式二(完整定义方式) */
+    @keyframes moveToRight2 {
+      /* 第一帧 */
+      0% {
+        background-color: green;
+      }
+      29% {
+        background-color: gold;
+      }
+      50% {
+        background-color: tomato;
+      }
+      /* 最后一帧 */
+      100% {
+        transform: translate(900px);
+        background-color: red;
+      }
+    }
+
+    .child {
+      width: 100px;
+      height: 100px;
+      /* 应用动画一 */
+      /* animation-name: moveToRight1; */
+      /* 应用动画二 */
+      animation-name: moveToRight2;
+      /* 设置动画持续的时间 */
+      animation-duration: 5s;
+      /* 设置动画延迟时间 */
+      /* animation-delay: 0.5s; */
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3动画_动画案例</title>
+  <style>
+    .bike {
+      width: 130px;
+      height: 130px;
+      background: url('../images/bike.png');
+      animation: playPhoto 1s steps(31) infinite;
+      margin: 100px auto;
+    }
+
+    /* 定义一个动画(定义一组关键帧)方式一(简单定义方式) */
+    @keyframes playPhoto {
+      /* 第一帧 */
+      from {
+      }
+      /* 最后一帧 */
+      to {
+        background-position: 0 -4030px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bike">
+  </div>
+</body>
+</html>
