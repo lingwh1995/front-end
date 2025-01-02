@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>字符串常用方法</title>
   <script>
-    const letters = 'ABCDEF'
+    let letters = 'ABCDEF'
 
     /**
      * charAt(index)：查看指定索引位置的字符
@@ -28,8 +28,19 @@
 
     /**
      * endsWith() 方法用于判断一个字符串是否以指定字符串结尾，如果是则返回 true，否则返回 false。
-     */ 
+     */
+    letters = 'ABCDEF'
+    console.log(letters.endsWith('F'));
+    console.log(letters.endsWith('EF'));
     console.log('------------04------------')
+
+    /**
+     * startWith() 方法用于判断一个字符串是否以指定字符串结尾，如果是则返回 true，否则返回 false。
+     */
+    letters = 'ABCDEF'
+    console.log(letters.startsWith('A'));
+    console.log(letters.startsWith('AB'));
+    console.log('------------05------------')
   </script>
 </head>
 <body>
