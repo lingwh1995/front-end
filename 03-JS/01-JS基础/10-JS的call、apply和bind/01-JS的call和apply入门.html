@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS的call和apply入门</title>
+  <script>
+    var obj = {
+        name: '张三'
+    }
+
+    function sum(a,b) {
+        console.log(this)
+        return a + b
+    }
+
+    /**
+     * -this的情况：
+     *  1.以函数形式调用，this永远是window
+     *  2.以方法形式调用时，this是调用方法的对象
+     *  3.以构造函数形式调用时，this是新创建的对象
+     *  4.使用call和apply调用时，this是指定的对象
+     * call()和apply()：
+     *  1.call()和apply()都可以用来改变this的指向
+     *  2.call()传递参数时直接传递，apply()需要把参数封装成数组进行传递
+     */
+    //https://www.runoob.com/w3cnote/js-call-apply-bind.html
+
+    //函数中this指向Window
+    console.log(sum(1,2))
+
+    //函数中this指向obj对象，使用call()改变sum()函数中this的值，使this指向obj
+    console.log(sum.call(obj,1,2))
+
+    //函数中this指向obj对象，使用apply()改变sum()函数中this的值，使this指向obj
+    console.log(sum.apply(obj,[1,2]))
+
+    //函数中this指向obj对象，使用bind()改变sum()函数中this的值，使this指向obj
+    sum.bind(obj,1,2)
+    sum()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
