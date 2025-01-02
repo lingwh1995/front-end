@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC_解决自己被其他浮动元素覆盖问题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+        }
+        .child-1 {
+            background-color: gold;
+            float: left;
+        }
+        .child-2 {
+            background-color: green;
+            float: left;
+            /* position: absolute; */
+            /* display: inline-block; */
+            /* display: table; */
+            /* overflow: hidden; */
+            /* column-count: 1; */
+            /* display: flow-root; */
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child child-1">child-1</div>
+        <div class="child child-2">child-2</div>
+    </div>
+</body>
+</html>

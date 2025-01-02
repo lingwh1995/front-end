@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩盒模型_flex复合属性</title>
+    <style>
+        .outer {
+            width: 800px;
+            height: 800px;
+            background-color: #888;
+
+            /* 伸缩盒模型相关属性-start */
+            
+            /* 将该元素变成了伸缩容器(开启了flex布局) */
+            display: flex;
+
+
+            /* 伸缩盒模型相关属性-end */
+        }
+
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid black;
+
+            /* 使用flex-grow决定flex容器中的flex项目如何分配剩余空间，默认值是0 */
+            /* flex-grow: 1; */
+
+            /* 使用flex-shrink决定flex容器中的flex项目如何分配压缩空间，默认值是1 */
+            /* flex-shrink: 1; */
+
+            /* 使用基准元素设置(覆盖)伸缩容器宽度 */
+            /* flex-basis: 100px; */
+
+            /* flex = flex-grow + flex-shrink + flex-basis */
+            /* 可以拉伸 可以压缩 不设置主轴上的伸缩项目的基准尺寸大小为100px */
+            /* flex: 1 1 100px; */
+
+            /* 可以拉伸 可以压缩 不设置主轴上的伸缩项目的基准尺寸大小，可以简写为 flex: auto; */
+            /* flex: 1 1 auto; */
+            /* flex: auto; */
+
+            /****************************  项目中用的最多  ****************************/
+            /* 可以拉伸 可以压缩 设置主轴上的伸缩项目的基准尺寸大小为0px，可以简写为 flex: 1; */
+            /* flex: 1 1 0; */
+            /* flex: 1; */
+            /****************************  项目中用的最多  ****************************/
+            
+            /* 不可以拉伸 不可以压缩 不设置主轴上的伸缩项目的基准尺寸大小，可以简写为 flex: none; */
+            /* flex: 0 0 auto; */
+            /* flex: none; */
+
+            /* 不可以拉伸 可以压缩 不设置主轴上的伸缩项目的基准尺寸大小 */
+            flex: 0 1 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+</body>
+</html>
