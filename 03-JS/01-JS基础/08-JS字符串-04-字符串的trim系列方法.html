@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串的trim系列方法</title>
+  <script>
+    const str = '   Hello world!   '
+
+    /**
+     * trim() 方法会从字符串的两端移除空白字符，并返回一个新的字符串，而不会修改原始字符串。 
+     */
+    console.log(str)
+    console.log(str.trim())
+    console.log('------------01------------')
+
+    /**
+     * trimEnd() 方法会从字符串的结尾移除空白字符，并返回一个新的字符串，而不会修改原始字符串。trimRight() 是该方法的别名。 
+     */
+     console.log(str)
+     console.log(str.trimEnd())
+     console.log('------------02------------')
+
+    /**
+     * trimStart() 方法会从字符串的开头移除空白字符，并返回一个新的字符串，而不会修改原始字符串。trimLeft() 是该方法的别名。
+     */
+     console.log(str)
+     console.log(str.trimStart())
+     console.log('------------03------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

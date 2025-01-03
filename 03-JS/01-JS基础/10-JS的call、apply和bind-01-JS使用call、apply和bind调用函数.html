@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS使用call、apply和bind调用函数</title>
+  <script>
+    function show(callType) {
+      console.log('hello world,调用方式:' + callType)
+    }
+
+    /**
+     * call()、apply()、bind()可以调用函数，只不过在调用的过程中把函数内部的this指向的值改变了
+     */ 
+    //直接调用函数
+    show('直接调用')
+
+    //使用call()调用函数
+    show.call(window,'call()调用')
+
+    //使用apply()调用函数
+    show.apply(window,['apply()调用'])
+
+    //使用bind()调用函数
+    show.bind(window,'bind()调用')()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

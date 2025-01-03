@@ -9,7 +9,7 @@
         name: '张三'
     }
 
-    function sum(a,b) {
+    function add(a,b) {
         console.log(this)
         return a + b
     }
@@ -23,21 +23,26 @@
      * call()和apply()：
      *  1.call()和apply()都可以用来改变this的指向
      *  2.call()传递参数时直接传递，apply()需要把参数封装成数组进行传递
+     *  3.bind()和call()传递参数时语法相同，只不过bind()仅仅只是改变this指向，不会主动执行函数
      */
     //https://www.runoob.com/w3cnote/js-call-apply-bind.html
 
     //函数中this指向Window
-    console.log(sum(1,2))
+    console.log(add(1,2))
 
-    //函数中this指向obj对象，使用call()改变sum()函数中this的值，使this指向obj
-    console.log(sum.call(obj,1,2))
+    //函数中this指向obj对象，使用call()改变add()函数中this的值，使this指向obj
+    console.log(add.call(obj,1,2))
 
-    //函数中this指向obj对象，使用apply()改变sum()函数中this的值，使this指向obj
-    console.log(sum.apply(obj,[1,2]))
+    //函数中this指向obj对象，使用apply()改变add()函数中this的值，使this指向obj
+    console.log(add.apply(obj,[1,2]))
 
-    //函数中this指向obj对象，使用bind()改变sum()函数中this的值，使this指向obj
-    sum.bind(obj,1,2)
-    sum()
+    //函数中this指向obj对象，使用bind()改变add()函数中this的值，使this指向obj
+      //注意这个下面的语法，最后面还加了一个括号
+    //bind写法一
+    //console.log(add.bind(obj,1,2)())
+    //bind写法二
+    const bindFun = add.bind(obj,1,2)
+    console.log(bindFun());
   </script>
 </head>
 <body>
