@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS使用call、apply和bind调用函数</title>
+  <title>JS调用函数的四种方法</title>
   <script>
     function show(callType) {
       console.log('hello world,调用方式:' + callType)
@@ -12,17 +12,18 @@
     /**
      * call()、apply()、bind()可以调用函数，只不过在调用的过程中把函数内部的this指向的值改变了
      */ 
-    //直接调用函数
+    //1.直接调用函数
     show('直接调用')
 
-    //使用call()调用函数
+    //2.使用call()调用函数
     show.call(window,'call()调用')
 
-    //使用apply()调用函数
+    //3.使用apply()调用函数
     show.apply(window,['apply()调用'])
 
-    //使用bind()调用函数
-    show.bind(window,'bind()调用')()
+    //4.使用bind()调用函数 特别注意:bind()只是返回一个函数名，需要手动调用函数才有效果
+    const showBindFun = show.bind(window,'bind()调用')
+    showBindFun()
   </script>
 </head>
 <body>

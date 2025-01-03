@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bind的注意事项</title>
+  <script>
+    /**
+     * bind函数的注意事项
+     *  1.bind的不可逆性，一旦函数的this被bind绑定了，再次bind该函数是不会改变this指向的。
+     *  2.bind不适合与箭头函数一起使用，箭头函数中的 this 是在定义时确定的，并且是不可改变的，因此箭头函数不适合与 bind 一起使用。
+     */
+
+    /**
+     * bind函数的注意事项1：bind的不可逆性
+     */ 
+    const person1 = { name: 'Alice' };
+    const person2 = { name: 'Bob' };
+
+    function sayHello() {
+      console.log(`Hello, my name is ${this.name}`);
+    }
+    //第一次使用bind改变函数中this指向
+    const sayHelloBindFun = sayHello.bind(person1);
+    //第二次使用bind改变函数中this指向
+    const sayHelloReBindFun = sayHelloBindFun.bind(person2);
+    sayHelloReBindFun(); // 输出: Hello, my name is Alice
+
+
+    /**
+     * bind函数的注意事项2：bind不适合与箭头函数一起使用
+     */
+    const person = {
+      name: 'Alice',
+      greet: () => {
+        console.log(`Hello, my name is ${this.name}`)
+      }
+    }
+    const greetBindFun = person.greet.bind(person)
+    greetBindFun(); // 输出: Hello, my name is 
+  </script>
+</head>
+<body>
+</body>
+</html>

@@ -15,17 +15,16 @@
     }
 
     /**
-     * -this的情况：
+     * this的情况：
      *  1.以函数形式调用，this永远是window
      *  2.以方法形式调用时，this是调用方法的对象
      *  3.以构造函数形式调用时，this是新创建的对象
      *  4.使用call和apply调用时，this是指定的对象
-     * call()和apply()：
-     *  1.call()和apply()都可以用来改变this的指向
+     * call()、apply()和bind()：
+     *  1.call()、apply()、bind()都可以用来改变this的指向
      *  2.call()传递参数时直接传递，apply()需要把参数封装成数组进行传递
-     *  3.bind()和call()传递参数时语法相同，只不过bind()仅仅只是改变this指向，不会主动执行函数
+     *  3.call()和apply()方法都可以用来直接调用函数，而bind()返回的是一个新的函数，需要手动调用
      */
-    //https://www.runoob.com/w3cnote/js-call-apply-bind.html
 
     //函数中this指向Window
     console.log(add(1,2))

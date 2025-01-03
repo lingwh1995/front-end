@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用apply手动实现一个bind</title>
+  <script>
+    //自己实现一个bind()函数
+    Function.prototype.myBind = function(context, ...args) {
+      const fn = this;
+      return function(...newArgs) {
+        return fn.apply(context, args.concat(newArgs))
+      }
+    }
+    
+    //测试自己实现bind()函数
+    const person = {
+      name: 'Alice',
+    }
+
+    function sayHello(greeting) {
+      console.log(`${greeting}, my name is ${this.name}`)
+    }
+
+    const myBindFun = sayHello.myBind(person, 'Hello')
+    myBindFun() // 输出: Hello, my name is Alice
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

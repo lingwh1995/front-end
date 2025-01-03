@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bind的应用场景</title>
+  <script>
+    /**
+     * bind函数的应用场景
+     *  1.改变函数或方法中this指向 
+     *  2.实现参数预置效果
+     *  3.实现函数柯里化
+     *  4.在回调函数中绑定this
+     */
+
+    function add(a,b) {
+      console.log(this)
+      return a + b
+    }
+    const obj = {
+      name: 'obj'
+    }
+
+
+    //bind函数的应用场景1: 改变函数或方法中this的指向
+    console.log(add.bind(obj,10,5)())
+
+
+    //bind函数的应用场景2: 实现参数预置效果
+    const addFive = add.bind(null,5)
+    console.log(addFive(10))
+
+
+    //bind函数的应用场景3: 实现函数柯里化(‌函数柯里化（Currying）是一种将多个参数的函数转换为单个参数函数的技术)
+    function multiply(x, y) {
+      return x * y
+    }
+    const double = multiply.bind(null, 2);
+    console.log(double(5))
+
+
+    window.onload = () => {
+      //bind函数的应用场景4: 更改在回调函数中绑定的this
+          //在许多情况下，回调函数中的this会失去原有的上下文（比如在事件处理函数中）。bind方法可以确保回调函数中的this保持正确的上下文。
+      const person = {
+        name: 'Alice',
+        greet() {
+          console.log(`Hello, my name is ${this.name}`)
+        }
+      }
+      const button = document.querySelector('button')
+      //如果不使用bind，greet函数中的this在事件触发时会指向button元素，而不是person对象。通过bind，我们确保了this始终指向person
+      button.addEventListener('click', person.greet.bind(person));
+    }
+  </script>
+</head>
+<body>
+  <button>点击测试使用bind更改回调函数中绑定的this</button>
+</body>
+</html>
