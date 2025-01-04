@@ -16,6 +16,7 @@
      *      String -> Boolean (积极的会被转换为true，消极的会被转换为false)
      *      Number -> Boolean (积极的会被转换为true，消极的会被转换为false)
      *      null和undefined -> Boolean  (积极的会被转换为true，消极的会被转换为false)
+     *      true和false -> Boolean  (true会被转换为true，false会被转换为false)
      *  3.数据类型转换过程中的积极和消极
      *    String : 非空字符串积极，空字符串消极
      *    Number : 数字非0积极，数字为0消极
@@ -27,33 +28,51 @@
     a = Boolean(a)
     console.log(typeof(a))
     console.log(a)
+    console.log('-------------01-------------')
 
     let b = ''
     b = Boolean(b)
     console.log(typeof(b))
     console.log(b)
+    console.log('-------------02-------------')
 
     //Number -> Boolean
     let c = 1
     c = Boolean(c)
     console.log(typeof(c))
     console.log(c)
+    console.log('-------------03-------------')
 
     let d = 0
     d = Boolean(d)
     console.log(typeof(d))
-    console.log(d);
+    console.log(d)
+    console.log('-------------04-------------')
 
     //null和undefined -> Boolean
     let f = null
     f = Boolean(f)
     console.log(typeof(f))
     console.log(f)
+    console.log('-------------05-------------')
 
     let g = undefined
     g = Boolean(g)
     console.log(typeof(g))
     console.log(g)
+    console.log('-------------06-------------')
+
+    let h = true
+    h = Boolean(h)
+    console.log(typeof(h))
+    console.log(h)
+    console.log('-------------07-------------')
+
+    let i = false
+    i = Boolean(i)
+    console.log(typeof(i))
+    console.log(i)
+    console.log('-------------08-------------')
   </script>
 </head>
 <body>
