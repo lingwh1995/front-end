@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全选全不选</title>
+  <script>
+    window.onload = () => {
+      /**
+       * 全选中
+       */ 
+      document.querySelectorAll('button')[0].onclick = () => {
+        const hobbies = document.getElementsByName('hobby')
+        hobbies.forEach(element => {
+          element.checked = true
+        })
+      }
+
+      /**
+       * 全不选
+       */ 
+      document.querySelectorAll('button')[1].onclick = () => {
+        const hobbies = document.getElementsByName('hobby')
+        hobbies.forEach(element => {
+          element.checked = false
+        })
+      }
+
+      /**
+       * 反选中
+       */ 
+      document.querySelectorAll('button')[2].onclick = () => {
+        const hobbies = document.getElementsByName('hobby')
+        hobbies.forEach(element => {
+          element.checked = ! element.checked
+        })
+      }
+    }
+  </script>
+</head>
+<body>
+  篮球：<input type="checkbox" name="hobby" value="basketball"/>
+  足球：<input type="checkbox" name="hobby" value="football"/>
+  篮球：<input type="checkbox" name="hobby" value="tennis"/>
+  棒球：<input type="checkbox" name="hobby" value="baseball"/><br>
+  <button>全选中</button>
+  <button>全不选</button>
+  <button>反选中</button>
+</body>
+</html>
