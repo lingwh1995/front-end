@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS获取dom对象的六种方式</title>
+  <script>
+      /*	1.获取页面dom元素有六种方式：1.根据id 2.根据name 3.根据标签名称 4.根据class名称获取dom元素 5.通用选择器获取单个元素 6.通用选择器获取多个元素
+       *	2.注意事项：
+       *     1.根据id获取的值是单个值（getElementById），根据name和标签获取的值是数组类型的（getElementsBy...）
+       *		 2.获取表单标签的属性值：.value ，获取其他标签的包含的具体值：.innerText或.innerHTML
+       *     3.获取图片属性使用 .src
+       */
+
+      /**
+       * 方式一：根据id获取dom元素
+       */
+      const testGetElementById = () => {
+        var username = document.getElementById("username")
+        console.log(username.length)
+      }
+
+      /**
+			 * 方式二：根据name获取dom元素
+			 */
+       const testGetElementsByName = () => {
+				let userinfo = document.getElementsByName("userinfo")
+				for(let i=0;i<userinfo.length;i++){
+					console.log(userinfo[i].value)
+				}
+			}
+
+      /**
+       * 方式三：根据标签名称获取dom元素
+       */
+      const testGetElementsByTag = () => {
+        var inputTags = document.getElementsByTagName("input")
+        for(let i=0; i<inputTags.length; i++){
+          console.log(inputTags[i].value)
+        }
+      }
+
+      /**
+       * 方式四：根据class名称获取dom元素
+       */
+      const testGetElementByClassName = () => {
+        const elements = document.getElementsByClassName('text')
+        console.log(elements[0].value)
+        console.log(elements[1].innerText)
+        console.log(elements[2].innerText)
+      }
+
+      /**
+       * 方式五：通用选择器(css选择器)： 用于获取单个元素
+       * querySelector()
+       */
+      const testGetElementQuerySelector = () => {
+        //获取文档中的第一个id=username的元素
+        var username = document.querySelector("#username")
+        console.log(username.value)
+        //获取文档中的第一个type="button"的input标签
+        var firstButtonValue = document.querySelector("input[type=button]")
+        console.log(firstButtonValue.value)
+      }
+
+      /**
+       * 方式六：通用选择器(css选择器)：	用于获取多个元素，并将返回的值存放在一个数组中
+       * querySelectorAll()
+       */
+      const testGetElementsQuerySelectoAll = () => {
+        var buttons = document.querySelectorAll("input[type=button]")
+        for(var i=0; i<buttons.length; i++) {
+          console.log(buttons[i].value)
+        }
+      }
+
+      //获取页面中的html标签
+      const testGetDocumentElement = () => {
+        console.log(document.documentElement)
+      }
+      //获取页面中的body标签
+      const testGetBody = () => {
+        console.log(document.body)
+      }
+      //获取页面中的所有元素节点
+      const testGetAll = () => {
+        console.log(document.all)
+      }
+  </script>
+</head>
+<body>
+  	用户名：<input type="text" name="userinfo" id="username"/>
+		<input type="button" name="" value="根据id获取dom" onclick="testGetElementById()"/><br/>
+		密码：<input type="password" name="userinfo" />
+    <input type="button" name="" value="根据name获取dom" onclick="testGetElementsByName()"/><br/>
+		<input type="button" value="根据标签获取dom" onclick="testGetElementsByTag()"/><br/>
+		<input type="button" value="测试通用选择器querySelector()" onclick="testGetElementQuerySelector()"/><br/>
+		<input type="button" value="测试通用选择器querySelectorAll()" onclick="testGetElementsQuerySelectoAll()"/><br/>
+    <hr>
+    <div>
+      <input type="text" value="我是input标签" class="text"/><br>
+      <span class="text">我是span标签</span><br>
+      <div  class="text">我是div标签</div>
+      <input type="button" name="" value="根据class获取dom" onclick="testGetElementByClassName()"/><br/>
+      <input type="button" name="" value="获取页面中的html标签" onclick="testGetDocumentElement()"/><br/>
+      <input type="button" name="" value="获取页面中的body标签" onclick="testGetBody()"/><br/>
+      <input type="button" name="" value="获取页面中的所有元素节点" onclick="testGetAll()"/><br/>
+    </div>
+</body>
+</html>

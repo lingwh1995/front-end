@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS获取dom上的属性值</title>
+  <title>JS获取或设置dom上的属性值</title>
   <script type="text/javascript">
-    /*以<input>标签的value属性为例演示：
-    1.获取元素属性值，语法：getAtribute(属性名)
-    2.设置元素的属性，语法：setAttribute(属性名，属性值)
-    3.删除元素的属性，语法：removettribute("属性名")*/
-    //js获取value的两种方式  1.元素.value 2.元素.getAtribute(属性名)
+    /**
+     * 获取元素上的属性(以<input>标签的value属性为例演示)
+     *    1.获取元素属性，语法：getAtribute(属性名)
+     *    2.设置元素的属性，语法：setAttribute(属性名，属性值)
+     *    3.删除元素的属性，语法：removettribute("属性名")
+     * 获取元素上的属性值的两种方式
+     *    1.元素.属性名 
+     *    2.元素.getAtribute(属性名)
+     */
     const testGetAttribute = () => {
       const btn = document.getElementById("btn")
+      //使用 元素.getAtribute(属性名) 获取属性值
       const titleAttribute = btn.getAttribute("title")
-      alert(titleAttribute)
+      console.log(titleAttribute)
     }
     const testSetAttribute = () => {
       const btn = document.getElementById("btn")
       btn.setAttribute("title","我是title属性的值-设置后")
-      alert(btn.title)
+      //使用 元素.属性名 获取属性值
+      console.log(btn.title)
     }
     const testRemoveAttribute = () => {
       var btn = document.getElementById("btn")
