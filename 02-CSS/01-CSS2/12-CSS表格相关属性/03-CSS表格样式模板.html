@@ -7,74 +7,83 @@
   <style>
     /*
      *  1. 实现细边框
-     *  首先，我们想要的是细边框的表格，这可以通过为table、th（表头单元格）、td（表格单元格）等元素设置边框样式和宽度来实现。示例代码如下：
      */
     /* 表格整体样式 */
     table {
-        width: 100%; /* 根据需要调整宽度 */
-        border-collapse: collapse; /* 边框合并为一个单一的边框 */
+      /* 根据需要调整宽度 */
+      width: 100%;
+      /* 边框合并为一个单一的边框 */
+      border-collapse: collapse;
+      cursor: pointer;
     }
     /* 表格边框样式 */
     table, th, td {
-        border: 1px solid #ddd; /* 1px细的灰色边框 */
+      /* 1px细的灰色边框 */
+      border: 1px solid #ddd;
     }
+
     /* 表头样式 */
     th {
-        background-color: #f2f2f2; /* 浅灰色背景 */
-        padding: 8px; /* 内边距 */
-        text-align: left; /* 文本左对齐 */
+      /* 浅灰色背景 */
+      background-color: #f2f2f2;
+      /* 内边距 */
+      padding: 8px;
+      /* 文本左对齐 */
+      text-align: left;
     }
     /* 单元格样式 */
     td {
-        padding: 8px; /* 内边距 */
+      /* 内边距 */
+      padding: 8px;
     }
     
 
     /**
-     *  2. 隔行变色
-     *    隔行变色（也称为斑马线效果）可以提升表格的可读性，特别是当表格包含大量数据时。我们可以通过:nth-child伪类选择器来实现这一效果。示例如下： 
+     *  2. 隔行变色效果
      */
-
     /* 奇数行背景色 */
     tr:nth-child(odd) {
-        background-color: #f9f9f9; /* 浅灰色背景 */
+      /* 浅灰色背景 */
+      background-color: #f9f9f9;
     }
     /* 偶数行（实际上是未选中的奇数行，因为我们会高亮选中的行） */
     tr:nth-child(even) {
-        /* 默认样式，如果不需要特别设置，可以省略 */
+      /* 浅灰色背景 */
+      /* background-color: #f9f9f9; */
     }
     
     /**
      * 3. 高亮选中行
-     *  高亮显示用户点击或鼠标悬停的行，可以进一步提升用户体验。这里，我们将使用:hover伪类来实现鼠标悬停效果，并使用JavaScript（或jQuery等库）来动态添加类以实现点击选中效果。
      */
-
-
-    
     /* CSS部分（悬停效果）：*/
     /* 鼠标悬停时高亮显示 */
     tr:hover {
-        background-color: #ddd; /* 深灰色背景 */
+      /* 深灰色背景 */
+      background-color: #ddd;
     }
     /* 对应的CSS */
-    .selected {
-        background-color: #4CAF50; /* 绿色背景，表示选中 */
-        color: white; /* 文本颜色改为白色，提高可读性 */
+    .selected td {
+      /* 绿色背景，表示选中 */
+      background-color: #4CAF50 !important;
+      /* 文本颜色改为白色，提高可读性 */
+      color: white;
     }
   </style>
 
   <script>
-    //JavaScript部分（点击选中效果，使用原生JavaScript）：
-    document.querySelectorAll('tr').forEach(function(row) {
+    window.onload = () => {
+      //JavaScript部分（点击选中效果，使用原生JavaScript）：
+      document.querySelectorAll('tr').forEach((row) => {
         row.addEventListener('click', function() {
-            // 移除其他行的选中状态
-            document.querySelectorAll('tr.selected').forEach(function(selectedRow) {
-                selectedRow.classList.remove('selected');
-            });
-            // 添加当前行的选中状态
-            this.classList.add('selected');
-        });
-    });
+          // 移除其他行的选中状态
+          document.querySelectorAll('tr.selected').forEach((selectedRow) => {
+              selectedRow.classList.remove('selected')
+          })
+          // 添加当前行的选中状态
+          this.classList.add('selected')
+        })
+      })
+    }
   </script>
 </head>
 <body>

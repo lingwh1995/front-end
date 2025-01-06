@@ -19,6 +19,7 @@
 
     function sayHello() {
       console.log(`Hello, my name is ${this.name}`);
+      console.log('--------------01--------------')
     }
     //第一次使用bind改变函数中this指向
     const sayHelloBindFun = sayHello.bind(person1);
@@ -34,6 +35,7 @@
       name: 'Alice',
       greet: () => {
         console.log(`Hello, my name is ${this.name}`)
+        console.log('--------------02--------------')
       }
     }
     const greetBindFun = person.greet.bind(person)

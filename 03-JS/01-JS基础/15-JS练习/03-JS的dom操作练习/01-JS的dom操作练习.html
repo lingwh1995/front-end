@@ -5,31 +5,213 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS的dom操作练习</title>
   <style>
+    /*
+     *  1. 实现细边框
+     */
+    /* 表格整体样式 */
     table {
-        width: 100%; /* 根据需要调整宽度 */
-        border-collapse: collapse; /* 边框合并为一个单一的边框 */
+      /* 根据需要调整宽度 */
+      width: 100%;
+      /* 边框合并为一个单一的边框 */
+      border-collapse: collapse;
+      cursor: pointer;
+    }
+    /* 表格边框样式 */
+    table, th, td {
+      /* 1px细的灰色边框 */
+      border: 1px solid #ddd;
     }
 
-    table, th, td {
-        border: 1px solid #ddd; /* 1px细的灰色边框 */
+    /* 表头样式 */
+    th {
+      /* 浅灰色背景 */
+      background-color: #f2f2f2;
+      /* 内边距 */
+      padding: 8px;
+      /* 文本居中对齐 */
+      text-align: center;
+    }
+    /* 单元格样式 */
+    td {
+      /* 内边距 */
+      padding: 8px;
+      /* 文本居中对齐 */
+      text-align: center;
+    }
+    
+
+    /**
+     *  2. 隔行变色效果
+     */
+    /* 奇数行背景色 */
+    tr:nth-child(odd) {
+      /* 浅灰色背景 */
+      background-color: #f9f9f9;
+    }
+    /* 偶数行（实际上是未选中的奇数行，因为我们会高亮选中的行） */
+    tr:nth-child(even) {
+      /* 浅灰色背景 */
+      /* background-color: #f9f9f9; */
+    }
+    
+    /**
+     * 3. 高亮选中行
+     */
+    /* CSS部分（悬停效果）：*/
+    /* 鼠标悬停时高亮显示 */
+    tr:hover {
+      /* 深灰色背景 */
+      background-color: #ddd;
+    }
+    /* 对应的CSS */
+    .selected td {
+      /* 绿色背景，表示选中 */
+      background-color: #4CAF50 !important;
+      /* 文本颜色改为白色，提高可读性 */
+      color: white;
+    }
+
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 50px;
+      font-size: 15px;
+    }
+    .table {
+      width: 30%;
+      height: 500px;
+      overflow-y: scroll;
+    }
+    form {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0;
+      background-color: #ddd;
+    }
+    form input[type='text'] {
+      width: 300px;
+      height: 25px;
+    }
+    form input[type='button'] {
+      width: 200px;
+      height: 30px;
     }
   </style>
+
+  <script>
+    window.onload = () => {
+      //JavaScript部分（点击选中效果，使用原生JavaScript）：
+      //-------------------表格特效开始-------------------
+      // document.querySelectorAll('tr').forEach((row) => {
+      //   row.addEventListener('click', function() {
+      //     // 移除其他行的选中状态
+      //     document.querySelectorAll('tr.selected').forEach((selectedRow) => {
+      //         selectedRow.classList.remove('selected')
+      //     })
+      //     // 添加当前行的选中状态
+      //     this.classList.add('selected')
+      //   })
+      // })
+      //-------------------表格特效结束-------------------
+
+      const table = document.querySelector('table')
+
+      //增加一行
+      const addBtn = document.querySelector('#add')
+      addBtn.onclick = () => {
+        //创建tr
+        const tr = document.createElement('tr')
+
+        //创建多个td
+        const tdName = document.createElement('td')
+        tdName.innerText = document.querySelectorAll('input[type="text"]')[0].value
+        const tdEmail = document.createElement('td')
+        tdEmail.innerText = document.querySelectorAll('input[type="text"]')[1].value
+        const tdSalary = document.createElement('td')
+        tdSalary.innerText = document.querySelectorAll('input[type="text"]')[2].value
+        const tdOperate = document.createElement('td')
+        const inputButtonEdit = document.createElement('input')
+        inputButtonEdit.setAttribute("type","button")
+        inputButtonEdit.value = '编辑'
+        const inputButtonDel = document.createElement('input')
+        inputButtonDel.setAttribute("type","button")
+        inputButtonDel.setAttribute("onclick","deleteCurrentRow()")
+        inputButtonDel.value = '删除'
+        tdOperate.appendChild(inputButtonEdit)
+        tdOperate.appendChild(inputButtonDel)
+
+        //把td添加到tr中
+        tr.appendChild(tdName)
+        tr.appendChild(tdEmail)
+        tr.appendChild(tdSalary)
+        tr.appendChild(tdOperate)
+
+        //把tr添加到table中
+        table.appendChild(tr)
+      }
+
+      //删除当前行
+      const editCurrentRow = () => {
+        console.log('xxxx')
+      }
+
+      //删除当前行
+      const deleteCurrentRow = () => {
+        console.log('yyy')
+      }
+    }
+  </script>
 </head>
 <body>
-  <div>
-    <!-- 表格css样式 https://developer.baidu.com/article/details/3321319 -->
-    <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Salary</th>
-      </tr>
-      <tr>
-        <td>张三</td>
-        <td>zhangsan@163.com</td>
-        <td>6000</td>
-      </tr>
-    </table>
+  <div class="content">
+    <div class="table">
+      <table>
+        <tr>
+          <th>姓名</th>
+          <th>邮箱</th>
+          <th>薪水</th>
+          <th>操作</th>
+        </tr>
+        <tr>
+          <td>张三</td>
+          <td>zhangsan@163.com</td>
+          <td>6000</td>
+          <td>
+            <input type="button" value="编辑" onclick="editCurrentRow()"></input>
+            <input type="button" value="删除" onclick="deleteCurrentRow()"/>
+          </td>
+        </tr>
+        <tr>
+          <td>李四</td>
+          <td>lisi@163.com</td>
+          <td>5000</td>
+          <td>
+            <input type="button" value="编辑"></input>
+            <input type="button" value="删除"></input>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <form>
+      <div>
+        <label for="username">姓名：</label><input type="text" value="王五" id="username"/>
+      </div>
+      <div>
+        <label for="email">邮箱：</label><input type="text" value="wangwu@163.com" id="email"/>
+      </div>
+      <div>
+        <label for="salary">薪水：</label><input type="text" value="5000" id="salary"/>
+      </div>
+      <div>
+        <input type="button" value="添加" id="add"/>
+      </div>
+    </form>
   </div>
 </body>
 </html>
