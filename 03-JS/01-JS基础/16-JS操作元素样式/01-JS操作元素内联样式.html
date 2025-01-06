@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS操作元素内联样式</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      border: 1px solid green !important;
+    }
+  </style>
+  <script>
+    /**
+     * 1.语法
+     *  修改样式  box.style.width = '400px'
+     *  读取样式  box.style.width
+     * 2.如果样式被 !important 修饰了，js不能修改该样式
+     * 3.JS操作background-color等带有-的属性时，要把-去掉，转为驼峰命名形式，如：backgroundColor
+     * 4.通过style属性读取和设置的都是内联属性
+     */ 
+    window.onload = () => {
+      /* 修改样式 */
+      const changeStyle = document.querySelectorAll('input[type="button"]')[0]
+      changeStyle.addEventListener('click',()=> {
+        const box = document.querySelector('.box')
+        box.style.width = '400px'
+        box.style.height = '400px'
+        box.style.backgroundColor = 'tomato'
+        box.style.border = '10px solid green'
+      })
+
+      /* 读取样式 */
+      const readStyle = document.querySelectorAll('input[type="button"]')[1]
+      readStyle.addEventListener('click',()=> {
+        const box = document.querySelector('.box')
+        alert(`宽度:${box.style.width}, 高度:${box.style.height}, 背景色:${box.style.backgroundColor}`)
+      })
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="修改样式"/>
+  <input type="button" value="读取样式"/>
+  <div class="box"></div>
+</body>
+</html>

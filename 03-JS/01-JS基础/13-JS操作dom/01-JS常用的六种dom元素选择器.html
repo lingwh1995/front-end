@@ -25,7 +25,10 @@
        *    -这两个都可以使用多级选择(因为是css选择器)，语法示例
        *        querySelector('.xx .yy')/querySelectorAll('.xx .yy')
        *        querySelector('div .xx')/querySelectorAll('div .xx')
-       *      
+       *  4.一般使用  document.querySelector() 来获取dom，也可以使用 body.querySelector()或 document.querySelector('.box').querySelector('span')
+       *    <div class="box">
+       *      <span>获取dom元素用法技巧</span>
+       *    </div>
        */
 
       /**
@@ -148,6 +151,15 @@
           console.log(childs[i].innerText)
         }
       }
+
+      /**
+       * 获取页面元素用法提升
+       */
+      const testGetElementSenior = () => {
+        const parent = document.querySelector('.parent')
+        const child = parent.querySelector('.child')
+        console.log(child.innerText)
+      } 
   </script>
 </head>
 <body>
@@ -170,6 +182,7 @@
     <input type="button" name="" value="获取页面中的所有元素节点方式一" onclick="testGetAllElements1()"/>
     <input type="button" name="" value="获取页面中的所有元素节点方式二" onclick="testGetAllElements2()"/><br/>
     <input type="button" value="通用选择器querySelector()用法提升" onclick="testGetElementQuerySelectorSenior()"/>
-    <input type="button" value="通用选择器querySelectorAll()用法提升" onclick="testGetElementsQuerySelectoAllSenior()"/>
+    <input type="button" value="通用选择器querySelectorAll()用法提升" onclick="testGetElementsQuerySelectoAllSenior()"/><br/>
+    <input type="button" value="获取页面元素用法提升" onclick="testGetElementSenior()"/>
 </body>
 </html>

@@ -6,14 +6,34 @@
   <title>JS给dom绑定事件</title>
   <script>
     window.onload = () => {
-      const btn = document.getElementById('btn')
-      btn.onclick = () => {
-        alert('hello world')
+      /**
+       * 绑定事件方式一
+       */ 
+      const btn1 = document.getElementById('btn-1')
+      btn1.onclick = () => {
+        alert('绑定事件方式一')
       }
+
+      /**
+       * 绑定事件方式二
+       */ 
+      const btn2 = document.getElementById('btn-2')
+      btn2.addEventListener('click',() => {
+        alert('绑定事件方式二')
+      })
+    }
+
+    /**
+     * 绑定事件方式三
+     */ 
+     const bindEvent = () => {
+      alert('绑定事件方式三')
     }
   </script>
 </head>
 <body>
-  <button id="btn">点击鼠标触发事件</button>
+  <button id="btn-1">绑定事件方式一</button><br>
+  <button id="btn-2">绑定事件方式二</button><br>
+  <button onclick="bindEvent()">绑定事件方式三</button><br>
 </body>
 </html>

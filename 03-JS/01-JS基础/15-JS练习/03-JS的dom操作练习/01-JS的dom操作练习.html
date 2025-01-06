@@ -105,7 +105,10 @@
   </style>
 
   <script>
-    window.onload = () => {
+    /**
+     * 渲染表格选中效果
+     */ 
+    const renderTableSeleted = () => {
       //JavaScript部分（点击选中效果，使用原生JavaScript）：
       //-------------------表格特效开始-------------------
       document.querySelectorAll('tr').forEach((row) => {
@@ -119,12 +122,35 @@
         })
       })
       //-------------------表格特效结束-------------------
+    }
 
+    /**
+     * 初始化表格
+     */ 
+    const initTable = () => {
+      const tbody = document.querySelector('table tbody')
+      //获取初始时的所有删除按钮
+      const delButtons = tbody.querySelectorAll('tr td input[type="button"]')
+      //给初始时的所有删除按钮绑定事件
+      delButtons.forEach((delButton,index) => {
+        delButton.addEventListener('click',function() {
+          tbody.removeChild(this.parentElement.parentElement)
+        })
+      })
+    }
 
-      const table = document.querySelector('table')
-      //增加一行
-      const addBtn = document.querySelector('#add')
-      addBtn.onclick = () => {
+    window.onload = () => {
+      //渲染表格选中效果
+      renderTableSeleted()
+      //初始化表格
+      initTable()
+
+      //获取tbody
+      const tbody = document.querySelector('table tbody')
+      
+      /* 增加一行方式一 */ 
+      /*
+      document.querySelector('#add').onclick = () => {
         //创建tr
         const tr = document.createElement('tr')
 
@@ -136,54 +162,65 @@
         const tdSalary = document.createElement('td')
         tdSalary.innerText = document.querySelectorAll('input[type="text"]')[2].value
         const tdOperate = document.createElement('td')
-        const inputButtonEdit = document.createElement('input')
-        inputButtonEdit.setAttribute("type","button")
-        inputButtonEdit.value = '编辑'
+
+        //创建删除按钮
         const inputButtonDel = document.createElement('input')
-        inputButtonDel.setAttribute("type","button")
-        inputButtonDel.setAttribute("onclick","deleteCurrentRow()")
         inputButtonDel.value = '删除'
-        tdOperate.appendChild(inputButtonEdit)
+        inputButtonDel.setAttribute("type","button")
+        //给新创建的删除按钮绑定事件
+        inputButtonDel.addEventListener('click',function() {
+          //删除节点方式一:通过父元素删除
+          tbody.removeChild(this.parentElement.parentElement)
+          //删除节点方式二:通过子元素自身来删除
+          //this.parentElement.parentElement.remove()
+        })
+        //把新创建的删除按钮放入td中
         tdOperate.appendChild(inputButtonDel)
 
-        //把td添加到tr中
+        //把所有td添加到tr中
         tr.appendChild(tdName)
         tr.appendChild(tdEmail)
         tr.appendChild(tdSalary)
         tr.appendChild(tdOperate)
 
-        //把tr添加到table中
-        table.appendChild(tr)
+        //把tr添加到tbody中
+        tbody.appendChild(tr)
+
+        //重新渲染表格选中效果
+        renderTableSeleted()
       }
+      */
 
-      //获取所有的编辑按钮
-      const editButtons = document.querySelectorAll('table td input:nth-child(odd)')
-      editButtons.forEach((editButton,index) => {
-        editButton.addEventListener('click',() => {
-          const tbody = document.querySelector('table tbody')
-          tbody.removeChild(index)
-        })
-      })
-      //获取所有的删除按钮
-      const delButtons = document.querySelectorAll('table td input:nth-child(even)')
-      delButtons.forEach((delButton,index) => {
+      /* 增加一行方式二 */
+      /**/
+      document.querySelector('#add').onclick = () => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+                  <td>${document.querySelectorAll('input[type="text"]')[0].value}</td>
+                  <td>${document.querySelectorAll('input[type="text"]')[1].value}</td>
+                  <td>${document.querySelectorAll('input[type="text"]')[2].value}</td>
+                  <td>
+                    <input type="button" value="删除"/>
+                  </td>`
+
+        //获取tr中删除按钮
+        const delButton = tr.querySelectorAll('input[type="button')[0]
+        //给tr中删除按钮绑定事件
         delButton.addEventListener('click',function() {
-          const tbody = document.querySelector('table tbody')
+          //删除节点方式一:通过父元素删除
           tbody.removeChild(this.parentElement.parentElement)
+          //删除节点方式二:通过子元素自身来删除
+          //this.parentElement.parentElement.remove()
         })
-      })
+
+        //把tr添加到tbody中
+        tbody.appendChild(tr)
+
+        //重新渲染表格选中效果
+        renderTableSeleted()
+      }
+      
     }
-
-    
-    // //删除当前行
-    // const editCurrentRow = () => {
-    //   console.log('xxxx')
-    // }
-
-    // //删除当前行
-    // const deleteCurrentRow = () => {
-    //   console.log('yyy')
-    // }
   </script>
 </head>
 <body>
@@ -201,7 +238,6 @@
           <td>zhangsan@163.com</td>
           <td>6000</td>
           <td>
-            <input type="button" value="编辑"/>
             <input type="button" value="删除"/>
           </td>
         </tr>
@@ -210,14 +246,12 @@
           <td>lisi@163.com</td>
           <td>5000</td>
           <td>
-            <input type="button" value="编辑"/>
             <input type="button" value="删除"/>
           </td>
         </tr>
       </table>
     </div>
     <form>
-      <!-- https://www.cnblogs.com/hmy-666/p/11785827.html -->
       <div>
         <label for="username">姓名：</label><input type="text" value="王五" id="username"/>
       </div>
