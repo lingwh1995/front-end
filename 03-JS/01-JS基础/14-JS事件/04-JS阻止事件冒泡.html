@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS阻止事件冒泡</title>
+  <style>
+    /**
+     * 事件冒泡：即事件向上传导，当子元素上的事件被触发时，其父元素上的相同事件也会被触发，且会一直向上传递
+     */ 
+    .outer {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+    }
+    .inner {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      //获取button
+      const button = document.querySelector('button')
+      //绑定点击事件
+      button.addEventListener('click',(event) => {
+        //取消冒泡事件
+        event = event || window.event
+        event.cancelable = true
+        alert('button点击事件')
+      })
+
+      //获取内层盒子
+      const innerBox = document.querySelector('.inner')
+      //绑定点击事件
+      button.addEventListener('click',(event) => {
+        event = event || window.event
+        event.cancelable = true
+        alert('内层盒子点击事件')
+      })
+
+      //获取外层盒子
+      const outerBox = document.querySelector('.outer')
+      //绑定点击事件
+      button.addEventListener('click',() => {
+        alert('外层盒子点击事件')
+      })
+    }
+  </script>
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <button>点击触发事件冒泡</button>
+    </div>
+  </div>
+</body>
+</html>

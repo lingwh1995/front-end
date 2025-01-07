@@ -7,12 +7,24 @@
   <script>
     window.onload = () => {
       const btn = document.getElementById('body')
-      //键盘按下事件
-      // btn.onkeydown = () => {
-      //   console.log('键盘按键被按下了')
-      // }
+      /**
+       * 键盘按下事件 
+       */
       btn.onkeydown = (event) => {
+        //解决兼容性问题
+        event = event || window.event
+        console.log(event)
+        console.log('键盘按键被按下了')
         console.log(event.keyCode)
+      }
+
+      /**
+       * 鼠标移动事件 
+       */
+      btn.onmouseover = (event) => {
+        event = event || window.event
+        //打印鼠标位置
+        console.log(`鼠标位置:${event.clientX},${event.clientY}`)
       }
     }
   </script>

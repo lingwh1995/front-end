@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS获取元素响应式样式</title>
+  <title>JS获取元素响应式样式_1_其他浏览器api</title>
   <style>
     :root {
       --main-color: gold;
@@ -30,8 +30,8 @@
      *    window.getComputedStyle(element)
      *        element: 必需，要获取样式的元素
      *    window.getComputedStyle(element, pseudoElement)
-  *           element: 必需，要获取样式的元素
-  *           pseudoElement: 可选，伪类元素，当不查询伪类元素的时候可以忽略或者传入 null
+     *           element: 必需，要获取样式的元素
+     *           pseudoElement: 可选，伪类元素，当不查询伪类元素的时候可以忽略或者传入 null
      * 2.这个方法用于获取元素响应式样式，获取到的是一个实时的 CSSStyleDeclaration 对象，当元素的样式更改时，它会自动更新本身。
      */ 
     window.onload = () => {
@@ -58,7 +58,7 @@
       /* 
        * 修改全局属性
        */
-       const changeGlobalStyle = document.querySelectorAll('input[type="button"]')[2]
+      const changeGlobalStyle = document.querySelectorAll('input[type="button"]')[2]
       changeGlobalStyle.addEventListener('click',()=> {
         const root = document.documentElement
         root.style.setProperty('--main-color','green')
