@@ -6,42 +6,42 @@
   <title>伸缩盒模型_伸缩项目_01</title>
   <style>
     /*
-        *  1.伸缩容器
-        *      当一个元素使用以下任意一个css属性修饰，该元素称为伸缩容器
-        *          display: flex;
-        *          display: inline-flex; （用的少）
-        *  2.伸缩项目
-        *      它的所有直接子元素，称为伸缩项目
-        *  3.注意点
-        *      - 一个html元素既可以是伸缩容器，也可以是伸缩项目，取决于它在html中的结构
-        *      - 孙子元素都不是伸缩项目
-        *  4.所有的伸缩项目元素，元素前的属性，全部块状化
-        *
-        *  例如：当.outer选择的容器变成了伸缩容器，它的所有直接子元素，称为伸缩项目，如：下面的内联元素 span 自动变成了块级元素
-        */
+     *  1.伸缩容器
+     *      当一个元素使用以下任意一个css属性修饰，该元素称为伸缩容器
+     *          display: flex;
+     *          display: inline-flex; （用的少）
+     *  2.伸缩项目
+     *      它的所有直接子元素，称为伸缩项目
+     *  3.注意点
+     *      - 一个html元素既可以是伸缩容器，也可以是伸缩项目，取决于它在html中的结构
+     *      - 孙子元素都不是伸缩项目
+     *  4.所有的伸缩项目元素，元素前的属性，全部块状化
+     *
+     *  例如：当.outer选择的容器变成了伸缩容器，它的所有直接子元素，称为伸缩项目，如：下面的内联元素 span 自动变成了块级元素
+     */
 
-    .outer {
-        width: 1000px;
-        height: 600px;
-        background-color: #888;
-        
-        /* 将该元素变成了伸缩容器(开启了flex布局) */
-        display: flex;
+    .flex-container {
+      width: 1000px;
+      height: 600px;
+      background-color: #888;
+      
+      /* 将该元素变成了伸缩容器(开启了flex布局) */
+      display: flex;
     }
 
-    .inner {
-        width: 200px;
-        height: 200px;
-        background-color: skyblue;
-        border: 1px solid black;
+    .flex-item {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      border: 1px solid black;
     }
   </style>
 </head>
 <body>
-  <div class="outer">
-    <span class="inner">1</span>
-    <span class="inner">2</span>
-    <span class="inner">3</span>
+  <div class="flex-container">
+    <span class="flex-item">1</span>
+    <span class="flex-item">2</span>
+    <span class="flex-item">3</span>
   </div>
 </body>
 </html>

@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伸缩盒模型_伸缩项目排序</title>
-    <style>
-        .outer {
-            width: 800px;
-            height: 800px;
-            background-color: #888;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伸缩盒模型_伸缩项目排序</title>
+  <style>
+    .flex-container {
+      width: 800px;
+      height: 800px;
+      background-color: #888;
 
-            /* 伸缩盒模型相关属性-start */
-            
-            /* 将该元素变成了伸缩容器(开启了flex布局) */
-            display: flex;
+      /* 伸缩盒模型相关属性-start */
 
-
-            /* 伸缩盒模型相关属性-end */
-        }
+      /* 将该元素变成了伸缩容器(开启了flex布局) */
+      display: flex;
 
 
-        .inner {
-            width: 200px;
-            height: 200px;
-            background-color: skyblue;
-            border: 1px solid black;
-            /* 使用order属性为伸缩项目排序，默认值是0 */
-            order: 0;
-        }
+      /* 伸缩盒模型相关属性-end */
+    }
 
-        .inner1 {
-            order: 1
-        }
 
-        .inner2 {
-            order: 3
-        }
+    .flex-item {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      border: 1px solid black;
+      /* 使用order属性为伸缩项目排序，默认值是0 */
+      order: 0;
+    }
 
-        .inner3 {
-            order: 2
-        }
+    .flex-item-1 {
+      order: 1
+    }
 
-    </style>
+    .flex-item-2 {
+      order: 3
+    }
+
+    .flex-item-3 {
+      order: 2
+    }
+  </style>
 </head>
+
 <body>
-    <div class="outer">
-        <div class="inner inner1">1</div>
-        <div class="inner inner2">2</div>
-        <div class="inner inner3">3</div>
-    </div>
+  <div class="flex-container">
+    <div class="flex-item flex-item-1">1</div>
+    <div class="flex-item flex-item-2">2</div>
+    <div class="flex-item flex-item-3">3</div>
+  </div>
 </body>
+
 </html>
