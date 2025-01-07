@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伸缩盒模型_伸缩项目间距离</title>
+  <style>
+    /**
+     *  1.使用gap可以设置伸缩项目之间间距
+     *      一个值: 设置伸缩项目水平间距
+     *      两个值: 设置伸缩项目垂直间距和水平间距
+     *  2.gap属性可以接受不同单位的值，比如px、em、rem等
+     */
+
+    .flex-container {
+      width: 1000px;
+      height: 600px;
+      background-color: #888;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      /* 使用gap设置伸缩项目之间间距 */
+      gap: 10px 30px;
+    }
+
+    .flex-item {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex-container">
+    <span class="flex-item">1</span>
+    <span class="flex-item">2</span>
+    <span class="flex-item">3</span>
+    <span class="flex-item">4</span>
+    <span class="flex-item">5</span>
+    <span class="flex-item">6</span>
+    <span class="flex-item">7</span>
+    <span class="flex-item">8</span>
+  </div>
+</body>
+</html>
