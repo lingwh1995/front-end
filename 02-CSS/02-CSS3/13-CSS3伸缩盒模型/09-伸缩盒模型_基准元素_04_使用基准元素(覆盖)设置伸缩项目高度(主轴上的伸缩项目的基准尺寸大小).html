@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伸缩盒模型_基准元素_04_使用基准元素(覆盖)设置伸缩容器高度(主轴上的伸缩项目的基准尺寸大小)</title>
+    <title>伸缩盒模型_基准元素_04_使用基准元素(覆盖)设置伸缩项目高度(主轴上的伸缩项目的基准尺寸大小)</title>
     <style>
+        /**
+         * 如果主轴方向是水平方向: flex-basis属性设置的是伸缩项目的宽度
+         * 如果主轴方向是垂直方向: flex-basis属性设置的是伸缩项目的高度
+         */
         .outer {
             width: 800px;
             height: 800px;
@@ -31,7 +35,7 @@
         }
 
         .inner2 {
-            /* 使用基准元素设置(覆盖)伸缩容器高度，默认值是 auto  */
+            /* 使用基准元素设置(覆盖)伸缩项目高度，默认值是 auto  */
             flex-basis: 500px;
         }
     </style>

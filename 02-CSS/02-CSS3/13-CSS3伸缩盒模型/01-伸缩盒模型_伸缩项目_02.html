@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伸缩盒模型_伸缩项目_2</title>
+    <title>伸缩盒模型_伸缩项目_02</title>
     <style>
-        /*
-         * 当.outer选择的容器变成了伸缩容器，它的子元素就自动变成了块级元素，所以对下面的内联元素 span 自动变成了块级元素
-         */
+        /* 当body变为伸缩容器，body中的子元素就变成了伸缩项目*/
+        body {
+            display: flex; 
+        }
+        
         .outer {
-            width: 1000px;
+            width: 600px;
             height: 600px;
             background-color: #888;
+            
             /* 将该元素变成了伸缩容器(开启了flex布局) */
-            display: flex;
+            /* 多个伸缩容器以块级元素形式排列 */
+            /* display: flex; */
+            /* 多个伸缩容器以行内样式形式排列 */
+            display: inline-flex;
         }
 
         .inner {
@@ -26,9 +32,14 @@
 </head>
 <body>
     <div class="outer">
-        <span class="inner">1</span>
-        <span class="inner">2</span>
-        <span class="inner">3</span>
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
     </div>
 </body>
 </html>

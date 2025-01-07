@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伸缩盒模型_基准元素_01_不使用基准元素设置伸缩容器宽度</title>
+    <title>-伸缩盒模型_伸缩项目单独设置对齐方式</title>
     <style>
         .outer {
             width: 800px;
@@ -15,8 +15,10 @@
             /* 将该元素变成了伸缩容器(开启了flex布局) */
             display: flex;
 
+
             /* 伸缩盒模型相关属性-end */
         }
+
 
         .inner {
             width: 200px;
@@ -26,16 +28,21 @@
         }
 
         .inner2 {
-            /* 不使用基准元素设置伸缩容器宽度 */
-            width: 500px;
+            /* 使用align-self属性设置inner2单独对齐 */
+
+            /* align-self: flex-start; */
+            
+            align-self: center;
+            
+            /* align-self: flex-end; */
         }
     </style>
 </head>
 <body>
     <div class="outer">
-        <div class="inner">1</div>
+        <div class="inner inner1">1</div>
         <div class="inner inner2">2</div>
-        <div class="inner">3</div>
+        <div class="inner inner3">3</div>
     </div>
 </body>
 </html>
