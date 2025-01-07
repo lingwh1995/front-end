@@ -71,7 +71,8 @@
   </style>
 
   <script>
-    window.onload = () => {
+    /* 渲染表格行选中样式 */
+    const renderTableRowSelectStyle = () => {
       //JavaScript部分（点击选中效果，使用原生JavaScript）：
       document.querySelectorAll('tr').forEach((row) => {
         row.addEventListener('click', function() {
@@ -83,6 +84,10 @@
           this.classList.add('selected')
         })
       })
+    }
+
+    window.onload = () => {
+      renderTableRowSelectStyle()
     }
   </script>
 </head>

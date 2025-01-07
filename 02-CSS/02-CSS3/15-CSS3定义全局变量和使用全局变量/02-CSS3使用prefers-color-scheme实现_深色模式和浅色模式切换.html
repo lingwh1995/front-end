@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3使用prefers-color-scheme实现_深色模式和浅色模式切换.</title>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        :root {
+            --background: white;
+            --color: red;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+            --background: black;
+            --color: green;
+        }
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--color);
+      }
+    </style>
+    <script>
+      const scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      scheme ? console.log("用户系统使用深色模式") : console.log("用户系统使用浅色模式")
+    </script>
+</head>
+<body>
+  测试深色主题和浅色主题
+</body>
+</html>

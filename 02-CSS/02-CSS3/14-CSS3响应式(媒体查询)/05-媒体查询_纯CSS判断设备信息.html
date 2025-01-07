@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>媒体查询_纯CSS判断设备信息</title>
+    <style>
+        /**
+         *  1.any-hover(悬停事件)功能检测支持下面两个关键字值——常用来判断设备为移动端或者非移动端
+         *      none    移动设备：没有什么输入装置可以实现hover悬停，或者没有可以指向的输入装置
+         *      hover   非移动设备：一个或多个输入装置可以触发元素的hover悬停交互 
+         */
+        /* 如果是移动设备，则隐藏下划线，并设备背景色 */
+        @media (any-hover: none) {
+            .go-baidu {
+                text-decoration: none;
+                background-color: gold;
+            }
+        }
+        /* 如果是非移动设备，则显示下划线 */
+        @media (any-hover: hover) {
+            .go-baidu {
+                text-decoration: underline;
+            }
+        }
+
+
+        /**
+         *  2.hover(悬停事件)功能检测支持下面两个关键字值——常用来判断设备为移动端或者非移动端
+         *      none   移动设备： 主输入装置根本无法悬停或无法方便地悬停（例如，许多移动设备在用户执行不方便的长点击来模拟悬停），或者没有主指向输入装置
+         *      hover  非移动设备： 主输入装置可以触发元素的hover悬停交互
+         */   
+        /* 如果是移动设备，则隐藏下划线，并设备背景色 */
+        @media (hover: none) {
+            .go-google {
+                text-decoration: none;
+                background-color: gold;
+            }
+        }
+        /* 如果是非移动设备，则显示下划线 */
+        @media (hover: hover) {
+            .go-google {
+                text-decoration: underline;
+            }
+        }
+
+
+        /**
+         *  3.any-pointer(点击事件)功能检测支持下面3个关键字值——常用来判断设备是否为宽屏的PC网页
+         *      none    没有可用的点击设备
+         *      coarse  移动设备：至少一个设备的点击不是很精确。例如手机移动端，用罗永浩的话讲，都是使用萝卜一样粗的手机进行操作，就属于点击不精确
+         *      fine    非移动设备：有设备可以让点击很精准。例如有鼠标的桌面电脑浏览器
+         */
+        /* 如果是没有可用的点击设备，则显示下划线 */
+        @media (any-pointer: none) {
+            .go-jingdong {
+                text-decoration: underline;
+            }
+        }
+        /* 如果是移动设备，则隐藏下划线，并设备背景色 */
+        @media (any-pointer: coarse) {
+            .go-jingdong {
+                text-decoration: none;
+                background-color: gold;
+            }
+        }
+        /* 如果是非移动设备，则显示下划线 */
+        @media (any-pointer: fine) {
+            .go-jingdong {
+                text-decoration: underline;
+            }
+        }
+
+
+        /**
+         *  4.pointer(点击事件)功能检测支持下面3个关键字值——常用来判断设备是否为宽屏的PC网页
+         *      none    主输入装置点击不可用
+         *      coarse  移动设备：主输入装置点击不精确
+         *      fine    非移动设备：主输入装置点击很OK
+         *
+         *  pointer使用场景:在医院或银行的自助机屏幕上放大复选框的尺寸
+         *      @media (pointer: coarse) {
+         *          input[type="checkbox"] {
+         *              width: 30px;
+         *              height: 30px;
+         *          }
+         *      }
+         */
+        /* 如果是主输入装置点击不可用，则显示下划线 */
+        @media (pointer: none) {
+            .go-douyin {
+                text-decoration: underline;
+            }
+        }
+        /* 如果是移动设备，则隐藏下划线，并设备背景色 */
+        @media (pointer: coarse) {
+            .go-douyin {
+                text-decoration: none;
+                background-color: gold;
+            }
+        }
+        /* 如果是非移动设备，则显示下划线 */
+        @media (pointer: fine) {
+            .go-douyin {
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="go-baidu">点击去百度</a><br>
+    <a href="#" class="go-google">点击去谷歌</a><br>
+    <a href="#" class="go-jingdong">点击去京东</a><br>
+    <a href="#" class="go-douyin">点击去抖音</a><br>
+</body>
+</html>

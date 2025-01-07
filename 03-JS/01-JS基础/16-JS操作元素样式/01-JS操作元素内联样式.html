@@ -22,9 +22,11 @@
      * 4.通过style属性读取和设置的都是内联属性
      */ 
     window.onload = () => {
-      /* 修改样式 */
-      const changeStyle = document.querySelectorAll('input[type="button"]')[0]
-      changeStyle.addEventListener('click',()=> {
+      /* 
+       * 修改内联样式
+       */
+      const changeInnerStyle = document.querySelectorAll('input[type="button"]')[0]
+      changeInnerStyle.addEventListener('click',()=> {
         const box = document.querySelector('.box')
         box.style.width = '400px'
         box.style.height = '400px'
@@ -32,9 +34,11 @@
         box.style.border = '10px solid green'
       })
 
-      /* 读取样式 */
-      const readStyle = document.querySelectorAll('input[type="button"]')[1]
-      readStyle.addEventListener('click',()=> {
+      /* 
+       * 读取内联样式
+       */
+      const readInnerStyle = document.querySelectorAll('input[type="button"]')[1]
+      readInnerStyle.addEventListener('click',()=> {
         const box = document.querySelector('.box')
         alert(`宽度:${box.style.width}, 高度:${box.style.height}, 背景色:${box.style.backgroundColor}`)
       })
@@ -42,8 +46,8 @@
   </script>
 </head>
 <body>
-  <input type="button" value="修改样式"/>
-  <input type="button" value="读取样式"/>
+  <input type="button" value="修改内联样式"/>
+  <input type="button" value="读取内联样式"/>
   <div class="box"></div>
 </body>
 </html>

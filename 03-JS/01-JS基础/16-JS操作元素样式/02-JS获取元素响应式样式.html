@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS获取元素响应式样式</title>
+  <style>
+    :root {
+      --main-color: gold;
+    }
+
+    /* 普通样式 */
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: var(--main-color);
+      border: 1px solid green !important;
+    }
+
+    /* 伪类样式 */
+    .box::after {
+      content: '我是伪类样式';
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    /**
+     * 1.语法
+     *    window.getComputedStyle(element)
+     *        element: 必需，要获取样式的元素
+     *    window.getComputedStyle(element, pseudoElement)
+  *           element: 必需，要获取样式的元素
+  *           pseudoElement: 可选，伪类元素，当不查询伪类元素的时候可以忽略或者传入 null
+     * 2.这个方法用于获取元素响应式样式，获取到的是一个实时的 CSSStyleDeclaration 对象，当元素的样式更改时，它会自动更新本身。
+     */ 
+    window.onload = () => {
+      /* 
+       * 读取普通样式
+       */
+      const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
+      readNormalStyleBtn.addEventListener('click',()=> {
+        const box = document.querySelector('.box')
+        alert(`宽度:${getComputedStyle(box,null).width}, 高度:${getComputedStyle(box).height}, 背景色:${getComputedStyle(box,null).backgroundColor}`)
+      })
+
+
+      /*
+       * 读取伪类样式
+       */
+      const readPseudoClasseslStyleBtn = document.querySelectorAll('input[type="button"]')[1]
+      readPseudoClasseslStyleBtn.addEventListener('click',() => {
+        const box = document.querySelector('.box')
+        alert(`伪类样式-内容:${getComputedStyle(box,'::after').content}, 伪类样式-字体颜色:${getComputedStyle(box,'::after').color}, 伪类样式-字体大小:${getComputedStyle(box,'::after').fontSize}`)
+      })
+
+      
+      /* 
+       * 修改全局属性
+       */
+       const changeGlobalStyle = document.querySelectorAll('input[type="button"]')[2]
+      changeGlobalStyle.addEventListener('click',()=> {
+        const root = document.documentElement
+        root.style.setProperty('--main-color','green')
+      })
+
+
+      /* 
+       * 读取全局属性
+       */
+      const readGlobalStyle = document.querySelectorAll('input[type="button"]')[3]
+      readGlobalStyle.addEventListener('click',()=> {
+        //获取根元素，通常是<html>
+        const root = document.documentElement
+        const rootStyle = window.getComputedStyle(root)
+        const mainColor = rootStyle.getPropertyValue('--main-color')
+        alert(`全局属性的值:${mainColor}`)
+      })
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="读取普通样式"/>
+  <input type="button" value="读取伪类样式"/>
+  <input type="button" value="修改全局属性"/>
+  <input type="button" value="读取全局属性"/>
+  <div class="box"></div>
+</body>
+</html>

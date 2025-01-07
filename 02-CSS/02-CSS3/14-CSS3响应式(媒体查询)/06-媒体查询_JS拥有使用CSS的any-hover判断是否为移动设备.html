@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>媒体查询_JS拥有使用CSS的any-hover判断是否为移动设备</title>
+    <style>
+      @media (any-hover: none) {
+        body::before {
+            content: '移动设备';
+            display: none;
+        }
+      }
+    </style>
+    <script>
+      window.onload = () => {
+        /**
+         * deviceName值为 'none'则表示支持 hover，是PC端
+         * deviceName值为 'hoverNone'则表示不支持hover经过，是Mobile端
+         */ 
+        const deviceName = getComputedStyle(document.body, '::before').content
+        console.log(deviceName)
+      }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

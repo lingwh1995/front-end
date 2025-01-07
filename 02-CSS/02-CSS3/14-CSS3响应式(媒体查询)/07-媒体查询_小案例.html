@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询_小案例</title>
+  <style>
+    /**
+     * 案例  在桌面端网页的导航在悬停时出现下拉列表，在触屏设备上，直接展示下拉列表
+     */
+    nav div {
+      display: none;
+    }
+    nav:hover div {
+        display: block;
+    }
+    /* 如果设备不支持hover悬停，或hover悬停很不方便，下拉列表直接保持显示 */
+    @media (any-hover: none) {
+      nav div {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href>主导航</a>
+    <div>
+        <a href>下拉导航1</a>
+        <a href>下拉导航1</a>
+        <a href>下拉导航1</a>
+    </div>
+  </nav>
+</body>
+</html>
