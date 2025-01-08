@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS拖动练习</title>
+  <style>
+    .box-1 {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .box-2 {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      position: absolute;
+      left: 400px;
+      top: 400px;
+    }
+  </style>
+  <script>
+    /**
+     * 拖拽功能实现流程:
+     *  1.当鼠标在div上按下时，开始拖拽 onmousedown
+     *  2.当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove
+     *  3.当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
+     */
+
+    /*
+     * 简单版实现
+     *  推荐使用:多次事件绑定建议使用直接绑定 
+     */
+    window.onload = () => {
+      const box1 = document.querySelector('.box-1')
+      //当鼠标在div上按下时
+      box1.onmousedown = () => {
+        //让div跟随鼠标移动
+        document.onmousemove = (event) => {
+          event = event || window.event
+          box1.style.left = (event.clientX - 100) + 'px'
+          box1.style.top = (event.clientY - 100) + 'px'
+        }
+        //当鼠标在div上松开时
+        document.onmouseup = () => {
+          //移除document上的onmousemove事件
+          document.onmousemove = null
+          alert('鼠标松开了')
+          //移除document上的onmouseup事件
+          document.onmouseup = null
+        } 
+      }
+    }
+    
+    /*
+     * 复杂版实现
+     *  不推荐使用:多次事件绑定建议使用直接绑定  
+     */
+    /*
+    window.onload = () => {
+      const box1 = document.querySelector('.box-1')
+      //当鼠标在div上按下时
+      box1.addEventListener('mousedown', ()=> {
+        //让div跟随鼠标移动
+        const onmousemoveFun = (event) => {
+          event = event || window.event
+          box1.style.left = event.clientX + 'px'
+          box1.style.top = event.clientY + 'px'
+        }
+        document.addEventListener('mousemove',onmousemoveFun)
+
+        //当鼠标在div上松开时
+        const onmouseupFun = ()=> {
+          //移除document上的onmousemove事件
+          document.removeEventListener('mousemove',onmousemoveFun)
+          alert('鼠标松开了')
+          //移除document上的onmouseup事件
+          document.removeEventListener('mouseup',onmouseupFun)
+        }
+        document.addEventListener('mouseup',onmouseupFun)
+      })
+    }
+    */
+  </script>
+</head>
+<body>
+  <div>fasdfasd</div>
+  <div class="box-1"></div>
+  <div class="box-2"></div>
+</body>
+</html>

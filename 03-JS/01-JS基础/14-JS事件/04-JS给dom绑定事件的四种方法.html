@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS给dom绑定事件的三种方法</title>
+  <title>JS给dom绑定事件的四种方法</title>
   <script>
     window.onload = () => {
       /**
-       * 绑定事件方式一
+       * 绑定事件方式一：多次事件绑定建议使用直接绑定 
        */ 
       const btn1 = document.getElementById('btn-1')
       btn1.onclick = () => {
@@ -15,7 +15,7 @@
       }
 
       /**
-       * 绑定事件方式二
+       * 绑定事件方式二：单次或少次事件绑定可以使用addEventListener
        */ 
       const btn2 = document.getElementById('btn-2')
       btn2.addEventListener('click',() => {
