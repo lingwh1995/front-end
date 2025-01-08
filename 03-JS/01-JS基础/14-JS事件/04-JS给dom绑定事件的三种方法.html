@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS给dom绑定事件的三种方法</title>
+  <script>
+    window.onload = () => {
+      /**
+       * 绑定事件方式一
+       */ 
+      const btn1 = document.getElementById('btn-1')
+      btn1.onclick = () => {
+        alert('绑定事件方式一')
+      }
+
+      /**
+       * 绑定事件方式二
+       */ 
+      const btn2 = document.getElementById('btn-2')
+      btn2.addEventListener('click',() => {
+        alert('绑定事件方式二')
+      })
+
+      /**
+       * 绑定事件方式三：为元素绑定事件兼容性代码
+       */ 
+      const addEventListenerCompatible = (element, eventType, fnName) => {
+        if(element.addEventListener) {
+          element.addEventListener(eventType, fnName, false);
+        } else if(element.attachEvent) {
+          element.attachEvent("on" + eventType, fnName);
+        } else {
+          element["on" + eventType] = fnName;
+        }
+      }
+      const bindBtn = document.getElementById('btn-3-bind')
+      const bindFun = () => {
+        alert('绑定事件方式三：为元素绑定事件兼容性代码')
+      }
+      addEventListenerCompatible(bindBtn,'click',bindFun)
+
+      /*
+       * 绑定事件方式三：为元素解绑事件兼容性代码
+       */
+      const removeEventListenerCompatible = (element, eventType, fnName) => {
+        if(element.removeEventListener) {
+          element.removeEventListener(eventType, fnName, false);
+        } else if(element.detachEvent) {
+          element.detachEvent("on" + eventType, fnName);
+        } else {
+          element["on" + eventType] = null;
+        }
+      }
+      const unbindBtn = document.getElementById('btn-3-unbind')
+      const unBindFun = () => {
+        alert('绑定事件方式三：为元素解绑事件兼容性代码')
+      }
+      removeEventListenerCompatible(unbindBtn,'click',unBindFun)
+    }
+
+    /**
+     * 绑定事件方式四
+     */ 
+     const bindEvent = () => {
+      alert('绑定事件方式四')
+    }
+  </script>
+</head>
+<body>
+  <button id="btn-1">绑定事件方式一</button><br>
+  <button id="btn-2">绑定事件方式二</button><br>
+  <button id="btn-3-bind">绑定事件方式三：为元素绑定事件兼容性代码</button><br>
+  <button id="btn-3-unbind">绑定事件方式三：为元素解绑事件兼容性代码</button><br>
+  <button onclick="bindEvent()">绑定事件方式四</button><br>
+</body>
+</html>

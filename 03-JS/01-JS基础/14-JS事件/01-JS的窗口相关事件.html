@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>窗口事件</title>
+  <script>
+    /**
+     * 当窗口失去焦点时，输出 窗口失去焦点
+     */
+    window.onblur = () => {
+      console.log('窗口失去焦点')
+    }
+
+    /**
+     * 当窗口获取焦点时，输出 窗口获取焦点
+     */
+    window.onfocus = () => {
+      console.log('窗口获取焦点')
+    }
+
+    /**
+     * 当页面文档加载完成后，输出 Hello, World
+     */
+    window.onload = () => {
+      console.log('Hello, World')
+    }
+
+    /**
+     * 当调整窗口大小时，输出"窗口大小正在改变"
+     */
+    window.onresize = () => {
+      console.log("窗口大小正在改变")
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

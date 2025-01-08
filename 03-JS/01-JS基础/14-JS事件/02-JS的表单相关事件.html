@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS的表单相关事件</title>
+  <script>
+    window.onfocus = () => {
+      const input = document.querySelector('input[name="username"]')
+
+      /**
+       * onfocus():获取到焦点事件
+       */
+      input.onfocus = () => {
+        console.log('表单元素获取到了焦点')
+      }
+
+      /**
+       * onblur():失去焦点事件
+       */
+      input.onblur = () => {
+        console.log('表单元素失去了焦点')
+      }
+
+      /**
+       * onchange():内容发生了改变事件
+       */
+      input.onchange = () => {
+        console.log('表单元素内容发生了改变')
+      }
+
+      /**
+       * oninput():获取用户输入事件
+       */
+      input.oninput = () => {
+        console.log('获取到了用户输入')
+      }
+    }
+  </script>
+</head>
+<body>
+  <form>
+    账户：<input type="text" value="" name="username"/> <br>
+  </form>
+</body>
+</html>

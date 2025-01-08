@@ -69,14 +69,17 @@
         event = getEvent(event)
         const target = getTarget(event)
         //委托父元素绑定的事件到子元素
-        if(target.getAttribute('class') == 'child') {
+        // if(target.getAttribute('class') == 'child') {
+        //   alert('子元素被点击了')
+        // }
+        if(target.className == 'child') {
           alert('子元素被点击了')
         }
       })
 
       /**
        * 点击新添加一个子元素
-       */ 
+       */
       const button = document.querySelector('input[type="button"]')
       button.addEventListener('click',() => {
         const child = document.createElement('div')
@@ -86,6 +89,7 @@
         parent.appendChild(child)
       })
     }
+    //https://blog.csdn.net/weixin_51717662/article/details/127350191
   </script>
 </head>
 <body>
