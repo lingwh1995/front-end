@@ -24,6 +24,7 @@
 
       /**
        * 绑定事件方式三：为元素绑定事件兼容性代码
+       *  将addEventListener()的第三个参数设置为true，表示在捕获阶段就触发事件，一般情况下我们不会希望在捕获阶段触发事件，所以这个参数一般都是false
        */ 
       const addEventListenerCompatible = (element, eventType, fnName) => {
         if(element.addEventListener) {
