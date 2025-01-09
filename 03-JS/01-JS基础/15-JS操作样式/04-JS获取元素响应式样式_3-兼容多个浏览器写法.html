@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS获取元素响应式样式_3-兼容多个浏览器写法</title>
+  <style>
+    /**
+     * currentStyle只支持IE浏览器
+     */
+
+    /* 普通样式 */
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      border: 1px solid green !important;
+    }
+  </style>
+  <script>
+    /**
+     * 获取元素样式兼容性写法
+     */ 
+    const getStyle = (obj,cssPropertity) => {
+      if (obj.currentStyle) {
+        return obj.currentStyle[cssPropertity];
+      }else {
+        return getComputedStyle(obj)[cssPropertity];
+      }
+    }
+
+
+    window.onload = () => {
+      /* 
+       * 兼容性写法获取元素样式
+       */
+      const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
+      readNormalStyleBtn.addEventListener('click',()=> {
+        const box = document.querySelector('.box')
+        alert(`宽度:${getStyle(box,'width')}, 高度:${getStyle(box,'height')}, 背景色:${getStyle(box,'backgroundColor')}`)
+      })
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="兼容性写法获取元素样式"/>
+  <div class="box"></div>
+</body>
+</html>

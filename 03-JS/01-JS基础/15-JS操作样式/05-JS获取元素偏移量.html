@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS获取元素偏移量</title>
+  <style>
+    /*
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    */
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+    }
+  </style>
+  <script>
+    window.onload = ()=> {
+      document.querySelector('input[type="button"]').addEventListener('click', () => {
+        const box = document.querySelector('.box')
+        alert(`水平方向偏移量：${box.offsetLeft},垂直方向偏移量：${box.offsetTop}`)
+      })
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="获取元素偏移量"/>
+  <div class="box"></div>
+</body>
+</html>
