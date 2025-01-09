@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS常用bom对象_window对象_内置对象history</title>
+  <script>
+    /**
+     * 1.history对象可以用来操作浏览器向前或向后翻页
+     * 2.history是window的内置对象，使用时可以直接使用，可以通过 window.history 使用
+     */ 
+    window.onload = () => {
+      /**
+       * 打印history对象常用属性
+       */ 
+      document.querySelectorAll('button')[0].addEventListener('click', ()=> {
+        //输出history对象
+        console.log(history)
+        //可以获取到当成访问的链接数量
+        console.log(history.length)
+      })
+    
+      /**
+       * back()：可以回退到上一个页面，作用和浏览器的回退按钮一样
+       */ 
+      document.querySelectorAll('button')[1].addEventListener('click', ()=> {
+        history.back()
+      })
+
+      /**
+       * forward()：可以跳转到下一个页面，作用和浏览器的前进按钮一样
+       */
+      document.querySelectorAll('button')[2].addEventListener('click', ()=> {
+        history.forward()
+      })
+
+      /**
+       * go()：可以用来跳转到指定的页面，它需要一个整数作为参数
+       *    1：表示向前跳转一个页面，相当于forward() 
+       *    2：表示向前跳转两个页面
+       *   -1：表示向后跳转一个页面，相当于back()
+       *   -2：表示向后跳转两个页面 
+       */
+      document.querySelectorAll('button')[3].addEventListener('click', ()=> {
+        history.go(1)
+      })
+    }
+  </script>
+</head>
+<body>
+  <button>打印history对象常用属性</button>
+  <button>使用location.back()实现页面回退</button>
+  <button>使用location.forward()实现页面跳转</button>
+  <button>使用location.go()实现指定页面跳转</button>
+</body>
+</html>
