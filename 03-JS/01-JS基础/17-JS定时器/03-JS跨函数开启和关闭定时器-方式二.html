@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS跨函数开启和关闭定时器-方式二</title>
+  <style>
+    .card {
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      background-color: gray;
+      font-size: 150px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    /**
+     * JS跨函数开启和关闭定时器-方式二 : 把定时器变量挂在dom对象上(也可以挂在window对象上，但是这样很容易引起全局变量污染)
+     */ 
+    window.onload = () => {
+      /**
+       * 开始倒计时
+       */
+      document.querySelectorAll('button')[0].addEventListener('click',() => {
+        let number = 99
+        //获取card元素
+        const card = document.querySelector('.card')
+        const intervalId = setInterval(()=> {
+          const card = document.querySelector('.card')
+          card.innerText = number--
+        },1000)
+        card.intervalId = intervalId
+      })
+
+      /**
+       * 停止倒计时
+       */ 
+      document.querySelectorAll('button')[1].addEventListener('click',() => {
+        //获取card元素
+        const card = document.querySelector('.card')
+        clearInterval(card.intervalId)
+      })
+    }
+  </script>
+</head>
+<body>
+  <button>开始倒计时</button>
+  <button>停止倒计时</button>
+  <div class="card"></div>
+</body>
+</html>

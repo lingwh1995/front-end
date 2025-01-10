@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS定时器案例_实现小汽车移动效果</title>
+  <title>JS定时器案例_实现小汽车移动效果-封装版</title>
   <style>
     .container {
       display: flex;
@@ -58,6 +58,9 @@
     }
   </style>
   <script>
+    /**
+     * 此版本对代码进行了封装，代码简洁高效(十分推荐)
+     */ 
     window.onload = () => {
       let SPEED_SETP = 2
       const SPEED_TIME = 5
@@ -65,79 +68,46 @@
        * 移动到800PX
        */
       document.querySelectorAll('button')[0].addEventListener('click', () => {
-        const car = document.querySelector('.car')
-        //清除car元素上的定时器
-        clearInterval(car.IntervalId)
-        let current = car.offsetLeft
-        if(current >= 800) {
-          if(current >= 1200) {
-            SPEED_SETP = - SPEED_SETP
-          }else if(current >= 800){
-            SPEED_SETP = - SPEED_SETP
-          }else {
-            return
-          }
-        }
-        const moveTo800 = setInterval(() => {
-          current += SPEED_SETP
-          car.style.left = current + 'px'
-          if(current == 800) {
-            clearInterval(moveTo800)
-          }
-          console.log('移动到800PX定时器-执行中...')
-        },SPEED_TIME)
-        car.IntervalId = moveTo800
+        move(800)
       })
 
       /**
        * 移动到1200PX
        */
       document.querySelectorAll('button')[1].addEventListener('click', () => {
-        SPEED_SETP = Math.abs(SPEED_SETP)
-        const car = document.querySelector('.car')
-        //清除car元素上的定时器
-        clearInterval(car.IntervalId)
-        let current = car.offsetLeft
-        if(current >= 1200) return
-        const moveTo1200 = setInterval(() => {
-          current += SPEED_SETP
-          car.style.left = current + 'px'
-          if(current == 1200) {
-            clearInterval(moveTo1200)
-          }
-          console.log('移动到1200PX定时器-执行中...')
-        },SPEED_TIME)
-        car.IntervalId = moveTo1200
+        move(1200)
       })
 
       /**
        * 回到起点
        */ 
       document.querySelectorAll('button')[2].addEventListener('click', () => {
-        SPEED_SETP = Math.abs(SPEED_SETP)
-        const car = document.querySelector('.car')
-        //清除car元素上的定时器
-        clearInterval(car.IntervalId)
-        let current = car.offsetLeft
-        const backHome = setInterval(() => {
-          current += - SPEED_SETP
-          car.style.left = current + 'px'
-          if(current == 0) {
-            clearInterval(backHome)
-          }
-          console.log('回家定时器-执行中...')
-        },SPEED_TIME)
-        car.IntervalId = backHome
+        move(0)
       })
   
       /**
        * 停止运动
        */ 
       document.querySelectorAll('button')[3].addEventListener('click', () => {
+        move(-1)
+      })
+
+      const move = (target) => {
         const car = document.querySelector('.car')
         //清除car元素上的定时器
-        clearInterval(car.IntervalId)
-      })
+        clearInterval(car.moveIntervalId)
+        if(-1 == target) return
+        //获取car元素偏移量
+        let current = car.offsetLeft
+        const moveIntervalId = setInterval(() => {
+          current += current <= target ? SPEED_SETP : - SPEED_SETP
+          car.style.left = current + 'px'
+          if(current == target) {
+            clearInterval(car.moveIntervalId)
+          }
+        }, SPEED_TIME)
+        car.moveIntervalId = moveIntervalId
+      }
     }
   </script>
 </head>
