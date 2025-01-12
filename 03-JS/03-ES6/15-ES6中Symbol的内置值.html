@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中Symbol的内置值</title>
+  <script>
+    //ES6中使用Symbol控制类型检测结果
+    class Person{
+      static [Symbol.hasInstance](params) {
+        console.log(params)
+        console.log('我被用来检测类型了...')
+        return false
+      }
+    }
+
+    let o = {name: 'zhangsan'}
+    console.log(o instanceof Person)
+
+    //ES6中使用Symbol控制数组是否可以展开
+    const arr1 = [1,2,3]
+    const arr2 = [4,5,6]
+    console.log(arr1.concat(arr2))
+    arr2[Symbol.isConcatSpreadable] = false
+    console.log(arr1.concat(arr2))
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

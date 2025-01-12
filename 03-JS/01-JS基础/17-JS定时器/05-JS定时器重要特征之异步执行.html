@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS定时器重要特征之异步执行</title>
+  <script>
+    /**
+     * JS定时器是异步执行的，不会有阻塞
+     */ 
+    console.log('hello')
+    setTimeout(()=> {
+      console.log('异步执行')
+    },3000)
+    console.log('javascript')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

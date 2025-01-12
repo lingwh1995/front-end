@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS操作元素className</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+    }
+    .box-1 {
+      background-color: gold;
+    }
+    .box-2 {
+      border: 2px solid black;
+    }
+    .bg-green {
+      background-color: green;
+    }
+    .bg-red {
+      background-color: red;
+    }
+  </style>
+  <script>
+    window.onload = ()=> {
+      /**
+       * 获取box1元素的所有className方式一(不推荐)
+       */
+      document.querySelectorAll('input[type="button"]')[0].addEventListener('click', () => {
+        const box = document.querySelector('.box-1')
+        alert(`元素的className：${box.className}`)
+      })
+
+      /**
+       * 给box2元素添加背景色class方式一(不推荐)
+       */
+      document.querySelectorAll('input[type="button"]')[1].addEventListener('click', () => {
+        const box = document.querySelector('.box-2')
+        const className = box.className
+        if(! className.includes('bg-green')) {
+          box.className = box.className.concat(' ').concat('bg-green')
+        }
+      })
+
+      /**
+       * 移除box2元素上的背景色class方式一(不推荐)
+       */
+      document.querySelectorAll('input[type="button"]')[2].addEventListener('click', () => {
+        const box = document.querySelector('.box-2')
+        box.className = box.className.replace(' bg-green','')
+      })
+
+      /**
+       * 获取box1元素的所有className方式二(推荐)
+       */
+       document.querySelectorAll('input[type="button"]')[3].addEventListener('click', () => {
+        const box = document.querySelector('.box-1')
+        alert(`元素的className：${box.classList}`)
+      })
+      
+      /**
+       * 给box2元素添加背景色class方式二(推荐)
+       */
+       document.querySelectorAll('input[type="button"]')[4].addEventListener('click', () => {
+        const box = document.querySelector('.box-2')
+        const classList = box.classList
+        classList.add('bg-green')
+      })
+
+      /**
+       * 移除box2元素上的背景色class方式二(推荐)
+       */
+       document.querySelectorAll('input[type="button"]')[5].addEventListener('click', () => {
+        const box = document.querySelector('.box-2')
+        const classList = box.classList
+        classList.remove('bg-green')
+      })
+
+      /**
+       * 切换box2元素上的背景色class
+       */
+       document.querySelectorAll('input[type="button"]')[6].addEventListener('click', () => {
+        const box = document.querySelector('.box-2')
+        const classList = box.classList
+        classList.toggle('bg-red')
+      })
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="获取box1元素的所有class方式一(不推荐)"/>
+  <input type="button" value="给box2元素添加背景色class方式一(不推荐)"/>
+  <input type="button" value="移除box2元素上的背景色class方式一(不推荐)"/><br>
+  <input type="button" value="获取box1元素的所有class方式二(推荐)"/>
+  <input type="button" value="给box2元素添加背景色class方式二(推荐)"/>
+  <input type="button" value="移除box2元素上的背景色class方式二(推荐)"/><br>
+  <input type="button" value="切换box2元素上的背景色class"/><br>
+  <div class="box-1 box"></div>
+  <div class="box-2 box"></div>
+</body>
+</html>

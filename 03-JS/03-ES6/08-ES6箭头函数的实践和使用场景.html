@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6箭头函数的实践和使用场景</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      cursor: pointer;
+      background-color: green;
+    }
+  </style>
+  <script>
+    /**
+     * 箭头函数使用场景
+     *  箭头函数适合与 this 无关的回调.如：定时器、数组的方法回调
+     *  箭头函数不适合与 this 有关的事件回调.如：事件回调、对象的方法、构造函数
+     */ 
+    window.onload = ()=> {
+      /**
+       * 点击两秒后改变背景颜色
+       */ 
+      const box = document.querySelector('.box')
+      box.addEventListener('click',function(){
+        const this_ = this
+        setTimeout(() => {
+          this_.style.background = 'orange'
+        },1000)
+      })
+
+      /**
+       * 返回数组中的偶数
+       */
+      const nums = [1,2,3,4,5,6]
+      const even = nums.filter(num => num%2 == 0)
+      console.log(even)
+    }
+  </script>
+</head>
+<body>
+  <div class="box">
+    点击两秒后改变背景颜色
+  </div>
+</body>
+</html>
