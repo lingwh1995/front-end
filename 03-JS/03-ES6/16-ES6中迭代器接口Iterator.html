@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ES6中迭代器接口</title>
+  <title>ES6中迭代器接口Iterator</title>
   <script>
     /**
      * 迭代器是一种接口，为各种不同的数据结构提供统一的访问机制，任
-     * 何数据结构只要部署Iterator接口，就可以完成遍历操作
+     * 何数据结构只要部署Iterator接口，就可以使用for...of完成遍历操作
      */ 
     const school = {
       name: 'ufe',
@@ -35,7 +35,6 @@
         }
       }
     }
-
 
     for (const element of school) {
       console.log(element)

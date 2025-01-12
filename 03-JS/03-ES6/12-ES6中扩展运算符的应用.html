@@ -8,16 +8,30 @@
     //1.数组的合并
     const arr1 = [1,2,3]
     const arr2 = [4,5,6]
-    const arr = [...arr1,...arr2]
+    const arr = [...arr1, ...arr2]
     console.log(arr)
     console.log('------------01------------')
+
+
+    //2.对象的合并
+    const obja = {
+      name: 'zhangsan',
+      age: 18,
+    }
+    const objb = {
+      name: 'lisi',
+      gender: '男',
+    }
+    const mergeObj = {...obja, ...objb}
+    console.log(mergeObj)
+    console.log('------------02------------')
 
 
     //2.数组的克隆，注意：这个是浅拷贝
     const source = ['赵','钱','孙','礼']
     const target = [...source]
     console.log(target)
-    console.log('------------02------------')
+    console.log('------------03------------')
 
 
     //3.将伪数组转换为真正的数组案例一
@@ -27,7 +41,7 @@
       const divsArr = [...divs]
       console.log(divsArr)
     }
-    console.log('------------03------------')
+    console.log('------------04------------')
 
 
     //3.将伪数组转换为真正的数组案例二
@@ -37,7 +51,7 @@
       console.log(arguments)
     }
     show(1,2)
-    console.log('------------04------------')
+    console.log('------------05------------')
   </script>
 </head>
   <div>1</div>
