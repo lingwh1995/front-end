@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中面向对象_ES5中使用构造函数实现继承</title>
+  <script>
+    //父类-Animal类
+    function Animal(name) {
+      this.name = name
+    }
+
+    //父类方法
+    Animal.prototype.drink = function() {
+      console.log('动物正在喝水...[我是父类方法]')
+    }
+
+    //父类方法
+    Animal.prototype.eat = function() {
+      console.log('动物正在吃饭...[我是父类方法]')
+    }
+
+    //子类-Pig类
+    function Pig(name,color) {
+      //使用call()改变Animal中this的指向
+      Animal.call(this,name)
+      this.color = color
+    }
+
+    //设置子类构造函数的原型为父类
+    Pig.prototype = new Animal
+    //修正子类构造函数的原型
+    Pig.prototype.constructor = Pig
+
+    //声明子类的方法
+    Pig.prototype.sleep = function() {
+      console.log(`${this.color}小猪${this.name}正在睡觉...[我是子类自身方法]`)
+    }
+
+    //重写父类的方法
+    Pig.prototype.eat = function() {
+      console.log(`${this.color}小猪${this.name}正在吃饭...[我是子类重写父类方法]`)
+    }
+
+    const pig = new Pig('佩奇','红色')
+    //调用父类的方法
+    pig.drink()
+    //调用子类的方法
+    pig.sleep()
+    //调用子类重写父类的方法
+    pig.eat()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

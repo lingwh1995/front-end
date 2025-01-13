@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中面向对象_使用class关键字定义类(函数对象)</title>
+  <script>
+    function Dog(name,age) {
+      this.name = name
+      this.age = age
+    }
+    Dog.prototype.drink = function() {
+      console.log(`${this.name}喝水...`);
+    }
+    const dogBlack = new Dog('小黑狗',5)
+    const dogWhite = new Dog('小白狗',5)
+    dogBlack.drink()
+    dogWhite.drink()
+    console.log('------------01------------')
+
+
+    //ES6提供了更加符合面向对象方式定义类的关键字 class
+    class Cat {
+      constructor(name,age) {
+        this.name = name
+        this.age = age
+      }
+      drink() {
+        console.log(`${this.name}喝水...`);
+      }
+    }
+    const catBlack = new Cat('小黑猫',5)
+    const catWhite = new Cat('小白猫',10)
+    catBlack.drink()
+    catWhite.drink()
+    console.log('------------02------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

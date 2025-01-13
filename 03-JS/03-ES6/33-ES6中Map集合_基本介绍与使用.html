@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中Map集合_基本介绍与使用</title>
+  <script>
+    //声明Map
+    let map = new Map()
+
+    //添加元素
+    map.set('school','西安财经大学')
+    map.set('showSchoolName',()=> {
+      console.log('这里是西安财经大学')
+    })
+    map.set('student',{id:'001', name: 'zhangsan'})
+    map.set('array',[1,2,3,4,5])
+    console.log(map)
+    console.log('------------01------------')
+
+
+    //删除元素
+    map.delete('school')
+    console.log(map)
+    console.log('------------02------------')
+
+
+    //获取元素
+    const array = map.get('array')
+    console.log(array)
+    console.log('------------03------------')
+
+    
+    //便利map: map实现了Iterator接口，所以可以使用for...of来遍历
+    for(const entry of map) {
+      console.log(entry)
+    }
+    console.log('------------04------------')
+
+
+    //清空map
+    map.clear()
+    console.log(map)
+    console.log('------------05------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
