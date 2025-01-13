@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中数组与Set集合之间的相互转换</title>
+  <script>
+    let nums = [1, 2, 2, 3, 4, 4, 5]
+
+    //将数组转换为Set集合(同时会去除数组中的重复元素)
+    let numsSet = new Set(nums)
+    console.log(numsSet, typeof numsSet)
+
+
+    //将Set集合转换为数组
+    nums = [...numsSet]
+    console.log(nums, typeof nums)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

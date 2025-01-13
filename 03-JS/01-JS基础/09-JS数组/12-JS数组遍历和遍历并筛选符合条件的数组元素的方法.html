@@ -54,8 +54,8 @@
      *  filter(element)
      *  filter(element,index)
      */
-    const numsFilter = nums.filter((element) => {
-      return element > 30
+    const numsFilter = nums.filter(num => {
+      return num > 30
     })
     console.log(numsFilter)
     console.log('------------06------------')
@@ -64,12 +64,17 @@
     /**
      * map():创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
      */
-    console.log(nums.map((element) => element * 2))
+    console.log(nums.map(num => num * 2))
     console.log('------------07------------')
 
-    for (const element of object) {
-      
+
+    /**
+     * for...of 只要数组内实现了Iterator接口，就可以使用for...of遍历
+     */ 
+    for (const num of nums) {
+      console.log(num)
     }
+    console.log('------------08------------')
   </script>
 </head>
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6中Set集合入门与主要API</title>
+  <script>
+    //ES6提供了新的数据结构Set，特点是里面存放的元素是无序且重复的，实现了Iterator接口，所以可以使用 for...of 来遍历
+
+    //1.创建一个空的Set集合
+    let set1 = new Set()
+    console.log(set1, typeof set1)
+    console.log('------------01------------')
+
+
+    //2.创建一个有初始值的Set集合
+    let set2 = new Set([1,2,2,3,3,4,5])
+    console.log(set2, typeof set2)
+    console.log('------------02------------')
+
+
+    //3.添加元素
+    let userSet = new Set()
+    userSet.add('张三')
+    userSet.add('张三')
+    userSet.add('李四')
+    userSet.add('王五')
+    console.log(userSet)
+    console.log('------------03------------')
+
+
+    //4.删除指定元素
+    console.log(userSet)
+    userSet.delete('李四')
+    console.log(userSet)
+    console.log('------------04------------')
+
+
+    //5.检查是否包含某个元素
+    console.log(userSet)
+    console.log(userSet.has('张三'))
+    console.log('------------05------------')
+
+
+    //6.获取Set集合的大小
+    console.log(userSet)
+    console.log(userSet.size)
+    console.log('------------06------------')
+
+
+    //7.清空Set集合
+    console.log(userSet)
+    userSet.clear()
+    console.log(userSet)
+    console.log('------------07------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
