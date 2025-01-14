@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES8中Object类新增方法_getOwnPropertyDescriptors()</title>
+  <script>
+    /**
+     * Object.getOwnPropertyDescriptors()
+     *   这个方法用于获取一个对象的所有自身属性（非继承属性）的描述符。
+     */
+    obj = { a: 1 }
+    console.log(Object.getOwnPropertyDescriptors(obj))
+    // 输出：{ a: {value: 1, writable: true, enumerable: true, configurable: true} }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
