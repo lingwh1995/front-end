@@ -25,7 +25,7 @@
      * flatMap():对数组中的每个元素应用给定的回调函数，然后将结果展开一级，返回一个新数组。它等价于在调用 map() 方法后再调用深度为 1 的 flat() 方法（arr.map(...args).flat()），但比分别调用这两个方法稍微更高效一些。
      */
      nums = [10, 20, 30, 40, 50]
-     console.log(nums.flatMap((element) => (element === 20 ? [20, 20] : element)))
+     console.log(nums.flatMap(element => (element === 20 ? [20, 20] : element)))
      console.log('------------02------------')
   </script>
 </head>
