@@ -35,11 +35,11 @@ const readGuanShu = () => {
 }
 
 const readFile = async() => {
-  //获取为学读取结果
+  //获取 为学.md 读取结果
   const weiXue = await readWeiXue()
-  //获取插秧诗读取结果
+  //获取 插秧诗.md 读取结果
   const chaYang = await readChaYangShi()
-  //获取观书有感读取结果
+  //获取 观书有感.md 读取结果
   const guanshu = await readGuanShu()
   
   console.log(weiXue.toString())

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES9中适用于对象的rest参数和扩展运算符</title>
+    <script>
+      /**
+       * rest参数与扩展运算符在ES6中已经引入，不过ES6中只针对于数组，在ES9中为对象提供了像数组一样的rest参数和扩展运算符
+       */ 
+      const connect = ({host, port, ...user}) => {
+          console.log(host)
+          console.log(port)
+          console.log(user)
+      }
+
+      connect({
+          host: '127.0.0.1',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          type: 'master'
+      })
+      console.log('------------01------------')
+
+      const obj1 = {
+        name: '张三',
+        gender: '男'
+      }
+      const obj2 = {
+        gender: '女',
+        school: '西安财经大学'
+        
+      }
+      const obj3 = {
+        homeAddress: '陕西省西安市'
+      }
+
+      const mergeObj = {...obj1, ...obj2, ...obj3};
+
+      console.log(mergeObj)
+      console.log('------------02------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
