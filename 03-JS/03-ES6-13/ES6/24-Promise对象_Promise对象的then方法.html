@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise对象_Promise对象的then方法</title>
+  <script>
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        /**
+         * 调用resolve()：设置promise对象的状态为成功状态，可以resolve()传递参数
+         * 调用reject()： 设置promise对象的状态为失败状态，可以reject()传递参数
+         */
+
+        // let data = '数据库中的数据'
+        // resolve(data)
+
+        let error = '数据读取失败'
+        reject(error)
+      }, 1000)
+    })
+
+    /**
+     * 1.then()的返回值是Promise对象，对象的状态由回调函数的执行结果决定
+     * 2.这个返回值可以由开发人员自定义，通常是以下三种类型的数据
+     *  1.)非Promise对象
+     *  2.)Promise对象
+     *  3.)抛出错误
+     * 3.因为then()的返回值是Promise对象，所以then()支持链式调用
+     */
+    /*
+    const thenReturnResult = promise.then(value => {
+      console.log(value)
+      //1.非Promise对象
+      // return true
+      // return '成功了...'
+
+      //2.Promise对象
+      // return new Promise(resolve => {
+      //   resolve('ok...')
+      // })
+    },reason => {
+      console.log(reason)
+      //1.非Promise对象
+      // return false
+      // return '失败了...'
+
+      //2.Promise对象
+      // return new Promise(reject => {
+      //   reject('not ok...')
+      // })
+
+      //3.抛出错误
+      throw '出错啦'
+    })
+    console.log(thenReturnResult)
+    */
+
+    /**
+     * then()的链式调用
+     */
+    promise.then(value => {
+      console.log(value)
+      return true
+    }, reason => {
+      console.log(reason)
+      return false
+    })
+      .then(value => {
+        console.log(value)
+        console.log('------看到这个说明链式调用成功------')
+      }, reason => {
+        console.log(reason)
+        console.log('------看到这个说明链式调用成功------')
+      })
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

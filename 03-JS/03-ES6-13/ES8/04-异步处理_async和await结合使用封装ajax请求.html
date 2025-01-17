@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步处理_async和await结合使用封装ajax请求</title>
+  <script>
+    const sendAjax = () => {
+      return new Promise((resolve,reject) => {
+        // 1.创建对象
+        const xhr = new XMLHttpRequest();
+        // 2.初始化,设置请求方式和接口地址
+        xhr.open("GET", "http://api.tianapi.com/film/index?key=74cb68c12016c1e9508bf6d5f981a7be&num=10");
+        // 3.发送请求
+        xhr.send();
+        // 4.绑定事件，处理响应结果
+        xhr.onreadystatechange = () => {
+          // 判断
+          if (xhr.readyState === 4) {
+            // 判断响应状态码 200~299
+            if (xhr.status >= 200 && xhr.status < 300) {
+              // 获取成功
+              resolve(xhr.response);
+              //console.log(xhr.response);
+            } else {
+              // 获取失败
+              reject(xhr.status);
+              //console.log(xhr.status);
+            }
+          }
+        }
+      })
+    }
+
+    /**
+     * async 配合 await 调用异步ajax方法
+     */
+    const send = async() => {
+      const result = await sendAjax()
+      console.log(result)
+    }
+    send()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

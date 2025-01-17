@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象简化写法</title>
+  <script>
+    //ES6在定义对象时，允许在大括号里，直接写入变量和函数，作为对象的属性和方法
+    const name = '张三'
+    const school = '西安财经大学'
+    const printName = ()=> {
+      console.log(`姓名：${name}`)
+    }
+    const user = {
+      //下面写法等价于  name:name
+      name,
+      //下面写法等价于  school:school
+      school,
+      //下面写法等价于  printName:printName
+      printName,
+      /**
+       * 下面写法等价于
+       *  //写法一
+       *  printSchool:function() {
+       *    console.log(`学校：${school}`)
+       *  }
+       * 
+       *  //写法二
+       *  printSchool:() => {
+       *    console.log(`学校：${school}`)
+       *  }
+       */
+      printSchool(){
+        console.log(`学校：${school}`)
+      }
+    }
+    console.log(`name:${user.name},${user.school}`)
+    user.printName()
+    user.printSchool()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

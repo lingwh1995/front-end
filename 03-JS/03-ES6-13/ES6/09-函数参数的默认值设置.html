@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数参数的默认值设置</title>
+  <script>
+    //ES6允许给函数参数赋初始值
+    //1.给形参赋初始值，一般赋初始值的形参位置要放在最后(约定优于配置)
+    const sum = (a,b,c=30) => a + b + c
+    //不给函数参数赋初始值
+    console.log(sum(10,20,100))
+    //给函数参数赋初始值
+    console.log(sum(10,20))
+
+    //2.与解构赋值结合
+    const connect = (({host='127.0.0.1',username,password,port}) => {
+      console.log(`主机地址:${host},用户名:${username},密码:${password},端口:${port}`)
+    })
+    //不给函数参数赋初始值
+    connect({
+      host: 'localhost',
+      username: 'admin',
+      password: '123456',
+      port: '8080'
+    })
+    //给函数参数赋初始值
+    connect({
+      username: 'admin',
+      password: '123456',
+      port: '8080'
+    })
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

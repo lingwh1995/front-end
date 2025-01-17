@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成器函数_处理异步函数多层嵌套回调(异步任务转同步任务)</title>
+  <script>
+    /**
+     * 不使用生成器函数处理：容易出现多层嵌套、回调地狱问题、变量名称写错问题
+     */
+    /*
+    setTimeout(() => {
+      console.log('one...')
+      setTimeout(() => {
+        console.log('two...')
+        setTimeout(() => {
+          console.log('three...')
+        },3000)
+      },2000)
+    },1000)
+    */
+
+    
+    /**
+     * 使用生成器函数处理：不会出现多层嵌套、回调地狱问题、变量名称写错问题
+     */
+    /**/
+    const one = () => {
+      setTimeout(() => {
+        console.log('one...')
+        iterator.next()
+      },1000)
+    }
+    const two = () => {
+      setTimeout(() => {
+        console.log('two...')
+        iterator.next()
+      },2000)
+    }
+    const three = () => {
+      setTimeout(() => {
+        console.log('three...')
+        iterator.next()
+      },3000)
+    }
+
+    function * generator() {
+      yield one()
+      yield two()
+      yield three()
+    }
+
+    const iterator = generator()
+    iterator.next()
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

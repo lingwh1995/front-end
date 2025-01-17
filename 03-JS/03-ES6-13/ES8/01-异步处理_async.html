@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步处理_async</title>
+  <script>
+    /* async函数ES5版 */
+    /*
+    //使用async关键字修饰函数，该函数返回结果会被封装成一个Promise对象，即使在不返回Promise类型数据的情况下
+    async function fun() {
+      //1.返回一个字符串
+      // return '尚硅谷'
+
+      //2.返回的结果不是一个Promise类型的对象, 返回的结果就是成功Promise对象
+      // return
+
+      //3.抛出错误, 返回的结果是一个失败的 Promise
+      // throw new Error('出错啦!')
+      
+      //4.返回的结果如果是一个Promise对象，可以自定义Promise的状态是成功或者失败
+      // return new Promise((resolve, reject) => {
+      //   resolve('成功的数据')
+      //   //reject("失败的错误")
+      // })
+    }
+
+    const result = fun()
+    console.log(result)
+
+    //只要是Promise对象，就可以调用then()
+    result.then(value => {
+      console.log(value);
+    }, reason => {
+      console.warn(reason);
+    })
+    */
+
+    /* async函数ES6版 */
+    //使用async关键字修饰函数，该函数返回结果会被封装成一个Promise对象，即使在不返回Promise类型数据的情况下
+    const fun = async() => {
+      //1.返回一个字符串
+      //return '尚硅谷'
+
+      //2.返回的结果不是一个Promise类型的对象, 返回的结果就是成功Promise对象
+      // return
+
+      //3.抛出错误, 返回的结果是一个失败的 Promise
+      // throw new Error('出错啦!')
+      
+      //4.返回的结果如果是一个Promise对象，可以自定义Promise的状态是成功或者失败
+      return new Promise((resolve, reject) => {
+        //resolve('成功的数据')
+        reject("失败的错误")
+      })
+    }
+    const result = fun()
+    console.log(result)
+
+    //只要是Promise对象，就可以调用then()
+    result.then(value => {
+      console.log(value)
+    },reason => {
+      console.log(reason)
+    })
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可选链操作符</title>
+</head>
+
+<body>
+  <script>
+    // ?.
+    const main = (config) => {
+      //不使用可选链操作符
+      // const dbHost = config && config.db && config.db.host;
+      // console.log(dbHost)
+
+      //使用可选链操作符，不再需要层层判断对象或者属性是否存在(是否传入了)
+      const dbHost = config?.db?.host;
+      console.log(dbHost);
+    }
+
+    main({
+      db: {
+        host: '192.168.1.100',
+        username: 'root'
+      },
+      cache: {
+        host: '192.168.1.200',
+        username: 'admin'
+      }
+    })
+  </script>
+</body>
+
+</html>

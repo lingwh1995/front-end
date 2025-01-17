@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面向对象_ES6中使用extends关键字实现继承</title>
+  <script>
+    //父类-Animal类
+    class Animal {
+      //父类构造方法
+      constructor(name) {
+        this.name = name
+      }
+      
+      //父类方法
+      drink() {
+        console.log('动物正在喝水...[我是父类方法]')
+      }
+
+      eat() {
+        console.log('动物正在吃饭...[我是父类方法]')
+      }
+    }
+
+    //子类-Pig类
+    class Pig extends Animal {
+      constructor(name,color) {
+        //使用super关键字调用父类构造方法
+        super(name)
+        this.color = color
+      }
+
+      //子类方法
+      sleep() {
+        console.log(`${this.color}小猪${this.name}正在睡觉...[我是子类自身方法]`)
+      }
+
+      //重写父类方法
+      eat() {
+        console.log(`${this.color}小猪${this.name}正在吃饭...[我是子类重写父类方法]`)
+      }
+    }
+    const pig = new Pig('佩奇','红色')
+    //调用父类方法
+    pig.drink()
+    //调用子类方法
+    pig.sleep()
+    //调用子类重写父类的方法
+    pig.eat()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成器函数_用户、商品、订单案例(异步任务转同步任务)</title>
+  <script>
+    /*
+     * 模拟获取 获取用户数据 => 根据用户数据获取订单数据 => 根据订单数据获取商品信息
+     */
+
+    //获取用户数据
+    const getUserInfo = () => {
+      setTimeout(() => {
+        //模拟从数据库中查询到了用户数据
+        const user = {id:'001', name:'李华', address:'浙江省青田市'}
+        //第二次调用next()方法
+        iterator.next(user)
+      },1000)
+    }
+
+    //根据用户数据获取订单数据
+    const getOrderInfo = (userInfo) => {
+      setTimeout(() => {
+        //模拟数据库数据
+        const orders = [
+          {orderId:'0000001', userId:'001', goods:{goodsName:'牙刷', price: '￥10.0'}},
+          {orderId:'0000002', userId:'002', goods:{goodsName:'牙膏', price: '￥15.0'}},
+          {orderId:'0000003', userId:'003', goods:{goodsName:'饮料', price: '￥20.0'}},
+          {orderId:'0000004', userId:'004', goods:{goodsName:'被子', price: '￥50.0'}},
+          {orderId:'0000005', userId:'005', goods:{goodsName:'音箱', price: '￥99.0'}},
+        ]
+        //模拟从数据库中 根据用户数据查询订单数据
+          //TODO 优化获取数组中第一个元素的方法
+        const order = orders.filter(order => userInfo.id == order.userId)[0]
+        //第三次调用next()方法
+        iterator.next(order)
+      },1000)
+    }
+
+    //根据订单数据获取商品信息
+    const getGoodsInfo = (orderInfo) => {
+      setTimeout(() => {
+        const goods = orderInfo.goods
+        //第四次调用next()方法
+        iterator.next(goods)
+      },1000)
+    }
+
+    function * generator() {
+      //第一个yield语句的整体返回结果 => 第二次调用next()时传递参数
+      const userInfo = yield getUserInfo()
+      console.log(userInfo)
+      //第二个yield语句的整体返回结果 => 第三次调用next()时传递参数
+      const orderInfo = yield getOrderInfo(userInfo)
+      console.log(orderInfo)
+      //第三个yield语句的整体返回结果 => 第四次调用next()时传递参数
+      const goodsInfo = yield getGoodsInfo(orderInfo)
+      console.log(goodsInfo)
+    }
+
+    const iterator = generator()
+    //第一次调用next()方法
+    iterator.next()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

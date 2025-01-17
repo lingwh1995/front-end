@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set集合_遍历和筛选符合条件的Set集合元素</title>
+  <script>
+    //ES6提供了新的数据结构Set，特点是里面存放的元素是无序且重复的，实现了Iterator接口，所以可以使用 for...of 来遍历
+
+    let nums = new Set([10, 20, 30, 40, 50])
+
+    //1.使用for...of遍历Set集合 只要实现了Iterator接口，就可以使用for...of遍历
+    for(const num of nums) {
+      console.log(num)
+    }
+    console.log('------------01------------')
+
+
+    //2.map():创建一个新的Set集合，这个新Set集合由原Set集合中的每个元素都调用一次提供的函数后的返回值组成。
+    nums = [10, 20, 30, 40, 50]
+    nums = nums.map(num => num * 2)
+    console.log(nums)
+    console.log('------------02------------')
+
+
+    //3.使用forEach遍历Set集合
+    nums = [10, 20, 30, 40, 50]
+    nums.forEach(num => {
+      console.log(num)
+    })
+    console.log('------------03------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

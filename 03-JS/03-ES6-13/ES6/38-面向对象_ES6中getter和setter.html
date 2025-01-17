@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面向对象_ES6中getter和setter</title>
+  <script>
+    class Phone {
+      get price(){
+        console.log('价格属性被读取了...')
+        return '$100'
+      }
+      set price(value){
+        console.log('价格属性被设置了...')
+        //console.log(value)
+      }
+    }
+    const phone = new Phone()
+    //设置price属性的值
+    phone.price = '$200'
+
+    //读取price属性的值
+    console.log(phone.price)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

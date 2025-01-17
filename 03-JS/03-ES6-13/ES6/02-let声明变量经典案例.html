@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>let声明变量经典案例</title>
+  <style>
+    .box {
+      width: 500px;
+      margin: 0 auto;
+      border: 1px solid gray;
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+    .box .header {
+      text-align: center;
+      font-size: 30px;
+      height: 50px;
+      line-height: 50px;
+      background: #ddd;
+    }
+    .box .container {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .box .container div {
+      width: calc(100%/3);
+      height: 200px;
+      background-color: gold;
+      text-align: center;
+      line-height: 200px;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      const cardList = document.querySelectorAll('.box .container div')
+      //使用let i=0 不会报错，因为let的作用域是块级
+      for(let i=0; i<cardList.length; i++) {
+        cardList[i].addEventListener('click',()=>{
+          cardList[i].style.background = 'green'
+        })
+      }
+
+      //使用var i=0 会报错，因为var的作用域是全局
+      // for(var i=0; i<cardList.length; i++) {
+      //   cardList[i].addEventListener('click',()=>{
+      //     console.log(`索引值:${i}`)
+      //     //下面这行代码等价于  cardList[window.i].style.background = 'green'
+      //     cardList[i].style.background = 'green'
+      //   })
+      // }
+      // console.log(`i:${i},window.i:${window.i}`)
+      
+      /* 常规方式绑定事件：效率低(不推荐) */
+      /*
+      cardList.forEach(card => {
+        card.addEventListener('click',()=> {
+          card.style.background = 'green'
+        })
+      })*/
+      
+      /* 事件委托方式绑定事件：效率高(推荐) */
+      /*
+      const container = document.querySelector('.box .container')
+      container.addEventListener('click',(event)=> {
+        event = event || window.event
+        if(event.target.className == 'card') {
+          event.target.style.background = 'blue'
+        }
+      })*/
+
+    }
+  </script>
+</head>
+<body>
+  <div class="box">
+    <div class="header">点击切换背景颜色</div>
+    <div class="container">
+      <div class="card">1</div>
+      <div class="card">2</div>
+      <div class="card">3</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的私有属性</title>
+  <script>
+    class Person {
+      //公有属性
+      name;
+      //私有属性，前面加上 # 修饰
+      #age;
+      #weight;
+
+      constructor(name,age,weight) {
+        this.name = name
+        this.#age = age
+        this.#weight = weight
+      }
+
+      show() {
+        console.log(`公有属性 姓名：${this.name}`);
+        console.log(`私有属性 年龄：${this.#age},体重：${this.#weight}`);
+      }
+    }
+
+    const person = new Person('张三',20,'54kg')
+    console.log(person);
+    console.log(person.name)
+    //直接访问私有属性会报错
+    //console.log(person.#age)
+    person.show()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

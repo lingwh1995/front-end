@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组和对象解构</title>
+  <script>
+    //对数组进行结构
+    const [first,second,third] = [1,2,3]
+    console.log(`first:${first},second:${second},third:${third}`)
+
+    //对对象进行结构
+    const {id,name,sayHello} = {
+      id: '001',
+      name: 'zhangsan',
+      sayHello: ()=> {
+        console.log('hello javascript~')
+      }
+    }
+    console.log(`id:${id},name:${name}`)
+    sayHello()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

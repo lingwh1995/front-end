@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组的includes方法</title>
+  <script>
+    /**
+     * includes(): 判断数组中是否包含一个元素，可以直接返回boolean值true和false
+     */ 
+    let array = [1, 2, 3, 4, 5]
+    console.log(array.includes(2))  //输出：true
+    console.log(array.includes(6))  //输出：false
+
+    /**
+     * ES7之前的indexOf()方法也可以判断数组中是否包含一个元素，不过没有includes()方法这么方便
+     */ 
+    array = [1, 2, 3, 4, 5]
+    console.log(array.indexOf(2) !== -1)  // 输出：true
+    console.log(array.indexOf(6) !== -1)  // 输出：false
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

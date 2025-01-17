@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise的介绍与基本使用_封装异步函数</title>
+  <script>
+    /**
+     * 1.Promise是ES6引入的异步编程解决方案，用于封装异步函数
+     * 2.Promise封装异步函数后，响应结果不会像之前一样在异步函数中处理了，而是会在promise.then()方法中进行处理，代码结构更清晰了
+     */ 
+    const promise =  new Promise((resolve,reject) => {
+      setTimeout(() => {
+        /**
+         * 调用resolve()：设置promise对象的状态为成功状态，可以resolve()传递参数
+         * 调用reject()： 设置promise对象的状态为失败状态，可以reject()传递参数
+         */
+
+        // let data = '数据库中的数据'
+        // resolve(data)
+
+        let error = '数据读取失败'
+        reject(error)
+      },1000)
+    })
+
+    //value：成功的形参，reason：失败的形参 约定优于配置
+    promise.then(value => {
+      console.log(value)
+    },reason => {
+      console.log(reason)
+    })
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
