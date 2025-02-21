@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS回调函数和高阶函数</title>
+  <script>
+    //回调函数
+		const plusNumer = (i)=> {
+			//注意： i++返回10,++i才返回11
+			return ++i;
+		}
+
+		//调用回调函数的函数称为高阶函数
+		const highLevelFunction = (callback,number) => {
+			return callback(number);
+		}
+
+		console.log(highLevelFunction(plusNumer,10));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

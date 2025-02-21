@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS函数重载</title>
+  <script>
+    //JS不支持函数重载,不过可以通过一定的方法实现函数重载
+    
+    //ES5实现函数重载
+    function sum(a,b) {
+      if(arguments.length === 1) {
+        return a
+      } else if(arguments.length === 2) {
+        return a + b
+      }
+    }
+    //调用函数
+    console.log(sum(1))
+    console.log(sum(1,2))
+
+
+    //E6S6实现函数重载
+    const add = (...args) => {
+      if(args.length === 1) {
+        return args[0]
+      } else if(args.length === 2) {
+        return args[0] + args[1]
+      }
+    }
+    //调用函数
+    console.log(add(1))
+    console.log(add(1,2))
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
