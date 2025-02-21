@@ -1,7 +1,0 @@
-spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://host.docker.internal;databaseName=LoRaWandb;useUnicode=true;characterEncoding=UTF-8;encrypt=false
-    username: sa
-    password: sqlserver123456@
