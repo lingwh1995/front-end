@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面向对象_ES5中使用Object.create实现继承</title>
+  <script type="text/javascript">
+    const father = {
+      id:'001',
+      name:'张三',
+      show() {
+        console.log('show......')
+      }
+    }
+    const son = Object.create(father,{
+      gender:{
+          value:'男'
+      }
+    })
+
+    console.log(son.id)
+    console.log(son.name)
+    son.show()
+  </script>  
+</head>
+<body>
+  
+</body>
+</html>

@@ -14,7 +14,12 @@
      *             正确用法:typeof(a) === 'undefined'
      *             错误用法:typeof(a) === undefined
      *    2.instanceof    判断对象的具体类型
+     *    3.Object.prototype.toString.call()
      */
+
+    /**
+    * typeof
+    */
     let a = 10;
     console.log(typeof(a));
     console.log(typeof 'hello world');
@@ -37,9 +42,32 @@
     console.log(typeof(d));
     console.log(typeof(d) === 'undefined');
 
+    /**
+     * 2.instanceof
+     */ 
     let arr = [1,2,3]
     console.log(typeof(arr));
     console.log(arr instanceof Array);
+
+    /**
+     * 3.Object.prototype.toString.call()
+     */ 
+    const i = 5
+    const s = 'hello'
+    const t = true
+    const undefined_ = undefined
+    const null_ = null
+    const obj = {
+        id:'001',
+        name: '张三'
+    }
+
+    console.log(Object.prototype.toString.call(i))
+    console.log(Object.prototype.toString.call(s))
+    console.log(Object.prototype.toString.call(t))
+    console.log(Object.prototype.toString.call(undefined_))
+    console.log(Object.prototype.toString.call(null_))
+    console.log(Object.prototype.toString.call(obj))
   </script>
 </head>
 <body>

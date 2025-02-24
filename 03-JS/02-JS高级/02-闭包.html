@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+  <script>
+    /**
+     * 闭包可以解决函数外无法访问函数内部的局部变量的问题，是函数外部访问内部局部变量的桥梁
+     * 原理：闭包使得函数内部的变量长期在内存中驻扎了，所以外部函数就可以访问了
+     * 缺点：容易造成内存泄露
+     */
+    function fun() {
+      const i = 10
+      return function () {
+          return i
+      }
+    }
+    const j = fun()
+    console.log(j())
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -28,16 +28,16 @@
     //用hasOwnProperty检查某个对象中是否包含某个属性，如果对象中有会返回true,如果对象中没有，原型对象中有会返回false
     console.log(mc.hasOwnProperty('name'))
     console.log(mc.hasOwnProperty('age'))
-    console.log('----');
+    console.log('----')
     console.log(MyClass.prototype.hasOwnProperty('name'))
     console.log(MyClass.prototype.hasOwnProperty('age'))
-    console.log('----');
+    console.log('----')
 
     //如果在对象的原型对象中查找属性没有找到，就到对象的原型对象的原型对象中查找属性，直到找到Object对象为止
     console.log(mc.hasOwnProperty('hasOwnProperty'))
     console.log(mc.__proto__.__proto__.hasOwnProperty('hasOwnProperty'))
     console.log(MyClass.prototype.__proto__.hasOwnProperty('hasOwnProperty'))
-    //console.log(Object.prototype);
+    //console.log(Object.prototype)
   </script>
 </head>
 <body>

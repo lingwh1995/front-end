@@ -8,27 +8,27 @@
     /**
      * 使用工厂方法创建对象 
      */
-    function createPerson(name,age,gender) {
+    const createPerson = (name,age,gender) => {
       const obj = new Object()
       obj.name = name
       obj.age = age
       obj.gender = gender
-      obj.sayName= function(){
+      obj.sayName = () => {
         console.log(this.name)
       }
       return obj
     }
 
     let obj1 = createPerson('张三',18,'男')
-    console.log(obj1);
+    console.log(obj1)
     obj1.sayName()
 
     let obj2 = createPerson('李四',25,'女')
-    console.log(obj2);
+    console.log(obj2)
     obj2.sayName()
 
     let obj3 = createPerson('王五',18,'男')
-    console.log(obj3);
+    console.log(obj3)
     obj3.sayName()
   </script>
 </head>

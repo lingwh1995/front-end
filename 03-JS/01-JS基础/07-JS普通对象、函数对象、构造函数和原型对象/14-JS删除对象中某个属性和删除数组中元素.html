@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS删除对象中某个属性和删除数组中元素</title>
+  <script>
+    const obj = {
+      id: '001',
+      name: '张三',
+      show(){
+        console.log(`id:${this.id},name:${this.name}`)
+      }
+    }
+
+    delete obj.id
+    console.log(obj)
+
+    //delete也可以用于删除数组中指定位置的元素内容，删除元素内容后该位置还在
+    const arr = ['a','b','c']
+    delete arr[1]
+    console.log(arr)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
