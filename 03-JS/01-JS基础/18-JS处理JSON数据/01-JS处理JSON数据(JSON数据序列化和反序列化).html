@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS处理JSON数据</title>
+  <title>JS处理JSON数据(JSON数据序列化和反序列化)</title>
   <script>
     /**
      * 创建一个user对象
      */ 
     const obj = {id:'001',name:'zhangsan',age:'20'}
     
-    //将user对象转换为json字符串
+    //将user对象转换为json字符串(序列化)
     const jsonStr_obj = JSON.stringify(obj)
     console.log(jsonStr_obj)
 
-    //将json字符串转换为json对象
+    //将json字符串转换为json对象(反序列化)
     const jsonObj_obj = JSON.parse(jsonStr_obj)
     console.log(jsonObj_obj)
 
@@ -23,12 +23,12 @@
      */
      const objArr = [{id:'001',name:'zhangsan',age:'20'},{id:'002',name:'lisi',age:'30'}]
 
-     //将对象数组转换为json字符串
+     //将对象数组转换为json字符串(序列化)
      const jsonStr_arr = JSON.stringify(objArr)
      console.log(jsonStr_arr)
 
      
-    //将json字符串转换为json数组
+    //将json字符串转换为json数组(反序列化)
     const jsonObj_arr = JSON.parse(jsonStr_arr)
     console.log(jsonObj_arr)
   </script>
