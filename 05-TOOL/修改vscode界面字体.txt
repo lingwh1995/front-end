@@ -6,6 +6,3 @@
   linux环境
     搜索 .monaco-workbench.linux{font-family:system-ui,Ubuntu,Droid Sans,sans-serif}
     替换 .monaco-workbench.linux{font-family:PingFang SC Heavy,system-ui,Ubuntu,Droid Sans,sans-serif}
-.monaco-workbench.windows {
-    font-family: PingFang SC Heavy,Segoe WPC,Segoe UI,sans-serif
-}
