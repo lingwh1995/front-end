@@ -1,8 +1,12 @@
-1.定位文件位置 /usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.css
-2.使用sublime打开文件
-  windows环境
+1.windows环境
+  定位文件位置 VS Code安装目录\resources\app\out\vs\workbench\workbench.desktop.main.css
+  使用sublime打开文件
     搜索 .monaco-workbench.windows{font-family:Segoe WPC,Segoe UI,sans-serif}
     替换 .monaco-workbench.windows{font-family:PingFang SC Heavy,Segoe WPC,Segoe UI,sans-serif}
+
+2.linuxinux环境
+  定位文件位置 /usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.css
+  使用sublime打开文件
   linux环境
     搜索 .monaco-workbench.linux{font-family:system-ui,Ubuntu,Droid Sans,sans-serif}
     替换 .monaco-workbench.linux{font-family:PingFang SC Heavy,system-ui,Ubuntu,Droid Sans,sans-serif}
