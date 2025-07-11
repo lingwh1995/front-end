@@ -81,14 +81,14 @@
     background-color: #DD302D;
     text-align: center;
 }
-.mian-list li {
+.main-list li {
     float: left;
 }
-.mian-list li a {
+.main-list li a {
     font-weight: bold;
     margin: 0 10px;
 }
-.mian-list li:last-child a {
+.main-list li:last-child a {
     margin-right: 0;
 }
 /* #endregion主导航end */

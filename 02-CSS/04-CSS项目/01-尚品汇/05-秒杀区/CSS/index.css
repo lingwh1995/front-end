@@ -89,11 +89,11 @@
   text-align: center;
   color: #fff;
 }
-.mian-li-nav {
+.main-li-nav {
   height: 48px;
   line-height: 48px;
 }
-.mian-li-nav ul li {
+.main-li-nav ul li {
   float: left;
   font-size: 16px;
   margin: 0 10px;
@@ -102,43 +102,43 @@
 
 
 /* #region主内容区开始 */
-.mian-content {
+.main-content {
   margin-top: 10px;
 }
-.mian-content .slide-nav {
+.main-content .slide-nav {
   height: 458px;
   width: 190px;
   background-color: #F4F4F4;
 }
-.mian-content .slide-nav li {
+.main-content .slide-nav li {
   font-size: 14px;
   height: 28px;
   line-height: 28px;
   /* CSS高级技巧-特别注意：背景色可以填充padding，不能填充margin，所以这里不能用margin-left */
   padding-left: 16px;
 }
-.mian-content .slide-nav li:hover {
+.main-content .slide-nav li:hover {
   background-color: #DD302D;
   color: #FFFFFF;
   cursor: pointer;
 }
 /* CSS高级技巧-鼠标放在li上面的时候，去找li中的a，让这个a中文字的颜色变成白色，不能写.slide-nav li a:hover，这样是鼠标放在a上面的时候，让a中文字颜色变成白色 */
-.mian-content .slide-nav li:hover>a {
+.main-content .slide-nav li:hover>a {
   color: #FFFFFF;
 }
-.mian-content .banner {
+.main-content .banner {
   height: 458px;
   width: 690px;
   margin: 0 10px;
 }
-.mian-content .slide-other {
+.main-content .slide-other {
   width: 290px;
   height: 458px;
 }
-.mian-content .slide-nav {
+.main-content .slide-nav {
   position: relative;
 }
-.mian-content .slide-nav .second-menu {
+.main-content .slide-nav .second-menu {
   width: 680px;
   height: 458px;
   background-color: #FFFFFF;
@@ -150,13 +150,13 @@
   /* 整个内容区的左侧边距 */
   padding-left: 20px;
 }
-.mian-content .slide-nav li:hover .second-menu {
+.main-content .slide-nav li:hover .second-menu {
   display: block;
 }
-.mian-content .slide-nav .second-menu dl {
+.main-content .slide-nav .second-menu dl {
   padding-left: 20px;
 }
-.mian-content .slide-nav .second-menu dt {
+.main-content .slide-nav .second-menu dt {
   float: left;
   width: 70px;
   font-weight: bold;
@@ -164,95 +164,95 @@
   line-height: 36px;
   margin-right: 10px;
 }
-.mian-content .slide-nav .second-menu dd {
+.main-content .slide-nav .second-menu dd {
   float: left;
   height: 36px;
   line-height: 36px;
 }
-.mian-content .slide-nav .second-menu dd a {
+.main-content .slide-nav .second-menu dd a {
   padding: 0 10px;
   border-left: 1px solid #999999;
 }
-.mian-content .container .slide-other .message {
+.main-content .container .slide-other .message {
   width: 260px;
   height: 156px;
   border: 1px solid #D9D9D9;
   padding: 0 14px;
 }
-.mian-content .container .slide-other .message .title {
+.main-content .container .slide-other .message .title {
   height: 39px;
   line-height: 39px;
   border-bottom: 1px solid #999999;;
 }  
-.mian-content .container .slide-other .message .message-list li {
+.main-content .container .slide-other .message .message-list li {
   height: 26px;
   line-height: 26px;
 }  
-.mian-content .container .slide-other .other-nav {
+.main-content .container .slide-other .other-nav {
   width: 290px;
   height: 290px;
   margin-top: 10px;
   overflow: hidden;
 }
-.mian-content .container .slide-other .other-nav ul {
+.main-content .container .slide-other .other-nav ul {
   margin-top: 10px;
 }  
-.mian-content .container .slide-other .other-nav ul li {
+.main-content .container .slide-other .other-nav ul li {
   float: left;
   width: 48px;
   height: 70px;
   margin: 0 11px;
   text-align: center;
 }
-.mian-content .container .slide-other .other-nav ul:first-child {
+.main-content .container .slide-other .other-nav ul:first-child {
   margin-top: 16px;
 }
 
-.mian-content .container .slide-other .other-nav ul li:first-child {
+.main-content .container .slide-other .other-nav ul li:first-child {
   margin-left: 16px;
 }
-.mian-content .container .slide-other .other-nav ul li div {
+.main-content .container .slide-other .other-nav ul li div {
   height: 48px;
   width: 48px;
 }
-.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(1) div {
+.main-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(1) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat 0 0;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(2) div {
+.main-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(2) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -48px 0;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(3) div {
+.main-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(3) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -96px 0;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(4) div {
+.main-content .container .slide-other .other-nav ul:nth-child(1) li:nth-child(4) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -144px 0;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(1) div {
+.main-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(1) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat 0 -48px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(2) div {
+.main-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(2) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -48px -48px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(3) div {
+.main-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(3) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -96px -48px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(4) div {
+.main-content .container .slide-other .other-nav ul:nth-child(2) li:nth-child(4) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -144px -48px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(1) div {
+.main-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(1) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat 0 -96px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(2) div {
+.main-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(2) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -48px -96px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(3) div {
+.main-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(3) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -96px -96px;
 } 
-.mian-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(4) div {
+.main-content .container .slide-other .other-nav ul:nth-child(3) li:nth-child(4) div {
   background: url(../images/精灵图-侧边功能.png) no-repeat -144px -96px;
 } 
 /*
-.mian-content .container .slide-other .other-nav ul li span {
+.main-content .container .slide-other .other-nav ul li span {
   text-align: center;
   vertical-align: middle;
   color: gold;
