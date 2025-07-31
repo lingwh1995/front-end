@@ -57,6 +57,18 @@
         const hobby = Array.from(hobbies).find(hobby => !hobby.checked)
         document.getElementsByName("isCheckedAll")[0].checked = undefined === hobby
       }
+
+      /**
+       * 通过 其他 复选框选中状态 影响 全选/全不选 复选框选中状态
+       */
+      document.getElementsByName('hobby').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          // 改变 全选/全不选 复选框选中状态
+          const hobbies = document.getElementsByName('hobby')
+          const hobby = Array.from(hobbies).find(hobby => !hobby.checked)
+          document.getElementsByName("isCheckedAll")[0].checked = undefined === hobby
+        })
+      })
     }
   </script>
 </head>
