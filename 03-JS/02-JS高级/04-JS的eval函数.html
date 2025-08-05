@@ -25,17 +25,20 @@
     console.log('-------------------')
 
     // 3.执行复杂的代码块
-    const codeBlock = ` let a = 5;
+    let codeBlock = ` let a = 5;
                         let b = 10;
                         let sum = a + b;
                         console.log('Sum is: ' + sum);`;
-    eval(codeBlock); // 输出: Sum is: 15
+    eval(codeBlock) // 输出: Sum is: 15
+
+    codeBlock = "alert('xxx')"
+    eval(codeBlock)
     console.log('-------------------')
 
     // 4.处理 JSON 字符串（不推荐）
     const jsonString = '{"name": "张三", "age": 25}';
     const obj = eval("(" + jsonString + ")");
-    console.log(obj.name); // 输出: 张三
+    console.log(obj.name) // 输出: 张三
     console.log('-------------------')
   </script>
 </head>
