@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则_字符串和正则相关的方法</title>
+  <script>
+    const str = '1a2b3c4d5E6F'
+
+    //split() : 根据正则表达式将字符串拆分成数组
+    console.log(str.split(/[a-z]/))
+
+    //search() : 查找符合正则表达式条件的字符首次出现的索引位置
+    console.log(str.search(/[a-z]/))
+
+    //match() : 根据正则表达式从字符串中匹配符合条件的指定内容,并将匹配结果封装成数组返回
+    console.log(str.match(/[a-z]/ig))
+
+    //replace() : 根据正则表达式从字符串中替换符合条件的指定内容
+    console.log(str.replace(/[a-z]/ig,'-'))
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

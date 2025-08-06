@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询数组中指定索引的元素或元素的索引位置的方法</title>
+  <script type="text/javascript">
+    const nums = [10, 20, 30, 30, 40, 50]
+    console.log(nums)
+    console.log('------------01------------')
+    
+
+    /**
+     * at():接收一个整数值并返回该索引对应的元素，允许正数和负数。负整数从数组中的最后一个元素开始倒数。
+     */
+    console.log(nums.at(1))
+    console.log(nums.at(-1))
+    console.log('------------02------------')
+
+
+    /**
+     * indexOf():返回数组中第一次出现给定元素的下标，如果不存在则返回 -1。
+     */
+    console.log(nums.indexOf(30))
+    console.log('------------03------------')
+
+
+    /**
+     * lastIndexOf():返回数组中第一次出现给定元素的下标，如果不存在则返回 -1。
+     */
+     console.log(nums.lastIndexOf(30))
+     console.log('------------04------------')
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

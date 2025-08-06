@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数形参和实参</title>
+  <script>
+    //ES5定义函数
+    function sum(a,b){
+      console.log('函数形参的个数：' + sum.length)
+      //ES5支持 arguments 获取函数的实参
+      console.log('函数实参的个数：' + arguments.length)
+    }
+    //调用函数
+    sum(1,2,3,4,5)
+
+
+    //ES6定义函数
+    const add = (a,b) => {
+      console.log('函数形参的个数：' + add.length)
+      //ES6不支持 arguments 获取函数的实参
+      //console.log('函数实参的个数：' + arguments.length)
+    }
+    //调用函数
+    add(6,7,8,9,10)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

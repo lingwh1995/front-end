@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内置对象-arguments</title>
+  <script>
+    /**
+     * 封装实参的对象arguments
+     *  1.arguments是一个类数组元素，可以通过索引来操作数据，也可以通过arguments.length来获取长度
+     *  2.在调用函数时，我们所传递的参数都可以在arguments中保存
+     *  3.我们也可以不定义形参，通过arguments来获取
+     *    arguments[0]：来表示第一个实参
+     *    arguments[0]：来表示第二个实参
+     */
+    function add(a,b) {
+      console.log(arguments)
+      console.log(arguments[0])
+      console.log(arguments[1])
+      console.log(arguments.callee)
+      console.log(arguments instanceof Array)
+      return a + b
+    }
+    console.log(add(1,2))
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this指向详解</title>
+</head>
+<body>
+    <button id="btn">测试事件绑定中this的指向</button>
+    <script type="text/javascript">
+        //1.普通函数中this指向 -> Window对象
+        let fun1 = function() {
+            console.log(this);
+            console.log('----------01---------');
+        }
+        fun1();
+
+
+        //2.构造函数中this指向 -> 实例对象
+        function Student(name){
+            this.name = name;
+            this.sayHello = function(){
+                console.log(this);
+                console.log('----------02---------');
+            }
+        }
+        var student = new Student('张三');
+        student.sayHello();
+
+
+        //3.对象方法的调用中this指向 -> 实例对象
+        var person = {
+            uname: '李四',
+            sayHello(){
+                console.log(this);
+                console.log('----------03---------');
+            }
+        }
+        person.sayHello();
+
+
+        //4.事件绑定中this的指向 -> 指向绑定事件的元素
+        var btn = document.querySelector('#btn');
+        btn.onclick = function (){
+            console.log(this)
+            console.log('----------04---------');
+        }
+
+
+        //5.定时器中this的指向 -> Window
+        setTimeout(function (){
+            console.log(this)
+            console.log('----------05---------');
+        },1000)
+        
+
+        //6.立即执行函数中this的指向 -> Window
+        var fun2 = function fun2() {
+            console.log(this)
+            console.log('----------06---------');
+        }();
+
+        //7.箭头函数中this指向问题
+        const fun3 = () => {
+            console.log(this)
+            console.log('----------07---------');
+        }
+        fun3()
+    </script>
+</body>
+</html>

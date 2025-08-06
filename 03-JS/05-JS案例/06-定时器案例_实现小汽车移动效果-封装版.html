@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器案例_实现小汽车移动效果-封装版</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .button {
+      display: flex;
+      gap: 20px;
+    }
+    .button button {
+      height: 40px;
+      width: 200px;
+      background-color: #ddd;
+      border: none;
+      cursor: pointer;
+    }
+    .button button:hover {
+      outline: 5px solid gray;
+    }
+    .ruler {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 900px;
+    }
+    .ruler-800 {
+      width: 800px;
+      height: 50px;
+      line-height: 50px;
+      background-color: green;
+    }
+    .ruler-1200 {
+      width: 1200px;
+      height: 50px;
+      line-height: 50px;
+      background-color: gold;
+    }
+    .road {
+      width: 100%;
+      height: 200px;
+      background-color: tomato;
+      position: relative;
+    }
+    .road .car {
+      width: 200px;
+      height: 100%;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+    }
+  </style>
+  <script>
+    /**
+     * 此版本对代码进行了封装，代码简洁高效(十分推荐)
+     */ 
+    window.onload = () => {
+      let SPEED_SETP = 2
+      const SPEED_TIME = 5
+      /**
+       * 移动到800PX
+       */
+      document.querySelectorAll('button')[0].addEventListener('click', () => {
+        move(800)
+      })
+
+      /**
+       * 移动到1200PX
+       */
+      document.querySelectorAll('button')[1].addEventListener('click', () => {
+        move(1200)
+      })
+
+      /**
+       * 回到起点
+       */ 
+      document.querySelectorAll('button')[2].addEventListener('click', () => {
+        move(0)
+      })
+  
+      /**
+       * 停止运动
+       */ 
+      document.querySelectorAll('button')[3].addEventListener('click', () => {
+        move(-1)
+      })
+
+      const move = (target) => {
+        const car = document.querySelector('.car')
+        //清除car元素上的定时器
+        clearInterval(car.moveIntervalId)
+        if(-1 == target) return
+        //获取car元素偏移量
+        let current = car.offsetLeft
+        const moveIntervalId = setInterval(() => {
+          current += current <= target ? SPEED_SETP : - SPEED_SETP
+          car.style.left = current + 'px'
+          if(current == target) {
+            clearInterval(car.moveIntervalId)
+          }
+        }, SPEED_TIME)
+        car.moveIntervalId = moveIntervalId
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- 按钮 -->
+    <div class="button">
+      <button>移动到800PX</button>
+      <button>移动到1200PX</button>
+      <button>回到起点</button>
+      <button>停止运动</button>
+    </div>
+  
+    <!-- 道路 -->
+    <div class="road">
+      <div class="car"></div>
+    </div>
+
+    <!-- 卡尺 -->
+    <div class="ruler">
+      <div class="ruler-800">
+        我的长度是800px
+      </div>
+      <div class="ruler-1200">
+        我的长度是1200px
+      </div>
+    </div>
+  </div>
+</body>
+</html>

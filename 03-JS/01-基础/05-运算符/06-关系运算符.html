@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>关系运算符</title>
+  <script type="text/javascript">
+    /**
+     *  1.通过关系运算符可以比较两个值之间的大小关系，如果关系成立它会返回true,如果不成立返回false
+     *    >   大于
+     *    <   小于
+     *    >=  大于等于
+     *    <=  小于等于
+     *    ==  字面量是否相等
+     *    === 是否严格相等
+     *  2.非数值情况下
+     *    将其转换为数字然后再比较，如果符号两侧的值都是字符时候，不会将其转换数字进行比较，而会比较unicode编码
+     *  3.== 和 === 区别
+     *    == 运算符在比较值之前会自动转换数据类型，允许不同类型的值进行比较。(字面量相等)
+     *    === 运算符进行严格相等比较，即比较值本身以及数据类型。如果两个值既相等又类型相同，则返回 true，否则返回 false。(严格相等)
+     */
+    console.log(1 == '1');
+    console.log(1 === '1');
+
+    console.log(NaN == NaN);
+    console.log(NaN === NaN);
+
+    console.log(null == undefined);
+    console.log(null === undefined);
+
+    console.log(false == 0);
+    console.log(false == '0');
+    console.log(false === 0);
+    console.log(false === '0');
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

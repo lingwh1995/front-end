@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数对象</title>
+  <script>
+    /*
+      函数本质上也是一个对象，比普通对象功能强大很多
+    */
+    //创建函数对象
+    let fun = new Function("console.log('hello world')")
+
+    //执行函数
+    fun()
+
+    //增加属性
+    fun.age = 10
+    console.log(fun.age)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

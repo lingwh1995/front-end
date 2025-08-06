@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常用bom对象_window对象_内置对象screen</title>
+  <script>
+    /**
+     * 1.screen对象包含有关客户端显示屏幕的信息
+     * 2.screen是window的内置对象，使用时可以直接使用，可以通过 window.screen 使用
+     * 3.每个window对象的screen属性都引用一个screen对象。screen对象中存放着有关显示浏览器屏幕的信息。
+     *  JavaScript程序将利用这些信息来优化它们的输出，以达到用户的显示要求。例如，一个程序可以根据显示
+     *  器的尺寸选择使用大图像还是使用小图像，它还可以根据显示器的颜色深度选择使用16位色还是使用8位色的图
+     *  形。另外，JavaScript程序还能根据有关屏幕尺寸的信息将新的浏览器窗口定位在屏幕中间。
+     */ 
+    window.onload = () => {
+      /**
+       * 打印screen对象常用属性
+       */ 
+      document.querySelectorAll('button')[0].addEventListener('click', ()=> {
+        //输出screen对象
+        console.log(screen)
+        //返回视口高度(除windows任务栏之外)
+        console.log(screen.availHeight)
+        //返回视口宽度(除windows任务栏之外)
+        console.log(screen.availWidth)
+        //返回目标设备或缓冲器上调色板的比特深度
+        console.log(screen.colorDepth)
+        //返回屏幕高度
+        console.log(screen.height)
+        //返回屏幕宽度
+        console.log(screen.width)
+      })
+    }
+  </script>
+</head>
+<body>
+  <button>打印screen对象常用属性</button>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom节点增删改查兼容性版</title>
+  <script type="text/javascript">
+    window.onload = () => {
+      /*
+       * 获取任意一个父级元素的第一个子元素
+       */
+      const getfirstElementChild = (element) => {
+        if(element.firstElementChild) {
+          return element.firstElementChild
+        } else {
+          var node = element.firstChild
+          while(node && node.nodeType != 1) {
+            node = node.nextSibling
+          }
+          return node
+        }
+      }
+      
+
+      /*
+       * 获取任意一个父级元素的最后一个子元素
+       */
+      const getLastElementChild = (element) => {
+        if(element.lastElementChild) {
+          return element.lastElementChild
+        } else {
+          var node = element.lastChild
+          while(node && node.nodeType != 1) {
+            node = node.previousSibling
+          }
+          return node
+        }
+      }
+      
+
+      /*
+       * 获取任意一个子元素的前一个兄弟元素
+       */
+      const getPreviousElementSibling = (element) => {
+        if(element.previousElementSibling) {
+          return element.previousElementSibling
+        } else {
+          var node = element.previousSibling
+          while(node && node.nodeType != 1) {
+            node = node.previousSibling
+          }
+          return node
+        }
+      }
+      
+
+      /*
+       * 获取任意一个子元素的后一个兄弟元素
+       */
+      const getNextElementSibling = (element) => {
+        if(element.nextElementSibling) {
+          return element.nextElementSibling
+        } else {
+          var node = element.nextSibling
+          while(node && node.nodeType != 1) {
+              node = node.nextSibling
+          }
+          return node
+        }
+      }
+
+      /*
+       * 获取第一个子元素
+       */
+      document.querySelectorAll('button')[0].addEventListener('click',() => {
+        const firstNode = getfirstElementChild(document.querySelector("div"))
+        console.log(firstNode.innerHTML)
+      })
+
+      /*
+       * 获取最后一个子元素
+       */
+      document.querySelectorAll('button')[1].addEventListener('click',() => {
+        const lastNode = getLastElementChild(document.querySelector("div"))
+        console.log(lastNode.innerHTML)
+      })
+
+      /*
+       * 指定元素的前一个子元素 
+       */
+      document.querySelectorAll('button')[2].addEventListener('click',() => {
+        var previousElement = getPreviousElementSibling(document.querySelector("#p"))
+        console.log(previousElement.innerHTML)
+      })
+
+      /*
+       * 指定元素的后一个子元素
+       */
+      document.querySelectorAll('button')[3].addEventListener('click',() => {
+        var nextElement = getNextElementSibling(document.querySelector("#p"))
+        console.log(nextElement.innerHTML)
+      })
+    }
+  </script>
+</head>
+<body>
+  <button>获取第一个子元素-[button-0]</button>
+  <button>获取最后一个子元素-[button-1]</button>
+  <button>获取指定元素的前一个子元素-[button-2]</button>
+  <button>获取指定元素的后一个子元素-[button-3]</button><br>
+  <div>
+    <p>我是第一个子节点</p>
+    <p>我是p元素的前一个兄弟节点</p>
+    <p id="p">我是p元素</p>
+    <p>我是p元素的后一个兄弟节点</p>
+    <p>我是最后一个子节点</p>
+  </div>
+</body>
+</html>

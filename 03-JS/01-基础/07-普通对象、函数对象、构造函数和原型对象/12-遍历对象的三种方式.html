@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历对象的三种方式</title>
+  <script type="text/javascript">
+    const obj = {
+      id: '001',
+      name :'张三',
+      show(){
+        console.log(`id:${this.id},name:${this.name}`)
+      }
+    }
+
+    //方式一：for in
+    for(const key in obj) {
+      console.log(key + '-' + obj[key])
+    }
+    console.log('--------------------')
+
+
+    //方式二：Object.keys()
+    const keys = Object.keys(obj);
+    console.log(keys)
+    keys.forEach((key) => {
+      console.log(key + '-' + obj[key])
+    })
+    console.log('--------------------')
+
+
+    //方式三: Object.getOwnPropertyNames()
+    const propNames = Object.getOwnPropertyNames(obj);
+    console.log(propNames)
+    propNames.forEach((propName) => {
+      console.log(propName + '-' + obj[propName])
+    })
+  </script>  
+</head>
+<body>
+  
+</body>
+</html>

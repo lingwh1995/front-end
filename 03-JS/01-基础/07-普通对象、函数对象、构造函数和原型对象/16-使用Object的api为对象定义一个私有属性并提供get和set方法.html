@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用Object的api为对象定义一个私有属性并提供get和set方法</title>
+  <script>
+    const obj = {
+      //属性前面加下划线，说明该属性是私有的，只能在对象内部使用
+      _age: 18
+    }
+    
+    /**
+     * 使用Object.defineProperty()来实现对象中一个属性的私有并提供外部访问方法
+     *    1.cnfigurable:false      配置对象中该属性是否可以被删除
+     *    2.enumerable:false       配置对象中该属性是否可以被枚举，但是直接使用 obj._age 是可以直接访问到该属性的
+     *    3.writable:false         配置对象中该属性的值是否可以被修改
+     *    4.value                  配置对象中该属性的默认值
+     *    5.get()和set()用于设置访问器属性
+     */
+    Object.defineProperty(obj,'_age',{
+      configurable:false,//配置对象中该属性是否可以被删除
+      enumerable:false, //配置对象中该属性是否可以被枚举,直接使用 obj._age 是可以直接访问到该属性的
+      writable:true  //配置对象中该属性的值是否可以被修改
+    })
+
+    console.log('开始枚举对象......')
+    for(const key in obj) {
+      console.log(key)
+    }
+    console.log('结束枚举对象......')
+
+    Object.defineProperty(obj,'age',{
+      configurable:false,
+      set(value){
+          console.log('set方法被调用了......');
+          this._age = value
+      },
+      get() {
+          console.log('get方法被调用了......');
+          return this._age
+      }
+    })
+    //调用set方法修改对象属性
+    obj.age = 66
+    //调用get方法获取对象属性
+    console.log(obj.age)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

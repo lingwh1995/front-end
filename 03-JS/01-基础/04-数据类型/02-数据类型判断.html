@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据类型判断</title>
+  <script type="text/javascript">
+    /**
+     *  JS数据类型判断   
+     *    1.typeof        判断某个变量的数据类型
+     *        用法  typeof(i)/typeof 'hello world'/typeof 123/typeof undefined/typeof null
+     *        返回  返回数据类型的字符串表达
+     *        示例
+     *             正确用法:typeof(a) === 'undefined'
+     *             错误用法:typeof(a) === undefined
+     *    2.instanceof    判断对象的具体类型
+     *    3.Object.prototype.toString.call()
+     */
+
+    /**
+    * typeof
+    */
+    let a = 10;
+    console.log(typeof(a));
+    console.log(typeof 'hello world');
+    console.log(typeof 123);
+
+    let b = undefined
+    let c = null
+    console.log(typeof(b));
+    console.log(typeof undefined);
+    console.log(typeof(c));
+    console.log(typeof null);
+
+    console.log(typeof(a) === 'number');
+    console.log(typeof(b) === 'undefined');
+    console.log(typeof(c) === 'null');
+
+    let d;
+    console.log(d);
+    console.log(d == undefined);
+    console.log(typeof(d));
+    console.log(typeof(d) === 'undefined');
+
+    /**
+     * 2.instanceof
+     */ 
+    let arr = [1,2,3]
+    console.log(typeof(arr));
+    console.log(arr instanceof Array);
+
+    /**
+     * 3.Object.prototype.toString.call()
+     */ 
+    const i = 5
+    const s = 'hello'
+    const t = true
+    const undefined_ = undefined
+    const null_ = null
+    const obj = {
+        id:'001',
+        name: '张三'
+    }
+
+    console.log(Object.prototype.toString.call(i))
+    console.log(Object.prototype.toString.call(s))
+    console.log(Object.prototype.toString.call(t))
+    console.log(Object.prototype.toString.call(undefined_))
+    console.log(Object.prototype.toString.call(null_))
+    console.log(Object.prototype.toString.call(obj))
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>算术运算符与数据类型转换</title>
+  <script type="text/javascript">
+    /**
+     *  算数运算符 
+     *    当对非Number类型的值进行运算时，会将这些值转换为Number然后在运算，任何值和NaN做运算都得NaN
+    *    	+(加)
+     *      1.可以对两个值进行加法运算，并将结果返回
+     *      2.对两个字符串进行加法运算，则会做拼串，会将两个字符串拼接为一个字符串，并返回
+     *    	3.任何的值和字符串做加法运算，都会先转换为字符串，然后再和字符串做拼串的操作
+     *    -(减)
+     *    	可以对两个值进行减法运算，并将结果返回
+     *    *(乘)
+     *      可以对两个值进行乘法运算
+     *    /(除)
+     *      可以对两个值进行除法运算
+     *    %
+     *    	% 取模运算（取余数）
+     */
+
+
+    /*
+     *  任何值和字符串相加都会转换为字符串，并做拼串操作 
+     *    我们可以利用这一特点，来将一个任意的数据类型转换为String
+     * 	  我们只需要为任意的数据类型 + 一个 "" 即可将其转换为String
+     * 	  这是一种隐式的类型转换，由浏览器自动完成，实际上它也是调用String()函数
+     */
+     let a = "hello"
+     a = 123 + a
+     console.log(typeof(a))
+     console.log(a)
+
+
+    /*
+     *  任何值做- * /运算时都会自动转换为Number
+     *    我们可以利用这一特点做隐式的类型转换
+     * 		可以通过为一个值 -0 *1 /1来将其转换为Number
+     * 		原理和Number()函数一样，使用起来更加简单
+     */
+     let b = "123"
+     b = b - 0
+     console.log(typeof(b))
+     console.log(b)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

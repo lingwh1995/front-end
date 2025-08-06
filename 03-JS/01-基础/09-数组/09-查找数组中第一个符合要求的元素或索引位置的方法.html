@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查找数组中第一个符合要求的元素或索引位置的方法</title>
+  <script type="text/javascript">
+    const nums = [10, 20, 30, 40, 50]
+    console.log(nums)
+    console.log('------------01------------')
+    
+
+    /**
+     * find():返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+     */
+    console.log(nums.find((element) => { return element > 30 }))
+    console.log('------------02------------')
+
+
+    /**
+     * findIndex():返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回 -1。
+     */
+    console.log(nums.findIndex((element) => { return element > 30 }))
+    console.log('------------03------------')
+
+
+    /**
+    * findLast():反向迭代数组，并返回满足提供的测试函数的第一个元素的值。如果没有找到对应元素，则返回 undefined。
+    */
+    console.log(nums.findLast((element) => { return element > 30 }))
+    console.log('------------04------------')
+
+
+    /**
+    * findLastIndex():反向迭代数组，并返回满足提供的测试函数的第一个元素的值。如果没有找到对应元素，则返回 undefined。
+    */
+    console.log(nums.findLastIndex((element) => { return element > 30 }))
+    console.log('------------05------------')
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

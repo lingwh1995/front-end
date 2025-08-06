@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eval函数</title>
+  <script>
+    /**
+     * 注意事项
+     *    安全问题：eval() 存在安全风险，执行不可信的字符串可能导致代码注入攻击
+     *    性能问题：eval() 会影响代码优化，执行速度较慢
+     *    调试困难：使用 eval() 的代码难以调试和维护
+     *    现代替代方案：对于 JSON 解析应使用 JSON.parse()，对于其他场景应寻找更安全的替代方案
+     */
+
+    // 1.执行数学表达式
+    const expression = "2 + 3 * 4";
+    const result = eval(expression);
+    console.log(result); // 输出: 14
+    console.log('-------------------')
+
+    // 2.执行字符串形式的函数调用
+    const funcCall = "console.log('Hello from eval!')";
+    eval(funcCall); // 输出: Hello from eval!
+    console.log('-------------------')
+
+    // 3.执行复杂的代码块
+    let codeBlock = ` let a = 5;
+                        let b = 10;
+                        let sum = a + b;
+                        console.log('Sum is: ' + sum);`;
+    eval(codeBlock) // 输出: Sum is: 15
+
+    codeBlock = "alert('xxx')"
+    eval(codeBlock)
+    console.log('-------------------')
+
+    // 4.处理 JSON 字符串（不推荐）
+    const jsonString = '{"name": "张三", "age": 25}';
+    const obj = eval("(" + jsonString + ")");
+    console.log(obj.name) // 输出: 张三
+    console.log('-------------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件委托（事件代理）</title>
+  <style>
+    .parent {
+      height: 200px;
+      width: 200px;
+      background-color: tomato;
+    }
+    .child {
+      height: 25px;
+      line-height: 25px;
+      background-color: gold;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    /**
+     * 1.JS事件委托（事件代理）
+     *    - 利用JS事件冒泡动态为元素绑定事件的方法称为事件委托（Event Delegation，也称为“事件代理”,是JavaScript中最热门的技术之一
+     *    - 事件委托就是把原本需要绑定在子元素上的事件（onclick、onkeydown等）委托给它的父元素，让父元素来监听子元素的冒泡事件，并在子元素发生事件冒泡时找到这个子元素
+     * 2.为什么要使用事件委托
+     *    - 在JavaScript中，页面内事件处理程序的个数会直接影响页面的整体性能，因为每个事件处理程序都是对象内存中的对象越多，页面的性能则越差
+     *      此外，事件处理程序需要与DOM节点进行交互，访问DOM的次数越多，引起浏览器重绘和重排的次数也就越多，从而影响页面的性能
+     *          重绘: 当元素样式改变时，浏览器会根据元素的新样式重新绘制元素的外观
+     *          重排: 是指当DOM树的一部分发生变化时（例如元素尺寸改变），浏览器会重新创建DOM树
+     *    - 当页面中很多表格或列表需要添加事件时，如果逐个添加那就太麻烦了，但是使用事件委托就能极大的减轻我们的工作量，同时也能提高页面的性能
+     * 3.事件委托是利用事件的冒泡原理来实现的，大致可以分为三个步骤
+     *    1) 确定要添加事件元素的父级元素
+     *    2) 给父元素定义事件，监听子元素的冒泡事件
+     *    3) 使用 event.target 来定位触发事件冒泡的子元素
+     * 4.事件委托注意事项
+     *    使用事件委托时，并不是说把事件委托给随意一个父元素就行。因为事件冒泡的过程也需要消耗时间，距离越远，所需的时间也就越长，所有最好在直接父元素上使用事件委托。
+     * 5.事件委托的优点
+     *    1) 减小内存消耗
+     *    2) 使用事件委托可以大量节省内存，减少事件的定义
+     *        要为ul标签下的所有li标签添加点击事件，如果分别为每个li标签绑定事件，不仅写起来比较繁琐，而且对内存的消耗也非常大。
+     *        而使用事件委托的方式将点击事件绑定到ul标签上，就可以实现监听所有li标签，简洁、高效。 
+     *    3) 动态绑定事件
+     *        有时需要动态的在ul标签中添加li标签，如果不使用事件委托，则需要手动为新增的元素绑定事件，同时为删除的元素解绑事件。
+     *        而使用事件委托就没有这么麻烦了，无论是增加还是减少ul标签中的li标签，即不需要再为新增的元素绑定事件，也不需要为删除
+     *        的元素解绑事件。所以使用事件委托动态绑定事件可以减少很多重复工作的。
+     */
+    
+    /**
+     * 获取事件对象
+     */
+     const getEvent = (event) => {
+      return event || window.event
+    }
+
+    /**
+     * 获取事件目标
+     */ 
+    const getTarget = (event) => {
+        return event.target || event.srcElement;
+    }
+
+    window.onload = () => {
+      //获取夫元素
+      const parent = document.querySelector('.parent')
+      //给父元素绑定事件
+      parent.addEventListener('click',(event) => {
+        event = getEvent(event)
+        const target = getTarget(event)
+        //委托父元素绑定的事件到子元素
+        // if(target.getAttribute('class') == 'child') {
+        //   alert('子元素被点击了')
+        // }
+        if(target.className == 'child') {
+          alert('子元素被点击了')
+        }
+      })
+
+      /**
+       * 点击新添加一个子元素
+       */
+      const button = document.querySelector('input[type="button"]')
+      button.addEventListener('click',() => {
+        const child = document.createElement('div')
+        child.textContent = '新添加的子元素'
+        child.setAttribute('class','child')
+        const parent = document.querySelector('.parent')
+        parent.appendChild(child)
+      })
+    }
+  </script>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">第一个子元素</div>
+    <div class="child">第二个子元素</div>
+    <div class="child">第三个子元素</div>
+  </div>
+  <input type="button" value="添加一个子元素"/>
+</body>
+</html>

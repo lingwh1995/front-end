@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内置对象-Date</title>
+  <script>
+    //当前时间
+    let date = new Date()
+    console.log(date)
+
+    //指定时间
+    date = new Date('12/03/2012 11:10:25')
+    console.log(date)
+
+    date = new Date()
+    console.log(`获取当前是几日: ${date.getDate()}`)
+    console.log(`获取当前是年份: ${date.getFullYear()}`)
+    console.log(`获取当前是周几(返回一个0-6的值，0表示周日): ${date.getDay()}`)
+    console.log(`获取当前的月份(返回一个0-11的值，0表示一月): ${date.getMonth()}`)
+    console.log(`获取当前的时: ${date.getHours()}`)
+    console.log(`获取当前的分: ${date.getMinutes()}`)
+    console.log(`获取当前的秒: ${date.getSeconds()}`)
+    console.log(`获取当前的毫秒: ${date.getMilliseconds()}`)
+    console.log(`获取当前日期的时间戳(格林威治时间1970年1月1日0时0分0秒到当前的毫秒数): ${date.getTime()}`)
+    console.log(`获取当前日期的时间戳(常用来统计代码执行时间): ${Date.now()}`)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

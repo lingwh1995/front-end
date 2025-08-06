@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>普通对象</title>
+  <script>
+    /**
+     * 创建对象方式一   使用字面量创建对象
+     */
+    const person = {
+      id: '001',
+      name: 'zhangsan',
+      age: 20,
+      childs: [
+        {
+          id: '00101',
+          name: 'zhangsan-child-01',
+          age: 2
+        },
+        {
+          id: '00102',
+          name: 'zhangsan-child-02',
+          age: 2
+        }
+      ]
+    }
+    console.log(person)
+    console.log(person.childs[0].name)
+
+    /**
+     * 创建对象方式二   使用new Object()创建对象
+     */ 
+    //创建
+    const obj = new Object()
+    console.log(obj)
+
+    //添加属性
+    obj.name = 'zhangsan'
+    obj.age = 10
+    console.log(obj)
+
+    //修改属性
+    obj.age = 20
+    console.log(obj)
+    
+    //删除属性
+    delete obj.age
+    console.log(obj)
+
+    //遍历对象所有属性
+    for(key in obj) {
+      console.log(key + ':' + obj[key])      
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

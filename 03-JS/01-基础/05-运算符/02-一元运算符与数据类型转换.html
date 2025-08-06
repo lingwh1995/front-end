@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一元运算符与数据类型转换</title>
+  <script type="text/javascript">
+    /**
+     *  一元运算符：只需要一个操作数
+     *     +(正号)
+     *       - 正号不会对数字产生影响  
+     *     -(负号) 
+     *       - 负号可以对数字获取相反数
+     * 
+     *  注意事项：
+     *    对于非数字类型值，会先将其转换Number,然后再运算，可以对一个其他的数据类型使用+，将其转换number，原理和Number()一样  
+     */
+
+     let a = "123"
+     a = +a
+     console.log(typeof(a))
+     console.log(a)
+
+     let b = true
+     b = +b
+     console.log(typeof(b))
+     console.log(b)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

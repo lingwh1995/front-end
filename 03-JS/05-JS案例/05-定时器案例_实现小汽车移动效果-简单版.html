@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器案例_实现小汽车移动效果-简单版</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .button {
+      display: flex;
+      gap: 20px;
+    }
+    .button button {
+      height: 40px;
+      width: 200px;
+      background-color: #ddd;
+      border: none;
+      cursor: pointer;
+    }
+    .button button:hover {
+      outline: 5px solid gray;
+    }
+    .ruler {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 900px;
+    }
+    .ruler-800 {
+      width: 800px;
+      height: 50px;
+      line-height: 50px;
+      background-color: green;
+    }
+    .ruler-1200 {
+      width: 1200px;
+      height: 50px;
+      line-height: 50px;
+      background-color: gold;
+    }
+    .road {
+      width: 100%;
+      height: 200px;
+      background-color: tomato;
+      position: relative;
+    }
+    .road .car {
+      width: 200px;
+      height: 100%;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+    }
+  </style>
+  <script>
+    /**
+     * 此版本未对代码进行封装，代码质量很差(十分的不推荐)
+     */ 
+    window.onload = () => {
+      let SPEED_SETP = 2
+      const SPEED_TIME = 5
+      /**
+       * 移动到800PX
+       */
+      document.querySelectorAll('button')[0].addEventListener('click', () => {
+        const car = document.querySelector('.car')
+        //清除car元素上的定时器
+        clearInterval(car.IntervalId)
+        let current = car.offsetLeft
+        if(current >= 800) {
+          if(current >= 1200) {
+            SPEED_SETP = - SPEED_SETP
+          }else if(current >= 800){
+            SPEED_SETP = - SPEED_SETP
+          }else {
+            return
+          }
+        }
+        const moveTo800 = setInterval(() => {
+          current += SPEED_SETP
+          car.style.left = current + 'px'
+          if(current == 800) {
+            clearInterval(moveTo800)
+          }
+          console.log('移动到800PX定时器-执行中...')
+        },SPEED_TIME)
+        car.IntervalId = moveTo800
+      })
+
+      /**
+       * 移动到1200PX
+       */
+      document.querySelectorAll('button')[1].addEventListener('click', () => {
+        SPEED_SETP = Math.abs(SPEED_SETP)
+        const car = document.querySelector('.car')
+        //清除car元素上的定时器
+        clearInterval(car.IntervalId)
+        let current = car.offsetLeft
+        if(current >= 1200) return
+        const moveTo1200 = setInterval(() => {
+          current += SPEED_SETP
+          car.style.left = current + 'px'
+          if(current == 1200) {
+            clearInterval(moveTo1200)
+          }
+          console.log('移动到1200PX定时器-执行中...')
+        },SPEED_TIME)
+        car.IntervalId = moveTo1200
+      })
+
+      /**
+       * 回到起点
+       */ 
+      document.querySelectorAll('button')[2].addEventListener('click', () => {
+        SPEED_SETP = Math.abs(SPEED_SETP)
+        const car = document.querySelector('.car')
+        //清除car元素上的定时器
+        clearInterval(car.IntervalId)
+        let current = car.offsetLeft
+        const backHome = setInterval(() => {
+          current += - SPEED_SETP
+          car.style.left = current + 'px'
+          if(current == 0) {
+            clearInterval(backHome)
+          }
+          console.log('回家定时器-执行中...')
+        },SPEED_TIME)
+        car.IntervalId = backHome
+      })
+  
+      /**
+       * 停止运动
+       */ 
+      document.querySelectorAll('button')[3].addEventListener('click', () => {
+        const car = document.querySelector('.car')
+        //清除car元素上的定时器
+        clearInterval(car.IntervalId)
+      })
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- 按钮 -->
+    <div class="button">
+      <button>移动到800PX</button>
+      <button>移动到1200PX</button>
+      <button>回到起点</button>
+      <button>停止运动</button>
+    </div>
+  
+    <!-- 道路 -->
+    <div class="road">
+      <div class="car"></div>
+    </div>
+
+    <!-- 卡尺 -->
+    <div class="ruler">
+      <div class="ruler-800">
+        我的长度是800px
+      </div>
+      <div class="ruler-1200">
+        我的长度是1200px
+      </div>
+    </div>
+  </div>
+</body>
+</html>

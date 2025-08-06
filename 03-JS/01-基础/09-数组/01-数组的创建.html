@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组的创建</title>
+  <script type="text/javascript">
+    //创建数组方式一
+    const nums = [1,2,3,4,5]
+    console.log(nums)
+    console.log('------------01------------')
+
+
+    //创建数组方式二:1
+    const colors = new Array('red','yellow','blue')
+    console.log(colors)
+    //创建数组方式二:2  创建一个长度为10的数组
+    const books = new Array(10)
+    console.log(books.length)
+    console.log('------------02------------')
+
+
+    //创建数组方式三
+    const fruits = []
+    fruits[0] = 'apple'
+    fruits[1] = 'orange'
+    fruits[2] = 'banner'
+    console.log(fruits)
+    console.log(new Int16Array(10,11));
+    console.log('------------03------------')
+
+
+    /**
+     * Array.of():通过可变数量的参数创建一个新的 Array 实例，而不考虑参数的数量或类型。
+     */
+    console.log(Array.of('foo', 2, 'bar', true));
+    console.log(Array.of());
+    console.log('------------04------------')
+
+    /**
+     * Array.from():从可迭代或类数组对象创建一个新的浅拷贝的数组实例，也可以用于把字符串(没带有分隔符的)转为数组
+     */
+     console.log(Array.from('12345'));
+     console.log(Array.from(new Set([1,2,2,3,4])));
+    console.log('------------05------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

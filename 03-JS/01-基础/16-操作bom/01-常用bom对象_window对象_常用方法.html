@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常用bom对象_window对象_常用方法</title>
+  <script>
+    //window常用方法: alert()-弹出框
+    // window.alert("Hello JavaScript!")
+
+
+    //window常用方法: confirm()-确认框，返回值为boolean
+    //const confirm = window.confirm("你确定要退出吗？");
+    //alert(confirm)
+
+
+    //window常用方法: prompt()-输入框,返回值为用户输入的内容
+    //const prompt = window.prompt("请输入您的姓名？");
+    //alert(prompt)
+    
+
+    //window常用方法: onload()-html结构加载完成事件
+    // window.onload = () => {
+    //   console.log('html结构加载完成了...')
+    // }
+
+
+    window.onload = () => {
+      let interval = null
+      document.querySelectorAll('button')[0].onclick = () => {
+        //window常用方法: setInterval()-循环执行定时器方法
+        interval = window.setInterval(()=> {
+          console.log('循环执行定时器执行了')
+        },1000)
+      }
+
+      document.querySelectorAll('button')[1].onclick = () => {
+        //window常用方法: clearInterval()-清除循环执行定时器方法
+        window.clearInterval(interval)
+        console.log('清除循环执行定时器执行了')
+      }
+
+
+      let timeout = null
+      document.querySelectorAll('button')[2].onclick = () => {
+        //window常用方法: setTimeout()-单词执行定时器方法
+        timeout = window.setTimeout(()=> {
+          console.log('单词执行定时器执行了')
+        },3000)
+      }
+
+      document.querySelectorAll('button')[3].onclick = () => {
+        //window常用方法: clearTimeout()-清除单次执行定时器方法
+        window.clearTimeout(timeout)
+        console.log('清除单词执行定时器执行了')
+      }
+
+      document.querySelectorAll('button')[4].onclick = () => {
+        /**
+         * window常用方法: open()-打开新的窗口
+         * open()
+         * open(url)
+         * open(url, target)
+         * open(url, target, windowFeatures)
+         */ 
+        //window.open()
+        //window.open('https://www.baidu.com')
+        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
+      }
+
+      document.querySelectorAll('button')[5].onclick = () => {
+        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
+        //window常用方法: moveTo()-移动窗口位置
+        newWindow.moveTo(300, 300)
+      }
+
+      document.querySelectorAll('button')[6].onclick = () => {
+        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
+        //window常用方法: resizeTo()-设置窗口大小
+        newWindow.resizeTo(600, 600)
+      }
+
+      document.querySelectorAll('button')[7].onclick = () => {
+        //window常用方法: close()-关闭当前窗口
+        window.close()
+      }
+    }
+  </script>
+</head>
+<body>
+  <button>开启循环执行定时器(定时调用)</button>
+  <button>清除循环执行定时器(定时调用)</button>
+  <button>开启单次执行定时器(延时调用)</button>
+  <button>清除单次执行定时器(延时调用)</button><br/>
+  <button>打开新的窗口</button>
+  <button>移动新的窗口</button>
+  <button>设置窗口大小</button>
+  <button>关闭当前窗口</button>
+</body>
+</html>

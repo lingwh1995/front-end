@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组的其他遍历方式补充</title>
+  <script>
+    const nums = [10, 20, 30, 40, 50]
+    
+    //传统for循环遍历: i是索引
+    for(let i=0; i<nums.length; i++) {
+      console.log(nums[i])
+    }
+    console.log('------------01------------')
+
+
+    //for...in遍历: i是索引
+    for (const i in nums) {
+      console.log(nums[i])
+    }
+    console.log('------------02------------')
+
+
+    //for...of遍历: i是数组中每一个对象
+    for (const element of nums) {
+      console.log(element)
+    }
+    console.log('------------03------------')
+
+
+    //Object.keys: i是数组中的key，也就是数组的索引
+    Object.keys(nums).forEach(i => {
+      console.log(nums[i])
+    })
+    console.log('------------04------------')
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
