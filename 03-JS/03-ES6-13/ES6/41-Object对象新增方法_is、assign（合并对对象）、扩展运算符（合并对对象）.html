@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Object对象新增方法_is、assign</title>
+  <title>Object对象新增方法_is、assign（合并对对象）、扩展运算符（合并对对象）</title>
   <script>
     //1.Object.is 判断两个值是否完全相等，用法和 === 基本一样，注意在 判断两个 NaN 是否相等的时候返回的结果是不同的
-    console.log(Object.is(100,100))
-    console.log(Object.is(100,'100'))
-    console.log(Object.is(NaN,NaN))
+    console.log(Object.is(100, 100))
+    console.log(Object.is(100, '100'))
+    console.log(Object.is(NaN, NaN))
     console.log(NaN === NaN)
     console.log('------------01------------')
 
@@ -17,7 +17,7 @@
      * 2.Object.assign 合并对象
      *    特别注意:1.Object.assign合并数组时,会把数组视为对象处理  2.合并数组最好选择 ...扩展运算符
      */
-    const cat = {name:'小肥', color:'white'}
+    const cat = { name:'小肥', color:'white' }
     const source1 = {
       id: '001',
       name: '张三',
@@ -40,7 +40,7 @@
      *    2.合并结果会放在第一个参与合并的对象中，会对参与合并的第一个对象产生影响
      *    3.Object.assign方法是浅复制，不是深复制，也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝的是这个对象的引用
      */
-    target = Object.assign(target,source1, source2)
+    target = Object.assign(target, source1, source2)
     console.log(target)
     console.log('---------Object.assign()合并对象---------')
     /**
