@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动后的影响</title>
+    <style>
+        /* 
+            1.对兄弟元素的影响:后面的兄弟元素，会占据浮动元素之前的位置，在浮动元素的下面;对前面的兄弟无影响。
+            2.对父元素的影响:不能撑起父元素的高度，导致父元素高度塌陷;但父元素的宽度依然束缚浮动元会影响后面的兄弟元素
+            3.对父元素的兄弟元素的影响：导致父元素的兄弟元素在文档中排列位置不正常
+        */
+        .parent {
+            width: 500px;
+            background-color: grey;
+            border: 1px solid black;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .box1,.box2,.box3 {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="box box0">0</div>
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+    </div>
+    <div>
+        Kings have long arms. 普天之下，莫非王土。
+    </div>
+</body>
+</html>

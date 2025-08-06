@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文本水平方向对齐</title>
+    <style>
+        /* text-align：设置块元素或者单元格框的行内内容的水平对齐 */
+
+        /* 块元素中文本水平方向对齐：生效 */
+        .box-1 {
+            font-size: 30px;
+            background-color: rgba(0, 58, 85, 0.27);
+            text-align: center;
+        }
+
+        /* 行内元素中文本水平方向对齐：不生效 */
+        .box-2 {
+            font-size: 30px;
+            background-color: rgba(0, 58, 85, 0.27);
+            text-align: center;
+        }
+
+        /* 行内块元素中文本水平方向对齐：不生效 */
+        .box-3 {
+            /* 转换为行内块元素 */
+            display: inline-block;
+            font-size: 30px;
+            background-color: rgba(0, 58, 85, 0.27);
+            text-align: right;
+        }
+
+        /* 文本水平方向对齐所有方式 */
+        .box-4 {
+            font-size: 30px;
+            background-color: rgba(0, 58, 85, 0.27);
+
+            /* 左对齐（默认值） */
+            /* text-align: left; */
+            
+            /* 右对齐 */
+            /* text-align: right; */
+            
+            /* 居中对齐 */
+            /* text-align: center; */
+            
+            /* 两端对齐 */
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
+    </div>
+    <hr/>
+    <span class="box-2">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
+    </span>
+    <hr/>
+    <div class="box-3">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
+    </div>
+
+    <hr>
+    <div class="box-4">
+        陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。”
+    </div>
+</body>
+</html>

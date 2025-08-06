@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>固定定位</title>
+   <style>
+    /*
+        相对定位
+            1.固定定位脱离了文档流
+            2.固定定位参考html标签(视口)位置
+            3.可以和margin配合使用
+            4.和浮动同时使用时，固定定位生效，浮动失效
+            5.定位元素的宽高是由内容撑开的
+
+    */
+    .parent {
+        height: 600px;
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+    }
+    .child {
+        height: 150px;
+        width: 150px;
+       
+    }
+    .child1 {
+        background-color: blue;
+        
+    }
+    .child2 {
+        background-color: red;
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* margin-top: 20px; */
+    }
+    .child3 {
+        background-color: yellow;
+    }
+   </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child child1">1</div>
+        <div class="child child2">2</div>
+        <div class="child child3">3</div>
+    </div>
+    <div>
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+        Once upon a time, 10 suns rose in the sky, scorching1 many crops and people to death.
+        很久很久以前，天空中有十颗太阳，土地上许多农作物和人民都被热死了。
+        A brave man called Hou Yi came to rescue them. He excelled at archery and shot down nine of the suns.
+        一个勇敢的男人前来拯救大家，他名叫后羿。后羿精通箭术，将其中九颗太阳射了下来。
+        Only one sun was left in the sky to give people light and warmth.
+        只留了一颗太阳留在天上给人们光线与温暖。
+        On hearing of his amazing feat2, people came from far and wide to admire Yi.
+        听见了他的伟大事迹后，人人纷纷从四面八方慕名而来。
+        Among his admirers was Peng Meng, whom Yi accepted as his apprentice3.
+        在这些仰慕者之中，有一个人叫蓬蒙，后羿将他收为徒弟。
+        Even the Immortals5 noticed Hou Yi. One day, the Queen of Heaven came down to Earth.
+        连众神都注意到了后羿。有一天，王母娘娘来到凡间。
+        She told Yi that as a reward for his bravery, the gods would give him an elixir6 of immortality7 so that he could drink it and join them in heaven.
+        她告诉后羿，为了表扬他的英勇，众神要给他一剂长生不老药，后羿喝下后就能加入众神的行列。
+        But Yi was married to a beautiful and kind woman, Chang'e, who he loved dearly.
+        但后羿已和一个美丽善良的女子成亲，她名叫嫦娥，后羿深爱她。
+        He wanted to be immortal4, but he wanted to spend his life with her more. So he gave the elixir to his wife and asked her to hide it away.
+        他想要长生不老，但他更想要和太太度过余生。因此他将长生不老药交给嫦娥，要她好好藏起来。
+        But Peng Meng broke into Yi's house while he was away and demanded the elixir.
+        但蓬蒙趁后羿不在时闯进他家，想要走长生不老药。
+        Chang'e couldn't fight him, but she wouldn't allow such a man to have the elixir. She drank it herself and immediately ascended8 into the skies.
+        嫦娥斗不过他，但她不会让这种人拿到长生不老药。于是嫦娥自己喝下长生不老药，却在喝下之后立刻飘到天上。
+        When Hou Yi didn't find his wife at home, he went looking for her. The night was bright with the full moon rising high above him.
+        后羿回家后看不到嫦娥，便到处寻找她。当晚的夜空很明亮，因为他头上高高挂着满月。
+        Yi looked up and was amazed to see a figure which looked like his wife appear in the moon.
+        后羿抬头一看，惊讶地发现月亮上竟然出现一个和他老婆相似的形体。
+        Chang'e's love for Hou Yi drew her towards the moon, which was the nearest place to Earth in the heavens.
+        嫦娥对后羿的爱让她留在月亮上，因为月亮是天上离地球最近的地方。
+        Upon realizing what had happened, Hou Yi brought her favorite foods, cakes, and fruit out in the moonlight to share with his wife.
+        了解事情经过后，后羿带了嫦娥最爱的食物、糕点和水果到月光下和嫦娥分享。
+        On hearing this story, many people participated in bringing their offerings to the moon.
+        听到这个故事后，很多人加入这个行列，供奉食物给月亮。
+        This is one of the origin myths of the Moon Festival.
+        这就是其中一个中秋节的起源神话故事。
+    </div>
+</body>
+</html>

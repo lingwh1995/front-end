@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D变换_旋转</title>
+  <style>
+    /*
+     * 1.旋转角度可以为正值，也以为负值
+     * 2.旋转会破坏坐标轴，如果有缩放有旋转，旋转要放到最后
+     */
+    .parent {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+      overflow: hidden;
+    }
+    .child {
+      width: 200px;
+      height: 200px;
+      background-color: tomato;
+      margin: 0 auto;
+      margin-top: 100px;
+      /* 顺时针旋转30°：写法一(如果只是2D旋转rotate和rotateZ的效果是一样的) */
+      /* transform: rotate(30deg); */
+      /* 顺时针旋转30°：写法二(如果只是2D旋转rotate和rotateZ的效果是一样的) */
+      transform: rotateZ(30deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

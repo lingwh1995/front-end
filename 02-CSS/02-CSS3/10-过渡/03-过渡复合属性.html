@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过渡复合属性</title>
+  <style>
+    .parent {
+      width: 1000px;
+      height: 200px;
+      border: 1px solid black;
+    }
+    .child {
+      width: 200px;
+      height: 200px;
+      background-color: tomato;
+    }
+    .parent:hover .child {
+      width: 1000px;
+      /**
+       * transition-duration: 设置过渡持续时间
+       * transition-property: 设置过渡属性
+       * transition-delay: 设置过渡延迟时间
+       * transition-timing-function: 设置过渡时序函数
+       * 如果只设置了一个值:duration，如果设置了两个值：第一个是duration，第二个是delay。其他值顺序没有要求。
+       */
+      transition: 5s all 0.5s linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

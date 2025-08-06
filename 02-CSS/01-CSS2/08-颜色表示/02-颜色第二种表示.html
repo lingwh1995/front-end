@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>颜色第二种表示</title>
+    <style>
+        /* 
+         * 第二种表示:rgb或者rgba
+         * 1.rgb是24-bit图，rgba是32-bit图 
+         * 2.rgb->红、绿、蓝三通道，rgba->红、绿、蓝、Alpha(透明度，取值：0-255或0%-100%)四通道
+         */
+        .box-1 {
+            color: rgb(255,0,0);
+        }
+        .box-2 {
+            color: rgb(0,255,0);
+        }
+        .box-3 {
+            color: rgb(0,0,255);
+        }
+        .box-4 {
+            color: rgb(138,43,226);
+        }
+        .box-5 {
+            color: rgb(40%,59%,78%);
+        }
+        .box-6 {
+            color: rgb(0,0,0);
+        }
+        .box-7 {
+            /* color: rgba(255,0,0,10%); */
+            color: rgba(255,0,0,55%);
+            /* color: rgba(255,0,0,100%); */
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1">hello world~</div>
+    <div class="box-2">hello world~</div>
+    <div class="box-3">hello world~</div>
+    <div class="box-4">hello world~</div>
+    <div class="box-5">hello world~</div>
+    <div class="box-6">hello world~</div>
+    <div class="box-7">hello world~</div>
+</body>
+</html>

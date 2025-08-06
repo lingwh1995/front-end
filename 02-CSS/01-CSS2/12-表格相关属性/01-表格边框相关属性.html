@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表格边框相关属性</title>
+    <style>
+        table {
+            /* 分开定义 */
+            /* border-width: 2px;
+            border-color: green;
+            border-style: solid; */
+
+            /* 使用border复合属性定义 */
+            border: 2px green solid;
+        }
+
+        td,
+        th {
+            border: 2px skyblue solid;
+        }
+
+        h2 {
+            border: 2px red solid;
+        }
+
+        span {
+            border: 2px indigo solid;
+
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>政治面貌</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+                <td>男</td>
+                <td>14</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>萨芬</td>
+                <td>女</td>
+                <td>18</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>男</td>
+                <td>17</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>奥堤</td>
+                <td>男</td>
+                <td>18</td>
+                <td>党员</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>王五</td>
+                <td>男</td>
+                <td>20</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>卡乐</td>
+                <td>男</td>
+                <td>21</td>
+                <td>团员</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>合计:5人</td>
+            </tr>
+        </tfoot>
+    </table>
+    <h2>陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</h2>
+    <span>陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</span>
+</body>
+
+</html>

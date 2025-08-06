@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>框架标签</title>
+</head>
+<body>
+    <!-- 利用iframe嵌入普通网页 -->
+    <!-- <iframe src="https://www.bilibili.com/" width="1200" height="1200" frameborher="0"></iframe> -->
+    <!-- <iframe src="https://www.baidu.com/" width="1200" height="1200" frameborher="0"></iframe> -->
+    <!-- <iframe src="https://www.taobao.com/" width="1200" height="1200" frameborher="0"></iframe> -->
+    
+    <!-- 利用iframe嵌入广告 -->
+    <!-- <iframe src="https://img.3dmgame.com/uploads/images/thumbztfirst/20221207/1670402472_600185.gif" width="500" height="500" frameborher="0"></iframe> -->
+    
+    <!-- 利用iframe嵌入其他内容 -->
+    <!-- <iframe src="./奥特曼.jpeg" width="1200" height="1200" frameborher="0"></iframe> -->
+    <a href="https://www.taobao.com" target="container">淘宝</a>
+    <a href="https://www.toutiao.com" target="container">头条</a>
+    <!-- 与表单target配合使用 -->
+    <form action="https://so.toutiao.com/search" target="container">
+        <input type="text" name="keyword">
+        <!-- <button>sousuo</button> -->
+        <input type="submit" value="搜索">
+    </form>
+    <iframe name="container" frameborder="0" width="1000" height="1000"></iframe>
+</body>
+</html>

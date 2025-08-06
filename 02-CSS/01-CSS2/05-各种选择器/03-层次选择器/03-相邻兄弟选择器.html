@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相邻兄弟选择器</title>
+    <style type="text/css">
+        /* 相邻兄弟选择器(符号：+)：用+表示。它选择某个元素的下一个相邻兄弟元素。 */
+
+        /* 层次选择器-相邻兄弟选择器(符号：+) */
+        .parent>.offspring+.brother {
+            color: blue;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>层次选择器-相邻兄弟选择器</h2>
+    <div class="parent">
+        <div>hello world~[我是子代元素]</div>
+        <div class="offspring">hello world~[我是子代元素]</div>
+        <div class="brother">hello world~[我是子代元素的第一个相邻兄弟元素]</div>
+        <div class="brother">hello world~[我是子代元素的第二个相邻兄弟元素]</div>
+        <div class="brother">hello world~[我是子代元素的第三个相邻兄弟元素]</div>
+        <div>
+            hello world~[我是孙代元素]
+            <div class="offspring">hello world~[我是孙代元素]</div>
+        </div>
+    </div>
+</body>
+</html>

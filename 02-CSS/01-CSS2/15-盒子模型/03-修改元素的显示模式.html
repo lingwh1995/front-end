@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>修改元素的显示模式</title>
+    <style>
+        /* 将块级元素转为内联元素：display:inline; */
+        .block-to-inline {
+            font-size:30px;
+            width: 100px;
+            height: 100px;
+            display:inline;
+        }
+
+        /* 将内联元素转换为块级元素：display:block;*/
+        .inline-to-block {
+            font-size:30px;
+            width: 200px;
+            height:200px;
+            display:block;
+        }
+
+        /* 将块级元素转为行内块元素：display:inline-block; */
+        .block-to-inline_block {
+            font-size:30px;
+            width: 200px;
+            height: 200px;
+            display:inline-block;
+        }
+
+        /* 将内联元素转换为行内块元素：display:block-block;*/
+        .inline-to-inline_block {
+            font-size:30px;
+            width: 200px;
+            height:200px;
+            display:inline-block;
+        }
+
+        /* 不显示元素 */
+        .display-none {
+            display: none;
+        }
+
+        .bg-red {
+            background-color: red;
+        }
+        .bg-green {
+            background-color: green;
+        }
+        .bg-gold {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h2>将块级元素转为内联元素</h2>
+    <div class="block-to-inline bg-red">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    <div class="block-to-inline bg-green">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    <div class="block-to-inline bg-gold">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    
+    <h2>将内联元素转换为块级元素</h2>
+    <span class="inline-to-block bg-red">陈胜</span>
+    <span class="inline-to-block bg-green">吴广</span>
+    <span class="inline-to-block bg-gold">司马</span>
+
+    <h2>将块级元素转为行内块元素</h2>
+    <div class="block-to-inline_block bg-red">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    <div class="block-to-inline_block bg-green">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    <div class="block-to-inline_block bg-gold">陈胜者，阳城人也，字涉。吴广者，阳夏人也，字叔。</div>
+    
+    <h2>将内联元素转换为行内块元素</h2>
+    <span class="inline-to-inline_block bg-red">陈胜</span>
+    <span class="inline-to-inline_block bg-green">吴广</span>
+    <span class="inline-to-inline_block bg-gold">司马</span>
+    
+    <h2>不显示元素</h2>
+    <div class="display-none bg-red">陈胜</div>
+    <span class="display-none bg-green">吴广</span>
+</body>
+</html>

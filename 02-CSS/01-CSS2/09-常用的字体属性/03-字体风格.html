@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>字体风格</title>
+    <style>
+        .box {
+            font-size: 100px;
+        }
+        .box-1 {
+            font-style: normal;
+        }
+        /* 斜体写法一：使用字体本身的斜体字体 */
+        .box-2 {
+            font-style: italic;
+        }
+        /* 斜体写法二：字体本身没有设计斜体样式，渲染时使用技术手段将常规字体样式渲染成斜体样式 */
+        .box-3 {
+            font-style: oblique;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box-1">hello world~</div>
+        <div class="box-2">hello world~</div>
+        <div class="box-3">hello world~</div>
+    </div>
+</body>
+</html>

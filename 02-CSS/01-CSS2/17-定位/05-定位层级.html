@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>定位层级</title>
+   <style>
+    /*
+        1.定位元素的显示层级比普通元素高，无论什么定位，显示层级都是一样的。
+        2.如果位置发生重叠，默认情况是：后面的元素，会显示在前面元素之上。
+        3.可以通过css属性z-index调整元素的显示层级。
+        4.z-index 的属性值是数字，没有单位，值越大显示层级越高。
+        5.只有定位的元素设置z-index才有效。
+        6.如果z-index值大的元素，依然没有覆盖掉z-index值小的元素，那么请检查其包含块的层级。
+    */
+    .parent {
+        height: 600px;
+        width: 600px;
+        background-color: grey;
+        padding: 10px;
+        position: relative;
+    }
+    .child {
+        height: 150px;
+        width: 150px;
+        font-size: 20px;
+       
+    }
+    .child-1 {
+        background-color: blue;
+    }
+    .child-2 {
+        background-color: red;
+        position: relative;
+        top: -100px;
+        left: 50px;
+        z-index: 1;
+    }
+    .child-3 {
+        background-color: gold;
+        position: absolute;
+        top: 110px;
+        left: 110px;
+        z-index: 2;
+    }
+    .child-4 {
+        background-color: green;
+        position: fixed;
+        top: 170px;
+        left: 170px;
+        z-index: 3;
+    }
+   </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child child-1">1</div>
+        <div class="child child-2">2</div>
+        <div class="child child-3">3</div>
+        <div class="child child-4">4</div>
+    </div>
+</body>
+</html>

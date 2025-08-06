@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新增盒模型属性-盒子阴影_box-show_案例</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+      margin: 100px auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      transition: 1s linear all;
+    }
+    .box:hover {
+      box-shadow: 0 0 10px red;
+      top: -1px;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>

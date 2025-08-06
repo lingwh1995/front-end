@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D变换_位移</title>
+  <style>
+    /*
+     * 1.不管是使用像素控制还是使用百分比控制位移，这个值都是可以为正值，也以为负值
+     * 2.transform: translate(50px) 代表水平方向移动50px
+     */
+    .parent {
+      width: 400px;
+      height: 400px;
+      background-color: gold;
+    }
+    .child {
+      width: 200px;
+      height: 200px;
+      background-color: tomato;
+      /* 水平位移 */
+      /* transform: translateX(50px); */
+      /* 百分比写法是自身宽度的50% */
+      /* transform: translateX(50%); */
+      
+      /* 垂直位移 */
+      /* transform: translateY(50px); */
+      /* 百分比写法是自身高度的50% */
+      /* transform: translateY(50%); */
+
+      /* 水平垂直位移 */
+      /* transform: translate(50px,50px); */
+      transform: translate(50%,50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

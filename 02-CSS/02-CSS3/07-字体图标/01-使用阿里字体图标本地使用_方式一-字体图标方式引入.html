@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用阿里字体图标本地使用_方式一-字体图标方式引入</title>
+  <style>
+    @font-face {
+      font-family: 'iconfont';
+      /* 引入字体相关文件 */
+      src: url('./iconfont/iconfont.woff2?t=1735046747596') format('woff2'),
+          url('./iconfont/iconfont.woff?t=1735046747596') format('woff'),
+          url('./iconfont/iconfont.ttf?t=1735046747596') format('truetype');
+    }
+    .iconfont {
+      font-family: "iconfont" !important;
+      font-size: 16px;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body>
+  mysql图标<span class="iconfont">&#xe607;</span> <br>
+  eclipse图标<span class="iconfont">&#xe7d5;</span> <br>
+  java图标<span class="iconfont">&#xe6b8;</span> <br>
+  ubuntu图标<span class="iconfont">&#xe72e;</span> <br>
+</body>
+</html>

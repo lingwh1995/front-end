@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>块元素中文本垂直居中</title>
+    <style>
+       /* 将容器高度和行高设置成一样的值，块元素中文本垂直居中 */
+       .block {
+            font-size: 100px;
+            height: 200px;
+            background-color: gold;
+            /* 块元素使用line-height实现文本垂直居中 */
+            line-height: 200px;
+        }     
+    </style>
+</head>
+<body>
+    <div class="block">陈胜者，阳城人也，字涉。<span>吴广者，阳夏人也，字叔。</span></div>
+</body>
+</html>
