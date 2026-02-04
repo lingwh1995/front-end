@@ -4,11 +4,19 @@
     %NODE_HOME%\node_global
     %NODE_HOME%\node_cache
 ## 1.2.使用nvm安装node
-    安装nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    查看可以安装的node版本 nvm list-remote
-    安装制定版本的node版本 nvm install v18.20.8
-    使用指定版本的node版本 nvm use 18.20.8
-    查看当前使用的node版本 nvm list node
+    macos安装教程
+        brew install nvm
+        open ~/.zshrc 后在末尾添加 
+            export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+        source ~/.zshrc
+
+    linux安装教程
+        安装nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        查看可以安装的node版本 nvm list-remote
+        安装制定版本的node版本 nvm install v18.20.8
+        使用指定版本的node版本 nvm use 18.20.8
+        查看当前使用的node版本 nvm list node
 
 # 2.配置node开发环境
 ##  2.1.本地全局仓库管理
