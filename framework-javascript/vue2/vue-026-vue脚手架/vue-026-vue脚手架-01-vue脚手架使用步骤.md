@@ -14,8 +14,9 @@
     linux安装教程
         安装nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
         查看可以安装的node版本 nvm list-remote
-        安装制定版本的node版本 nvm install v18.20.8
-        使用指定版本的node版本 nvm use 18.20.8
+        一键安装指定版本的node nvm install v18.20.8
+        临时使用指定版本的node nvm use 18.20.8
+        永久使用指定版本的node nvm alias default 20.20.0
         查看当前使用的node版本 nvm list node
 
 # 2.配置node开发环境
