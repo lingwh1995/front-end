@@ -1,8 +1,8 @@
 # 1.安装node环境
 ## 1.1.手动安装node
-    NODE_HOME
-    %NODE_HOME%\node_global
-    %NODE_HOME%\node_cache
+    访问 https://mirrors.huaweicloud.com/nodejs/ 下载对应的版本的nodejs，推荐下载zip格式然后解压
+    配置Node环境变量 NODE_HOME
+    配置npm环境变量  %NODE_HOME%\node_global\node_modules
 ## 1.2.使用nvm安装node
     macos安装教程
     brew install nvm
@@ -17,6 +17,12 @@
     临时使用指定版本的node  nvm use 18.20.8
     永久使用指定版本的node  nvm alias default 20.20.0
     查看当前使用的node版本  nvm list node
+    
+    windows安装教程
+    访问 https://nvm.uihtm.com/ 下载windows版本的nvm
+    安装好之后进入安装目录，打开 settings.txt 加入下面两行镜像源配置
+    node_mirror: https://npmmirror.com/mirrors/node/
+    npm_mirror: https://npmmirror.com/mirrors/npm/
 # 2.配置node开发环境
 ##  2.1.本地全局仓库管理
     安装时命令中带有 -g 的语句都会把下载的文件安装到本地全局仓库中
