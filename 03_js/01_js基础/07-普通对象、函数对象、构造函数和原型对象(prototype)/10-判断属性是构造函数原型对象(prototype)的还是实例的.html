@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>判断属性是构造函数原型对象的还是实例的</title>
+  <title>判断属性是构造函数原型对象(prototype)的还是实例的</title>
   <script>
     /**
      * 1.原型对象相当于一个公共的区域，所有类的实例都可以访问到这个原型对象，我们可以将对象中的公共内容，统一设置到原型对象中
@@ -16,6 +16,7 @@
     function MyClass() {
 
     }
+
     MyClass.prototype.name = 'zhangsan'
 
     const mc = new MyClass()

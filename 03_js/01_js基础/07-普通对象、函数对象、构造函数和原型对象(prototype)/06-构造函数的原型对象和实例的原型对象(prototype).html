@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>构造函数的原型对象和实例的原型对象</title>
+  <title>构造函数的原型对象和实例的原型对象(prototype)</title>
   <script>
     /**
      * 原型对象相当于一个公共的区域，所有类的实例都可以访问到这个原型对象，我们可以将对象中的公共内容，统一设置到原型对象中
@@ -31,14 +31,14 @@
     console.log(MyClass.prototype === mc1.__proto__)
     console.log(MyClass.prototype === mc2.__proto__)
 
-    //给构造函数的原型对象添加一个属性
+    //给构造函数的原型对象添加一个属性 name,每个实例对象都可以访问到该属性
     MyClass.prototype.name = 'zhangsan'
     console.log('打印通过原型对象添加的属性开始')
     console.log(mc1.name)
     console.log(mc2.name)
     console.log('打印通过原型对象添加的属性结束')
 
-    //给构造函数的原型对象添sayName(),每个实例对象都可以访问到该方法，这样可以节省内存空间
+    //给构造函数的原型对象添一个方法 sayName(),每个实例对象都可以访问到该方法，这样可以节省内存空间
     MyClass.prototype.sayName = () => {
       console.log(this.name)
     }

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>构造函数的原型对象增强</title>
+  <title>构造函数的原型对象(prototype)增强</title>
   <script>
     function Student(id,name) {
-      this.id = id;
-      this.name = name;
+      this.id = id
+      this.name = name
       //show方法定义在这里的问题:每次new Student()创建出来的对象都包含这个方法，非常浪费内存空间
     }
 
@@ -16,8 +16,8 @@
       console.log(`id:${this.id},name:${this.name}`);
     }
     
-    const student1 = new Student('001','张三');
-    const student2 = new Student('002','李四');
+    const student1 = new Student('001','张三')
+    const student2 = new Student('002','李四')
     student1.show();
     student2.show();
   </script>  
