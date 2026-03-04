@@ -12,45 +12,45 @@
       <h1>
         vue的数据动态绑定指令-单向绑定(v-bind):只能由vue实例中的data中的数据来影响页面上的数据
       </h1>
-      
+
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令(v-bind:href="url"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令:
         <a v-bind:href="url" target="_blank">跳转到百度</a>
       </h2>
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令简写(:href="url"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令简写:
         <a :href="url" target="_blank">跳转到百度</a>
       </h2>
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用内置方法(:href="url.toUpperCase()"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用内置方法:
         <a :href="url.toUpperCase()" target="_blank">跳转到百度</a>
       </h2>
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用自定义方法(:href="getUrl()"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用自定义方法:
         <a :href="getUrl()" target="_blank">跳转到百度</a>
       </h2>
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令中级联获取值+调用方法(:href="school.website.toUpperCase()):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令中级联获取值+调用方法:
         <a :href="school.website.toUpperCase()" target="_blank">跳转到西安财经大学首页</a>
       </h2>
-      
+
       <!-- 特别注意一下这个语法，vue是支持这样写的，但是不建议这样写，推荐使用计算属性来实现拼接 -->
-      <h2 style="color:red;">
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令中直接拼接值(:href="concat.part1 + concat.part2"):
+      <h2 style="color: red">
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令中直接拼接值:
         <a :href="concat.part1 + concat.part2" target="_blank">跳转到百度首页</a>
       </h2>
       <!-- 这种复杂的拼接一般使用计算属性来完成拼接，这种写法是vue推荐的方式 -->
-      <h2 style="color:red;">
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令中使用计算属性拼接值(:href="concatUrl"):
+      <h2 style="color: red">
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令中使用计算属性拼接值:
         <a :href="concatUrl" target="_blank">跳转到百度首页</a>
       </h2>
 
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态(v-bind:checked="isChecked"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态:
         <input type="checkbox" v-bind:checked="isChecked" />
       </h2>
       <h2>
-        vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态简写(:checked="isChecked"):
+        vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态简写:
         <input type="checkbox" :checked="isChecked" />
       </h2>
     </div>
@@ -93,18 +93,18 @@
         computed: {
           /**
            * 计算属性拼接优势
-           * 
+           *
            * 使用计算属性 `concatUrl` 替代模板中直接拼接值的优势：
-           * 
+           *
            * 1. 模板中代码更简洁 - 避免在模板中编写复杂表达式
            * 2. 逻辑可复用 - 同一计算属性可在模板多处使用
            * 3. 响应式依赖自动追踪 - 依赖数据变化时自动重新计算
            */
           concatUrl() {
             // 拼接逻辑抽离到计算属性中
-            return this.concat.part1 + this.concat.part2;
-          }
-        }
+            return this.concat.part1 + this.concat.part2
+          },
+        },
       })
     </script>
   </body>
