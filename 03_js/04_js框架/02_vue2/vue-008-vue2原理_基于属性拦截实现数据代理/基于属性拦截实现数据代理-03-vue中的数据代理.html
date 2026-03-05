@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-03-vue中的数据代理</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- {{xxx}}是vue的插值表达式语法 -->
+      <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+      /**
+       * Vue 数据代理原理
+       * 
+       * 1. 为什么要有数据代理？
+       *    - 最直接原因：简化编码，让代码写起来更爽
+       *    - 如果没有数据代理，Vue 会将 data 存储在实例的私有属性 _data 中
+       * 
+       *    不使用代理时：
+       *      插值表达式：<h1>{{ _data.content }}</h1>
+       *      JS 中访问：this._data.content
+       * 
+       *    使用代理后：
+       *      插值表达式：<h1>{{ content }}</h1>
+       *      JS 中访问：this.content
+       * 
+       *    深层原因：
+       *      a) 屏蔽底层实现：Vue 需要对数据进行响应式加工，通过代理给开发者提供干净接口
+       *      b) 统一入口控制：通过 Object.defineProperty 代理，Vue 可在读写时进行依赖收集、触发视图更新等操作
+       * 
+       * 2. 代理对象与被代理对象
+       *    - 代理对象（Proxying Object）：vm（Vue 实例对象）
+       *      理由：直接操作的是 vm.content，vm 是"经纪人"，属性由 Vue 动态添加
+       * 
+       *    - 被代理对象（Proxied Object）：vm._data（传入的 data 对象）
+       *      理由：数据真实存储的地方，通过 vm 读写时，最终存储值的还是 _data
+       * 
+       * 3. 基本原理
+       *    - 通过 Object.defineProperty() 把 data 对象中所有属性添加到 vm 上
+       *    - 为每个添加到 vm 上的属性指定 get()/set() 方法
+       *    - 在 get()/set() 内部去操作（读/写）data 中的属性
+       * 
+       * 4. 辅助理解
+       *    开发者 => 操作 vm (代理人) => 自动触发 Getter/Setter => 真正操作 _data (幕后老板)
+       *    读数据时： vm.content  ——触发——> vm 上的 getter ——去读——> vm._data.content
+       *    写数据时： vm.content = 'new' ——触发——> vm 上的 setter ——去修改——> vm._data.content
+       */
+
+      //创建vue实例
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          content: 'hello vue!',
+        },
+      })
+
+      /**
+       * 测试Vue实例对象vm是vm.data属性的代理
+       */
+      console.log(vm.content)
+
+      /**
+       * 测试Vue实例对象vm是vm.data属性的代理
+       */
+      vm.content = '测试数据代理set()'
+    </script>
+  </body>
+</html>

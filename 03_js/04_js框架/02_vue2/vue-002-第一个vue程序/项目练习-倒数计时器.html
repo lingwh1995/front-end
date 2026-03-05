@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目练习-倒数计时器</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+    <style type="text/css">
+      .clock {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: red;
+        color: white;
+        font-size: 50px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="clock">{{count}}</div>
+    </div>
+
+    <script type="text/javascript">
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          count: 100,
+        },
+      })
+
+      setInterval(() => {
+        vm.count > 0 ? vm.count-- : clearInterval(timer)
+      }, 1000)
+    </script>
+  </body>
+</html>

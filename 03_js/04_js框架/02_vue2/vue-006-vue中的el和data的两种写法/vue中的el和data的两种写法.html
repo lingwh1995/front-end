@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue中的el和data的两种写法</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app-el-1-data-1">
+      <h1>{{content}}</h1>
+    </div>
+    <div id="app-el-2-data-2-es5">
+      <h1>{{content}}</h1>
+    </div>
+    <div id="app-el-2-data-2-es6">
+      <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      // 验证vue是够被引入，直接打印Vue这个变量
+      console.log(Vue)
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      /**
+       * data后可以写对象也可以写函数，什么时候写对象，什么时候写函数？
+       * 
+       * 1. 根实例（new Vue）： 写成对象 {} 或函数 () {} 都可以。因为整个页面通常只有一个根实例，不需要复用。
+       * 2. Vue 组件（Component）： data 必须是一个函数，并且返回一个对象。如果写成对象，Vue 会直接报错。
+       */
+      
+      /**
+       * el的第一种写法 + data的第一种写法(对象式)
+       */
+      // 创建vue实例
+      new Vue({
+        el: '#app-el-1-data-1',
+        data: {
+          content: 'data的第一种写法',
+        },
+      })
+
+      /**
+       * el的第二种写法 + data的第二种写法(函数式) - es5语法版本
+       */
+      // 创建vue实例
+      const vmEl2Data2Es5 = new Vue({
+        // el: '#app-el-2-data-2-es5',
+        data: function () {
+          // 这里的this指向的是当前Vue实例
+          console.log(this)
+          return {
+            content:
+              'data的第二种写法 - es5语法版本(为了确保this指向当前Vue实例，推荐普通函数写法，不推荐箭头函数写法)',
+          }
+        },
+      })
+      console.log(vmEl2Data2Es5)
+      // 使用$mount挂载容器
+      vmEl2Data2Es5.$mount('#app-el-2-data-2-es5')
+
+      /**
+       * el的第二种写法 + data的第二种写法(函数式) - es6语法版本
+       */
+      // 创建vue实例
+      const vmEl2Data2Es6 = new Vue({
+        // el: '#app-el-2-data-2-es6',
+        data: () => {
+          // 这里的this指向的不是当前Vue实例,指向的是 Window 对象
+          console.log(this)
+          return {
+            content:
+              'data的第二种写法 - es6语法版本(为了确保this指向当前Vue实例，推荐普通函数写法，不推荐箭头函数写法)',
+          }
+        },
+      })
+      console.log(vmEl2Data2Es6)
+      // 使用$mount挂载容器
+      vmEl2Data2Es6.$mount('#app-el-2-data-2-es6')
+    </script>
+  </body>
+</html>

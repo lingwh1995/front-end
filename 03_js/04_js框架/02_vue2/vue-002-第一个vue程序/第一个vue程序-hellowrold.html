@@ -41,10 +41,14 @@
           content: 'hello vue!',
         },
       })
-      
+
       // 修改vue对象中存储的值
       setTimeout(() => {
-        vm.$data.content = 'hello vue,timeout 1s!'
+        // 强烈推荐，日常开发首选
+        vm.content = 'hello vue,timeout 1s!'
+        
+        // 需要访问整个vue实例中的数据时，才需要使用$data
+        // vm.$data.content = 'hello vue,timeout 1s!'
       }, 1000)
     </script>
   </body>
