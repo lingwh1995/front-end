@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟vue原理_实现双向数据绑定</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="name" v-on:change="handleUpdateName"></input></br>
+      <input type="text" v-model="name"></input>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * MiniVue: 简易 MVVM 框架模拟实现
+       * 
+       * 1. 实现目标：
+       *    - 数据代理：通过 vm.xxx 直接读写 vm.$data.xxx。
+       *    - 数据劫持：利用 Object.defineProperty 监听数据变化。
+       *    - 双向绑定：View 变化同步 Model (input事件)，Model 变化驱动 View (updateView方法)。
+       * 
+       * 2. 核心流程：
+       *    - Constructor: 初始化数据并启动“数据代理(observe)”和“模板解析(compile)”。
+       *    - Observe: 给 vm 实例穿上“感应外壳”，拦截所有属性的读写。
+       *    - Compile: 寻找带有 v-model 的节点，绑定事件监听器。
+       *    - UpdateView: 全量扫描节点，实现数据的同步渲染。
+       */ 
+      class MiniVue {
+        constructor(options) {
+          // 1. 保存根元素和原始数据
+          this.$el = document.querySelector(options.el)
+          this.$data = options.data
+
+          // 2. 启动数据代理：将 $data 里的属性代理到 this (vm实例) 上
+          this.observe(this.$data)
+
+          // 3. 启动模板编译：解析指令并绑定事件，初始化视图
+          this.compile(this.$el)
+        }
+
+        /**
+         * 数据代理 (Observe)
+         * 作用：让 vm 成为一个“透明代理”，通过拦截 get/set 触发后续操作
+         */
+        observe(data) {
+          if (!data || typeof data !== 'object') {
+            return
+          }
+          Object.keys(data).forEach(key => {
+            // 为 vm 实例定义同名属性，拦截对 data 中属性的操作
+            Object.defineProperty(this, key, {
+              enumerable: true,
+              configurable: true,
+
+              /**
+               * Getter: 代理读取
+               * 访问 vm.name 时，实际上是从 data 对象中取值
+               */
+              get() {
+                console.log(`代理读取：发现你在找 ${key}，我这就去 $data 里给你取...`)
+                return data[key]
+              },
+
+              /**
+               * Setter: 代理写入 (响应式核心)
+               * 修改 vm.name 时，会先判断值是否变化，再更新 data，最后触发视图更新
+               */
+              set(newVal) {
+                // 如果值没有变化，则不执行更新逻辑
+                if(data[key] === newVal) {
+                  return
+                }
+                console.log(`代理写入：要把 ${key} 改成 "${newVal}"？好嘞，已同步到 $data 并准备更新视图`)
+                
+                // 1. 更新原始数据
+                data[key] = newVal
+                
+                // 2. 关键：当数据变动时，手动触发视图更新
+                this.updateView()
+              }
+            })
+          })
+        }
+
+        /**
+         * 模板解析 (Compile)
+         * 作用：扫描 DOM 树，识别指令，并绑定 Model 到 View 的监听
+         */
+        compile(el) {
+          // 获取所有带有 v-model 属性的输入类节点
+          const nodes = el.querySelectorAll('[v-model]')
+          
+          nodes.forEach(node => {
+            /**
+             * View -> Model 的绑定
+             * 监听 input 事件，当用户在输入框打字时，将最新值赋给 vm 实例
+             */
+            node.addEventListener('input', e => {
+              const key = node.getAttribute('v-model')
+              // 注意：必须修改 this[key] 而不是 this.$data[key]
+              // 这样才能触发 observe 中定义的 set 方法，进而调用 updateView
+              this[key] = e.target.value
+            })
+          })
+
+          // 初始化执行一次更新，将 $data 里的初始值显示在页面上
+          this.updateView() 
+        }
+
+        /**
+         * 视图更新 (UpdateView)
+         * 作用：Model -> View 的绑定
+         * 遍历所有指令节点，强制将最新的数据同步到 DOM 的 value 属性上
+         */
+        updateView() {
+          this.$el.querySelectorAll('[v-model]').forEach(node => {
+            const key = node.getAttribute('v-model')
+            // 将最新的值从 $data 中读出并赋给输入框
+            node.value = this.$data[key]
+          })
+        }
+      }
+
+      // --- 实例化 MiniVue ---
+      const vm = new MiniVue({
+        el: '#app',
+        data: {
+          name: '张三',
+          age: 18
+        }
+      })
+    </script>
+  </body>
+</html>

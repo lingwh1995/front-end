@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟vue原理_实现数据代理功能</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+       * MiniVue 数据代理核心类模拟
+       *
+       * 1. 核心目标：
+       *    - 将 `data` 配置中的属性，直接挂载到 `MiniVue` 的实例对象（vm）上。
+       *    - 实现 `vm.key` 对 `vm._data.key` 的透明读写。
+       *
+       * 2. 实现原理：
+       *    - 在构造函数内部，通过 `Object.defineProperty` 为实例定义同名属性。
+       *    - getter 拦截：当读取 `vm.prop` 时，重定向到 `vm._data.prop` 取值。
+       *    - setter 拦截：当修改 `vm.prop` 时，同步更新 `vm._data.prop` 的值。
+       *
+       * 3. 数据流向图：
+       *    - 读：用户访问 vm.name -> getter -> 返回 _data.name
+       *    - 写：用户设置 vm.name = 'xxx' -> setter -> 修改 _data.name
+       */
+      class MiniVue {
+        constructor(options) {
+          /**
+           * 1. 保存原始数据
+           * 将传入的 data 对象存储在实例的私有属性 _data 中。
+           */
+          this._data = options.data
+
+          /**
+           * 2. 执行代理逻辑
+           * 遍历 _data 中的所有 key，通过 defineProperty 进行拦截。
+           */
+          Object.keys(this._data).forEach((key) => {
+            /**
+             * 3. 定义代理属性
+             * 给当前实例 (this) 定义与 data 中同名的属性。
+             */
+            Object.defineProperty(this, key, {
+              enumerable: true,
+              configurable: true,
+
+              /**
+               * 代理读取 (Getter)
+               * 触发时机：当你读取 vm.name 时。
+               */
+              get() {
+                console.log(`代理读取：发现你在找 ${key}，我这就去 _data 里给你取...`)
+                return this._data[key]
+              },
+
+              /**
+               * 代理写入 (Setter)
+               * 触发时机：当你执行 vm.name = 'xxx' 时。
+               */
+              set(newVal) {
+                console.log(`代理写入：要把 ${key} 改成 "${newVal}"？好嘞，已同步到 _data`)
+                this._data[key] = newVal
+              },
+            })
+          })
+        }
+      }
+
+      // --- 实例化与测试 ---
+
+      const vm = new MiniVue({
+        data: {
+          name: 'Gemini',
+          age: 1,
+        },
+      })
+
+      // 测试 1：触发 get 拦截
+      console.log('直接访问实例属性:', vm.name)
+
+      // 测试 2：触发 set 拦截
+      vm.age = 2
+
+      // 测试 3：验证数据同步性
+      console.log('验证 _data 是否同步修改:', vm._data.age)
+    </script>
+  </body>
+</html>

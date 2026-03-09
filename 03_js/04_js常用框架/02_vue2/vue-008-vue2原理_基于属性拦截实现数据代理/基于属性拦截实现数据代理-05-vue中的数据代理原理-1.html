@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-05-vue中的数据代理原理-1</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+       * Vue 数据代理模拟实现 (核心原理版)
+       *
+       * 1. 什么是数据代理：
+       *    - 通过一个对象（代理对象）对另一个对象（被代理对象）中的属性进行读/写操作。
+       *    - 实现手段：通过 `Object.defineProperty` 为属性生成 `get()` 和 `set()` 方法。
+       *
+       * 2. 模拟实现思路：
+       *    - 定义一个构造函数 `Observer`。
+       *    - 遍历被代理对象（target）的所有键名（keys）。
+       *    - 使用 `Object.defineProperty` 将这些键名直接挂载到 `Observer` 的实例（this）上。
+       *
+       * 3. 读写映射：
+       *    - 读：访问 `proxy.key` -> 触发 `getter` -> 返回 `target[key]`。
+       *    - 写：修改 `proxy.key` -> 触发 `setter` -> 更新 `target[key]`。
+       */
+
+      // 被代理对象 (原始数据)
+      let target = {
+        id: '001',
+        name: '张三',
+        age: 15,
+        school: 'ufe',
+      }
+
+      /**
+       * 模拟 Vue 的数据代理实现
+       * @param {Object} obj - 被代理的目标对象
+       */
+      function Observer(obj) {
+        // 1. 汇总对象中所有属性成为一个数组
+        const keys = Object.keys(obj)
+
+        // 2. 将 Observer 实例作为 proxy 对象，为其动态添加属性
+        // 注意：这里的 this 指向 Observer 的实例对象
+        keys.forEach((key) => {
+          Object.defineProperty(this, key, {
+            /**
+             * getter 函数
+             * 当通过代理对象读取属性时，重定向到原对象取值
+             */
+            get() {
+              console.log('调用了proxy对象获取值的方法...')
+              return obj[key]
+            },
+
+            /**
+             * setter 函数
+             * 当通过代理对象修改属性时，同步修改原对象的值
+             */
+            set(value) {
+              console.log('调用了proxy对象修改值的方法...')
+              obj[key] = value
+            },
+          })
+        })
+      }
+
+      // 创建代理实例
+      const proxy = new Observer(target)
+
+      // --- 测试验证 ---
+
+      // 1. 通过数据代理获取 target 中的 id 属性的值
+      console.log('通过数据代理获取target中的id属性的值:' + proxy.id)
+
+      // 2. 通过数据代理修改 target 中的 id 属性的值
+      proxy.id = 300
+
+      // 3. 验证修改后的结果
+      console.log('通过数据代理获取修改后的target中的id属性的值:' + proxy.id)
+
+      // 4. 查看原对象与代理对象的结构对比
+      console.log('原对象 target:', target)
+      console.log('代理对象 proxy (Observer 实例):', proxy)
+    </script>
+  </body>
+</html>

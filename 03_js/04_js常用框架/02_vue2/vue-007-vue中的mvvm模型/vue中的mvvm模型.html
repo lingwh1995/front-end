@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue中的mvvm模型</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <!-- 
+         View (视图) 部分 
+         插值表达式中能写的所有内容：
+         1. JS 表达式
+         2. Vue 实例（vm）上的所有属性（以 $ 开头的特有属性）
+         3. Vue 原型上的所有属性
+    -->
+    <div id="app">
+      <h2>一些表达式</h2>
+      <h1>{{content}}</h1>
+
+      <h2>Vue实例的所有属性</h2>
+      <!-- 演示获取 vm 上的内置属性 -->
+      <h1>{{$el}}</h1>
+
+      <h2>Vue原型上的所有属性</h2>
+      <h1>{{$data}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * Vue 中的 MVVM 模型深度解析
+       * 
+       * 1. M (Model) 模型：
+       *    - 对应 data 中的数据。本质上是纯粹的 JavaScript 对象，负责存储业务数据。
+       * 
+       * 2. V (View) 视图：
+       *    - 对应模板代码（HTML）。负责将数据转化为视觉界面呈现给用户。
+       * 
+       * 3. VM (ViewModel) 视图模型：
+       *    - 对应 Vue 实例对象（new Vue）。它是 MVVM 的核心纽带。
+       *    - 功能一：Data Bindings（数据绑定），将 Model 的改变自动更新到 View。
+       *    - 功能二：DOM Listeners（DOM 监听），将 View 的变化（如输入）同步回 Model。
+       * 
+       * 4. 关键结论：
+       *    - data 中所有的属性，最后都出现在了 vm 身上。
+       *    - vm 身上所有的属性及 Vue 原型上所有的属性，在 Vue 模板中都可以直接使用。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
+      console.log(Vue)
+      
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      // 创建 Vue 实例 (ViewModel)
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          // Model (模型数据)
+          content: 'hello vue!',
+        },
+      })
+
+      // 在控制台观察 vm 实例，可以看到它代理了 data 中的属性以及众多的 $ 属性
+      console.log(vm)
+    </script>
+  </body>
+</html>

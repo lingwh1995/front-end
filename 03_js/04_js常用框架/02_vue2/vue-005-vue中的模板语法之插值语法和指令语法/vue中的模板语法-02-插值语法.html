@@ -10,6 +10,8 @@
   <body>
     <div id="app">
       <h1>vue的模板语法之插值表达式语法</h1>
+
+      <!-- 插值表达式多种场景演示 -->
       <h2>模板语法之插值表达式语法用法演示#基本用法: {{content}}</h2>
       <h2>模板语法之插值表达式语法用法演示#调用内置方法: {{content.toUpperCase()}}</h2>
       <h2>模板语法之插值表达式语法用法演示#调用自定义方法: {{funllName()}}</h2>
@@ -26,27 +28,40 @@
     </div>
 
     <script type="text/javascript">
-      // 验证vue是够被引入，直接打印Vue这个变量
+      /**
+       * Vue 模板语法 - 插值表达式 (Interpolation) 深度指南
+       *
+       * 1. 核心定义：
+       *    - 插值语法主要用于设置“标签体内容”，如 <h1>{{xxx}}</h1>。
+       *    - 容器（如 #app）中的代码被称为 Vue 模板，由 Vue 引擎负责解析。
+       *
+       * 2. 支持的内容（JS 表达式）：
+       *    - 基础数据：直接读取 data 中的属性。
+       *    - 对象处理：支持级联获取（school.name）。
+       *    - 运算与逻辑：支持算术运算、三元运算符、字符串拼接。
+       *    - 方法调用：支持 JS 内置方法（toUpperCase）及自定义方法（fullName）。
+       *
+       * 3. 高级特性：
+       *    - 数据代理：Vue 实例会代理 data 中的数据及原型链上的属性。
+       *    - 原型挂载：Vue.prototype 上挂载的数据可直接在模板中访问。
+       *    - 容错机制：在模板中遇到 undefined 或 null 时，程序不报错但不会在页面显示内容。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
       console.log(Vue)
+
       // 设置为 false 以阻止 vue 在启动时生成生产提示。
       Vue.config.productionTip = false
 
+      // 在 Vue 原型上挂载全局数据
       Vue.prototype.bus = { desc: 'Vue.prototype上挂的数据' }
-      
-      /**
-       * Vue 模板语法 - 插值表达式
-       * 
-       * 1. app 容器中的代码被称为 Vue 模板
-       * 2. 插值语法常用于设置标签体内容的值，例如：<h1>{{content}}</h1>
-       * 3. 插值表达式中可以书写方法名并调用，例如：<h1>{{fullName()}}</h1>
-       * 4. 模板中的数据为响应式数据：
-       *    Vue.prototype 上挂载的数据可直接通过插值表达式获取，
-       *    因为 Vue 为该数据做了数据代理，使其成为响应式数据。
-       */
 
       // 创建vue实例
       new Vue({
         el: '#app',
+        /**
+         * data: 存储响应式数据
+         */
         data: {
           content: 'hello vue!',
           school: {
@@ -57,6 +72,9 @@
             part2: '第二部分',
           },
         },
+        /**
+         * methods: 存储自定义方法
+         */
         methods: {
           funllName() {
             return '张-三'

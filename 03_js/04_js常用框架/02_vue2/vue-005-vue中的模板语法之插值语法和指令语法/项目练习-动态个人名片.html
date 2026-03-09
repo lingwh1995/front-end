@@ -8,7 +8,7 @@
     <script type="text/javascript" src="../vue.js"></script>
     <style type="text/css">
       .card {
-        border: 2px solid #4CAF50;
+        border: 2px solid #4caf50;
         padding: 20px;
         margin-top: 20px;
         border-radius: 10px;
@@ -16,7 +16,7 @@
         background-color: #f9f9f9;
       }
 
-      .box { 
+      .box {
         margin-bottom: 15px;
         padding: 10px;
         background: #eee;
@@ -27,15 +27,18 @@
     <div id="app">
       <div class="box">
         <h3>单向数据绑定 (v-bind)</h3>
-        姓名：<input type="text" v-bind:value="name" placeholder="请输入姓名">
+        姓名：
+        <input type="text" v-bind:value="name" placeholder="请输入姓名" />
       </div>
       <div class="box">
         <h3>双向数据绑定 (v-model)</h3>
-        姓名：<input type="text" v-model="name" placeholder="请输入姓名">
+        姓名：
+        <input type="text" v-model="name" placeholder="请输入姓名" />
       </div>
       <div class="card">
         <h3>插值语法 (展示结果)</h3>
-        姓名：<span>{{ name }}</span>
+        姓名：
+        <span>{{ name }}</span>
         <a v-bind:href="website" target="_blank">跳转到个人主页</a>
       </div>
     </div>

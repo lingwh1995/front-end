@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-02-什么是数据代理</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+       * 数据代理 (Data Proxy) 深度解析
+       * 
+       * 1. 核心定义：
+       *    - 通过一个对象（代理对象）来对另一个对象（被代理对象）中属性的操作（读/写）进行拦截和处理。
+       * 
+       * 2. 实现本质：
+       *    - 代理对象通过 `Object.defineProperty()` 为每一个需要代理的属性生成对应的 `get()` 和 `set()` 方法。
+       *    - 当访问代理属性时，触发 `get()` 返回被代理对象的原值。
+       *    - 当修改代理属性时，触发 `set()` 将新值同步给被代理对象。
+       * 
+       * 3. 应用价值：
+       *    - 隐藏被代理对象的内部结构。
+       *    - 在读写属性的过程中添加自定义逻辑（如 Vue 的响应式依赖收集）。
+       */
+
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      // 注意：此处代码若在无 Vue 环境下运行会报错，需确保引入了 vue.js
+      if (typeof Vue !== 'undefined') {
+        Vue.config.productionTip = false
+      }
+
+      // 被代理对象 (Target)
+      let target = { x: 100 }
+      
+      // 代理对象 (Proxy)
+      let proxy = {}
+
+      // 通过 Object.defineProperty 实现数据代理
+      Object.defineProperty(proxy, 'x', {
+        /**
+         * getter 函数
+         * 逻辑：代理对象读取 x 时，实际上是去读取 target 对象的 x。
+         */
+        get() {
+          console.log('调用了proxy对象获取值的方法...')
+          return target.x
+        },
+
+        /**
+         * setter 函数
+         * 逻辑：代理对象修改 x 时，实际上是去修改 target 对象的 x。
+         */
+        set(value) {
+          console.log('调用了proxy对象修改值的方法...')
+          target.x = value
+        },
+      })
+
+      // 演示：通过数据代理获取 target 中的 x 属性的值
+      console.log('通过数据代理获取target中的x属性的值:' + proxy.x)
+
+      // 演示：通过数据代理修改 target 中的 x 属性的值
+      proxy.x = 300
+      console.log('通过数据代理获取修改后的target中的x属性的值:' + proxy.x)
+    </script>
+  </body>
+</html>

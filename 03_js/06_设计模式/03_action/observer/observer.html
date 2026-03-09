@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>observer</title>
+    <script type="text/javascript">
+      // 1. 定义被观察者（公众号）
+      class Subject {
+        constructor() {
+          // 存储所有观察者（订阅者）
+          this.observers = []
+          // 公众号的文章内容（状态）
+          this.article = ''
+        }
+
+        // 方法1：添加观察者（订阅公众号）
+        addObserver(observer) {
+          // 避免重复订阅
+          if (!this.observers.includes(observer)) {
+            this.observers.push(observer)
+            console.log(`${observer.name} 订阅了公众号！`)
+          }
+        }
+
+        // 方法2：移除观察者（取消订阅）
+        removeObserver(observer) {
+          const index = this.observers.indexOf(observer)
+          if (index !== -1) {
+            this.observers.splice(index, 1)
+            console.log(`${observer.name} 取消了公众号订阅！`)
+          }
+        }
+
+        // 方法3：通知所有观察者（发布新文章，推送通知）
+        notifyObservers() {
+          console.log('\n公众号发布了新文章，开始推送通知：')
+          this.observers.forEach((observer) => {
+            // 调用观察者的更新方法
+            observer.update(this.article)
+          })
+        }
+
+        // 方法4：更新被观察者状态（发布新文章）
+        publishArticle(article) {
+          this.article = article
+          // 状态变化后，立即通知所有观察者
+          this.notifyObservers()
+        }
+      }
+
+      // 2. 定义观察者（订阅者）
+      class Observer {
+        constructor(name) {
+          this.name = name
+        }
+
+        // 观察者的更新方法（收到通知后执行的操作）
+        update(article) {
+          console.log(`${this.name} 收到新文章：《${article}》`)
+        }
+      }
+
+      // 3. 测试案例
+      // 创建被观察者：前端情报局公众号
+      const officialAccount = new Subject()
+
+      // 创建观察者：用户1、用户2、用户3
+      const user1 = new Observer('张三')
+      const user2 = new Observer('李四')
+      const user3 = new Observer('王五')
+
+      // 订阅公众号
+      officialAccount.addObserver(user1) // 张三 订阅了公众号！
+      officialAccount.addObserver(user2) // 李四 订阅了公众号！
+      officialAccount.addObserver(user3) // 王五 订阅了公众号！
+
+      // 公众号发布第一篇文章
+      officialAccount.publishArticle('JS观察者模式入门')
+      // 输出：
+      // 公众号发布了新文章，开始推送通知：
+      // 张三 收到新文章：《JS观察者模式入门》
+      // 李四 收到新文章：《JS观察者模式入门》
+      // 王五 收到新文章：《JS观察者模式入门》
+
+      // 王五取消订阅
+      officialAccount.removeObserver(user3) // 王五 取消了公众号订阅！
+
+      // 公众号发布第二篇文章
+      officialAccount.publishArticle('前端面试高频考点')
+      // 输出：
+      // 公众号发布了新文章，开始推送通知：
+      // 张三 收到新文章：《前端面试高频考点》
+      // 李四 收到新文章：《前端面试高频考点》
+    </script>
+  </head>
+  <body></body>
+</html>

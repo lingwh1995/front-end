@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-01-回顾Object.defineProperty</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+       * Object.defineProperty() 核心属性拦截指南
+       *
+       * 1. 基本定义：
+       *    - 用于在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回这个对象。
+       *
+       * 2. 数据描述符配置（默认均为 false）：
+       *    - value: 设置属性的值。
+       *    - enumerable: 控制属性是否可枚举（是否能被 for...in 或 Object.keys 遍历到）。
+       *    - writable: 控制属性是否可被修改。
+       *    - configurable: 控制属性是否可被删除或重新定义特性。
+       *
+       * 3. 访问器描述符（Getter/Setter）：
+       *    - get(): 当读取属性时调用，返回值即为属性值。
+       *    - set(value): 当修改属性时调用，用于拦截赋值操作。
+       *
+       * 注意：当使用了 get/set 时，不能再设置 value 和 writable，否则会报错。
+       */
+
+      let person = {
+        name: '张三',
+        sex: '男',
+      }
+      let number = 24
+
+      // 使用 Object.defineProperty 动态添加 age 属性
+      Object.defineProperty(person, 'age', {
+        /**
+         * 基础配置参考：
+         * value: 18,
+         * enumerable: true,  // 默认 false
+         * writable: true,    // 默认 false
+         * configurable: true // 默认 false
+         */
+
+        /**
+         * getter 函数
+         * 触发时机：有人读取 person.age 时。
+         * 作用：建立 age 属性与外部变量 number 的关联。
+         */
+        get() {
+          console.log('有人读取age属性了...')
+          return number
+        },
+
+        /**
+         * setter 函数
+         * 触发时机：有人执行 person.age = value 时。
+         * 作用：接收修改的值，并同步更新外部依赖变量。
+         */
+        set(value) {
+          console.log('有人修改age属性，且值是:' + value)
+          number = value
+        },
+      })
+
+      console.log(person)
+
+      /**
+       * 验证属性的“不可枚举性”：
+       * 通过 defineProperty 默认添加的属性（enumerable 为 false）
+       * 无法通过常规的遍历方式（如 Object.keys 或 for...in）被获取。
+       */
+
+      // 验证方式一：Object.keys() 只能获取可枚举属性
+      console.log('Object.keys 结果：', Object.keys(person))
+
+      // 验证方式二：for...in 循环遍历
+      console.log('for...in 遍历过程：')
+      for (let key in person) {
+        console.log(key)
+      }
+    </script>
+  </body>
+</html>

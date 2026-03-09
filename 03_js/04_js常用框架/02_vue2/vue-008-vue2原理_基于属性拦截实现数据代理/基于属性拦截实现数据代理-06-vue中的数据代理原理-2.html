@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-06-vue中的数据代理原理-2</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+       * Vue 数据代理与响应式模拟进阶 (原理版 2)
+       *
+       * 1. 数据代理定义：
+       *    - 通过一个对象代理对另一个对象属性进行操作（读/写）。
+       *    - 核心实现：利用 getter 获取值，利用 setter 拦截并处理修改逻辑。
+       *
+       * 2. 模拟响应式行为：
+       *    - 在 `setter` 中除了修改原始数据，还模拟了 Vue 的核心流程：
+       *      "解析模板" -> "生成虚拟 DOM" -> "渲染真实 DOM"。
+       *
+       * 3. 结构模拟：
+       *    - `Observer` 实例充当了响应式加工后的数据对象。
+       *    - `vm._data` 引用加工后的对象，从而实现对数据的劫持。
+       */
+
+      // 原始数据对象
+      let data = {
+        id: '001',
+        name: '张三',
+        age: 15,
+        school: 'ufe',
+      }
+
+      /**
+       * 模拟 Vue 的 Observer 构造函数
+       * 作用：将普通对象转换为每个属性都带 get/set 的响应式对象
+       * @param {Object} obj - 待加工的原始数据
+       */
+      function Observer(obj) {
+        // 1. 汇总对象中所有属性成为一个数组
+        const keys = Object.keys(obj)
+
+        // 2. 遍历属性，将它们挂载到 Observer 实例（this）上
+        keys.forEach((key) => {
+          Object.defineProperty(this, key, {
+            /**
+             * getter: 读取属性时触发
+             */
+            get() {
+              console.log(`${key}被获取了`)
+              return obj[key]
+            },
+
+            /**
+             * setter: 修改属性时触发
+             * 模拟 Vue 监听到数据变化后的后续操作
+             */
+            set(value) {
+              console.log(`${key}的值被修改了，我要去解析模板，生成虚拟DOM去了...`)
+              obj[key] = value
+            },
+          })
+        })
+      }
+
+      // --- 实例模拟与关联 ---
+
+      // 创建 Observer 实例，加工原始 data
+      const obs = new Observer(data)
+      console.log('加工后的响应式对象 obs:', obs)
+
+      // 模拟 Vue 实例 vm
+      let vm = {}
+
+      /**
+       * 模拟 Vue 内部的数据关联逻辑：
+       * 1. 将 obs（加工后的数据）赋值给 data 变量
+       * 2. 将 obs 赋值给 vm._data
+       * 结果：vm._data 指向的就是带 get/set 的响应式对象
+       */
+      vm._data = data = obs
+
+      // 控制台验证
+      console.log('vm._data 的内容:', vm._data)
+      console.log('data 变量当前指向:', data)
+    </script>
+  </body>
+</html>

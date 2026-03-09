@@ -13,14 +13,18 @@
         vue的数据动态绑定指令-双向绑定(v-model):vue实例中的data中的数据和页面上的数据会支持一致，修改一个，另一个会发生改变
       </h1>
 
+      <!-- v-model 基础用法与简写 -->
       <h2>
         vue的数据动态绑定指令-双向绑定语法#v-model指令:
         <input type="text" v-model:value="content" />
       </h2>
       <h2>
         vue的数据动态绑定指令-双向绑定语法#v-model指令简写:
+        <!-- v-model:value="xxx" 简写为 v-model="xxx" -->
         <input type="text" v-model="content" />
       </h2>
+
+      <!-- v-model 处理方法与复杂表达式 -->
       <h2>
         vue的数据动态绑定指令-双向绑定语法#调用方法:
         <input type="text" v-model:value="url.toUpperCase()" />
@@ -40,21 +44,27 @@
     </div>
 
     <script type="text/javascript">
-      // 验证vue是够被引入，直接打印Vue这个变量
+      /**
+       * Vue 数据动态绑定指令 - 双向绑定 (v-model) 深度指南
+       *
+       * 1. 核心定义：
+       *    - 双向绑定：数据流向为 "Data <-> View"。
+       *    - Data 改变，View 自动更新；View（表单输入）改变，Data 也会同步修改。
+       *
+       * 2. 应用规则：
+       *    - 适用范围：仅限“表单类”交互元素（如 input, select, textarea 等）。
+       *    - 简写方式：`v-model:value="xxx"` 可直接简写为 `v-model="xxx"`，因为 v-model 默认收集的就是 value 属性。
+       *
+       * 3. 核心原理与注意：
+       *    - 本质：它是 `v-bind:value` 和 `v-on:input` 的语法糖。
+       *    - 特殊场景：用于单选/多选框时，必须在 HTML 标签中显式配置 `value` 属性，否则 v-model 无法正确收集。
+       */
+
+      // 验证vue是否被引入
       console.log(Vue)
+
       // 设置为 false 以阻止 vue 在启动时生成生产提示。
       Vue.config.productionTip = false
-
-      /**
-       * Vue 数据动态绑定指令 - 双向绑定 (v-model)
-       *
-       * 1. 双向绑定指令语法常用于设置表单元素的值，例如：
-       *    <input type="text" v-model:value="content"/>
-       * 2. 双向绑定指令表达式中可书写方法名并调用，例如：
-       *    <input type="text" v-model:value="getUrl()"/>
-       * 3. v-model 本质是收集表单元素的 value 值，因此用于收集单选框的值时，
-       *    单选框标签必须添加 value 属性。
-       */
 
       // 创建vue实例
       new Vue({

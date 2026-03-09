@@ -14,12 +14,31 @@
     </div>
 
     <script type="text/javascript">
-      // 验证vue是够被引入，直接打印Vue这个变量
+      /**
+       * Vue 实例与容器绑定指南 (多实例冲突测试)
+       *
+       * 1. 核心约束：
+       *    - 一个 Vue 实例只能对应一个容器 (1:1)。
+       *    - 反之，一个容器也只能被一个 Vue 实例所接管。
+       *
+       * 2. 行为表现：
+       *    - 当多个 Vue 实例尝试挂载到同一个 ID 容器（如 #app）时，只有第一个定义的实例会生效。
+       *    - 后续定义的实例虽然会被创建，但由于目标容器已被占用，它们将无法接管该 DOM 区域。
+       *
+       * 3. 开发提示：
+       *    - Vue.config.productionTip = false 用于清除控制台的生产环境提示。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
       console.log(Vue)
+
       // 设置为 false 以阻止 vue 在启动时生成生产提示。
       Vue.config.productionTip = false
-      // 创建第一个vue实例，#app这个容器只能被第一个vue实例接管
-      // 特别注意: 一个vue实例只能对应一个容器
+
+      /**
+       * 场景一：创建第一个 Vue 实例
+       * 结果：#app 这个容器将被该实例接管，并渲染 data 中的 content 内容。
+       */
       new Vue({
         // el:用于指定当前vue容器用于操作哪个容器，值通常为css选择器字符串
         // 或者写成 el:document.getElementById('#app')
@@ -29,8 +48,11 @@
           content: 'hello vue!~1',
         },
       })
-      // 创建第二个vue实例
-      // 特别注意: 一个vue实例只能对应一个容器
+
+      /**
+       * 场景二：创建第二个 Vue 实例
+       * 结果：由于 #app 已经被第一个实例接管，此实例将失效，无法修改页面内容。
+       */
       new Vue({
         // el:用于指定当前vue容器用于操作哪个容器，值通常为css选择器字符串
         // 或者写成 el:document.getElementById("#app")

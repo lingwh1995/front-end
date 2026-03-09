@@ -13,6 +13,7 @@
         vue的数据动态绑定指令-单向绑定(v-bind):只能由vue实例中的data中的数据来影响页面上的数据
       </h1>
 
+      <!-- v-bind 基础用法与简写 -->
       <h2>
         vue的数据动态绑定指令-单向绑定语法#v-bind指令:
         <a v-bind:href="url" target="_blank">跳转到百度</a>
@@ -21,6 +22,8 @@
         vue的数据动态绑定指令-单向绑定语法#v-bind指令简写:
         <a :href="url" target="_blank">跳转到百度</a>
       </h2>
+
+      <!-- v-bind 处理方法与级联数据 -->
       <h2>
         vue的数据动态绑定指令-单向绑定语法#v-bind指令中调用内置方法:
         <a :href="url.toUpperCase()" target="_blank">跳转到百度</a>
@@ -34,17 +37,19 @@
         <a :href="school.website.toUpperCase()" target="_blank">跳转到西安财经大学首页</a>
       </h2>
 
-      <!-- 特别注意一下这个语法，vue是支持这样写的，但是不建议这样写，推荐使用计算属性来实现拼接 -->
+      <!-- 数据拼接：直接拼接 vs 计算属性 -->
+      <!-- 特别注意：虽然支持直接拼接，但推荐使用计算属性 -->
       <h2 style="color: red">
         vue的数据动态绑定指令-单向绑定语法#v-bind指令中直接拼接值:
         <a :href="concat.part1 + concat.part2" target="_blank">跳转到百度首页</a>
       </h2>
-      <!-- 这种复杂的拼接一般使用计算属性来完成拼接，这种写法是vue推荐的方式 -->
+      <!-- 推荐写法：使用计算属性完成复杂逻辑拼接 -->
       <h2 style="color: red">
         vue的数据动态绑定指令-单向绑定语法#v-bind指令中使用计算属性拼接值:
         <a :href="concatUrl" target="_blank">跳转到百度首页</a>
       </h2>
 
+      <!-- 布尔属性绑定 -->
       <h2>
         vue的数据动态绑定指令-单向绑定语法#v-bind指令设置单选框选中状态:
         <input type="checkbox" v-bind:checked="isChecked" />
@@ -56,19 +61,28 @@
     </div>
 
     <script type="text/javascript">
-      // 验证vue是够被引入，直接打印Vue这个变量
+      /**
+       * Vue 数据动态绑定指令 - 单向绑定 (v-bind) 深度指南
+       *
+       * 1. 核心定义：
+       *    - 单向绑定：数据流向仅为 "Data -> View"。
+       *    - 当 data 中的数据发生改变时，视图会自动更新；但页面上的改动不会反向影响 data。
+       *
+       * 2. 应用场景：
+       *    - 设置标签属性：如 href, src, title, class, style 等。
+       *    - 绑定布尔属性：如 checked, disabled, readonly。
+       *
+       * 3. 语法特性：
+       *    - 完整写法：v-bind:属性名="JS表达式"
+       *    - 简写方式：:属性名="JS表达式"
+       *    - 支持调用：可以执行内置方法、自定义方法以及访问多级对象属性。
+       */
+
+      // 验证vue是否被引入
       console.log(Vue)
+
       // 设置为 false 以阻止 vue 在启动时生成生产提示。
       Vue.config.productionTip = false
-
-      /**
-       * Vue 数据动态绑定指令 - 单向绑定 (v-bind)
-       *
-       * 1. 单向绑定指令语法常用于设置标签属性的值，例如（v-bind:href="url"）：
-       *    <a v-bind:href="url" target="_blank">跳转到百度</a>
-       * 2. 单向绑定指令表达式中可书写方法名并调用，例如（:href="getUrl()"）：
-       *    <a :href="getUrl()" target="_blank">跳转到百度</a>
-       */
 
       // 创建vue实例
       new Vue({
@@ -92,13 +106,11 @@
         },
         computed: {
           /**
-           * 计算属性拼接优势
+           * 计算属性 (Computed Properties) 拼接优势：
            *
-           * 使用计算属性 `concatUrl` 替代模板中直接拼接值的优势：
-           *
-           * 1. 模板中代码更简洁 - 避免在模板中编写复杂表达式
-           * 2. 逻辑可复用 - 同一计算属性可在模板多处使用
-           * 3. 响应式依赖自动追踪 - 依赖数据变化时自动重新计算
+           * 1. 模板简洁：避免在 HTML 中堆砌复杂的字符串拼接逻辑。
+           * 2. 逻辑复用：计算结果会被缓存，且可在模板中多处调用。
+           * 3. 响应式追踪：Vue 会自动追踪依赖（part1/part2），只有依赖变动时才会重新计算。
            */
           concatUrl() {
             // 拼接逻辑抽离到计算属性中

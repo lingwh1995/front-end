@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于属性拦截实现数据代理-03-vue中的数据代理</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- {{xxx}}是vue的插值表达式语法 -->
+      <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * Vue 数据代理原理深度解析
+       *
+       * 1. 为什么要有数据代理？
+       *    - 核心目的：简化编码，提升开发体验。
+       *    - 若无代理：访问数据需通过 `this._data.content`，模板需写成 `{{ _data.content }}`。
+       *    - 代理后：直接通过 `this.content` 或 `{{ content }}` 访问，结构更简洁。
+       *    - 深层意义：屏蔽底层响应式加工逻辑，实现统一的入口控制（依赖收集与视图更新）。
+       *
+       * 2. 核心角色定义：
+       *    - 代理对象 (Proxying Object)：vm (Vue 实例对象)。它是属性的“经纪人”。
+       *    - 被代理对象 (Proxied Object)：vm._data (传入的原始 data 对象)。它是数据的“幕后老板”。
+       *
+       * 3. 基本实现原理：
+       *    - 利用 `Object.defineProperty()` 将 data 对象中的所有属性动态添加到 vm 实例上。
+       *    - 为 vm 上的每个代理属性配置特殊的 `getter` 和 `setter`。
+       *    - getter/setter 内部逻辑：
+       *      - 读：当访问 vm.x 时，getter 会去读取 vm._data.x。
+       *      - 写：当修改 vm.x 时，setter 会去修改 vm._data.x。
+       */
+
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      // 创建 Vue 实例
+      // 此时 Vue 会进行两件事：
+      // 1. 将 data 加工成响应式数据存入 vm._data
+      // 2. 通过数据代理，将 _data 里的属性映射到 vm 自身
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          content: 'hello vue!',
+        },
+      })
+
+      /**
+       * 测试：验证 vm 属性访问 (触发 getter)
+       * 逻辑：访问 vm.content 实际上是触发了代理拦截，从 vm._data 中取值
+       */
+      console.log('读取代理属性：', vm.content)
+
+      /**
+       * 测试：验证 vm 属性修改 (触发 setter)
+       * 逻辑：修改 vm.content 会同步更新 vm._data.content，并触发 Vue 的响应式更新界面
+       */
+      vm.content = '测试数据代理set()'
+    </script>
+  </body>
+</html>

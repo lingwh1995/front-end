@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue中的模板语法-01-插值语法和指令语法入门</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>插值语法</h1>
+      <h3>你好， {{name}} !</h3>
+
+      <h1>指令语法</h1>
+      <!-- 演示 v-bind 的两种写法 -->
+      <a v-bind:href="url" target="_blank">跳转到百度-原始写法(v-bind:href)</a>
+      <br />
+      <a :href="url" target="_blank">跳转到百度-简写(:href)</a>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * Vue 模板语法核心指南
+       *
+       * 1. 插值语法 (Interpolation)：
+       *    - 功能：主要用于解析“标签体内容”。
+       *    - 写法：{{xxx}}，其中 xxx 是 JS 表达式。
+       *    - 特点：可以直接读取 data 中的所有属性并渲染到页面。
+       *
+       * 2. 指令语法 (Directives)：
+       *    - 功能：用于解析整个标签（包括标签属性、标签体、绑定事件等）。
+       *    - 举例：v-bind:href="xxx" 或简写为 :href="xxx"。
+       *    - 特点：xxx 必须是 JS 表达式，Vue 会动态绑定该属性值。
+       *
+       * 3. 核心总结：
+       *    - 无论是插值还是指令，其引号或大括号内包裹的均为 **JS 表达式**。
+       *    - 形式：Vue 指令均以 `v-` 开头。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
+      console.log(Vue)
+
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      // 创建vue实例
+      new Vue({
+        /**
+         * el: 指定当前实例挂载的容器。
+         */
+        el: '#app',
+
+        /**
+         * data: 存储页面所需的数据。
+         * - name: 供插值语法使用。
+         * - url: 供 v-bind 指令语法使用。
+         */
+        data: {
+          name: 'zhangsan',
+          url: 'https://www.baidu.com',
+        },
+      })
+    </script>
+  </body>
+</html>

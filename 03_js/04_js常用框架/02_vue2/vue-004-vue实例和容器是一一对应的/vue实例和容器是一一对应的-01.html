@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue实例和容器是一一对应的-01</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- {{xxx}}是vue的插值表达式语法 -->
+      <h1>{{content}} - 1</h1>
+    </div>
+    <div class="app">
+      <!-- {{xxx}}是vue的插值表达式语法 -->
+      <h1>{{content}} - 2</h1>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * Vue 实例与容器绑定指南 (一对一原则)
+       *
+       * 1. 核心约束：
+       *    - 一个 Vue 实例只能对应一个容器。
+       *    - 当使用类选择器（如 .app）匹配到多个元素时，Vue 仅会接管第一个匹配到的页面元素。
+       *
+       * 2. 挂载逻辑：
+       *    - el 属性负责建立实例与 DOM 的联系。
+       *    - 如果需要控制多个区域，通常的做法是将这些区域嵌套在一个父容器内，或创建多个 Vue 实例。
+       *
+       * 3. 开发提示：
+       *    - Vue.config.productionTip = false 用于清除控制台的生产环境提示。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
+      console.log(Vue)
+
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      // 创建vue实例
+      // 特别注意: 一个vue实例只能对应一个容器，el中只会识别第一个页面元素
+      const app = new Vue({
+        /**
+         * el (Element):
+         * 用于指定当前 Vue 容器操作的对象。
+         * 值通常为 CSS 选择器字符串。
+         * 也可以写成 el: document.getElementsByClassName('app')[0]
+         */
+        el: '.app',
+
+        /**
+         * data:
+         * 存储数据，供 el 所指向的第一个 .app 容器使用。
+         */
+        data: {
+          content: 'hello vue!',
+        },
+      })
+    </script>
+  </body>
+</html>

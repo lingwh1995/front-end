@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟vue原理_实现mvvm模型</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 视图层 (View): 包含指令的 DOM 元素 -->
+      <input type="text" v-model="name" />
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * MiniVue 类：充当 ViewModel (连接 Model 和 View 的桥梁)
+       */
+      class MiniVue {
+        constructor(options) {
+          // 1. 保存配置选项
+          this.$el = document.querySelector(options.el) // 绑定的根元素
+          this.$data = options.data // 原始数据对象 (Model)
+
+          // 2. 启动数据劫持（数据代理）
+          this.observe(this.$data)
+
+          // 3. 初始编译模板，挂载视图
+          this.compile(this.$el)
+        }
+
+        /**
+         * 响应式核心：使用 Object.defineProperty 进行劫持
+         * 作用：让我们可以直接通过 vm.name 修改 vm.$data.name
+         */
+        observe(data) {
+          if (!data || typeof data !== 'object') {
+            return
+          }
+
+          // 遍历 data 中所有的属性
+          Object.keys(data).forEach((key) => {
+            // 注意：这里为了简化实现，直接将属性代理到了 MiniVue 实例 (this) 上
+            Object.defineProperty(this, key, {
+              enumerable: true,
+              configurable: true,
+              // 【读取属性】时触发
+              get() {
+                console.log(`代理读取：发现你在找 ${key}，我这就去 $data 里给你取...`)
+                return data[key]
+              },
+              // 【修改属性】时触发 -> 数据驱动视图的关键点
+              set(newVal) {
+                if (data[key] === newVal) {
+                  return
+                }
+                console.log(`代理写入：要把 ${key} 改成 "${newVal}"？好嘞，已同步到 $data`)
+                data[key] = newVal
+
+                // 数据变了，手动触发视图更新（简易版观察者模式）
+                this.updateView()
+              },
+            })
+          })
+        }
+
+        /**
+         * 编译指令 (Compile)
+         * 这里的简化逻辑是：只要调用 compile 或数据变化，就去扫描整个 DOM
+         */
+        compile(el) {
+          this.updateView()
+        }
+
+        /**
+         * 更新视图 (Update View)
+         * 作用：同步数据到 DOM 元素上
+         */
+        updateView() {
+          // 找到所有带有 v-model 属性的节点
+          this.$el.querySelectorAll('[v-model]').forEach((node) => {
+            // 获取指令对应的数据 key (例如 "name")
+            const key = node.getAttribute('v-model')
+            // 将最新的数据赋值给 input 的 value 属性
+            node.value = this[key]
+          })
+        }
+      }
+
+      // --- 实例化使用 ---
+
+      const vm = new MiniVue({
+        el: '#app',
+        data: {
+          name: '张三',
+          age: 18,
+        },
+      })
+
+      // 测试逻辑：3秒后通过实例修改数据，观察页面 input 是否自动变化
+      setTimeout(() => {
+        console.log('--- 3秒已到，开始修改数据 ---')
+        vm.name = '李四' // 触发 set() -> 调用 updateView()
+      }, 2000)
+    </script>
+  </body>
+</html>

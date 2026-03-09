@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue中的el和data的两种写法</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app-el-1-data-1">
+      <h1>{{content}}</h1>
+    </div>
+    <div id="app-el-2-data-2-es5">
+      <h1>{{content}}</h1>
+    </div>
+    <div id="app-el-2-data-2-es6">
+      <h1>{{content}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      /**
+       * Vue 实例配置核心指南：el 与 data 的多种写法
+       *
+       * 1. el 的两种写法：
+       *    - 方式一：在 new Vue 时直接配置 `el` 属性。
+       *    - 方式二：先创建实例，随后通过 `vm.$mount('#app')` 手动挂载。
+       *
+       * 2. data 的两种写法：
+       *    - 对象式：`data: { ... }`，简单直观。
+       *    - 函数式：`data() { return { ... } }`，组件化开发中的必须写法。
+       *
+       * 3. 核心注意事项：
+       *    - 根实例（new Vue）：对象式或函数式均可。
+       *    - Vue 组件：data 必须写成函数式，否则 Vue 会报错（为了保证组件复用时数据的独立性）。
+       *    - 关于 this：在 data 函数中，务必使用普通函数写法，避免使用箭头函数，否则 this 将指向 Window 而非 Vue 实例。
+       */
+
+      // 验证vue是否被引入
+      console.log(Vue)
+      // 设置为 false 以阻止 vue 在启动时生成生产提示。
+      Vue.config.productionTip = false
+
+      /**
+       * 场景一：el 的第一种写法 + data 的第一种写法 (对象式)
+       */
+      new Vue({
+        el: '#app-el-1-data-1',
+        data: {
+          content: 'data的第一种写法',
+        },
+      })
+
+      /**
+       * 场景二：el 的第二种写法 + data 的第二种写法 (函数式) - ES5 语法版本
+       * 特点：使用普通函数声明 data，this 正确指向当前 Vue 实例。
+       */
+      const vmEl2Data2Es5 = new Vue({
+        // 暂不配置 el
+        data: function () {
+          // 这里的this指向的是当前Vue实例
+          console.log('ES5 data this:', this)
+          return {
+            content:
+              'data的第二种写法 - es5语法版本(为了确保this指向当前Vue实例，推荐普通函数写法，不推荐箭头函数写法)',
+          }
+        },
+      })
+      // 使用 $mount 延迟挂载容器
+      vmEl2Data2Es5.$mount('#app-el-2-data-2-es5')
+
+      /**
+       * 场景三：el 的第二种写法 + data 的第二种写法 (函数式) - ES6 语法版本
+       * 注意：使用箭头函数会导致 this 丢失（指向 Window），实际开发中应避免此写法。
+       */
+      const vmEl2Data2Es6 = new Vue({
+        data: () => {
+          // 这里的this指向的不是当前Vue实例, 指向的是 Window 对象
+          console.log('ES6 arrow this:', this)
+          return {
+            content:
+              'data的第二种写法 - es6语法版本(为了确保this指向当前Vue实例，推荐普通函数写法，不推荐箭头函数写法)',
+          }
+        },
+      })
+      // 使用 $mount 手动挂载
+      vmEl2Data2Es6.$mount('#app-el-2-data-2-es6')
+    </script>
+  </body>
+</html>

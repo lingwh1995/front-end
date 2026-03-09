@@ -11,6 +11,7 @@
     <div id="app">
       <h1>vue的数据动态绑定指令-单向绑定(v-bind)和双向绑定(v-model)对比</h1>
 
+      <!-- 场景一：单向绑定演示 -->
       <h2>单向绑定(v-bind)语法</h2>
       <h2>
         vue的数据动态绑定指令-单向绑定语法#v-bind指令:
@@ -21,6 +22,7 @@
         <a :href="vBindContent" target="_blank">跳转到百度</a>
       </h2>
 
+      <!-- 场景二：双向绑定演示 -->
       <h2>双向绑定(v-model)语法</h2>
       <h2>
         vue的数据动态绑定指令-双向绑定语法#v-model指令:
@@ -33,27 +35,35 @@
     </div>
 
     <script type="text/javascript">
-      // 验证vue是够被引入，直接打印Vue这个变量
+      /**
+       * Vue 数据绑定指令深度对比指南 (v-bind vs v-model)
+       *
+       * 1. v-bind 指令 (单向数据绑定)：
+       *    - 数据流向：数据仅能从 Vue 实例的 data 流向页面（Data -> View）。
+       *    - 使用场景：主要用于展示类元素（如 h1, span, div）或非交互类属性（如 href, src, title）。
+       *
+       * 2. v-model 指令 (双向数据绑定)：
+       *    - 数据流向：数据既可从 data 流向页面，也可从页面流向 data（Data <-> View）。
+       *    - 使用场景：主要用于表单类元素（input, select, textarea）等输入类元素。
+       *
+       * 3. 核心差异总结：
+       *    - 捕获能力：v-model 能够捕获用户输入并实时同步至 data，其本质是收集元素的 value 值。
+       *    - 语法糖：v-model 默认关联 value 属性，因此 `v-model:value` 可简写为 `v-model`。
+       */
+
+      // 验证vue是否被引入，直接打印Vue这个变量
       console.log(Vue)
+
       // 设置为 false 以阻止 vue 在启动时生成生产提示。
       Vue.config.productionTip = false
-
-      /**
-       * v-bind 指令
-       *   单向数据绑定：数据仅能从 Vue 实例的 data 流向页面
-       *   使用场景：一般用于展示类元素，例如 <h1></h1>
-       *
-       * v-model 指令
-       *   双向数据绑定：数据既可从 Vue 实例的 data 流向页面，也可从页面流向 Vue 实例的 data
-       *   使用场景：一般用于表单类元素（input、select）/输入类元素；
-       *            因输入类元素可捕获用户输入，v-model 默认收集的是元素的 value 值。
-       */
 
       // 创建vue实例
       new Vue({
         el: '#app',
         data: {
+          // 供单向绑定使用的 URL
           vBindContent: 'https://www.baidu.com',
+          // 供双向绑定使用的文本
           vModelContent: '测试双向数据绑定~',
         },
       })
