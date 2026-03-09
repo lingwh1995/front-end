@@ -1,30 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>常用bom对象-navigator对象</title>
-  <script>
-    /**
-     * Navigator代表的当前浏览器的信息，通过该对象可以来识别不同的浏览器，由于历史原因，Navigator对象中的大部分属性都已经不能帮助我们识别浏览器了，一
-     * 般我们只会使用userAgent来判断浏览器的信息，userAgent是一个字符串，这个字符串中包含有用来描述浏览器信息的内容，不同的浏览器会有不同的userAgent
-     */ 
-    const ua = navigator.userAgent
-    console.log(ua)
-    if (/firefox/i.test(ua)) {
-      alert("火狐浏览器")
-    } else if (/chrome/i.test(ua)) {
-      alert("谷歌浏览器")
-    } else if (/msie/i.test(ua)) {
-      alert("IE5-IE10浏览器")
-    } else if ("ActiveXObject" in window) {
-      alert("IE11浏览器")
-    }else {
-      alert("未知浏览器")
-    }
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常用bom对象-navigator对象</title>
+    <script>
+      /**
+       * Navigator 对象核心指南
+       *
+       * 1. 基本定义：
+       *    - Navigator 代表当前浏览器的信息，通过该对象可以识别不同的浏览器。
+       *
+       * 2. 核心属性 userAgent：
+       *    - 历史原因：Navigator 对象中的大部分属性由于伪造或标准变更，已无法准确识别浏览器。
+       *    - 常用手段：目前一般仅使用 userAgent 来判断浏览器信息。
+       *    - 字符串构成：包含描述浏览器名称、版本、操作系统等信息的字符串，不同浏览器各不相同。
+       *
+       * 3. 识别逻辑：
+       *    - 通过正则表达式（如 /firefox/i）检测 userAgent 字符串中的关键词来区分内核。
+       */
+
+      const ua = navigator.userAgent
+      console.log(ua)
+
+      /**
+       * 浏览器类型检测逻辑：
+       *
+       * - Firefox: 包含 "firefox" 关键词。
+       * - Chrome: 包含 "chrome" 关键词。
+       * - IE5-IE10: 包含 "msie" 关键词。
+       * - IE11: 特有标志，通过判断 "ActiveXObject" 是否在 window 中来识别。
+       */
+      if (/firefox/i.test(ua)) {
+        alert('火狐浏览器')
+      } else if (/chrome/i.test(ua)) {
+        alert('谷歌浏览器')
+      } else if (/msie/i.test(ua)) {
+        alert('IE5-IE10浏览器')
+      } else if ('ActiveXObject' in window) {
+        alert('IE11浏览器')
+      } else {
+        alert('未知浏览器')
+      }
+    </script>
+  </head>
+  <body></body>
 </html>

@@ -1,39 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>函数重载</title>
-  <script>
-    //JS不支持函数重载,不过可以通过一定的方法实现函数重载
-    
-    //ES5实现函数重载
-    function sum(a,b) {
-      if(arguments.length === 1) {
-        return a
-      } else if(arguments.length === 2) {
-        return a + b
-      }
-    }
-    //调用函数
-    console.log(sum(1))
-    console.log(sum(1,2))
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数重载</title>
+    <script>
+      /**
+       * JavaScript 函数重载 (Function Overloading) 实现指南
+       *
+       * 1. 基本定义：
+       *    - 函数重载是指允许存在多个同名函数，但它们的参数个数或类型不同。
+       *
+       * 2. 核心特征：
+       *    - 原生不支持：JS 不支持传统的函数重载，后定义的同名函数会直接覆盖前面的。
+       *    - 模拟实现：开发者可以通过检查 arguments 的长度或参数类型来手动模拟重载效果。
+       *
+       * 3. 实现方案：
+       *    - ES5：利用函数内部的 arguments 类数组对象进行逻辑分支判断。
+       *    - ES6+：利用剩余参数 (...args) 获取参数数组，使逻辑更清晰。
+       */
 
+      // JS不支持函数重载,不过可以通过一定的方法实现函数重载
 
-    //E6S6实现函数重载
-    const add = (...args) => {
-      if(args.length === 1) {
-        return args[0]
-      } else if(args.length === 2) {
-        return args[0] + args[1]
+      /**
+       * 方式一：ES5 实现函数重载
+       * 原理：通过 arguments.length 判断传入实参的个数。
+       */
+      function sum(a, b) {
+        if (arguments.length === 1) {
+          return a
+        } else if (arguments.length === 2) {
+          return a + b
+        }
       }
-    }
-    //调用函数
-    console.log(add(1))
-    console.log(add(1,2))
-  </script>
-</head>
-<body>
-  
-</body>
+      // 调用函数：演示不同参数下的不同返回
+      console.log(sum(1))
+      console.log(sum(1, 2))
+
+      /**
+       * 方式二：ES6 实现函数重载
+       * 原理：利用解构或剩余参数 (...args) 收集参数，并配合数组长度判断。
+       */
+      const add = (...args) => {
+        if (args.length === 1) {
+          return args[0]
+        } else if (args.length === 2) {
+          return args[0] + args[1]
+        }
+      }
+      // 调用函数：演示不同参数下的不同返回
+      console.log(add(1))
+      console.log(add(1, 2))
+    </script>
+  </head>
+  <body></body>
 </html>

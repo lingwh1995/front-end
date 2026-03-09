@@ -1,22 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组的长度</title>
-  <script type="text/javascript">
-    const colors = new Array('red','yellow','blue')
-    console.log(colors.length)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的长度特性</title>
+    <script type="text/javascript">
+      const colors = new Array('red', 'yellow', 'blue')
+      
+      /**
+       * 1. 读取长度
+       * - 返回数组中元素的个数。
+       */
+      console.log(colors.length) // 3
 
-    colors.length = 4
-    console.log(colors)
+      /**
+       * 2. 扩容操作
+       * - 手动增加 length 的值，数组会产生“空位”（empty slots）。
+       */
+      colors.length = 4
+      console.log(colors) // ["red", "yellow", "blue", empty]
 
-    //直接将数组的长度-1可以巧妙的删除数组中最后一个元素
-    colors.length = 2
-    console.log(colors)
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 3. 截断操作 (技巧)
+       * - 直接将数组的长度 -1，可以巧妙地删除数组中最后一个元素。
+       * - 如果 length 设置得比当前元素个数小，超出的元素会被永久删除。
+       */
+      colors.length = 2
+      console.log(colors) // ["red", "yellow"]
+    </script>
+  </head>
+  <body></body>
 </html>

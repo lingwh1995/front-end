@@ -1,40 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>获取时分秒</title>
-  <script>
-    /**
-     * 获取时分秒
-     */ 
-    const date = new Date()
-    //获取24进制的时间
-    const hours24 = date.getHours()
-    const hours12 = date.getHours() - 12
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-    const nowTime24 = "现在时间是[24小时制]：" + hours24 + ":" + minutes + ":" + seconds
-    const nowTime12 = "现在时间是[12小时制]：" + hours12 + ":" + minutes + ":" + seconds
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取时分秒</title>
+    <script>
+      /**
+       * Date 对象时间获取指南
+       *
+       * 1. 核心方法：
+       *    - getHours(): 获取当前小时数（0-23）。
+       *    - getMinutes(): 获取当前分钟数（0-59）。
+       *    - getSeconds(): 获取当前秒数（0-59）。
+       *
+       * 2. 时间进制转换：
+       *    - 24小时制：直接使用 getHours() 的返回值。
+       *    - 12小时制：通过 getHours() 减去 12 获得（注：本示例未处理凌晨或中午的特殊边界）。
+       *
+       * 3. 注意事项：
+       *    - 本段代码中的 date 对象在页面加载时即固定，显示的为静态时间。
+       *    - 字符串拼接用于格式化输出最终的时间文本。
+       */
 
-    window.onload = () => {
-      //显示当前时间[24小时制]
-      document.querySelector('#btn-24').onclick = () => {
-        document.querySelector('#box').innerHTML = nowTime24
-      }
+      // 获取时分秒
+      const date = new Date()
 
-      //显示当前时间[12小时制]
-      document.querySelector('#btn-12').onclick = () => {
-        document.querySelector('#box').innerHTML = nowTime12
+      // 获取24进制的时间
+      const hours24 = date.getHours()
+      // 获取12进制的时间
+      const hours12 = date.getHours() - 12
+      const minutes = date.getMinutes()
+      const seconds = date.getSeconds()
+
+      // 格式化时间字符串
+      const nowTime24 = '现在时间是[24小时制]：' + hours24 + ':' + minutes + ':' + seconds
+      const nowTime12 = '现在时间是[12小时制]：' + hours12 + ':' + minutes + ':' + seconds
+
+      window.onload = () => {
+        /**
+         * 场景一：显示当前时间 [24小时制]
+         * 逻辑：点击按钮后，将预设的 24 小时制字符串写入 #box 元素。
+         */
+        document.querySelector('#btn-24').onclick = () => {
+          document.querySelector('#box').innerHTML = nowTime24
+        }
+
+        /**
+         * 场景二：显示当前时间 [12小时制]
+         * 逻辑：点击按钮后，将预设的 12 小时制字符串写入 #box 元素。
+         */
+        document.querySelector('#btn-12').onclick = () => {
+          document.querySelector('#box').innerHTML = nowTime12
+        }
       }
-    }
-  </script>
-</head>
-<body>
-  <div id="box">
-    点击按钮展示当前时间
-  </div>
-  <input type="button" name="" value="设置时间[24小时制]" id="btn-24">
-  <input type="button" name="" value="设置时间[12小时制]" id="btn-12">
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="box">点击按钮展示当前时间</div>
+    <input type="button" name="" value="设置时间[24小时制]" id="btn-24" />
+    <input type="button" name="" value="设置时间[12小时制]" id="btn-12" />
+  </body>
 </html>

@@ -1,14 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内置对象screen</title>
-  <script>
-    console.log(screen.width);
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内置对象-screen</title>
+    <script>
+      /**
+       * 内置对象 screen (屏幕对象)
+       *
+       * 1. 功能：包含有关用户屏幕的信息，常用于获取显示器的分辨率和可用色彩等。
+       * 2. 核心属性：
+       *    - width: 返回屏幕的总宽度（像素）。
+       *    - height: 返回屏幕的总高度（像素）。
+       *    - availWidth: 返回浏览器窗口在屏幕上可使用的宽度（排除任务栏等）。
+       *    - availHeight: 返回浏览器窗口在屏幕上可使用的高度（排除任务栏等）。
+       * 3. 与 window 的区别：screen 获取的是物理显示器的信息，而 window 获取的是当前浏览器视口的信息。
+       */
+      console.log(`屏幕总宽度: ${screen.width}`)
+      console.log(`屏幕总高度: ${screen.height}`)
+      console.log(`屏幕可用高度 (排除任务栏): ${screen.availHeight}`)
+    </script>
+  </head>
+  <body></body>
 </html>

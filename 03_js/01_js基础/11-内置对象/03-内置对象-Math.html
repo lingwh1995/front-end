@@ -1,49 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内置对象-Math</title>
-  <script>
-    console.log(`圆周率Π：${Math.PI}`)
-    console.log(`绝对值：${Math.abs(-1)}`)
-    console.log(`向上取整：${Math.ceil(1.1)}`)
-    console.log(`向上取整：${Math.ceil(1.9)}`)
-    console.log(`向下取整：${Math.floor(1.1)}`)
-    console.log(`向下取整：${Math.floor(1.9)}`)
-    console.log(`向下取整：${Math.floor(1.9)}`)
-    console.log(`四舍五入并取整：${Math.round(1.9)}`)
-    console.log(`四舍五入并取整：${Math.round(1.4)}`)
-    console.log(`四舍五入并取整：${Math.round(0.4)}`)
-    console.log(`四舍五入并取整：${Math.round(0.6)}`)
-    console.log(`生成0-1之间随机数：${Math.random()}`)
-    console.log(`生成0-10之间随机数(不包括10)：${Math.round(Math.random() * 10)}`)
-    console.log(`生成0-10之间随机数(包括10)：${Math.round(Math.random() * 10) + 1}`)
-    console.log(`求多个数中最大值：${Math.max(10,20,30)}`)
-    console.log(`求多个数中最小值：${Math.min(10,20,30)}`)
-    console.log(`求x的y次幂：${Math.pow(2,3)}`)
-    console.log(`求x的开平方(平方根)：${Math.sqrt(16)}`)
-    const price = 3.1415
-    console.log(typeof(price));
-    console.log(`保留执行位数的小数，在保留的同时会四舍五入：${price.toFixed(2)}`)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内置对象-Math</title>
+    <script>
+      /**
+       * 内置对象 Math 的常用方法汇总
+       *
+       * 1. 基础常数与数值转换：包含 PI 圆周率及 abs 绝对值。
+       * 2. 取整全家桶：
+       *    - ceil: 向上取整（往大的数靠）。
+       *    - floor: 向下取整（往小的数靠）。
+       *    - round: 标准四舍五入。
+       * 3. 随机数与极值：random 生成 0-1 之间的浮点数；max/min 寻找极值。
+       * 4. 幂运算：pow 处理次方，sqrt 处理开方。
+       */
 
-    /**
-     * toFixed(n)的底层原理
-     */
-    const tofixed = (num, n) => {
-      // 要取多少位小数，先乘10的多少次方
-      num *= Math.pow(10, n);
-      // 再四舍五入取整，因为toFixed有四舍五入
-      num = Math.round(num);
-      // 再除以10的多少次方就是保留多少位的小数了
-      num /= Math.pow(10, n);
-      console.log(num);
-      return num;
-    }
-    tofixed(Math.PI, 2);
-  </script>
-</head>
-<body>
-  
-</body>
+      // --- 1. 常数与绝对值 ---
+      console.log(`圆周率Π：${Math.PI}`)
+      console.log(`绝对值：${Math.abs(-1)}`)
+
+      // --- 2. 取整逻辑对比 ---
+      console.log(`向上取整 (1.1)：${Math.ceil(1.1)}`)
+      console.log(`向上取整 (1.9)：${Math.ceil(1.9)}`)
+      console.log(`向下取整 (1.1)：${Math.floor(1.1)}`)
+      console.log(`向下取整 (1.9)：${Math.floor(1.9)}`)
+
+      // --- 3. 四舍五入 ---
+      console.log(`四舍五入并取整 (1.9)：${Math.round(1.9)}`)
+      console.log(`四舍五入并取整 (1.4)：${Math.round(1.4)}`)
+      console.log(`四舍五入并取整 (0.6)：${Math.round(0.6)}`)
+
+      // --- 4. 随机数处理 ---
+      console.log(`生成 0-1 之间随机数：${Math.random()}`)
+      console.log(`生成 0-10 之间随机数 (不包括 10)：${Math.round(Math.random() * 10)}`)
+      console.log(`生成 0-10 之间随机数 (包括 10)：${Math.round(Math.random() * 10) + 1}`)
+
+      // --- 5. 数学运算 ---
+      console.log(`求多个数中最大值：${Math.max(10, 20, 30)}`)
+      console.log(`求多个数中最小值：${Math.min(10, 20, 30)}`)
+      console.log(`求 x 的 y 次幂 (2^3)：${Math.pow(2, 3)}`)
+      console.log(`求 x 的开平方 (√16)：${Math.sqrt(16)}`)
+
+      // --- 6. 精度保留 (toFixed) ---
+      const price = 3.1415
+      console.log('price 的类型:', typeof price)
+      // 注意：toFixed 返回的是字符串类型
+      console.log(`保留 2 位小数 (四舍五入)：${price.toFixed(2)}`)
+
+      /**
+       * toFixed(n) 的底层逻辑模拟实现
+       *
+       * 1. 放大倍数：将原数乘以 10 的 n 次方，将要保留的小数位移到整数部分。
+       * 2. 四舍五入：通过 Math.round 对放大的数值进行取整。
+       * 3. 缩小还原：再除以 10 的 n 次方，将小数点移回原位。
+       */
+      const tofixed = (num, n) => {
+        // 第一步：要取多少位小数，先乘 10 的 n 次方
+        num *= Math.pow(10, n)
+        // 第二步：再四舍五入取整
+        num = Math.round(num)
+        // 第三步：再除以 10 的 n 次方还原
+        num /= Math.pow(10, n)
+        console.log('手动模拟 toFixed 结果:', num)
+        return num
+      }
+      tofixed(Math.PI, 2)
+    </script>
+  </head>
+  <body></body>
 </html>

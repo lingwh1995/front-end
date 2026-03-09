@@ -1,36 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>跨函数开启和关闭定时器-方式一</title>
-  <script>
-    /**
-     * JS跨函数开启和关闭定时器-方式一 : 定义一个变量用户保存定时器变量
-     */ 
-    window.onload = () => {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跨函数开启和关闭定时器-方式一</title>
+    <script>
       /**
-       * 开启定时器
-       */ 
-      let interval = null
-      document.querySelectorAll('button')[0].addEventListener('click',() => {
-        interval = setInterval(()=> {
-          console.log('定时器开启了')
-        },1000)
-      })
+       * JS 跨函数开启和关闭定时器 - 方式一
+       *
+       * 1. 实现原理：
+       *    - 在外部作用域（如 window.onload 内部，监听器外部）定义一个变量用于保存定时器 ID。
+       *    - 确保多个匿名函数或监听器能够通过作用域链访问到同一个变量。
+       *
+       * 2. 注意事项：
+       *    - 定时器变量初始建议设为 null。
+       *    - 连续多次点击“开启”会导致产生多个定时器实例，而变量只能保存最后一个 ID，可能引发内存泄漏。
+       */
+      window.onload = () => {
+        // 定义一个变量用户保存定时器变量
+        let interval = null
 
-      /**
-       * 关闭定时器
-       */ 
-      document.querySelectorAll('button')[1].addEventListener('click',() => {
-        console.log('定时器关闭了')
-        clearInterval(interval)
-      })
-    }
-  </script>
-</head>
-<body>
-  <button>开启定时器</button>
-  <button>关闭定时器</button>
-</body>
+        /**
+         * 场景：开启定时器
+         *
+         * 功能：将定时器的引用赋值给外部变量 interval，以便其他函数调用。
+         */
+        document.querySelectorAll('button')[0].addEventListener('click', () => {
+          interval = setInterval(() => {
+            console.log('定时器开启了')
+          }, 1000)
+        })
+
+        /**
+         * 场景：关闭定时器
+         *
+         * 功能：通过访问外部变量 interval 获取 ID，并执行清除操作。
+         */
+        document.querySelectorAll('button')[1].addEventListener('click', () => {
+          console.log('定时器关闭了')
+          clearInterval(interval)
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <button>开启定时器</button>
+    <button>关闭定时器</button>
+  </body>
 </html>

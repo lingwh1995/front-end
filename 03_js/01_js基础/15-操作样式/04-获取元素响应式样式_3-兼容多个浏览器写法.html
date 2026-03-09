@@ -1,49 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>获取元素响应式样式_3-兼容多个浏览器写法</title>
-  <style>
-    /**
-     * currentStyle只支持IE浏览器
-     */
-
-    /* 普通样式 */
-    .box {
-      width: 200px;
-      height: 200px;
-      background-color: gold;
-      border: 1px solid green !important;
-    }
-  </style>
-  <script>
-    /**
-     * 获取元素样式兼容性写法
-     */ 
-    const getStyle = (obj,cssPropertity) => {
-      if (obj.currentStyle) {
-        return obj.currentStyle[cssPropertity];
-      }else {
-        return getComputedStyle(obj)[cssPropertity];
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取元素响应式样式_3-兼容多个浏览器写法</title>
+    <style>
+      /* 普通样式 */
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: gold;
+        border: 1px solid green !important;
       }
-    }
-
-
-    window.onload = () => {
-      /* 
-       * 兼容性写法获取元素样式
+    </style>
+    <script>
+      /**
+       * 样式说明及限制：
+       *
+       * 1. 兼容性备注：
+       *    - currentStyle 只支持 IE 浏览器。
+       *
+       * 2. 盒子模型：
+       *    - 定义了基本的宽高、背景色及带有 !important 的边框。
        */
-      const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
-      readNormalStyleBtn.addEventListener('click',()=> {
-        const box = document.querySelector('.box')
-        alert(`宽度:${getStyle(box,'width')}, 高度:${getStyle(box,'height')}, 背景色:${getStyle(box,'backgroundColor')}`)
-      })
-    }
-  </script>
-</head>
-<body>
-  <input type="button" value="兼容性写法获取元素样式"/>
-  <div class="box"></div>
-</body>
+
+      /**
+       * 获取元素样式兼容性写法 (封装函数)
+       *
+       * 1. 设计思路：
+       *    - 优先判断是否存在 currentStyle 属性（针对 IE 浏览器）。
+       *    - 如果不存在，则使用标准的 getComputedStyle 方法（针对 Chrome、Firefox 等现代浏览器）。
+       *
+       * 2. 参数说明：
+       *    - obj: 需要获取样式的 DOM 对象。
+       *    - cssPropertity: 需要读取的 CSS 属性名（字符串形式）。
+       *
+       * 3. 返回值：
+       *    - 返回对应属性的最终计算样式值。
+       */
+      const getStyle = (obj, cssPropertity) => {
+        if (obj.currentStyle) {
+          return obj.currentStyle[cssPropertity]
+        } else {
+          return getComputedStyle(obj)[cssPropertity]
+        }
+      }
+
+      window.onload = () => {
+        /**
+         * 场景：兼容性写法获取元素样式
+         *
+         * 1. 调用方式：
+         *    - 通过自定义函数 getStyle 统一调用，屏蔽浏览器底层差异。
+         *
+         * 2. 注意事项：
+         *    - 传入的属性名在不同浏览器中表现基本一致，但读取复合属性（如 border）时结果可能略有不同。
+         */
+        const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
+        readNormalStyleBtn.addEventListener('click', () => {
+          const box = document.querySelector('.box')
+          alert(
+            `宽度:${getStyle(box, 'width')}, 高度:${getStyle(box, 'height')}, 背景色:${getStyle(box, 'backgroundColor')}`
+          )
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="兼容性写法获取元素样式" />
+    <div class="box"></div>
+  </body>
 </html>

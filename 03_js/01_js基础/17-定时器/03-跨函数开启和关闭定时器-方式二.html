@@ -1,52 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>跨函数开启和关闭定时器-方式二</title>
-  <style>
-    .card {
-      width: 200px;
-      height: 200px;
-      line-height: 200px;
-      background-color: gray;
-      font-size: 150px;
-      text-align: center;
-    }
-  </style>
-  <script>
-    /**
-     * JS跨函数开启和关闭定时器-方式二 : 把定时器变量挂在dom对象上(也可以挂在window对象上，但是这样很容易引起全局变量污染)
-     */ 
-    window.onload = () => {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跨函数开启和关闭定时器-方式二</title>
+    <style>
+      .card {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        background-color: gray;
+        font-size: 150px;
+        text-align: center;
+      }
+    </style>
+    <script>
       /**
-       * 开始倒计时
+       * JS 跨函数开启和关闭定时器 - 方式二
+       *
+       * 1. 实现原理：
+       *    - 将定时器 ID 作为一个自定义属性挂载到 DOM 对象上（本例中为 .card 元素）。
+       *    - 这种方式可以避免在 window 对象上创建全局变量，减少全局变量污染。
+       *
+       * 2. 核心逻辑：
+       *    - 开启时：获取定时器 ID 并存储在 `dom.intervalId` 中。
+       *    - 关闭时：直接从该 DOM 对象中读取存储的 ID 并执行 `clearInterval`。
+       *
+       * 3. 适用场景：
+       *    - 当定时器逻辑与特定的 UI 元素（如倒计时卡片、轮播图）强绑定时，这种写法非常直观。
        */
-      document.querySelectorAll('button')[0].addEventListener('click',() => {
-        let number = 99
-        //获取card元素
-        const card = document.querySelector('.card')
-        const intervalId = setInterval(()=> {
+      window.onload = () => {
+        /**
+         * 场景：开始倒计时
+         *
+         * 1. 操作流程：
+         *    - 初始化计数变量 number。
+         *    - 启动 setInterval 并将返回的 ID 绑定到 card 元素对象上。
+         */
+        document.querySelectorAll('button')[0].addEventListener('click', () => {
+          let number = 99
+          // 获取card元素
           const card = document.querySelector('.card')
-          card.innerText = number--
-        },1000)
-        card.intervalId = intervalId
-      })
+          const intervalId = setInterval(() => {
+            const card = document.querySelector('.card')
+            card.innerText = number--
+          }, 1000)
+          card.intervalId = intervalId
+        })
 
-      /**
-       * 停止倒计时
-       */ 
-      document.querySelectorAll('button')[1].addEventListener('click',() => {
-        //获取card元素
-        const card = document.querySelector('.card')
-        clearInterval(card.intervalId)
-      })
-    }
-  </script>
-</head>
-<body>
-  <button>开始倒计时</button>
-  <button>停止倒计时</button>
-  <div class="card"></div>
-</body>
+        /**
+         * 场景：停止倒计时
+         *
+         * 1. 操作流程：
+         *    - 从 card 元素中获取之前存储的 intervalId。
+         *    - 调用 clearInterval 停止定时器。
+         */
+        document.querySelectorAll('button')[1].addEventListener('click', () => {
+          // 获取card元素
+          const card = document.querySelector('.card')
+          clearInterval(card.intervalId)
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <button>开始倒计时</button>
+    <button>停止倒计时</button>
+    <div class="card"></div>
+  </body>
 </html>

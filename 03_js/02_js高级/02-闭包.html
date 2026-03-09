@@ -1,26 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS闭包</title>
-  <script>
-    /**
-     * 闭包可以解决函数外无法访问函数内部的局部变量的问题，是函数外部访问内部局部变量的桥梁
-     * 原理：闭包使得函数内部的变量长期在内存中驻扎了，所以外部函数就可以访问了
-     * 缺点：容易造成内存泄露
-     */
-    function fun() {
-      const i = 10
-      return function () {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 闭包</title>
+    <script>
+      /**
+       * JavaScript 闭包 (Closure) 核心指南
+       *
+       * 1. 基本定义：
+       *    - 闭包是指有权访问另一个函数作用域中变量的函数。
+       *    - 它是连接函数外部与内部局部变量的桥梁，解决了函数外无法直接访问内部变量的问题。
+       *
+       * 2. 实现原理：
+       *    - 闭包使得函数内部的变量长期在内存中驻扎（不会在外部函数执行完后立即被回收）。
+       *    - 内部函数持有对外部函数作用域的引用，从而实现了数据的持久化。
+       *
+       * 3. 优缺点分析：
+       *    - 优点：可以读取函数内部的变量；让这些变量的值始终保持在内存中。
+       *    - 缺点：由于变量不会被自动销毁，消耗内存，使用不当容易造成内存泄漏。
+       */
+      function fun() {
+        const i = 10
+        /**
+         * 场景：通过返回内部函数创建闭包
+         *
+         * 逻辑：
+         * - 内部匿名函数访问了外部函数的局部变量 i。
+         * - 当 fun 执行完毕，由于返回的函数仍在使用 i，i 将继续保留在内存中。
+         */
+        return function () {
           return i
+        }
       }
-    }
-    const j = fun()
-    console.log(j())
-  </script>
-</head>
-<body>
-  
-</body>
+
+      // 执行外部函数，获取闭包函数
+      const j = fun()
+      // 调用闭包函数，成功访问到 fun 内部的变量 i
+      console.log(j())
+    </script>
+  </head>
+  <body></body>
 </html>

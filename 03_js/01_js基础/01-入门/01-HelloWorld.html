@@ -1,21 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelloWorld</title>
-  <script type="text/javascript">
-    /* 输出hello world方式一：弹窗输出 */
-    alert('hello world~');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelloWorld</title>
+    <script type="text/javascript">
+      /**
+       * JavaScript 基础输出方式指南
+       * 
+       * 1. 常用输出途径：
+       *    - 浏览器弹窗（用于简单调试或提示）。
+       *    - 文档写入（直接操作 HTML 流）。
+       *    - 浏览器控制台（最常用的开发者调试工具）。
+       *
+       * 2. 注意事项：
+       *    - document.write 会在页面加载完成后重新调用时覆盖整个页面的内容。
+       *    - console.log 是非阻塞的，而 alert 会暂停脚本的运行。
+       */
 
-    /* 输出hello world方式一：在文档中输出 */
-    document.write('hello world~');
+      /**
+       * 输出 hello world 方式一：弹窗输出
+       * 特点：阻断式交互，点击确定后脚本继续执行。
+       */
+      alert('hello world~')
 
-    /* 输出hello world方式一：在控制台中输出 */
-    console.log('hello world');  
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 输出 hello world 方式一：在文档中输出
+       * 特点：直接将内容渲染到浏览器的 HTML 文档中。
+       */
+      document.write('hello world~')
+
+      /**
+       * 输出 hello world 方式一：在控制台中输出
+       * 特点：开发者工具查看，不影响用户页面感知，性能开销小。
+       */
+      console.log('hello world')
+    </script>
+  </head>
+  <body></body>
 </html>

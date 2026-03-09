@@ -1,40 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>窗口事件</title>
-  <script>
-    /**
-     * 当窗口失去焦点时，输出 窗口失去焦点
-     */
-    window.onblur = () => {
-      console.log('窗口失去焦点')
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>窗口事件</title>
+    <script>
+      /**
+       * 窗口状态监控事件
+       */
 
-    /**
-     * 当窗口获取焦点时，输出 窗口获取焦点
-     */
-    window.onfocus = () => {
-      console.log('窗口获取焦点')
-    }
+      /**
+       * 失去焦点事件
+       * 触发场景：用户点击了浏览器之外的其他程序，或者切换了标签页
+       */
+      window.onblur = () => {
+        console.log('窗口失去焦点')
+      }
 
-    /**
-     * 当页面文档加载完成后，输出 Hello, World
-     */
-    window.onload = () => {
-      console.log('Hello, World')
-    }
+      /**
+       * 获取焦点事件
+       * 触发场景：用户点击回当前页面，窗口重新进入活跃状态
+       */
+      window.onfocus = () => {
+        console.log('窗口获取焦点')
+      }
 
-    /**
-     * 当调整窗口大小时，输出"窗口大小正在改变"
-     */
-    window.onresize = () => {
-      console.log("窗口大小正在改变")
-    }
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 页面加载完成事件
+       * 触发场景：整个 HTML 文档及外部资源（图片、脚本等）加载完毕后
+       */
+      window.onload = () => {
+        console.log('Hello, World')
+      }
+
+      /**
+       * 窗口大小调整事件
+       * 触发场景：用户手动拖动浏览器窗口边缘改变其尺寸
+       */
+      window.onresize = () => {
+        console.log('窗口大小正在改变')
+      }
+    </script>
+  </head>
+  <body>
+    <p>打开控制台（F12），尝试切换标签页、调整窗口大小或点击外部程序查看效果。</p>
+  </body>
 </html>

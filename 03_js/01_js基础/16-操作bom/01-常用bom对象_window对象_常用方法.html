@@ -1,100 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>常用bom对象_window对象_常用方法</title>
-  <script>
-    //window常用方法: alert()-弹出框
-    // window.alert("Hello JavaScript!")
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常用bom对象_window对象_常用方法</title>
+    <script>
+      /**
+       * Window 对象常用方法指南
+       *
+       * 1. 交互对话框：
+       *    - alert(): 弹出警告框。
+       *    - confirm(): 确认框，点击确定返回 true，取消返回 false。
+       *    - prompt(): 输入框，返回用户输入的字符串。
+       *
+       * 2. 定时器管理：
+       *    - setInterval / clearInterval: 循环执行。
+       *    - setTimeout / clearTimeout: 单次执行。
+       *
+       * 3. 窗口控制：
+       *    - open(): 打开新窗口，支持设置 URL、目标及窗口特征。
+       *    - close(): 关闭当前窗口。
+       *    - moveTo() / resizeTo(): 调整窗口位置与大小（受浏览器安全策略限制）。
+       *
+       * 4. 生命周期事件：
+       *    - onload: HTML 结构及资源加载完成。
+       */
 
+      // window常用方法: alert()-弹出框
+      // window.alert("Hello JavaScript!")
 
-    //window常用方法: confirm()-确认框，返回值为boolean
-    //const confirm = window.confirm("你确定要退出吗？");
-    //alert(confirm)
+      // window常用方法: confirm()-确认框，返回值为boolean
+      // const confirm = window.confirm("你确定要退出吗？");
+      // alert(confirm)
 
+      // window常用方法: prompt()-输入框,返回值为用户输入的内容
+      // const prompt = window.prompt("请输入您的姓名？");
+      // alert(prompt)
 
-    //window常用方法: prompt()-输入框,返回值为用户输入的内容
-    //const prompt = window.prompt("请输入您的姓名？");
-    //alert(prompt)
-    
+      // window常用方法: onload()-html结构加载完成事件
+      // window.onload = () => {
+      //   console.log('html结构加载完成了...')
+      // }
 
-    //window常用方法: onload()-html结构加载完成事件
-    // window.onload = () => {
-    //   console.log('html结构加载完成了...')
-    // }
+      window.onload = () => {
+        let interval = null
 
-
-    window.onload = () => {
-      let interval = null
-      document.querySelectorAll('button')[0].onclick = () => {
-        //window常用方法: setInterval()-循环执行定时器方法
-        interval = window.setInterval(()=> {
-          console.log('循环执行定时器执行了')
-        },1000)
-      }
-
-      document.querySelectorAll('button')[1].onclick = () => {
-        //window常用方法: clearInterval()-清除循环执行定时器方法
-        window.clearInterval(interval)
-        console.log('清除循环执行定时器执行了')
-      }
-
-
-      let timeout = null
-      document.querySelectorAll('button')[2].onclick = () => {
-        //window常用方法: setTimeout()-单词执行定时器方法
-        timeout = window.setTimeout(()=> {
-          console.log('单词执行定时器执行了')
-        },3000)
-      }
-
-      document.querySelectorAll('button')[3].onclick = () => {
-        //window常用方法: clearTimeout()-清除单次执行定时器方法
-        window.clearTimeout(timeout)
-        console.log('清除单词执行定时器执行了')
-      }
-
-      document.querySelectorAll('button')[4].onclick = () => {
         /**
-         * window常用方法: open()-打开新的窗口
-         * open()
-         * open(url)
-         * open(url, target)
-         * open(url, target, windowFeatures)
-         */ 
-        //window.open()
-        //window.open('https://www.baidu.com')
-        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
-      }
+         * 循环执行定时器 (setInterval)
+         * 功能：按照指定的周期（毫秒）循环调用函数。
+         */
+        document.querySelectorAll('button')[0].onclick = () => {
+          interval = window.setInterval(() => {
+            console.log('循环执行定时器执行了')
+          }, 1000)
+        }
 
-      document.querySelectorAll('button')[5].onclick = () => {
-        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
-        //window常用方法: moveTo()-移动窗口位置
-        newWindow.moveTo(300, 300)
-      }
+        /**
+         * 清除循环定时器 (clearInterval)
+         * 注意：需要传入 setInterval 返回的句柄 ID。
+         */
+        document.querySelectorAll('button')[1].onclick = () => {
+          window.clearInterval(interval)
+          console.log('清除循环执行定时器执行了')
+        }
 
-      document.querySelectorAll('button')[6].onclick = () => {
-        const newWindow = window.open('https://www.baidu.com','','width=200,height=100')
-        //window常用方法: resizeTo()-设置窗口大小
-        newWindow.resizeTo(600, 600)
-      }
+        let timeout = null
 
-      document.querySelectorAll('button')[7].onclick = () => {
-        //window常用方法: close()-关闭当前窗口
-        window.close()
+        /**
+         * 单次执行定时器 (setTimeout)
+         * 功能：在指定的毫秒数后调用一次函数。
+         */
+        document.querySelectorAll('button')[2].onclick = () => {
+          timeout = window.setTimeout(() => {
+            console.log('单词执行定时器执行了')
+          }, 3000)
+        }
+
+        /**
+         * 清除单次定时器 (clearTimeout)
+         */
+        document.querySelectorAll('button')[3].onclick = () => {
+          window.clearTimeout(timeout)
+          console.log('清除单词执行定时器执行了')
+        }
+
+        /**
+         * 打开新窗口 (open)
+         * 参数详解：
+         *    - open(url)
+         *    - open(url, target)
+         *    - open(url, target, windowFeatures)
+         */
+        document.querySelectorAll('button')[4].onclick = () => {
+          // window.open()
+          // window.open('https://www.baidu.com')
+          const newWindow = window.open('https://www.baidu.com', '', 'width=200,height=100')
+        }
+
+        /**
+         * 移动窗口位置 (moveTo)
+         * 特点：将窗口移动到指定的屏幕坐标。
+         */
+        document.querySelectorAll('button')[5].onclick = () => {
+          const newWindow = window.open('https://www.baidu.com', '', 'width=200,height=100')
+          newWindow.moveTo(300, 300)
+        }
+
+        /**
+         * 设置窗口大小 (resizeTo)
+         * 特点：调整窗口到指定的宽度和高度。
+         */
+        document.querySelectorAll('button')[6].onclick = () => {
+          const newWindow = window.open('https://www.baidu.com', '', 'width=200,height=100')
+          newWindow.resizeTo(600, 600)
+        }
+
+        /**
+         * 关闭窗口 (close)
+         * 注意：在许多现代浏览器中，脚本只能关闭由脚本打开的窗口。
+         */
+        document.querySelectorAll('button')[7].onclick = () => {
+          window.close()
+        }
       }
-    }
-  </script>
-</head>
-<body>
-  <button>开启循环执行定时器(定时调用)</button>
-  <button>清除循环执行定时器(定时调用)</button>
-  <button>开启单次执行定时器(延时调用)</button>
-  <button>清除单次执行定时器(延时调用)</button><br/>
-  <button>打开新的窗口</button>
-  <button>移动新的窗口</button>
-  <button>设置窗口大小</button>
-  <button>关闭当前窗口</button>
-</body>
+    </script>
+  </head>
+  <body>
+    <button>开启循环执行定时器(定时调用)</button>
+    <button>清除循环执行定时器(定时调用)</button>
+    <button>开启单次执行定时器(延时调用)</button>
+    <button>清除单次执行定时器(延时调用)</button>
+    <br />
+    <button>打开新的窗口</button>
+    <button>移动新的窗口</button>
+    <button>设置窗口大小</button>
+    <button>关闭当前窗口</button>
+  </body>
 </html>

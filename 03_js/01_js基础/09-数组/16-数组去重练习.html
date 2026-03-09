@@ -1,22 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组去重练习</title>
-  <script>
-    const nums = [10,20,20,30,40,50]
-    let numsNew = []
-    nums.forEach((element) => {
-      if(! numsNew.includes(element)) {
-        numsNew.push(element)
-      }
-    })
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组去重练习汇总</title>
+    <script>
+      const nums = [10, 20, 20, 30, 40, 50, 10, 60]
+      console.log('原数组:', nums)
 
-    console.log(numsNew)
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 方法 1：forEach + includes (基础检查法)
+       * - 原理：手动创建新数组，逐个判断是否存在，不存在则推入。
+       * - 特点：逻辑最直观，适合初学者理解。
+       */
+      let numsNew1 = []
+      nums.forEach((element) => {
+        if (!numsNew1.includes(element)) {
+          numsNew1.push(element)
+        }
+      })
+      console.log('01-基础检查法:', numsNew1)
+      console.log('------------01------------')
+
+      /**
+       * 方法 2：Set 对象 (现代最优法)
+       * - 原理：利用 Set 数据结构“成员唯一”的特性自动去重。
+       * - 特点：代码最简洁，执行效率最高（ES6 推荐）。
+       */
+      const numsNew2 = [...new Set(nums)]
+      console.log('02-Set集合法:', numsNew2)
+      console.log('------------02------------')
+
+      /**
+       * 方法 3：filter + indexOf (声明式过滤)
+       * - 原理：筛选出那些“第一次出现的位置”等于“当前索引”的元素。
+       * - 特点：不需要创建空数组，利用数组内置方法进行链式操作。
+       */
+      const numsNew3 = nums.filter((item, index) => {
+        return nums.indexOf(item) === index
+      })
+      console.log('03-索引过滤法:', numsNew3)
+      console.log('------------03------------')
+
+      /**
+       * 方法 4：reduce (归约构建法)
+       * - 原理：将空数组作为初始值，在归约过程中不断判断并累积非重复项。
+       * - 特点：功能强大，适合在去重的同时对数据进行复杂转换。
+       */
+      const numsNew4 = nums.reduce((acc, cur) => {
+        if (!acc.includes(cur)) {
+          acc.push(cur)
+        }
+        return acc
+      }, [])
+      console.log('04-Reduce归约法:', numsNew4)
+      console.log('------------04------------')
+    </script>
+  </head>
+  <body></body>
 </html>

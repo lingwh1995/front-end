@@ -1,48 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eval函数</title>
-  <script>
-    /**
-     * 注意事项
-     *    安全问题：eval() 存在安全风险，执行不可信的字符串可能导致代码注入攻击
-     *    性能问题：eval() 会影响代码优化，执行速度较慢
-     *    调试困难：使用 eval() 的代码难以调试和维护
-     *    现代替代方案：对于 JSON 解析应使用 JSON.parse()，对于其他场景应寻找更安全的替代方案
-     */
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eval函数</title>
+    <script>
+      /**
+       * eval() 函数使用与风险指南
+       *
+       * 1. 基本定义：
+       *    - eval() 函数会将传入的字符串当作 JavaScript 代码进行解析并执行。
+       *
+       * 2. 注意事项：
+       *    - 安全问题：存在严重风险，执行不可信的字符串可能导致代码注入攻击（XSS 等）。
+       *    - 性能问题：eval() 会使 JS 引擎无法进行提前优化，导致执行速度较慢。
+       *    - 调试困难：动态执行的代码在调用堆栈中难以追踪，增加了维护成本。
+       *
+       * 3. 现代替代方案：
+       *    - 对于 JSON 解析：应统一使用 `JSON.parse()`。
+       *    - 对于动态逻辑：优先考虑使用匿名函数、对象映射或 `new Function()` 等更安全的方式。
+       */
 
-    // 1.执行数学表达式
-    const expression = "2 + 3 * 4";
-    const result = eval(expression);
-    console.log(result); // 输出: 14
-    console.log('-------------------')
+      /**
+       * 场景一：执行数学表达式
+       * 说明：直接计算字符串形式的算术题。
+       */
+      const expression = '2 + 3 * 4'
+      const result = eval(expression)
+      console.log(result) // 输出: 14
+      console.log('-------------------')
 
-    // 2.执行字符串形式的函数调用
-    const funcCall = "console.log('Hello from eval!')";
-    eval(funcCall); // 输出: Hello from eval!
-    console.log('-------------------')
+      /**
+       * 场景二：执行字符串形式的函数调用
+       * 说明：可以将一段文本直接转化为可执行的指令。
+       */
+      const funcCall = "console.log('Hello from eval!')"
+      eval(funcCall) // 输出: Hello from eval!
+      console.log('-------------------')
 
-    // 3.执行复杂的代码块
-    let codeBlock = ` let a = 5;
+      /**
+       * 场景三：执行复杂的代码块
+       * 说明：支持多行逻辑、变量声明及弹窗指令。
+       */
+      let codeBlock = ` let a = 5;
                         let b = 10;
                         let sum = a + b;
-                        console.log('Sum is: ' + sum);`;
-    eval(codeBlock) // 输出: Sum is: 15
+                        console.log('Sum is: ' + sum);`
+      eval(codeBlock) // 输出: Sum is: 15
 
-    codeBlock = "alert('xxx')"
-    eval(codeBlock)
-    console.log('-------------------')
+      codeBlock = "alert('xxx')"
+      eval(codeBlock)
+      console.log('-------------------')
 
-    // 4.处理 JSON 字符串（不推荐）
-    const jsonString = '{"name": "张三", "age": 25}';
-    const obj = eval("(" + jsonString + ")");
-    console.log(obj.name) // 输出: 张三
-    console.log('-------------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 场景四：处理 JSON 字符串（强烈不推荐）
+       * 说明：在 JSON.parse 出现之前的老旧写法。
+       * 注意：由于 JSON 格式以 {} 开头，在 eval 中会被误认为代码块，需加括号转换为表达式。
+       */
+      const jsonString = '{"name": "张三", "age": 25}'
+      const obj = eval('(' + jsonString + ')')
+      console.log(obj.name) // 输出: 张三
+      console.log('-------------------')
+    </script>
+  </head>
+  <body></body>
 </html>

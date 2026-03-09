@@ -1,47 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bind的注意事项</title>
-  <script>
-    /**
-     * bind函数的注意事项
-     *  1.bind的不可逆性，一旦函数的this被bind绑定了，再次bind该函数是不会改变this指向的。
-     *  2.bind不适合与箭头函数一起使用，箭头函数中的 this 是在定义时确定的，并且是不可改变的，因此箭头函数不适合与 bind 一起使用。
-     */
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bind 的注意事项</title>
+    <script>
+      /**
+       * bind 函数的底层限制与注意事项
+       * 
+       * 1. 不可逆性：一旦函数被 bind 绑定了 this，后续再次对其进行 bind 是无效的。
+       * 2. 箭头函数冲突：箭头函数的 this 取决于定义时的环境，bind 无法对其产生影响。
+       */
 
-    /**
-     * bind函数的注意事项1：bind的不可逆性
-     */ 
-    const person1 = { name: 'Alice' };
-    const person2 = { name: 'Bob' };
+      /**
+       * 注意事项 1：bind 的不可逆性（First Bind Wins）
+       * - 原理：bind 返回的是一个包裹原函数的闭包。第二次 bind 只是在闭包外又套了一层，
+       *   但最内层执行原函数时，依然使用的是第一次绑定的 this。
+       */
+      const person1 = { name: 'Alice' }
+      const person2 = { name: 'Bob' }
 
-    function sayHello() {
-      console.log(`Hello, my name is ${this.name}`);
-      console.log('--------------01--------------')
-    }
-    //第一次使用bind改变函数中this指向
-    const sayHelloBindFun = sayHello.bind(person1);
-    //第二次使用bind改变函数中this指向
-    const sayHelloReBindFun = sayHelloBindFun.bind(person2);
-    sayHelloReBindFun(); // 输出: Hello, my name is Alice
-
-
-    /**
-     * bind函数的注意事项2：bind不适合与箭头函数一起使用
-     */
-    const person = {
-      name: 'Alice',
-      greet: () => {
+      function sayHello() {
         console.log(`Hello, my name is ${this.name}`)
-        console.log('--------------02--------------')
+        console.log('--------------01--------------')
       }
-    }
-    const greetBindFun = person.greet.bind(person)
-    greetBindFun(); // 输出: Hello, my name is 
-  </script>
-</head>
-<body>
-</body>
+
+      // 第一次使用 bind：锁定 this 为 person1
+      const sayHelloBindFun = sayHello.bind(person1)
+
+      // 第二次尝试再次 bind：尝试改为 person2（此操作无效）
+      const sayHelloReBindFun = sayHelloBindFun.bind(person2)
+
+      sayHelloReBindFun() // 实际输出: Hello, my name is Alice
+
+      /**
+       * 注意事项 2：bind 不适合与箭头函数一起使用
+       * - 原理：箭头函数没有自己的 this。它始终“继承”自定义它时所处的词法作用域。
+       * - 结果：对箭头函数调用 bind，参数会被忽略，this 依然保持原样。
+       */
+      const person = {
+        name: 'Alice',
+        greet: () => {
+          // 这里的 this 指向全局对象（Window），而非 person
+          console.log(`Hello, my name is ${this.name}`)
+          console.log('--------------02--------------')
+        },
+      }
+
+      // 尝试用 bind 将箭头函数的 this 强行指向 person
+      const greetBindFun = person.greet.bind(person)
+
+      greetBindFun() // 实际输出: Hello, my name is （因为 window.name 通常为空）
+    </script>
+  </head>
+  <body></body>
 </html>

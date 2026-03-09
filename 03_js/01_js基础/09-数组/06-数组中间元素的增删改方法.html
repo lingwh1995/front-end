@@ -1,52 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组中间元素的增删改方法</title>
-  <script type="text/javascript">
-    let nums = [10,20,30,40,50]
-    console.log(nums)
-    console.log('------------01------------')
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组中间元素的增删改方法</title>
+    <script type="text/javascript">
+      let nums = [10, 20, 30, 40, 50]
+      console.log(nums)
+      console.log('------------01------------')
 
+      /**
+       * 1. 使用 splice() 删除元素
+       * - 功能：从数组指定位置开始删除指定个数的元素。
+       * - 返回：以数组形式返回被删除的元素。
+       * - 场景：删除数组中索引为 2 的元素。
+       */
+      console.log(nums.splice(2, 1))
+      console.log(nums)
+      console.log('------------02------------')
 
-    /**
-     * splice(): 从数组中指定位置开始删除指定个数个元素，并以数组形式返回删除的元素
-     * 删除数组中第二个位置中的元素
-     */
-    console.log(nums.splice(2,1));
-    console.log(nums)
-    console.log('------------02------------')
+      /**
+       * 2. 使用 copyWithin() 模拟删除
+       * - 原理：[].copyWithin(index, index + 1).pop()
+       * - 过程：将后面的元素向前覆盖，最后弹出多余的末尾元素。
+       * - 场景：删除数组中索引为 2 的元素。
+       */
+      nums = [10, 20, 30, 40, 50]
+      console.log(nums)
+      console.log(nums.copyWithin(2, 3).pop())
+      console.log(nums)
+      console.log('------------03------------')
 
+      /**
+       * 3. 使用 splice() 插入元素
+       * - 技巧：将 deleteCount 设置为 0。
+       * - 场景：在索引为 2 的位置插入元素 'hello'。
+       */
+      nums = [10, 20, 30, 40, 50]
+      nums.splice(2, 0, 'hello')
+      console.log(nums)
+      console.log('------------04------------')
 
-    /**
-     * copyWithin()
-     * 删除数组中第二个位置中的元素:  [].copyWithin(index, index + 1).pop()
-     */
-    nums = [10,20,30,40,50]
-    console.log(nums)
-    console.log(nums.copyWithin(2,3).pop())
-    console.log(nums)
-    console.log('------------03------------')
-
-    /**
-     * 给数组中索引为2的位置插入一个元素 hello
-     */
-    nums = [10,20,30,40,50]
-    nums.splice(2,0,'hello')
-    console.log(nums)
-    console.log('------------04------------')
-
-    /**
-    * with():会返回一个新数组，其指定索引处的值会被新值替换。
-    */
-    nums = [10,20,30,40,50]
-    console.log(nums.with(2,'XXX'))
-    console.log(nums)
-    console.log('------------05------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 4. 使用 with() 替换元素 [ES2023 新特性]
+       * - 功能：替换指定索引处的值。
+       * - 特点：【非破坏性】，会返回一个新数组，而不修改原数组。
+       */
+      nums = [10, 20, 30, 40, 50]
+      console.log(nums.with(2, 'XXX'))
+      console.log(nums) // 原数组保持不变
+      console.log('------------05------------')
+    </script>
+  </head>
+  <body></body>
 </html>

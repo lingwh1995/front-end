@@ -1,46 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>表单相关事件</title>
-  <script>
-    window.onfocus = () => {
-      const input = document.querySelector('input[name="username"]')
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单相关事件</title>
+    <script>
       /**
-       * onfocus():获取到焦点事件
+       * 页面窗口获取焦点时初始化
        */
-      input.onfocus = () => {
-        console.log('表单元素获取到了焦点')
-      }
+      window.onfocus = () => {
+        const input = document.querySelector('input[name="username"]')
 
-      /**
-       * onblur():失去焦点事件
-       */
-      input.onblur = () => {
-        console.log('表单元素失去了焦点')
-      }
+        /**
+         * 1. onfocus()：获取焦点事件
+         * 触发时机：当光标进入输入框或通过 Tab 键选中该表单元素时触发。
+         */
+        input.onfocus = () => {
+          console.log('表单元素获取到了焦点')
+        }
 
-      /**
-       * onchange():内容发生了改变事件
-       */
-      input.onchange = () => {
-        console.log('表单元素内容发生了改变')
-      }
+        /**
+         * 2. onblur()：失去焦点事件
+         * 触发时机：当光标离开输入框或用户点击了页面其他位置时触发。常用作表单验证。
+         */
+        input.onblur = () => {
+          console.log('表单元素失去了焦点')
+        }
 
-      /**
-       * oninput():获取用户输入事件
-       */
-      input.oninput = () => {
-        console.log('获取到了用户输入')
+        /**
+         * 3. onchange()：内容改变事件
+         * 触发时机：内容发生改变且元素失去焦点时触发。
+         */
+        input.onchange = () => {
+          console.log('表单元素内容发生了改变')
+        }
+
+        /**
+         * 4. oninput()：即时输入事件
+         * 触发时机：每当用户在输入框中输入、删除或粘贴内容时，会立即触发（无需等待失去焦点）。
+         */
+        input.oninput = () => {
+          console.log('获取到了用户输入')
+        }
       }
-    }
-  </script>
-</head>
-<body>
-  <form>
-    账户：<input type="text" value="" name="username"/> <br>
-  </form>
-</body>
+    </script>
+  </head>
+  <body>
+    <form>
+      账户：
+      <input type="text" value="" name="username" />
+      <br />
+    </form>
+  </body>
 </html>

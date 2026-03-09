@@ -14,11 +14,25 @@
           website: 'www.xxx.com',
         },
       }
-      // Object.keys()方法:获取指定对象中所有属性的键
+
+      /**
+       * Object.keys() 方法
+       *
+       * 1. 功能：获取指定对象中所有可枚举属性的键（key）。
+       * 2. 返回值：返回一个由属性名组成的字符串数组。
+       */
       let keys = Object.keys(target)
       console.log(keys)
 
-      // Object.defineProperty(): 为proxy对象添加属性,并代理target对象
+      /**
+       * Object.defineProperty() 方法
+       *
+       * 1. 功能：直接在一个对象上定义新属性，或修改现有属性，并返回该对象。
+       * 2. 核心用途：常用于数据劫持/代理。在此处通过 proxy 对象代理 target 对象。
+       * 3. 访问器属性：
+       *    - get()：当读取属性值时触发，返回 target 对应的值。
+       *    - set(value)：当修改属性值时触发，同步更新 target 的值。
+       */
       let proxy = {}
       Object.defineProperty(proxy, 'name', {
         get() {
@@ -30,6 +44,10 @@
           target.name = value
         },
       })
+
+      // 测试代码
+      console.log(proxy.name) // 触发 get
+      proxy.name = 'lisi' // 触发 set
     </script>
   </head>
   <body></body>

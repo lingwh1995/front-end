@@ -1,73 +1,91 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>this指向详解</title>
-</head>
-<body>
+  </head>
+  <body>
     <button id="btn">测试事件绑定中this的指向</button>
     <script type="text/javascript">
-        //1.普通函数中this指向 -> Window对象
-        let fun1 = function() {
-            console.log(this);
-            console.log('----------01---------');
+      /**
+       * 1. 普通函数中 this 指向 -> Window 对象
+       * - 原因：直接调用函数，非严格模式下默认绑定到全局。
+       */
+      let fun1 = function () {
+        console.log(this)
+        console.log('----------01---------')
+      }
+      fun1()
+
+      /**
+       * 2. 构造函数中 this 指向 -> 实例对象
+       * - 原因：使用 new 关键字时，this 被绑定到新创建的空对象。
+       */
+      function Student(name) {
+        this.name = name
+        this.sayHello = function () {
+          console.log(this)
+          console.log('----------02---------')
         }
-        fun1();
+      }
+      var student = new Student('张三')
+      student.sayHello()
 
+      /**
+       * 3. 对象方法的调用中 this 指向 -> 实例对象（该方法所属的对象）
+       * - 原因：作为对象属性调用时，this 绑定到调用该方法的对象。
+       */
+      var person = {
+        uname: '李四',
+        sayHello() {
+          console.log(this)
+          console.log('----------03---------')
+        },
+      }
+      person.sayHello()
 
-        //2.构造函数中this指向 -> 实例对象
-        function Student(name){
-            this.name = name;
-            this.sayHello = function(){
-                console.log(this);
-                console.log('----------02---------');
-            }
-        }
-        var student = new Student('张三');
-        student.sayHello();
+      /**
+       * 4. 事件绑定中 this 的指向 -> 指向绑定事件的元素
+       * - 原因：DOM 事件处理函数中，this 默认指向触发事件的元素节点。
+       */
+      var btn = document.querySelector('#btn')
+      btn.onclick = function () {
+        console.log(this)
+        console.log('----------04---------')
+      }
 
+      /**
+       * 5. 定时器中 this 的指向 -> Window
+       * - 原因：setTimeout 的回调函数是在全局作用域下由浏览器调用的。
+       */
+      setTimeout(function () {
+        console.log(this)
+        console.log('----------05---------')
+      }, 1000)
 
-        //3.对象方法的调用中this指向 -> 实例对象
-        var person = {
-            uname: '李四',
-            sayHello(){
-                console.log(this);
-                console.log('----------03---------');
-            }
-        }
-        person.sayHello();
+      /**
+       * 6. 立即执行函数（IIFE）中 this 的指向 -> Window
+       * - 原因：IIFE 是独立调用，且没有明确的宿主对象。
+       */
+      var fun2 = (function fun2() {
+        console.log(this)
+        console.log('----------06---------')
+      })()
 
-
-        //4.事件绑定中this的指向 -> 指向绑定事件的元素
-        var btn = document.querySelector('#btn');
-        btn.onclick = function (){
-            console.log(this)
-            console.log('----------04---------');
-        }
-
-
-        //5.定时器中this的指向 -> Window
-        setTimeout(function (){
-            console.log(this)
-            console.log('----------05---------');
-        },1000)
-        
-
-        //6.立即执行函数中this的指向 -> Window
-        var fun2 = function fun2() {
-            console.log(this)
-            console.log('----------06---------');
-        }();
-
-        //7.箭头函数中this指向问题
-        const fun3 = () => {
-            console.log(this)
-            console.log('----------07---------');
-        }
-        fun3()
+      /**
+       * 7. 箭头函数中 this 指向问题 -> 定义时所在作用域的 this
+       * - 特点：箭头函数没有自己的 this，它会捕获外层执行上下文的 this。
+       */
+      const fun3 = () => {
+        console.log(this)
+        console.log('----------07---------')
+      }
+      fun3()
     </script>
-</body>
+  </body>
 </html>

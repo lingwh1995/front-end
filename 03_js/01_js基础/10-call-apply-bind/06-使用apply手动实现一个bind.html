@@ -1,32 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>使用apply手动实现一个bind</title>
-  <script>
-    //自己实现一个bind()函数
-    Function.prototype.myBind = function(context, ...args) {
-      const fn = this;
-      return function(...newArgs) {
-        return fn.apply(context, args.concat(newArgs))
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用 apply 手动实现一个 bind</title>
+    <script>
+      /**
+       * 自定义 bind 函数的实现原理 (myBind)
+       *
+       * 1. 核心机制：利用闭包（Closure）保存原函数（this）和目标上下文（context）。
+       * 2. 参数处理：通过剩余参数（...args）接收预置参数，并与调用时的后续参数（...newArgs）进行合并。
+       * 3. 执行归宿：最终调用 apply 方法，将合并后的参数传入并执行原函数。
+       */
+      Function.prototype.myBind = function (context, ...args) {
+        // 这里的 this 指向当前要绑定的函数对象
+        const fn = this
+
+        // bind 必须返回一个新函数
+        return function (...newArgs) {
+          /**
+           * 重点：
+           * 使用 apply 显式更改 this 指向为 context。
+           * args.concat(newArgs) 实现了“参数预置”的功能。
+           */
+          return fn.apply(context, args.concat(newArgs))
+        }
       }
-    }
-    
-    //测试自己实现bind()函数
-    const person = {
-      name: 'Alice',
-    }
 
-    function sayHello(greeting) {
-      console.log(`${greeting}, my name is ${this.name}`)
-    }
+      /**
+       * 测试自己实现的 myBind() 函数
+       *
+       * 场景：将 sayHello 函数的 this 锁定在 person 对象上。
+       */
+      const person = {
+        name: 'Alice',
+      }
 
-    const myBindFun = sayHello.myBind(person, 'Hello')
-    myBindFun() // 输出: Hello, my name is Alice
-  </script>
-</head>
-<body>
-  
-</body>
+      function sayHello(greeting) {
+        console.log(`${greeting}, my name is ${this.name}`)
+      }
+
+      // 预置参数 'Hello'
+      const myBindFun = sayHello.myBind(person, 'Hello')
+
+      // 执行测试
+      myBindFun() // 输出: Hello, my name is Alice
+    </script>
+  </head>
+  <body></body>
 </html>

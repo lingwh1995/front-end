@@ -1,25 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>回调函数和高阶函数</title>
-  <script>
-    //回调函数
-		const plusNumer = (i)=> {
-			//注意： i++返回10,++i才返回11
-			return ++i;
-		}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>回调函数和高阶函数</title>
+    <script>
+      /**
+       * 函数进阶指南：回调函数与高阶函数
+       *
+       * 1. 核心定义：
+       *    - 回调函数 (Callback Function)：作为参数传递给另一个函数的函数。
+       *    - 高阶函数 (Higher-Order Function)：接收函数作为参数，或者将函数作为返回值的函数。
+       *
+       * 2. 执行逻辑：
+       *    - 高阶函数负责“控制流”或“执行时机”。
+       *    - 回调函数负责具体的“业务逻辑”或“任务处理”。
+       *
+       * 3. 应用价值：
+       *    - 提高代码的可复用性。
+       *    - 实现异步编程（如定时器回调、Ajax 回调）。
+       */
 
-		//调用回调函数的函数称为高阶函数
-		const highLevelFunction = (callback,number) => {
-			return callback(number);
-		}
+      /**
+       * 1. 回调函数示例
+       * 功能：对传入的数字进行自增处理。
+       */
+      const plusNumer = (i) => {
+        // 注意：i++ 返回原值（10），++i 才返回自增后的值（11）
+        return ++i
+      }
 
-		console.log(highLevelFunction(plusNumer,10));
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. 高阶函数示例
+       * 定义：调用回调函数的函数称为高阶函数。
+       * 参数：
+       *    - callback: 接收一个函数。
+       *    - number: 接收一个数值。
+       */
+      const highLevelFunction = (callback, number) => {
+        // 执行传入的逻辑
+        return callback(number)
+      }
+
+      /**
+       * 3. 执行与输出
+       * 将 plusNumer 作为参数传递给 highLevelFunction。
+       */
+      console.log(highLevelFunction(plusNumer, 10))
+    </script>
+  </head>
+  <body></body>
 </html>

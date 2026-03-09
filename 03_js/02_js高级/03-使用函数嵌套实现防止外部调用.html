@@ -1,28 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>使用函数嵌套实现防止外部调用</title>
-  <script>
-    /**
-		 * js函数嵌套:目的是为了防止外部调用，达到封装的效果
-		 */
-		const a = () => {
-			const i = 1
-			function b(){
-				const j = 1
-				console.log('内部调用:' + i + j)
-			}
-			//内部调用可以调用
-			b()
-		}
-		a()
-		//外部调用会报错 Uncaught ReferenceError: b is not defined
-		//b()
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用函数嵌套实现防止外部调用</title>
+    <script>
+      /**
+       * JS 函数嵌套与封装指南
+       *
+       * 1. 实现目的：
+       *    - 防止外部直接调用内部私有函数，达到代码封装和隐藏细节的效果。
+       *    - 避免全局命名空间污染，确保内部逻辑的独立性。
+       *
+       * 2. 作用域规则：
+       *    - 函数内部声明的函数（如 b）属于该父函数（如 a）的局部作用域。
+       *    - 外部作用域无法直接跨级访问内部定义的函数或变量。
+       *
+       * 3. 核心优势：
+       *    - 安全性：外部无法恶意或无意地触发内部逻辑。
+       *    - 结构化：将相关联的逻辑紧密组织在一起。
+       */
+      const a = () => {
+        // 父函数内部变量
+        const i = 1
+
+        /**
+         * 场景：内部私有函数 b
+         *
+         * 功能：仅供函数 a 内部逻辑调用，对外不可见。
+         */
+        function b() {
+          const j = 1
+          console.log('内部调用:' + i + j)
+        }
+
+        // 内部调用可以调用：在函数 a 执行时触发 b
+        b()
+      }
+
+      // 执行父函数
+      a()
+
+      /**
+       * 注意事项：
+       * 外部调用下行代码会报错：Uncaught ReferenceError: b is not defined
+       */
+      // b()
+    </script>
+  </head>
+  <body></body>
 </html>

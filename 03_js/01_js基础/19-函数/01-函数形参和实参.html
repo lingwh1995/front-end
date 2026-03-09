@@ -1,31 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>函数形参和实参</title>
-  <script>
-    //ES5定义函数
-    function sum(a,b){
-      console.log('函数形参的个数：' + sum.length)
-      //ES5支持 arguments 获取函数的实参
-      console.log('函数实参的个数：' + arguments.length)
-    }
-    //调用函数
-    sum(1,2,3,4,5)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数形参和实参</title>
+    <script>
+      /**
+       * 函数参数 (Parameter & Argument) 核心指南
+       *
+       * 1. 基本定义：
+       *    - 形参 (Formal Parameter)：函数定义时声明的变量（如 a, b），代表函数期望接收的数据。
+       *    - 实参 (Actual Argument)：函数调用时实际传递的值（如 1, 2, 3...）。
+       *
+       * 2. 获取参数个数：
+       *    - 函数名.length：获取函数定义时的“形参”个数。
+       *    - arguments.length：获取函数执行时实际接收到的“实参”个数。
+       *
+       * 3. ES5 与 ES6 的差异：
+       *    - 传统函数 (function)：支持 arguments 对象，可以访问所有实参。
+       *    - 箭头函数 (=>)：不支持 arguments 对象。若需获取多余实参，建议使用 ES6 剩余参数 (...args)。
+       */
 
+      // ES5 定义函数
+      function sum(a, b) {
+        /**
+         * 特点：
+         * - 使用 sum.length 获取声明的参数位。
+         * - ES5 支持通过 arguments 类数组对象获取所有传递的实参。
+         */
+        console.log('函数形参的个数：' + sum.length)
+        // ES5 支持 arguments 获取函数的实参
+        console.log('函数实参的个数：' + arguments.length)
+      }
+      // 调用函数：传递 5 个实参
+      sum(1, 2, 3, 4, 5)
 
-    //ES6定义函数
-    const add = (a,b) => {
-      console.log('函数形参的个数：' + add.length)
-      //ES6不支持 arguments 获取函数的实参
-      //console.log('函数实参的个数：' + arguments.length)
-    }
-    //调用函数
-    add(6,7,8,9,10)
-  </script>
-</head>
-<body>
-  
-</body>
+      // ES6 定义函数 (箭头函数)
+      const add = (a, b) => {
+        /**
+         * 注意事项：
+         * - add.length 依然有效。
+         * - 箭头函数内部没有自己的 arguments 绑定。
+         */
+        console.log('函数形参的个数：' + add.length)
+        // ES6 不支持 arguments 获取函数的实参
+        // console.log('函数实参的个数：' + arguments.length)
+      }
+      // 调用函数：传递 5 个实参
+      add(6, 7, 8, 9, 10)
+    </script>
+  </head>
+  <body></body>
 </html>

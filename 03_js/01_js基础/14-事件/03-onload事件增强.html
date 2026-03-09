@@ -1,30 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>onload事件增强</title>
-  <script>
-    /**
-     * onload()事件是一个特殊的事件，在整个html结构加载完成后会触发
-     */
-    window.onload = () => {
-      alert('页面加载完成了')
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onload 事件增强</title>
+    <script>
+      /**
+       * window.onload 的基本定义
+       *
+       * 1. 触发时机：在整个 HTML 结构、外部 CSS、图片及脚本全部加载完成后触发。
+       * 2. 核心用途：确保在执行 JS 逻辑时，DOM 元素已经存在。
+       */
+      window.onload = () => {
+        alert('页面加载完成了')
+      }
 
-    /**
-     * 为什么这个方法写在 window.onload = () => {} 中不会生效?
-     *  1.window.onload的含义是页面骨架加载完成后会执行这个函数中的代码，在页面骨架加载未完成时，不会执行这个函数中的代码
-     *  2.当html代码从上往下执行时，执行到 <input type="button" onclick="bindEvent()" value="点我弹窗"/> 这句时，会去寻找 bindEvent()，
-     *    因为此时在页面骨架加载未完成，所以找不到这个函数，就会报错
-     *  3.也可以把 <script> 标签放在页面底部
-     */
-    const bindEvent = () => {
-      alert('我是弹窗~')
-    }
-  </script>
-</head>
-<body>
-  <input type="button" onclick="bindEvent()" value="点我弹窗"/>
-</body>
+      /**
+       * 作用域与加载顺序解析
+       *
+       * 为什么把 bindEvent 写在 window.onload 回调函数内部会导致按钮点击报错？
+       *
+       * 1. 生命周期限制：window.onload 回调内的代码在页面“骨架”加载完成前不会执行。
+       * 2. 解析顺序：HTML 从上往下解析到 <input> 时，浏览器会寻找全局作用域下的 bindEvent。
+       *    - 若 bindEvent 在 onload 内部定义，它属于“局部函数”，外部无法访问。
+       *    - 若 bindEvent 在外部定义（如下方代码），解析阶段即存在，故可被正常调用。
+       *
+       * 3. 最佳实践建议：
+       *    - 如果不使用 onload 包装，建议将 <script> 标签放在页面底部（</body> 前）。
+       */
+      const bindEvent = () => {
+        alert('我是弹窗~')
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" onclick="bindEvent()" value="点我弹窗" />
+  </body>
 </html>

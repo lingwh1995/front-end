@@ -1,18 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>编写位置</title>
-  <script type="text/javascript">
-    /* 位置一：编写在<script>标签中 */
-    alert('这是内部js代码');  
-  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>编写位置</title>
+    <script type="text/javascript">
+      /**
+       * JavaScript 编写位置指南
+       * 
+       * 1. 常见编写方式：
+       *    - 内部脚本：直接编写在 <script> 标签中。
+       *    - 外部引用：通过 <script> 标签的 src 属性引入独立的 .js 文件。
+       *
+       * 2. 关键注意事项：
+       *    - 优先级：同一个 <script> 标签如果设置了 src 属性，则其内部的 JS 代码会被忽略。
+       *    - 维护性：推荐使用外部引入方式，实现结构（HTML）与行为（JS）的分离，便于复用和缓存。
+       */
 
-  <!-- 位置二：从外部配置文件中引入js文件 -->
-  <script type="text/javascript" src="./outer.js"></script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 位置一：编写在 <script> 标签中
+       * 特点：适合编写当前页面特有的、少量的逻辑代码。
+       */
+      alert('这是内部js代码')
+    </script>
+
+    /**
+     * 位置二：从外部配置文件中引入 js 文件
+     * 特点：利于浏览器缓存，提高页面加载速度，方便多页面共享脚本。
+     */
+    <script type="text/javascript" src="./outer.js"></script>
+  </head>
+  <body></body>
 </html>

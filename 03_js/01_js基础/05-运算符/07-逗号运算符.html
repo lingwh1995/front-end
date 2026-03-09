@@ -1,21 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=\, initial-scale=1.0">
-  <title>逗号运算符</title>
-  <script type="text/javascript">
-    /**
-     *  逗号运算符
-     *    1.可以在一行内定义多个语句
-     *    2.执行顺序为从左到右
-     */
-
-    let a = 1, b = 2, c = 3;
-    console.log(a), console.log(b), console.log(c);
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>逗号运算符</title>
+    <script type="text/javascript">
+      /**
+       * 逗号运算符
+       *
+       * 1. 功能：
+       *    - 可以在一行内定义或执行多个语句。
+       *
+       * 2. 执行机制：
+       *    - 执行顺序为从左到右。
+       *    - 整个表达式的结果通常由最后一个子表达式决定。
+       */
+      let a = 1, b = 2, c = 3;
+      (console.log(a), console.log(b), console.log(c))
+    </script>
+  </head>
+  <body></body>
 </html>

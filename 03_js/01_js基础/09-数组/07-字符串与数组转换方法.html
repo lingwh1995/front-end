@@ -1,39 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>字符串与数组转换方法</title>
-  <script type="text/javascript">
-    let numStr = '1,2,3,4,5'
-    let letters = 'ABCDE'
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字符串与数组转换方法</title>
+    <script type="text/javascript">
+      let numStr = '1,2,3,4,5'
+      let letters = 'ABCDE'
 
-    /**
-     * split():把字符串(带有分隔符的)转为数组
-     */
-    const numArr = numStr.split(',')
-    console.log(numArr)
-    const letterArr = letters.split('')
-    console.log(letterArr);
-    console.log('------------01------------')
+      /**
+       * 1. split() —— 【字符串 -> 数组】
+       * - 功能：将带有分隔符的字符串拆分为数组。
+       * - 注意：若传入空字符串 ''，则会将每个字符拆分为独立的数组元素。
+       */
+      const numArr = numStr.split(',')
+      console.log(numArr)
+      const letterArr = letters.split('')
+      console.log(letterArr)
+      console.log('------------01------------')
 
+      /**
+       * 2. join() —— 【数组 -> 字符串】
+       * - 功能：将数组中的所有元素连接成一个字符串。
+       * - 参数：指定连接时使用的分隔符（如 '-'）。
+       */
+      numStr = numArr.join('-')
+      console.log(numStr)
+      console.log('------------02------------')
 
-    /**
-     * join():把数组转换为字符串
-     */
-    numStr = numArr.join('-')
-    console.log(numStr)
-    console.log('------------02------------')
-
-
-    /**
-     * Array.from():从可迭代或类数组对象创建一个新的浅拷贝的数组实例，也可以用于把字符串(没带有分隔符的)转为数组
-     */
-    console.log(Array.from('12345'));
-    console.log('------------03------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 3. Array.from() —— 【类数组/可迭代对象 -> 数组】
+       * - 功能：从可迭代或类数组对象创建一个新的浅拷贝数组实例。
+       * - 场景：常用于将“没有分隔符”的字符串直接转为单字符数组。
+       */
+      console.log(Array.from('12345'))
+      console.log('------------03------------')
+    </script>
+  </head>
+  <body></body>
 </html>

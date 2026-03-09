@@ -1,14 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内置对象-Proxy</title>
-  <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内置对象-Proxy</title>
+    <script>
+      /**
+       * 内置对象 Proxy (代理) 的核心用法
+       *
+       * 1. 定义：Proxy 用于创建一个对象的代理，从而实现对基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+       * 2. 语法结构：new Proxy(target, handler)
+       *    - target: 要包装的目标对象（可以是任何类型的对象，包括数组、函数甚至另一个代理）。
+       *    - handler: 一个通常以函数作为属性的对象，各属性中的函数定义了在执行各种操作时代理的行为。
+       * 3. 优势：相比 Object.defineProperty，Proxy 可以直接监听对象而非属性，且能监听数组下标变化及对象属性的新增/删除。
+       */
 
-  </script>
-</head>
-<body>
+      const target = {
+        name: 'zhangsan',
+        age: 26,
+      }
 
-</body>
+      const handler = {
+        // 获取属性的拦截
+        get(obj, prop) {
+          console.log(`正在读取属性: ${prop}`)
+          return prop in obj ? obj[prop] : '属性不存在'
+        },
+        // 设置属性的拦截
+        set(obj, prop, value) {
+          console.log(`正在设置属性: ${prop}，新值为: ${value}`)
+          obj[prop] = value
+          return true // 表示设置成功
+        },
+      }
+
+      // 创建代理对象
+      const proxy = new Proxy(target, handler)
+
+      // 测试代码
+      console.log(proxy.name) // 触发 get
+      proxy.age = 30 // 触发 set
+      console.log(proxy.gender) // 触发 get，由于不存在将返回预设字符串
+    </script>
+  </head>
+  <body></body>
 </html>

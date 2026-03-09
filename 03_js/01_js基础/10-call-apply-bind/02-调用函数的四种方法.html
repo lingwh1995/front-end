@@ -1,32 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>调用函数的四种方法</title>
-  <script>
-    function show(callType) {
-      console.log('hello world,调用方式:' + callType)
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>调用函数的四种方法</title>
+    <script>
+      function show(callType) {
+        console.log('hello world, 调用方式:' + callType)
+      }
 
-    /**
-     * call()、apply()、bind()可以调用函数，只不过在调用的过程中把函数内部的this指向的值改变了
-     */ 
-    //1.直接调用函数
-    show('直接调用')
+      /**
+       * 核心原理
+       * 
+       * call()、apply()、bind() 都可以调用函数。
+       * 它们的主要作用是在调用过程中，手动改变函数内部 this 的指向。
+       */
 
-    //2.使用call()调用函数
-    show.call(window,'call()调用')
+      // 1. 直接调用函数
+      // - 特点：最简单标准的调用方式。
+      show('直接调用')
 
-    //3.使用apply()调用函数
-    show.apply(window,['apply()调用'])
+      // 2. 使用 call() 调用函数
+      // - 特点：立即执行。
+      // - 参数：第一个参数是 this 指向，后面接具体的参数列表（arg1, arg2...）。
+      show.call(window, 'call()调用')
 
-    //4.使用bind()调用函数 特别注意:bind()只是返回一个函数名，需要手动调用函数才有效果
-    const showBindFun = show.bind(window,'bind()调用')
-    showBindFun()
-  </script>
-</head>
-<body>
-  
-</body>
+      // 3. 使用 apply() 调用函数
+      // - 特点：立即执行。
+      // - 参数：第一个参数是 this 指向，第二个参数必须是【数组或类数组】。
+      show.apply(window, ['apply()调用'])
+
+      // 4. 使用 bind() 调用函数
+      // - 特点：【不会立即执行】。
+      // - 备注：bind() 只是返回一个改变了 this 指向的新函数名（闭包），需要手动调用该新函数才有效果。
+      const showBindFun = show.bind(window, 'bind()调用')
+      showBindFun()
+    </script>
+  </head>
+  <body></body>
 </html>

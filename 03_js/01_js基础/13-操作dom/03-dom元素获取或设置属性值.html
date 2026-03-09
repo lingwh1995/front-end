@@ -1,41 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dom元素获取或设置属性值</title>
-  <script type="text/javascript">
-    /**
-     * 获取元素上的属性(以<input>标签的value属性为例演示)
-     *    1.获取元素属性，语法：getAtribute(属性名)
-     *    2.设置元素的属性，语法：setAttribute(属性名，属性值)
-     *    3.删除元素的属性，语法：removettribute("属性名")
-     * 获取元素上的属性值的两种方式
-     *    1.元素.属性名 
-     *    2.元素.getAtribute(属性名)
-     */
-    const testGetAttribute = () => {
-      const btn = document.getElementById("btn")
-      //使用 元素.getAtribute(属性名) 获取属性值
-      const titleAttribute = btn.getAttribute("title")
-      console.log(titleAttribute)
-    }
-    const testSetAttribute = () => {
-      const btn = document.getElementById("btn")
-      btn.setAttribute("title","我是title属性的值-设置后")
-      //使用 元素.属性名 获取属性值
-      console.log(btn.title)
-    }
-    const testRemoveAttribute = () => {
-      var btn = document.getElementById("btn")
-      btn.removeAttribute("title")
-    }
-  </script>
-</head>
-<body>
-  <div type="button"  title="我是title属性的值-设置前" id="btn"/><br/>
-  <input type="button" value="获取属性值" onclick="testGetAttribute()"/>
-  <input type="button" value="设置属性值" onclick="testSetAttribute()"/>
-  <input type="button" value="移除属性值" onclick="testRemoveAttribute()"/>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom元素获取或设置属性值</title>
+    <script type="text/javascript">
+      /**
+       * DOM 属性操作指南 (Attributes)
+       *
+       * 1. 核心方法：
+       *    - getAttribute(name)    : 获取指定的属性值。
+       *    - setAttribute(name, v) : 设置或修改指定的属性值。
+       *    - removeAttribute(name) : 彻底删除指定的属性。
+       *
+       * 2. 获取属性值的两种途径：
+       *    - 途径 A：元素.属性名 (如 btn.title) —— 访问的是 DOM 对象的属性。
+       *    - 途径 B：元素.getAttribute("属性名") —— 访问的是 HTML 标签上的特性。
+       *
+       * 3. 适用场景：
+       *    - 对于自定义属性（非 HTML 标准属性），建议始终使用 getAttribute / setAttribute。
+       */
+
+      // --- 1. 获取属性 ---
+      const testGetAttribute = () => {
+        const btn = document.getElementById('btn')
+        // 使用 getAttribute(属性名) 获取
+        const titleAttribute = btn.getAttribute('title')
+        console.log('获取到的 title:', titleAttribute)
+      }
+
+      // --- 2. 设置属性 ---
+      const testSetAttribute = () => {
+        const btn = document.getElementById('btn')
+        // 设置属性名与对应值
+        btn.setAttribute('title', '我是title属性的值-设置后')
+
+        // 验证：使用“元素.属性名”点语法同样可以获取更新后的值
+        console.log('更新后的 title:', btn.title)
+      }
+
+      // --- 3. 移除属性 ---
+      const testRemoveAttribute = () => {
+        var btn = document.getElementById('btn')
+        // 从 HTML 标签中彻底移除该属性
+        btn.removeAttribute('title')
+        console.log('属性已移除')
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 定义一个带有 title 属性的 div -->
+    <div type="button" title="我是title属性的值-设置前" id="btn"></div>
+    <br />
+
+    <input type="button" value="获取属性值" onclick="testGetAttribute()" />
+    <input type="button" value="设置属性值" onclick="testSetAttribute()" />
+    <input type="button" value="移除属性值" onclick="testRemoveAttribute()" />
+  </body>
 </html>

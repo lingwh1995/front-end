@@ -1,20 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>使用null代替三目运算</title>
-  <script>
-    //在某些条件下可以用来替代三目运算符
-		const num = null
-		const i = num == null ? 5 :num
-		console.log(i)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用null代替三目运算</title>
+    <script>
+      /**
+       * 默认值处理指南：三目运算与逻辑或 (||)
+       *
+       * 1. 核心逻辑：
+       *    - 在某些条件下，可以使用逻辑运算符来替代传统的三目运算符（Conditional Operator）。
+       *
+       * 2. 实现方式对比：
+       *    - 三目运算符：通过 `condition ? exprIfTrue : exprIfFalse` 进行显式判断。
+       *    - 逻辑或 (||)：利用短路评价（Short-circuit evaluation）特性，当前者为假值（如 null, undefined, 0, false）时返回后者。
+       *
+       * 3. 注意事项：
+       *    - 逻辑或会针对所有“假值”生效，而不仅仅是 null。
+       *    - 在现代 JS 中，如果只想针对 null 或 undefined，建议了解空值合并运算符 (??)。
+       */
 
-		i = null || 5
-		console.log(i)
-  </script>
-</head>
-<body>
-  
-</body>
+      // 在某些条件下可以用来替代三目运算符
+      const num = null
+
+      // 方式一：使用三目运算符
+      let i = num == null ? 5 : num
+      console.log(i)
+
+      // 方式二：使用逻辑或 (||) 替代
+      i = null || 5
+      console.log(i)
+    </script>
+  </head>
+  <body></body>
 </html>

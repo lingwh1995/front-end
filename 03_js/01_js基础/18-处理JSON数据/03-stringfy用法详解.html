@@ -1,77 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>stringfy用法详解</title>
-  <script>
-    const p1 = {name:'zhangsan',eat:function(){}}
-		console.log(JSON.stringify(p1))
-		//输出结果:{"name":"zhangsan"}
-		console.log('-----------------------------------------')
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stringfy用法详解</title>
+    <script>
+      /**
+       * JSON.stringify() 深度指南
+       *
+       * 1. 基本语法：JSON.stringify(value, replacer, space)
+       *    - value: 要转换的 JavaScript 值（通常为对象或数组）。
+       *    - replacer: 用于转换结果的函数或数组（可选）。
+       *    - space: 指定缩进用的空白字符串或数字（可选）。
+       *
+       * 2. 特殊行为：
+       *    - 函数、undefined 以及 Symbol 值在序列化过程中会被忽略（非数组对象中）或转换为 null（数组中）。
+       *
+       * 3. 进阶特性：
+       *    - toJSON(): 如果对象定义了该方法，stringify 会优先调用它。
+       *    - 过滤与定制：通过 replacer 函数可以实现极其灵活的字段过滤或数值修改。
+       */
 
-    
-    const p2 = {name:'zhangsan',age:'18'}
-		console.log(JSON.stringify(p2,null,5))
-		console.log('-----------------------------------------')
+      /**
+       * 场景一：特殊类型处理
+       * 特点：对象中的函数会被直接丢弃。
+       */
+      const p1 = { name: 'zhangsan', eat: function () {} }
+      console.log(JSON.stringify(p1))
+      //输出结果:{"name":"zhangsan"}
+      console.log('-----------------------------------------')
 
+      /**
+       * 场景二：使用 space 参数美化输出
+       * 1. 传入数字：表示每层缩进的空格数（最大为 10）。
+       * 2. 传入字符串：该字符串将作为缩进填充符号。
+       */
+      const p2 = { name: 'zhangsan', age: '18' }
+      console.log(JSON.stringify(p2, null, 5))
+      console.log('-----------------------------------------')
 
-    const p3 = {name:'zhangsan',age:'18'}
-		console.log(JSON.stringify(p2,null,'我是填充用的字符串'))
-		console.log('-----------------------------------------')
+      const p3 = { name: 'zhangsan', age: '18' }
+      console.log(JSON.stringify(p2, null, '我是填充用的字符串'))
+      console.log('-----------------------------------------')
 
+      /**
+       * 场景三：自定义 toJSON() 方法
+       * 优点：
+       * - 复用性：对象自带序列化逻辑。
+       * - 稳定性：确保敏感数据在序列化时被排除或脱敏。
+       */
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      Person.prototype.toJSON = function () {
+        console.log(this.name)
+        console.log(this.age)
+        // 重写返回结果
+        return { name: this.name + '_重写后', age: this.age + '_重写后' }
+      }
+      const p4 = new Person('lisi', 28)
+      console.log(JSON.stringify(p4))
+      console.log('-----------------------------------------')
 
-    /**
-		 * 重写toJSON()即可改变JSON.stringify(object)的返回结果,定义toJSON的优点是复用性和稳定性
-		 */
-		function Person(name,age){
-			this.name = name
-			this.age = age
-		}
-		Person.prototype.toJSON = function () {
-			console.log(this.name)
-			console.log(this.age)
-			return {name: this.name + '_重写后', age: this.age + '_重写后'}
-		}
-		const p4 = new Person('lisi',28)
-		console.log(JSON.stringify(p4))
-		console.log('-----------------------------------------')
+      /**
+       * 场景四：使用 replacer 数组进行属性过滤
+       * 功能：只保留数组中指定的键名。
+       */
+      const p5 = { name: 'zhaoliu', age: '28', school: 'ufe' }
+      console.log('未进行过滤:' + JSON.stringify(p5)) //{"name":"zhaoliu","age":"28","school":"ufe"}
+      console.log('已进行过滤:' + JSON.stringify(p5, ['name', 'age'])) //{"name":"zhaoliu","age":"28"}
+      console.log('-----------------------------------------')
 
-    
-		/**
-		 * JSON.stringify(value, replacer?, space?)的过滤函数replacer
-		 */
-		//普通属性过滤
-		const p5 = {name:'zhaoliu',age:'28',school:'ufe'}
-		console.log('未进行过滤:'+JSON.stringify(p5))   //{"name":"zhaoliu","age":"28","school":"ufe"}
-		console.log('已进行过滤:'+JSON.stringify(p5,['name','age']))  //{"name":"zhaoliu","age":"28"}
-    console.log('-----------------------------------------')
+      /**
+       * 场景五：嵌套属性过滤与定制化 replacer 函数
+       *
+       * 1. 数组方式过滤嵌套：若 key 不在数组中，嵌套对象会被过滤为空。
+       * 2. 函数方式过滤：
+       *    - 若返回 undefined，该键值对会被删除。
+       *    - 可根据逻辑修改返回的数值。
+       */
+      const bar = {
+        a: 1,
+        b: { c: 2 },
+      }
+      // 数组过滤测试
+      console.log(JSON.stringify(bar, ['a', 'b'])) //{"a":1,"b":{} }
+      console.log('-----------------------------------------')
 
-
-    //嵌套属性过滤
-			//1.根据key进行过滤
-    const bar = {
-			a : 1,
-			b : { c : 2 }
-		}
-		console.log(JSON.stringify(bar, ['a', 'b']))   //{"a":1,"b":{}}
-		console.log('-----------------------------------------');
-			//2.使用函数来进行定制化过滤,如果键值对的value的值为undefined,则返回结果时不会输出该键值对
-		//返回大于1的值
-		const filter = (key, value) => {
-			console.log('Key: ', key);
-			console.log('Value: ', value)
-			if(typeof(value) === 'number') {
-				//return value > 1 ? value: undefined   //JSON.stringify(bar, replacer) 最终返回:{"b":{"c":2}}
-				return value > 1 ? value: 55    //JSON.stringify(bar, replacer) 最终返回:{"a":55,"b":{"c":2}}
-			}
-			return value
-		}
-		console.log(JSON.stringify(bar, filter))
-    console.log('-----------------------------------------');
-  </script>
-</head>
-<body>
-  
-</body>
+      // 函数定制化过滤逻辑
+      const filter = (key, value) => {
+        console.log('Key: ', key)
+        console.log('Value: ', value)
+        if (typeof value === 'number') {
+          // 如果返回 undefined，则该键值对不输出
+          // return value > 1 ? value: undefined
+          // 也可以返回修改后的值
+          return value > 1 ? value : 55
+        }
+        return value
+      }
+      console.log(JSON.stringify(bar, filter))
+      console.log('-----------------------------------------')
+    </script>
+  </head>
+  <body></body>
 </html>

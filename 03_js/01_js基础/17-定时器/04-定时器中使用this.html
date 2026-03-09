@@ -1,34 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>定时器中使用this</title>
-  <style>
-    .box {
-      width: 200px;
-      height: 200px;
-      line-height: 200px;
-      text-align: center;
-      cursor: pointer;
-      background-color: green;
-    }
-  </style>
-  <script>
-    window.onload = ()=> {
-      const box = document.querySelector('.box')
-      box.addEventListener('click',function(){
-        const this_ = this
-        setTimeout(() => {
-          this_.style.background = 'orange'
-        },1000)
-      })
-    }
-  </script>
-</head>
-<body>
-  <div class="box">
-    点击两秒后改变背景颜色
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器中使用this</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        cursor: pointer;
+        background-color: green;
+      }
+    </style>
+    <script>
+      /**
+       * 定时器中的 this 指向问题指南
+       *
+       * 1. 背景问题：
+       *    - 在普通函数中，setTimeout 的回调函数是由 window 调用的，因此其内部的 this 默认指向 window。
+       *
+       * 2. 解决方案（本例采用）：
+       *    - 变量暂存法：在外部函数中将正确的 this 赋值给一个常量（如 this_），利用闭包特性在定时器内部访问。
+       *
+       * 3. 核心原理：
+       *    - 事件监听函数内部的 this 指向绑定事件的 DOM 元素（.box）。
+       *    - 通过 const this_ = this 锁定了当前元素的引用。
+       */
+      window.onload = () => {
+        const box = document.querySelector('.box')
+
+        /**
+         * 场景：点击两秒后改变背景颜色
+         *
+         * 操作流程：
+         * - 1. 监听 click 事件。
+         * - 2. 暂存当前元素的 this。
+         * - 3. 开启延时调用，在 1000ms 后通过暂存的变量修改样式。
+         */
+        box.addEventListener('click', function () {
+          // 暂存 this 指向，确保在异步回调中能找到 box 元素
+          const this_ = this
+          setTimeout(() => {
+            this_.style.background = 'orange'
+          }, 1000)
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <div class="box">点击两秒后改变背景颜色</div>
+  </body>
 </html>

@@ -1,37 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组定义增强</title>
-  <script type="text/javascript">
-    /**
-     * 数组的强大特性:数组中可以放任意类型的元素
-     */
-    //1.在数组中存放对象类型数据
-    const persons = [{name:'张三',age:10,gender:'男'},
-                {name:'李四',age:20,gender:'男'},
-                {name:'王五',age:30,gender:'女'}]
-    console.log(persons)
-    console.log('------------01------------')
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组定义增强</title>
+    <script type="text/javascript">
+      /**
+       * 数组的强大特性：
+       * - 数组中可以存放【任意类型】的元素。
+       */
 
+      // 1. 复合类型：在数组中存放【对象】数据
+      const persons = [
+        { name: '张三', age: 10, gender: '男' },
+        { name: '李四', age: 20, gender: '男' },
+        { name: '王五', age: 30, gender: '女' },
+      ]
+      console.log(persons)
+      console.log('------------01------------')
 
-    //2.在数组中存放函数
-    const functions = [function(){console.log('张三')},
-                     function(){console.log('李四')}, 
-                     function(){console.log('王五')}]
-    //调用数组中的函数
-    functions[0]()
-    console.log('------------02------------')
+      // 2. 函数类型：在数组中存放【函数】
+      const functions = [
+        function () {
+          console.log('张三')
+        },
+        function () {
+          console.log('李四')
+        },
+        function () {
+          console.log('王五')
+        },
+      ]
+      // 调用数组中的函数：通过索引定位后直接执行
+      functions[0]()
+      console.log('------------02------------')
 
-
-    //3.在数组中存放数组
-    const nums = [[1,2,3],[4,5,6],[7,8,9]]
-    console.log(nums)
-    console.log('------------03------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      // 3. 多维结构：在数组中存放【数组】（嵌套数组）
+      const nums = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]
+      console.log(nums)
+      console.log('------------03------------')
+    </script>
+  </head>
+  <body></body>
 </html>

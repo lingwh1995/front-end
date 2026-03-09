@@ -1,102 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>操作元素className</title>
-  <style>
-    .box {
-      width: 200px;
-      height: 200px;
-    }
-    .box-1 {
-      background-color: gold;
-    }
-    .box-2 {
-      border: 2px solid black;
-    }
-    .bg-green {
-      background-color: green;
-    }
-    .bg-red {
-      background-color: red;
-    }
-  </style>
-  <script>
-    window.onload = ()=> {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作元素 className</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+      }
+      .box-1 {
+        background-color: gold;
+      }
+      .box-2 {
+        border: 2px solid black;
+      }
+      .bg-green {
+        background-color: green;
+      }
+      .bg-red {
+        background-color: red;
+      }
+    </style>
+    <script>
       /**
-       * 获取box1元素的所有className方式一(不推荐)
+       * 操作元素 Class 指南
+       *
+       * 1. 传统方式 (className)：
+       *    - 属性类型：字符串。
+       *    - 操作特点：新增或删除类名需要手动处理空格和字符串拼接/替换，逻辑较繁琐。
+       *
+       * 2. 现代方式 (classList)：
+       *    - 属性类型：DOMTokenList（类数组对象）。
+       *    - 操作特点：提供 add()、remove()、toggle()、contains() 等方法，逻辑清晰且安全。
+       *
+       * 3. 性能与建议：
+       *    - 推荐使用 classList，它能有效避免字符串拼接导致的类名粘连或重复问题。
        */
-      document.querySelectorAll('input[type="button"]')[0].addEventListener('click', () => {
-        const box = document.querySelector('.box-1')
-        alert(`元素的className：${box.className}`)
-      })
+      window.onload = () => {
+        /**
+         * 方式一：基于 className 字符串操作 (不推荐)
+         *
+         * 1. 获取：返回完整类名字符串。
+         * 2. 添加：需判断是否存在，再进行 concat 拼接。
+         * 3. 移除：需通过 replace 替换字符串。
+         */
 
-      /**
-       * 给box2元素添加背景色class方式一(不推荐)
-       */
-      document.querySelectorAll('input[type="button"]')[1].addEventListener('click', () => {
-        const box = document.querySelector('.box-2')
-        const className = box.className
-        if(! className.includes('bg-green')) {
-          box.className = box.className.concat(' ').concat('bg-green')
-        }
-      })
+        // 获取 box1 的 className
+        document.querySelectorAll('input[type="button"]')[0].addEventListener('click', () => {
+          const box = document.querySelector('.box-1')
+          alert(`元素的className：${box.className}`)
+        })
 
-      /**
-       * 移除box2元素上的背景色class方式一(不推荐)
-       */
-      document.querySelectorAll('input[type="button"]')[2].addEventListener('click', () => {
-        const box = document.querySelector('.box-2')
-        box.className = box.className.replace(' bg-green','')
-      })
+        // 给 box2 添加背景色 (字符串拼接)
+        document.querySelectorAll('input[type="button"]')[1].addEventListener('click', () => {
+          const box = document.querySelector('.box-2')
+          const className = box.className
+          if (!className.includes('bg-green')) {
+            box.className = box.className.concat(' ').concat('bg-green')
+          }
+        })
 
-      /**
-       * 获取box1元素的所有className方式二(推荐)
-       */
-       document.querySelectorAll('input[type="button"]')[3].addEventListener('click', () => {
-        const box = document.querySelector('.box-1')
-        alert(`元素的className：${box.classList}`)
-      })
-      
-      /**
-       * 给box2元素添加背景色class方式二(推荐)
-       */
-       document.querySelectorAll('input[type="button"]')[4].addEventListener('click', () => {
-        const box = document.querySelector('.box-2')
-        const classList = box.classList
-        classList.add('bg-green')
-      })
+        // 移除 box2 上的背景色 (字符串替换)
+        document.querySelectorAll('input[type="button"]')[2].addEventListener('click', () => {
+          const box = document.querySelector('.box-2')
+          box.className = box.className.replace(' bg-green', '')
+        })
 
-      /**
-       * 移除box2元素上的背景色class方式二(推荐)
-       */
-       document.querySelectorAll('input[type="button"]')[5].addEventListener('click', () => {
-        const box = document.querySelector('.box-2')
-        const classList = box.classList
-        classList.remove('bg-green')
-      })
+        /**
+         * 方式二：基于 classList 集合操作 (推荐)
+         *
+         * 1. add(class): 自动处理空格，若已存在则不重复添加。
+         * 2. remove(class): 自动定位并删除指定类名。
+         * 3. toggle(class): 若存在则删除，不存在则添加（常用于交互开关）。
+         */
 
-      /**
-       * 切换box2元素上的背景色class
-       */
-       document.querySelectorAll('input[type="button"]')[6].addEventListener('click', () => {
-        const box = document.querySelector('.box-2')
-        const classList = box.classList
-        classList.toggle('bg-red')
-      })
-    }
-  </script>
-</head>
-<body>
-  <input type="button" value="获取box1元素的所有class方式一(不推荐)"/>
-  <input type="button" value="给box2元素添加背景色class方式一(不推荐)"/>
-  <input type="button" value="移除box2元素上的背景色class方式一(不推荐)"/><br>
-  <input type="button" value="获取box1元素的所有class方式二(推荐)"/>
-  <input type="button" value="给box2元素添加背景色class方式二(推荐)"/>
-  <input type="button" value="移除box2元素上的背景色class方式二(推荐)"/><br>
-  <input type="button" value="切换box2元素上的背景色class"/><br>
-  <div class="box-1 box"></div>
-  <div class="box-2 box"></div>
-</body>
+        // 获取 box1 的 classList
+        document.querySelectorAll('input[type="button"]')[3].addEventListener('click', () => {
+          const box = document.querySelector('.box-1')
+          alert(`元素的className：${box.classList}`)
+        })
+
+        // 给 box2 添加 class (classList.add)
+        document.querySelectorAll('input[type="button"]')[4].addEventListener('click', () => {
+          const box = document.querySelector('.box-2')
+          const classList = box.classList
+          classList.add('bg-green')
+        })
+
+        // 移除 box2 上的 class (classList.remove)
+        document.querySelectorAll('input[type="button"]')[5].addEventListener('click', () => {
+          const box = document.querySelector('.box-2')
+          const classList = box.classList
+          classList.remove('bg-green')
+        })
+
+        /**
+         * 进阶用法：切换 Class (toggle)
+         * 适合实现“点击开启/关闭”或“样式切换”逻辑。
+         */
+        document.querySelectorAll('input[type="button"]')[6].addEventListener('click', () => {
+          const box = document.querySelector('.box-2')
+          const classList = box.classList
+          classList.toggle('bg-red')
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="获取box1元素的所有class方式一(不推荐)" />
+    <input type="button" value="给box2元素添加背景色class方式一(不推荐)" />
+    <input type="button" value="移除box2元素上的背景色class方式一(不推荐)" />
+    <br />
+    <input type="button" value="获取box1元素的所有class方式二(推荐)" />
+    <input type="button" value="给box2元素添加背景色class方式二(推荐)" />
+    <input type="button" value="移除box2元素上的背景色class方式二(推荐)" />
+    <br />
+    <input type="button" value="切换box2元素上的背景色class" />
+    <br />
+    <div class="box-1 box"></div>
+    <div class="box-2 box"></div>
+  </body>
 </html>

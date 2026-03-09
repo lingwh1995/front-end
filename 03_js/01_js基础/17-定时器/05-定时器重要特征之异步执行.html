@@ -1,21 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>定时器重要特征之异步执行</title>
-  <script>
-    /**
-     * JS定时器是异步执行的，不会有阻塞
-     */ 
-    console.log('hello')
-    setTimeout(()=> {
-      console.log('异步执行')
-    },3000)
-    console.log('javascript')
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器重要特征之异步执行</title>
+    <script>
+      /**
+       * JavaScript 定时器异步特性指南
+       *
+       * 1. 核心特征：
+       *    - 异步执行：定时器代码不会阻塞后续同步代码的运行。
+       *    - 任务队列：定时器的回调函数会被放入任务队列中，等待主线程空闲时再执行。
+       *
+       * 2. 执行流程：
+       *    - 首先执行同步代码（console.log('hello')）。
+       *    - 注册定时器任务，不等待 3 秒，直接向下执行同步代码（console.log('javascript')）。
+       *    - 3 秒时间到后，由事件循环（Event Loop）将回调放入主线程执行。
+       *
+       * 3. 注意事项：
+       *    - 即使定时器的延迟时间设为 0，它依然是异步的，会在所有同步代码执行完后再触发。
+       */
+
+      /**
+       * JS 定时器是异步执行的，不会有阻塞
+       */
+      console.log('hello')
+
+      setTimeout(() => {
+        console.log('异步执行')
+      }, 3000)
+
+      console.log('javascript')
+    </script>
+  </head>
+  <body></body>
 </html>

@@ -1,24 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内置对象-event</title>
-  <script>
-    /**
-     * event封装了键盘按键信息
-     */ 
-    window.onload = () => {
-      const btn = document.getElementById('body')
-      //键盘按下事件
-      btn.onkeydown = (event) => {
-        console.log(event.keyCode)
-        console.log(event)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内置对象-event</title>
+    <script>
+      /**
+       * event 对象与键盘事件处理
+       *
+       * 1. 功能：当事件发生时，浏览器会创建一个 event 对象，其中封装了键盘按键、鼠标位置等所有相关信息。
+       * 2. 常用属性：
+       *    - keyCode：获取按键的 ASCII 码或键码（注意：现代开发推荐使用 event.key）。
+       *    - altKey / ctrlKey / shiftKey：判断是否同时按下了组合功能键。
+       * 3. 触发时机：onkeydown 只要按键被按下即触发，如果长按则会连续触发。
+       */
+      window.onload = () => {
+        const btn = document.getElementById('body')
+
+        // 键盘按下事件监听
+        btn.onkeydown = (event) => {
+          // 打印具体按键的键码
+          console.log(event.keyCode)
+          // 打印完整的事件对象信息
+          console.log(event)
+        }
       }
-    }
-  </script>
-</head>
-<body id="body">
+    </script>
+  </head>
+  <body id="body">
     <h1>按下键盘触发事件</h1>
-</body>
+  </body>
 </html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>六种常用的dom元素选择器</title>
+    <style>
+      input[type='button'] {
+        width: 250px;
+        height: 25px;
+        margin: 1px;
+      }
+    </style>
+    <script>
+      /**
+       * 获取 DOM 元素
+       *
+       * 1. 六种基本获取方式：
+       *    - 根据 ID、Name、标签名称、Class 名称、querySelector、querySelectorAll。
+       *
+       * 2. 关键注意事项：
+       *    - 返回值类型：getElementById 返回单值；getElementsBy... 返回的是类数组对象。
+       *    - 属性获取：表单元素用 .value；非表单元素用 .innerText (文本) 或 .innerHTML (含 HTML 标签)。
+       *    - 图片特有：获取图片路径使用 .src。
+       *
+       * 3. querySelector 系列 (CSS 选择器语法)：
+       *    - ID 选择器：querySelector('#xx')
+       *    - Class 选择器：querySelector('.xx')
+       *    - 层次选择器：querySelector('.parent .child') —— 支持多级嵌套查找。
+       *
+       * 4. 查找范围：
+       *    - 默认在 document 下查找，也可以在已获取的父元素节点下进行局部查找。
+       */
+
+      /**
+       * 方式一：根据 id 获取 dom 元素 (唯一性)
+       */
+      const testGetElementById = () => {
+        var username = document.getElementById('username')
+        console.log(username.value)
+      }
+
+      /**
+       * 方式二：根据 name 获取 dom 元素 (通常用于表单)
+       */
+      const testGetElementsByName = () => {
+        let userinfo = document.getElementsByName('userinfo')
+        for (let i = 0; i < userinfo.length; i++) {
+          console.log(userinfo[i].value)
+        }
+      }
+
+      /**
+       * 方式三：根据标签名称获取 dom 元素
+       */
+      const testGetElementsByTag = () => {
+        var inputTags = document.getElementsByTagName('input')
+        for (let i = 0; i < inputTags.length; i++) {
+          console.log(inputTags[i].value)
+        }
+      }
+
+      /**
+       * 方式四：根据 class 名称获取 dom 元素
+       * 注意：仅支持 IE9 及以上版本浏览器
+       */
+      const testGetElementByClassName = () => {
+        const userinfos = document.getElementsByClassName('user-info')
+        for (let i = 0; i < userinfos.length; i++) {
+          console.log(userinfos[i].value)
+        }
+      }
+
+      /**
+       * 方式五：通用选择器 (单个)
+       * querySelector(): 返回匹配 CSS 选择器的第一个元素
+       */
+      const testGetElementQuerySelector = () => {
+        // 获取文档中的第一个 id=username 的元素
+        var username = document.querySelector('#username')
+        console.log(username.value)
+        // 获取文档中的第一个 type="button" 的 input 标签
+        var firstButtonValue = document.querySelector('input[type=button]')
+        console.log(firstButtonValue.value)
+      }
+
+      /**
+       * 方式六：通用选择器 (多个)
+       * querySelectorAll(): 返回匹配选择器的所有元素集合 (NodeList)
+       */
+      const testGetElementsQuerySelectoAll = () => {
+        var buttons = document.querySelectorAll('input[type=button]')
+        for (var i = 0; i < buttons.length; i++) {
+          console.log(buttons[i].value)
+        }
+      }
+
+      /**
+       * 特殊节点获取：html 标签
+       */
+      const testGetDocumentElement = () => {
+        console.log(document.documentElement)
+      }
+
+      /**
+       * 特殊节点获取：body 标签
+       */
+      const testGetBody = () => {
+        console.log(document.body)
+      }
+
+      /**
+       * 全局查找方式一：document.all (旧式用法)
+       */
+      const testGetAllElements1 = () => {
+        console.log(document.all)
+      }
+
+      /**
+       * 全局查找方式二：通配符选择器 (推荐)
+       */
+      const testGetAllElements2 = () => {
+        console.log(document.getElementsByTagName('*'))
+      }
+
+      /**
+       * 进阶用法：querySelector 嵌套/后代选择器
+       */
+      const testGetElementQuerySelectorSenior = () => {
+        const child = document.querySelector('.parent .child')
+        console.log(child.innerText)
+      }
+
+      /**
+       * 进阶用法：querySelectorAll 批量处理后代
+       */
+      const testGetElementsQuerySelectoAllSenior = () => {
+        const childs = document.querySelectorAll('.parent .child')
+        for (let i = 0; i < childs.length; i++) {
+          console.log(childs[i].innerText)
+        }
+      }
+
+      /**
+       * 进阶用法：局部作用域查找
+       * 先锁定父元素，再从父元素内部查找子元素
+       */
+      const testGetElementSenior = () => {
+        const parent = document.querySelector('.parent')
+        const child = parent.querySelector('.child')
+        console.log(child.innerText)
+      }
+    </script>
+  </head>
+  <body>
+    用户名：
+    <input type="text" value="admin" name="userinfo" id="username" class="user-info" />
+    <br />
+    密码：
+    <input type="password" value="123456" name="userinfo" class="user-info" />
+    <br />
+
+    <div class="parent">
+      <div class="child">我是子元素一</div>
+      <div class="child">我是子元素二</div>
+      <div class="child">我是子元素三</div>
+    </div>
+
+    <input type="button" value="根据id获取dom" onclick="testGetElementById()" />
+    <input type="button" value="根据name获取dom" onclick="testGetElementsByName()" />
+    <br />
+    <input type="button" value="根据标签获取dom" onclick="testGetElementsByTag()" />
+    <input type="button" value="根据class获取dom" onclick="testGetElementByClassName()" />
+    <br />
+    <input
+      type="button"
+      value="测试通用选择器querySelector()"
+      onclick="testGetElementQuerySelector()"
+    />
+    <input
+      type="button"
+      value="测试通用选择器querySelectorAll()"
+      onclick="testGetElementsQuerySelectoAll()"
+    />
+    <br />
+    <input type="button" value="获取页面中的html标签" onclick="testGetDocumentElement()" />
+    <input type="button" value="获取页面中的body标签" onclick="testGetBody()" />
+    <br />
+    <input type="button" value="获取页面中的所有元素节点方式一" onclick="testGetAllElements1()" />
+    <input type="button" value="获取页面中的所有元素节点方式二" onclick="testGetAllElements2()" />
+    <br />
+    <input
+      type="button"
+      value="通用选择器querySelector()用法提升"
+      onclick="testGetElementQuerySelectorSenior()"
+    />
+    <input
+      type="button"
+      value="通用选择器querySelectorAll()用法提升"
+      onclick="testGetElementsQuerySelectoAllSenior()"
+    />
+    <br />
+    <input type="button" value="获取页面元素用法提升" onclick="testGetElementSenior()" />
+  </body>
+</html>

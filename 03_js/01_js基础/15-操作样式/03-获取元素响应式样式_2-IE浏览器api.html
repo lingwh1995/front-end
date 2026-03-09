@@ -1,37 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>获取元素响应式样式_2-IE浏览器api</title>
-  <style>
-    /**
-     * currentStyle只支持IE浏览器
-     */
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取元素响应式样式_2-IE浏览器api</title>
+    <style>
+      /* 普通样式 */
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: gold;
+        border: 1px solid green !important;
+      }
+    </style>
+    <script>
+      window.onload = () => {
+        /**
+         * 浏览器兼容性注意事项：
+         *
+         * 1. 独占属性：
+         *    - currentStyle 只支持 IE 浏览器（Internet Explorer）。
+         *
+         * 2. 功能描述：
+         *    - 用于获取元素当前最终生效的样式属性值。
+         */
 
-    /* 普通样式 */
-    .box {
-      width: 200px;
-      height: 200px;
-      background-color: gold;
-      border: 1px solid green !important;
-    }
-  </style>
-  <script>
-    window.onload = () => {
-      /* 
-       * 读取普通样式
-       */
-      const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
-      readNormalStyleBtn.addEventListener('click',()=> {
-        const box = document.querySelector('.box')
-        alert(`宽度:${box.currentStyle.width}, 高度:${box.currentStyle.height}, 背景色:${box.currentStyle.backgroundColor}`)
-      })
-    }
-  </script>
-</head>
-<body>
-  <input type="button" value="读取普通样式"/>
-  <div class="box"></div>
-</body>
+        /**
+         * 场景：读取普通样式
+         *
+         * 1. 实现方式：
+         *    - 使用 element.currentStyle [属性名] 进行读取。
+         *
+         * 2. 注意事项：
+         *    - 在非 IE 浏览器（如 Chrome, Firefox）中运行此代码会报错，因为这些浏览器不支持 currentStyle。
+         */
+        const readNormalStyleBtn = document.querySelectorAll('input[type="button"]')[0]
+        readNormalStyleBtn.addEventListener('click', () => {
+          const box = document.querySelector('.box')
+          alert(
+            `宽度:${box.currentStyle.width}, 高度:${box.currentStyle.height}, 背景色:${box.currentStyle.backgroundColor}`
+          )
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="读取普通样式" />
+    <div class="box"></div>
+  </body>
 </html>

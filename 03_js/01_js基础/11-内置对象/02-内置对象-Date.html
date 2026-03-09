@@ -1,32 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内置对象-Date</title>
-  <script>
-    //当前时间
-    let date = new Date()
-    console.log(date)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内置对象-Date</title>
+    <script>
+      /**
+       * 内置对象 Date 的使用规范
+       *
+       * 1. 实例化：通过 new Date() 获取当前时间，或传入特定格式字符串获取指定时间。
+       * 2. 时间分量：提供了一系列 get 方法用于获取年、月、日、时、分、秒等信息。
+       * 3. 索引偏移：
+       *    - 月份：getMonth() 返回 0-11（0 代表一月）。
+       *    - 星期：getDay() 返回 0-6（0 代表周日）。
+       * 4. 时间戳：指从 1970年1月1日 00:00:00 UTC 至今的毫秒数。
+       */
 
-    //指定时间
-    date = new Date('12/03/2012 11:10:25')
-    console.log(date)
+      // --- 1. 实例化日期对象 ---
+      // 获取当前时间
+      let date = new Date()
+      console.log(date)
 
-    date = new Date()
-    console.log(`获取当前是几日: ${date.getDate()}`)
-    console.log(`获取当前是年份: ${date.getFullYear()}`)
-    console.log(`获取当前是周几(返回一个0-6的值，0表示周日): ${date.getDay()}`)
-    console.log(`获取当前的月份(返回一个0-11的值，0表示一月): ${date.getMonth()}`)
-    console.log(`获取当前的时: ${date.getHours()}`)
-    console.log(`获取当前的分: ${date.getMinutes()}`)
-    console.log(`获取当前的秒: ${date.getSeconds()}`)
-    console.log(`获取当前的毫秒: ${date.getMilliseconds()}`)
-    console.log(`获取当前日期的时间戳(格林威治时间1970年1月1日0时0分0秒到当前的毫秒数): ${date.getTime()}`)
-    console.log(`获取当前日期的时间戳(常用来统计代码执行时间): ${Date.now()}`)
-  </script>
-</head>
-<body>
-  
-</body>
+      // 获取指定时间
+      date = new Date('12/03/2012 11:10:25')
+      console.log(date)
+
+      // --- 2. 常用日期获取方法 ---
+      date = new Date()
+      console.log(`获取当前是几日: ${date.getDate()}`)
+      console.log(`获取当前是年份: ${date.getFullYear()}`)
+
+      // 特别注意：0表示周日
+      console.log(`获取当前是周几(返回一个0-6的值，0表示周日): ${date.getDay()}`)
+
+      // 特别注意：0表示一月，展示时通常需 +1
+      console.log(`获取当前的月份(返回一个0-11的值，0表示一月): ${date.getMonth()}`)
+
+      console.log(`获取当前的时: ${date.getHours()}`)
+      console.log(`获取当前的分: ${date.getMinutes()}`)
+      console.log(`获取当前的秒: ${date.getSeconds()}`)
+      console.log(`获取当前的毫秒: ${date.getMilliseconds()}`)
+
+      // --- 3. 时间戳获取 ---
+      // 方式一：格林威治时间1970年1月1日0时0分0秒到当前的毫秒数
+      console.log(`获取当前日期的时间戳: ${date.getTime()}`)
+
+      // 方式二：常用来统计代码执行时间（静态方法，性能更优）
+      console.log(`获取当前日期的时间戳: ${Date.now()}`)
+    </script>
+  </head>
+  <body></body>
 </html>
