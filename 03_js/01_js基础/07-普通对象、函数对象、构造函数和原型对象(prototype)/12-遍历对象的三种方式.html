@@ -13,14 +13,14 @@
       }
     }
 
-    //方式一：for in
+    // 方式一：for in
     for(const key in obj) {
       console.log(key + '-' + obj[key])
     }
     console.log('--------------------')
 
 
-    //方式二：Object.keys()
+    // 方式二：Object.keys()
     const keys = Object.keys(obj);
     console.log(keys)
     keys.forEach((key) => {
@@ -29,7 +29,7 @@
     console.log('--------------------')
 
 
-    //方式三: Object.getOwnPropertyNames()
+    // 方式三: Object.getOwnPropertyNames()
     const propNames = Object.getOwnPropertyNames(obj);
     console.log(propNames)
     propNames.forEach((propName) => {
