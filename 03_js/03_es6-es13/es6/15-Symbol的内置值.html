@@ -1,31 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Symbol的内置值</title>
-  <script>
-    //ES6中使用Symbol控制类型检测结果
-    class Person{
-      static [Symbol.hasInstance](params) {
-        console.log(params)
-        console.log('我被用来检测类型了...')
-        return false
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbol的内置值</title>
+    <script>
+      /**
+       * 1. Symbol.hasInstance
+       * 当其他对象使用 instanceof 运算符，判断是否为该对象的实例时，会调用这个方法。
+       * 我们可以通过重写它来“欺骗”类型检测系统。
+       */
+      class Person {
+        static [Symbol.hasInstance](params) {
+          console.log(params)
+          console.log('检测到 instanceof 操作，正在拦截...')
+          // 无论实际情况如何，这里强制返回 false
+          return false
+        }
       }
-    }
 
-    let o = {name: 'zhangsan'}
-    console.log(o instanceof Person)
+      let o = { name: 'zhangsan' }
+      console.log(o instanceof Person) // 即使手动构造逻辑，结果也会被拦截为 false
 
-    //ES6中使用Symbol控制数组是否可以展开
-    const arr1 = [1,2,3]
-    const arr2 = [4,5,6]
-    console.log(arr1.concat(arr2))
-    arr2[Symbol.isConcatSpreadable] = false
-    console.log(arr1.concat(arr2))
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. Symbol.isConcatSpreadable
+       * 对象的该属性等于一个布尔值，表示该对象用于 Array.prototype.concat() 时，是否可以展开。
+       */
+      const arr1 = [1, 2, 3]
+      const arr2 = [4, 5, 6]
+
+      // 默认情况下，数组 concat 是展开的
+      console.log(arr1.concat(arr2))
+
+      // 设置 Symbol.isConcatSpreadable 为 false，使其作为整体连接，不再被“打散”
+      arr2[Symbol.isConcatSpreadable] = false
+      console.log(arr1.concat(arr2)) // [1, 2, 3, [4, 5, 6]]
+    </script>
+  </head>
+  <body></body>
 </html>

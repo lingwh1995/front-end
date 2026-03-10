@@ -1,36 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>const声明变量以及特点</title>
-  <script>
-    /* 声明常量 */
-    const SCHOOL = '西安财经大学'
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>const声明变量以及特点</title>
+    <script>
+      /**
+       * 声明常量
+       */
+      const SCHOOL = '西安财经大学'
 
-    //1.一定要赋初值，否则会报错
-    //const a;
-    
-    //2.常量一般使用大写
-    const ADDRESS = '西安'
-    
-    //3.常量的值不能修改，否则会报错
-    // ADDRESS = '北京'
-    
-    //4.块儿级作用域
-    // {
-    //   const brand = '小米'
-    // }
-    // console.log(brand)
-    
-    //5.对数组和对象等引用类型数据的修改，不算对常量的修改，因为这个操作的是堆里面的值，不是引用类型数据的引用
-    const user = {id:'001',name:'zhangsan',age:20}
-    user.name = 'lisi'
-    const nums = [1,2,3]
-    nums.push(4,5,6)
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 1. 初始化要求
+       * 声明时一定要赋初值，否则会报错
+       */
+      // const a;
+
+      /**
+       * 2. 命名规范
+       * 常量一般使用大写字母（下划线分隔）
+       */
+      const ADDRESS = '西安'
+
+      /**
+       * 3. 不可变性
+       * 常量的值一旦定义不能修改，否则会报错
+       */
+      // ADDRESS = '北京'
+
+      /**
+       * 4. 块级作用域
+       * const 定义的变量仅在当前块级作用域内有效
+       */
+      // {
+      //   const brand = '小米'
+      // }
+      // console.log(brand)
+
+      /**
+       * 5. 引用类型的修改
+       * 对数组和对象等引用类型数据的内部修改，不算对常量的修改。
+       * 因为 const 锁定的是变量在栈内存中的“引用地址”，而不是堆内存中的具体数值。
+       */
+      const user = { id: '001', name: 'zhangsan', age: 20 }
+      user.name = 'lisi'
+
+      const nums = [1, 2, 3]
+      nums.push(4, 5, 6)
+    </script>
+  </head>
+  <body></body>
 </html>

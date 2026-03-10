@@ -1,25 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set集合_数组与集合之间的相互转换</title>
-  <script>
-    let nums = [1, 2, 2, 3, 4, 4, 5]
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set集合_数组与集合之间的相互转换</title>
+    <script>
+      /**
+       * Set 与 Array 的互转
+       * 应用场景：最常见的用途是“数组去重”。
+       */
+      let nums = [1, 2, 2, 3, 4, 4, 5]
 
-    //将数组转换为Set集合(同时会去除数组中的重复元素)
-    let numsSet = new Set(nums)
-    console.log(numsSet, typeof numsSet)
-    console.log('------------01------------')
+      /**
+       * 1. Array -> Set
+       * 方式：通过 new Set(iterable) 构造函数。
+       * 效果：自动过滤掉数组中的重复元素。
+       */
+      let numsSet = new Set(nums)
+      console.log(numsSet, typeof numsSet) // 输出 Set(5) {1, 2, 3, 4, 5}
+      console.log('------------01------------')
 
-
-    //将Set集合转换为数组
-    nums = [...numsSet]
-    console.log(nums, typeof nums)
-    console.log('------------02------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. Set -> Array
+       * 方式：使用扩展运算符 (...) 或 Array.from() 方法。
+       * 效果：将实现了 Iterator 接口的 Set 展开回数组结构。
+       */
+      nums = [...numsSet]
+      console.log(nums, typeof nums) // 输出 [1, 2, 3, 4, 5]
+      console.log('------------02------------')
+    </script>
+  </head>
+  <body></body>
 </html>

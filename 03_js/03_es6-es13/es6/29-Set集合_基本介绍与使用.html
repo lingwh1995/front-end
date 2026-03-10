@@ -1,61 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set集合_基本介绍与使用</title>
-  <script>
-    //ES6提供了新的数据结构Set，特点是里面存放的元素是无序且重复的，实现了Iterator接口，所以可以使用 for...of 来遍历
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set集合_基本介绍与使用</title>
+    <script>
+      /**
+       * ES6 提供了新的数据结构 Set（集合）。
+       * 特点：成员的值都是唯一的，没有重复的值。
+       * 接口：实现了 Iterator 接口，因此可以使用扩展运算符 (...) 和 for...of 进行遍历。
+       */
 
-    //1.创建一个空的Set集合
-    let set1 = new Set()
-    console.log(set1, typeof set1)
-    console.log('------------01------------')
+      // 1. 创建一个空的 Set 集合
+      let set1 = new Set()
+      console.log(set1, typeof set1) // object
+      console.log('------------01------------')
 
+      // 2. 创建一个有初始值的 Set 集合（自动去重）
+      let set2 = new Set([1, 2, 2, 3, 3, 4, 5])
+      console.log(set2, typeof set2) // {1, 2, 3, 4, 5}
+      console.log('------------02------------')
 
-    //2.创建一个有初始值的Set集合
-    let set2 = new Set([1,2,2,3,3,4,5])
-    console.log(set2, typeof set2)
-    console.log('------------02------------')
+      // 3. 添加元素：add()
+      // 如果添加已存在的值，Set 会自动忽略，保持唯一性
+      let userSet = new Set()
+      userSet.add('张三')
+      userSet.add('张三') // 重复值，无效
+      userSet.add('李四')
+      userSet.add('王五')
+      console.log(userSet)
+      console.log('------------03------------')
 
+      // 4. 删除指定元素：delete()
+      console.log(userSet)
+      userSet.delete('李四')
+      console.log(userSet)
+      console.log('------------04------------')
 
-    //3.添加元素
-    let userSet = new Set()
-    userSet.add('张三')
-    userSet.add('张三')
-    userSet.add('李四')
-    userSet.add('王五')
-    console.log(userSet)
-    console.log('------------03------------')
+      // 5. 检查是否包含某个元素：has()
+      console.log(userSet)
+      console.log(userSet.has('张三')) // 返回布尔值
+      console.log('------------05------------')
 
+      // 6. 获取 Set 集合的大小：size 属性
+      console.log(userSet)
+      console.log(userSet.size) // 类似于数组的 length
+      console.log('------------06------------')
 
-    //4.删除指定元素
-    console.log(userSet)
-    userSet.delete('李四')
-    console.log(userSet)
-    console.log('------------04------------')
-
-
-    //5.检查是否包含某个元素
-    console.log(userSet)
-    console.log(userSet.has('张三'))
-    console.log('------------05------------')
-
-
-    //6.获取Set集合的大小
-    console.log(userSet)
-    console.log(userSet.size)
-    console.log('------------06------------')
-
-
-    //7.清空Set集合
-    console.log(userSet)
-    userSet.clear()
-    console.log(userSet)
-    console.log('------------07------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      // 7. 清空 Set 集合：clear()
+      console.log(userSet)
+      userSet.clear()
+      console.log(userSet)
+      console.log('------------07------------')
+    </script>
+  </head>
+  <body></body>
 </html>

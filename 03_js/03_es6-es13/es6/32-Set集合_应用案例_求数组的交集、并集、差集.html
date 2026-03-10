@@ -1,38 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set集合_应用案例_求数组的交集、并集、差集</title>
-  <script>
-    let arr1 = [1, 2, 2, 3, 4, 4, 5]
-    let arr2 = [2, 2, 3, 4]
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set集合_应用案例_求数组的交集、并集、差集</title>
+    <script>
+      /**
+       * 基础数据：两个包含重复元素的数组
+       */
+      let arr1 = [1, 2, 2, 3, 4, 4, 5]
+      let arr2 = [2, 2, 3, 4]
 
-    /**
-     * 去重并求交集
-     */
-    let result = [...new Set(arr1)].filter(num => new Set(arr2).has(num))
-    console.log(result)
-    console.log('------------01------------')
+      /**
+       * 1. 交集 (Intersection)
+       * 原理：先对 arr1 去重，然后过滤出那些同时也存在于 arr2 中的元素。
+       * 结果：两个数组共同拥有的元素。
+       */
+      let result = [...new Set(arr1)].filter((num) => new Set(arr2).has(num))
+      console.log('交集：', result)
+      console.log('------------01------------')
 
+      /**
+       * 2. 并集 (Union)
+       * 原理：利用扩展运算符 (...) 将两个数组合并，再通过 Set 自动去重。
+       * 结果：包含两个数组所有不重复的元素。
+       */
+      result = new Set([...arr1, ...arr2])
+      console.log('并集：', [...result]) // 转回数组输出
+      console.log('------------02------------')
 
-    /**
-     * 去重并求并集
-     */
-    result = new Set([...arr1, ...arr2])
-    console.log(result)
-    console.log('------------02------------')
-
-
-    /**
-     * 去重并求差集
-     */
-    result = [...new Set(arr1)].filter(num => ! new Set(arr2).has(num))
-    console.log(result)
-    console.log('------------03------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 3. 差集 (Difference)
+       * 原理：先对 arr1 去重，然后过滤出那些“不存在”于 arr2 中的元素。
+       * 注意：这通常指“左差集”（arr1 相对于 arr2 的不同部分）。
+       */
+      result = [...new Set(arr1)].filter((num) => !new Set(arr2).has(num))
+      console.log('差集 (arr1中有但arr2中没有)：', result)
+      console.log('------------03------------')
+    </script>
+  </head>
+  <body></body>
 </html>

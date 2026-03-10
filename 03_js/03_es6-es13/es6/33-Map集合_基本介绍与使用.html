@@ -1,65 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Map集合_基本介绍与使用</title>
-  <script>
-    //创建集合Map 方式一: 二维数组
-    let map = new Map([['id','001'],['name','张三'],['age',24]])
-    console.log(map)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map集合_基本介绍与使用</title>
+    <script>
+      /**
+       * Map 集合特性
+       * 
+       * 1. 键值对存储：类似于对象，但“键”的范围不限于字符串，各种类型的值（包括对象、函数、基本类型）都可以当作键。
+       * 2. 有序性：Map 遍历时按照元素插入的顺序进行。
+       * 3. 接口：实现了 Iterator 接口，支持 for...of 遍历。
+       */
 
-    //创建集合Map 方式二
-    const user = {
-      id: '002',
-      name: '李四',
-      age: 28
-    }
-    map = new Map(Object.entries(user))
-    console.log(map)
+      // 1. 创建 Map 的方式一：通过二维数组初始化
+      let map = new Map([
+        ['id', '001'],
+        ['name', '张三'],
+        ['age', 24],
+      ])
+      console.log(map)
 
-    //创建集合Map 方式三
-    map = new Map()
-    console.log('------------01------------')
+      // 2. 创建 Map 的方式二：通过 Object.entries() 将对象转换为可迭代的键值对数组
+      const user = {
+        id: '002',
+        name: '李四',
+        age: 28,
+      }
+      map = new Map(Object.entries(user))
+      console.log(map)
 
+      // 3. 创建 Map 的方式三：创建一个空 Map
+      map = new Map()
+      console.log('------------01------------')
 
-    //添加元素
-    map.set('school','西安财经大学')
-    map.set('showSchoolName',()=> {
-      console.log('这里是西安财经大学')
-    })
-    map.set('student',{id:'001', name: 'zhangsan'})
-    map.set('array',[1,2,3,4,5])
-    console.log(map)
-    console.log('------------02------------')
+      /**
+       * 常用 API 操作
+       */
 
+      // 添加元素：set(key, value)
+      // Map 的强大之处在于 key 可以是函数、对象等
+      map.set('school', '西安财经大学')
+      map.set('showSchoolName', () => {
+        console.log('这里是西安财经大学')
+      })
+      map.set('student', { id: '001', name: 'zhangsan' })
+      map.set('array', [1, 2, 3, 4, 5])
+      console.log(map)
+      console.log('------------02------------')
 
-    //删除元素
-    map.delete('school')
-    console.log(map)
-    console.log('------------03------------')
+      // 删除元素：delete(key)
+      map.delete('school')
+      console.log(map)
+      console.log('------------03------------')
 
+      // 获取元素：get(key)
+      const array = map.get('array')
+      console.log(array)
+      console.log('------------04------------')
 
-    //获取元素
-    const array = map.get('array')
-    console.log(array)
-    console.log('------------04------------')
+      /**
+       * 遍历 Map
+       * 默认遍历得到的是一个数组 [key, value]，可以配合解构赋值使用：for(const [key, value] of map)
+       */
+      for (const entry of map) {
+        console.log(entry) // 输出格式：['key', value]
+      }
+      console.log('------------05------------')
 
-    
-    //便利map: map实现了Iterator接口，所以可以使用for...of来遍历
-    for(const entry of map) {
-      console.log(entry)
-    }
-    console.log('------------05------------')
-
-
-    //清空map
-    map.clear()
-    console.log(map)
-    console.log('------------06------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      // 清空 Map：clear()
+      map.clear()
+      console.log(map)
+      console.log('------------06------------')
+    </script>
+  </head>
+  <body></body>
 </html>

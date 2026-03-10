@@ -1,21 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>扩展运算符的介绍_函数实参转换</title>
-  <script>
-    //ES6扩展运算符...能将数组转换为逗号分隔的参数列表
-    const nums = [1,2,3,4,5]
-    
-    //声明一个函数
-    function show() {
-      console.log(arguments)
-    }
-    show(...nums)
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>扩展运算符的介绍_函数实参转换</title>
+    <script>
+      /**
+       * ES6 扩展运算符 (...)
+       * 作用：能将“数组”转换为“以逗号分隔的参数序列”。
+       * 本质：与 rest 参数相反，扩展运算符是将整体展开为个体。
+       */
+      const nums = [1, 2, 3, 4, 5]
+
+      /**
+       * 声明一个函数用于测试
+       * 调用时 show(...nums) 等价于 show(1, 2, 3, 4, 5)
+       */
+      function show() {
+        console.log(arguments)
+      }
+
+      // 使用扩展运算符将数组展开作为实参传入
+      show(...nums)
+    </script>
+  </head>
+  <body></body>
 </html>

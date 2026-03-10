@@ -1,33 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Object类方法扩展_values()、entries()、getOwnPropertyDescriptors()</title>
-  <script>
-    /**
-     * Object.values()  :输出所有的值
-     * Object.entries() :输出所有的键值对
-     */ 
-    let user = { id: '001', name: '张三', age: 28}
-    console.log(Object.values(user))  // 输出：['001', '张三', 28, '男']
-    console.log(Object.entries(user)) // 输出：[['id', '001'], ['name', '张三'], ['age', 28]]
-    
-    //创建 Map
-    const map = new Map(Object.entries(user));
-    console.log(map.get('name'));
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object类方法扩展_values()、entries()、getOwnPropertyDescriptors()</title>
+    <script>
+      /**
+       * 1. Object.values() 与 Object.entries() [ES8]
+       * - Object.values(obj)  : 返回一个包含对象自身所有可枚举属性值的数组。
+       * - Object.entries(obj) : 返回一个包含对象自身所有可枚举属性键值对的数组。
+       */
+      let user = { id: '001', name: '张三', age: 28 }
 
+      // 输出所有值：['001', '张三', 28]
+      console.log(Object.values(user))
 
-    /**
-     * Object.getOwnPropertyDescriptors()
-     *   这个方法用于获取一个对象的所有自身属性（非继承属性）的描述符。
-     */
-    const obj = { a: 1 }
-    console.log(Object.getOwnPropertyDescriptors(obj))
-    // 输出：{ a: {value: 1, writable: true, enumerable: true, configurable: true} }
-  </script>
-</head>
-<body>
-  
-</body>
+      // 输出所有键值对数组：[['id', '001'], ['name', '张三'], ['age', 28]]
+      console.log(Object.entries(user))
+
+      /**
+       * 2. 实际应用：配合 Map 构造函数
+       * - 利用 Object.entries() 可以非常方便地将普通 Object 转换为 Map 结构。
+       */
+      const map = new Map(Object.entries(user))
+      console.log(map.get('name')) // 输出：张三
+
+      /**
+       * 3. Object.getOwnPropertyDescriptors(obj) [ES8]
+       * - 功能：获取一个对象所有自身属性（非继承属性）的描述符。
+       * - 描述符包含：value (值), writable (是否可写), enumerable (是否可枚举), configurable (是否可配置)。
+       * - 用途：解决 Object.assign 无法正确拷贝 get 和 set 属性的问题。
+       */
+      const obj = { a: 1 }
+      console.log(Object.getOwnPropertyDescriptors(obj))
+      /* 
+       输出结果结构示例：
+       { 
+         a: { value: 1, writable: true, enumerable: true, configurable: true } 
+       } 
+    */
+    </script>
+  </head>
+  <body></body>
 </html>

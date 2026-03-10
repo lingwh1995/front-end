@@ -1,35 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>生成器函数_执行多个代码块</title>
-  <script>
-    //生成器函数是ES6提供的一种异步编程解决方案，语法行为与传统函数完全不同
-    function * generator () {
-      console.log('生成器函数中第一部分代码执行了...')
-      yield '一只没有耳朵'
-      console.log('生成器函数中第二部分代码执行了...')
-      yield '一只没有眼睛'
-      console.log('生成器函数中第三部分代码执行了...')
-      yield '真奇怪'
-    }
-    const iterator = generator()
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数_执行多个代码块</title>
+    <script>
+      /**
+       * 生成器函数 (Generator)
+       * 核心特性：通过 yield 关键字将函数挂起（暂停），实现分段执行。
+       */
+      function* generator() {
+        console.log('生成器函数中第一部分代码执行了...')
+        yield '一只没有耳朵'
 
-    const firstCodeBlockExecResult = iterator.next()
-    console.log(firstCodeBlockExecResult)
+        console.log('生成器函数中第二部分代码执行了...')
+        yield '一只没有眼睛'
 
-    const secondCodeBlockExecResult = iterator.next()
-    console.log(secondCodeBlockExecResult)
+        console.log('生成器函数中第三部分代码执行了...')
+        yield '真奇怪'
+      }
 
-    const thirdCodeBlockExecResult = iterator.next()
-    console.log(thirdCodeBlockExecResult)
+      // 1. 获取迭代器对象
+      const iterator = generator()
 
-    const end = iterator.next()
-    console.log(end)
-  </script>
-</head>
-<body>
-  
-</body>
+      // 2. 第一次调用 next：执行到第一个 yield，并返回其后的值
+      const firstCodeBlockExecResult = iterator.next()
+      console.log(firstCodeBlockExecResult) // {value: "一只没有耳朵", done: false}
+
+      // 3. 第二次调用 next：从上一次暂停处继续，执行到第二个 yield
+      const secondCodeBlockExecResult = iterator.next()
+      console.log(secondCodeBlockExecResult) // {value: "一只没有眼睛", done: false}
+
+      // 4. 第三次调用 next：继续执行到第三个 yield
+      const thirdCodeBlockExecResult = iterator.next()
+      console.log(thirdCodeBlockExecResult) // {value: "真奇怪", done: false}
+
+      // 5. 第四次调用 next：函数执行完毕
+      const end = iterator.next()
+      console.log(end) // {value: undefined, done: true}
+    </script>
+  </head>
+  <body></body>
 </html>

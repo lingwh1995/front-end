@@ -1,29 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>面向对象_es5中使用Object.create实现继承</title>
-  <script type="text/javascript">
-    const father = {
-      id:'001',
-      name:'张三',
-      show() {
-        console.log('show......')
-      }
-    }
-    const son = Object.create(father,{
-      gender:{
-          value:'男'
-      }
-    })
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>面向对象_es5中使用Object.create实现继承</title>
+    <script type="text/javascript">
+      /**
+       * Object.create 实现原型式继承
+       * 
+       * 1. 原理：创建一个新对象，并将其原型（__proto__）指向指定的对象。
+       * 2. 场景：适用于不通过构造函数，直接基于现有对象创建新对象的场景。
+       */
 
-    console.log(son.id)
-    console.log(son.name)
-    son.show()
-  </script>  
-</head>
-<body>
-  
-</body>
+      // 父对象（作为原型使用）
+      const father = {
+        id: '001',
+        name: '张三',
+        show() {
+          console.log('show......')
+        },
+      }
+
+      /**
+       * 3. 语法：Object.create(proto, propertiesObject)
+       * - 第一个参数：作为新对象原型的对象。
+       * - 第二个参数（可选）：为新对象定义额外的属性（需使用属性描述符格式）。
+       */
+      const son = Object.create(father, {
+        gender: {
+          value: '男', // 属性值
+          enumerable: true, // 是否可枚举（默认为 false）
+        },
+      })
+
+      // 测试继承结果
+      console.log(son.id) // 继承自 father
+      console.log(son.name) // 继承自 father
+      son.show() // 继承自 father
+
+      /**
+       * 注意：son 本身并没有 id 和 name 属性，
+       * 它们存在于 son.__proto__ 中。
+       */
+    </script>
+  </head>
+  <body></body>
 </html>

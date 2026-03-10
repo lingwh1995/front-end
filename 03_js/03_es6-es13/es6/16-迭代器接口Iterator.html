@@ -1,47 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>迭代器接口Iterator</title>
-  <script>
-    /**
-     * 迭代器是一种接口，为各种不同的数据结构提供统一的访问机制，任
-     * 何数据结构只要部署Iterator接口，就可以使用for...of完成遍历操作
-     */ 
-    const school = {
-      name: 'ufe',
-      students: [
-        '晁琛奇',
-        '季航宣',
-        '陈星宇',
-        '王鹏',
-        '李欣驰'
-      ],
-      [Symbol.iterator](){
-        let index = 0
-        let this_ = this
-        return {
-          next: ()=> {
-            let result
-            if(index < this_.students.length) {
-              result = {value: this_.students[index], done: false}
-              index++
-            }else {
-              result = {value: 'undefined', done: true}
-            }
-            return result
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>迭代器接口Iterator</title>
+    <script>
+      /**
+       * 迭代器 (Iterator) 是一种接口机制。
+       * 作用：为各种不同的数据结构提供统一的访问机制。
+       * 核心：任何数据结构只要部署了 [Symbol.iterator] 属性，就可以使用 for...of 完成遍历操作。
+       */
+      const school = {
+        name: 'ufe',
+        students: ['晁琛奇', '季航宣', '陈星宇', '王鹏', '李欣驰'],
+        /**
+         * 手写迭代器接口
+         * 必须返回一个包含 next() 方法的对象
+         */
+        [Symbol.iterator]() {
+          let index = 0
+          let this_ = this
+          return {
+            // next 方法返回一个包含 value 和 done 属性的对象
+            next: () => {
+              let result
+              if (index < this_.students.length) {
+                result = { value: this_.students[index], done: false }
+                index++
+              } else {
+                // 遍历结束时，done 为 true
+                result = { value: undefined, done: true }
+              }
+              return result
+            },
           }
-        }
+        },
       }
-    }
 
-    for (const element of school) {
-      console.log(element)
-    }
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 测试：只要对象实现了迭代器接口，就可以被 for...of 遍历
+       */
+      for (const element of school) {
+        console.log(element)
+      }
+    </script>
+  </head>
+  <body></body>
 </html>

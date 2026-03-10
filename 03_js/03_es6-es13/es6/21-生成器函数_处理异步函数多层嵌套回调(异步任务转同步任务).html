@@ -1,61 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>生成器函数_处理异步函数多层嵌套回调(异步任务转同步任务)</title>
-  <script>
-    /**
-     * 不使用生成器函数处理：容易出现多层嵌套、回调地狱问题、变量名称写错问题
-     */
-    /*
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数_处理异步函数多层嵌套回调(异步任务转同步任务)</title>
+    <script>
+      /**
+       * 传统处理方式：
+       * 缺点：容易出现多层嵌套回调（回调地狱 Callback Hell），
+       * 导致代码逻辑混乱、难以维护、变量作用域冲突等问题。
+       */
+      /*
     setTimeout(() => {
       console.log('one...')
       setTimeout(() => {
         console.log('two...')
         setTimeout(() => {
           console.log('three...')
-        },3000)
-      },2000)
-    },1000)
+        }, 3000)
+      }, 2000)
+    }, 1000)
     */
 
-    
-    /**
-     * 使用生成器函数处理：不会出现多层嵌套、回调地狱问题、变量名称写错问题
-     */
-    /**/
-    const one = () => {
-      setTimeout(() => {
-        console.log('one...')
-        iterator.next()
-      },1000)
-    }
-    const two = () => {
-      setTimeout(() => {
-        console.log('two...')
-        iterator.next()
-      },2000)
-    }
-    const three = () => {
-      setTimeout(() => {
-        console.log('three...')
-        iterator.next()
-      },3000)
-    }
+      /**
+       * ES6 生成器函数处理方式：
+       * 优点：通过 yield 暂停控制，将异步操作写成同步的形式。
+       * 核心逻辑：在异步任务的回调函数中手动调用 iterator.next()，从而触发下一步。
+       */
 
-    function * generator() {
-      yield one()
-      yield two()
-      yield three()
-    }
+      // 1. 定义独立的异步任务块
+      const one = () => {
+        setTimeout(() => {
+          console.log('one...')
+          // 任务完成后，推进迭代器
+          iterator.next()
+        }, 1000)
+      }
 
-    const iterator = generator()
-    iterator.next()
-    
-  </script>
-</head>
-<body>
-  
-</body>
+      const two = () => {
+        setTimeout(() => {
+          console.log('two...')
+          iterator.next()
+        }, 2000)
+      }
+
+      const three = () => {
+        setTimeout(() => {
+          console.log('three...')
+          iterator.next()
+        }, 3000)
+      }
+
+      // 2. 生成器控制异步流程（看起来像同步代码）
+      function* generator() {
+        yield one()
+        yield two()
+        yield three()
+      }
+
+      // 3. 启动迭代器
+      const iterator = generator()
+      iterator.next()
+    </script>
+  </head>
+  <body></body>
 </html>

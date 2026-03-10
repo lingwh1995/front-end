@@ -1,28 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>生成器函数_将yield返回结果作为参数传递</title>
-  <script>
-    //生成器函数是ES6提供的一种异步编程解决方案，语法行为与传统函数完全不同
-    function * generator (arg) {
-      console.log(arg)
-      const first = yield 111
-      console.log(`第一个yield语句的整体返回结果: ${first}`)
-      const second = yield 222
-      console.log(`第二个yield语句的整体返回结果: ${second}`)
-      const third = yield 333
-      console.log(`第三个yield语句的整体返回结果: ${third}`)
-    }
-    const iterator = generator('AAA')
-    console.log(iterator.next('第一次调用next()传递的参数'))
-    console.log(iterator.next('第二次调用next()传递的参数'))
-    console.log(iterator.next('第三次调用next()传递的参数'))
-    console.log(iterator.next('第四次调用next()传递的参数'))
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数_将yield返回结果作为参数传递</title>
+    <script>
+      /**
+       * 生成器函数的双向通信机制：
+       * 1. 初始参数：在调用生成器函数时传入，如 generator('AAA')。
+       * 2. next() 传参：next 方法接收的参数，会作为“上一个” yield 语句的返回值。
+       */
+      function* generator(arg) {
+        // 这里的 arg 是初始化时传入的 'AAA'
+        console.log(arg)
+
+        // yield 111 返回给外部 next() 的 value 是 111
+        // 但变量 first 接收的是下一次调用 next() 时传入的参数
+        const first = yield 111
+        console.log(`第一个yield语句的整体返回结果: ${first}`)
+
+        const second = yield 222
+        console.log(`第二个yield语句的整体返回结果: ${second}`)
+
+        const third = yield 333
+        console.log(`第三个yield语句的整体返回结果: ${third}`)
+      }
+
+      const iterator = generator('AAA')
+
+      /**
+       * 注意：第一次调用 next() 传入的参数是无效的。
+       * 因为第一次 next() 是为了启动生成器执行到第一个 yield，前面没有暂停的 yield 来接收它。
+       */
+      console.log(iterator.next('第一次调用next()传递的参数'))
+
+      // 这一次传入的字符串，会赋值给函数内部的变量 first
+      console.log(iterator.next('第二次调用next()传递的参数'))
+
+      // 这一次传入的字符串，会赋值给函数内部的变量 second
+      console.log(iterator.next('第三次调用next()传递的参数'))
+
+      // 这一次传入的字符串，会赋值给函数内部的变量 third
+      console.log(iterator.next('第四次调用next()传递的参数'))
+    </script>
+  </head>
+  <body></body>
 </html>

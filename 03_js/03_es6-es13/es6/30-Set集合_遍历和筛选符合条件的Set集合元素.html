@@ -1,37 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set集合_遍历和筛选符合条件的Set集合元素</title>
-  <script>
-    //ES6提供了新的数据结构Set，特点是里面存放的元素是无序且重复的，实现了Iterator接口，所以可以使用 for...of 来遍历
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set集合_遍历和筛选符合条件的Set集合元素</title>
+    <script>
+      /**
+       * Set 集合遍历特性：
+       * 1. Set 内部成员是唯一的（不重复）。
+       * 2. Set 实现了 Iterator 接口，因此支持 for...of 遍历。
+       * 3. 注意：Set 原型链上没有 map 和 filter 方法，若需使用这些方法，通常需先转为数组。
+       */
 
-    let nums = new Set([10, 20, 30, 40, 50])
+      let nums = new Set([10, 20, 30, 40, 50])
 
-    //1.使用for...of遍历Set集合 只要实现了Iterator接口，就可以使用for...of遍历
-    for(const num of nums) {
-      console.log(num)
-    }
-    console.log('------------01------------')
+      // 1. 使用 for...of 遍历 Set 集合
+      // 只要实现了 Iterator 接口的数据结构，都可以使用这种方式
+      for (const num of nums) {
+        console.log(num)
+      }
+      console.log('------------01------------')
 
+      /**
+       * 2. map() 方法的使用
+       * 注意：此处代码将 nums 重新赋值为了数组 [10, 20, 30, 40, 50]。
+       * 数组支持 map()，它会返回一个经过函数处理后的新数组。
+       */
+      nums = [10, 20, 30, 40, 50]
+      nums = nums.map((num) => num * 2)
+      console.log(nums)
+      console.log('------------02------------')
 
-    //2.map():创建一个新的Set集合，这个新Set集合由原Set集合中的每个元素都调用一次提供的函数后的返回值组成。
-    nums = [10, 20, 30, 40, 50]
-    nums = nums.map(num => num * 2)
-    console.log(nums)
-    console.log('------------02------------')
-
-
-    //3.使用forEach遍历Set集合
-    nums = [10, 20, 30, 40, 50]
-    nums.forEach(num => {
-      console.log(num)
-    })
-    console.log('------------03------------')
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 3. forEach 遍历
+       * Set 集合本身也支持 forEach 方法，其用法与数组的 forEach 类似。
+       */
+      nums = [10, 20, 30, 40, 50]
+      nums.forEach((num) => {
+        console.log(num)
+      })
+      console.log('------------03------------')
+    </script>
+  </head>
+  <body></body>
 </html>

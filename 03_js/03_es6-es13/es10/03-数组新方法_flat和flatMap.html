@@ -1,25 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组新方法_flat和flatMap</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组新方法_flat和flatMap</title>
-</head>
+  <body>
+    <script>
+      /**
+       * 1. flat(depth) [ES10新增]
+       * - 功能：按照指定深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组。
+       * - 参数：depth（深度），默认值为 1。若想无限层级拉平，可传 Infinity。
+       * - 作用：将多维数组转化为低维数组（降维）。
+       */
+      // const arr = [1, 2, 3, 4, [5, 6]]
+      // const arr = [1, 2, 3, 4, [5, 6, [7, 8, 9]]]
+      // console.log(arr.flat(2)) // 参数 2 代表拉平两层嵌套
 
-<body>
-  <script>
-    //flat()  将多维数组转化为低位数组
-    // const arr = [1,2,3,4,[5,6]]
-    // const arr = [1,2,3,4,[5,6,[7,8,9]]]
-    //参数为深度 是一个数字
-    // console.log(arr.flat(2))
+      /**
+       * 2. flatMap(callback) [ES10新增]
+       * - 功能：结合了 map() 和 flat()。先对每个元素执行映射函数，再将结果压缩成一个新数组。
+       * - 限制：flatMap 只能将结果数组“拉平”一层。
+       * - 优势：相比先 map 后 flat，它的性能更好，逻辑更紧凑。
+       */
+      const arr = [1, 2, 3, 4]
 
-    //flatMap
-    const arr = [1, 2, 3, 4];
-    const result = arr.flatMap(item => [item * 10])
-    console.log(result);
-  </script>
-</body>
+      // 遍历每个元素 item，返回 [item * 10]，随后 flatMap 会自动拉平包裹的数组
+      const result = arr.flatMap((item) => [item * 10])
 
+      console.log(result) // 输出：[10, 20, 30, 40]
+    </script>
+  </body>
 </html>

@@ -8,21 +8,21 @@
       /**
        * ES5 传统写法
        * 
-       * 1. 使用普通的 function 定义，手动绑定原型方法。
-       * 2. 需要手动将方法添加到原型上。
+       * 1. 构造函数：使用普通的 function 定义，通过 this 绑定属性。
+       * 2. 方法绑定：需要手动将方法添加到 prototype 原型对象上，实现方法共享。
        */
       function Dog(name, age) {
         this.name = name
         this.age = age
       }
 
-      // 在原型上添加方法
+      // 在原型上添加方法，所有实例共享该方法，节省内存
       Dog.prototype.sayHello = function () {
         console.log(`你好，我是 ${this.name}，我今年 ${this.age} 岁了`)
       }
 
-      const dogBlack = new Dog('小黑狗', 5)
-      const dogWhite = new Dog('小白狗', 5)
+      const dogBlack = new Dog('小黑狗', 10)
+      const dogWhite = new Dog('小白狗', 20)
       dogBlack.sayHello()
       dogWhite.sayHello()
       console.log('--------------------------')
@@ -30,54 +30,54 @@
       /**
        * ES6 Class 写法
        * 
-       * 1. 使用 class 关键字，构造逻辑放在 constructor 中，创建对象时自动调用 constructor 中逻辑。
-       * 2. 方法直接写在类块里，不需要手动将方法添加到原型上。
-       * 3. ES6 class 是一种语法糖，底层仍然是基于原型的。
+       * 1. 语法糖：本质仍然是基于原型的（Prototype-based），但写法更接近 Java/C# 等语言。
+       * 2. 构造器：逻辑封装在 constructor 中，创建实例时自动触发。
+       * 3. 方法定义：直接写在类块中，默认会被添加到类的原型（prototype）上。
        *
-       * ES6 class 的核心改进
+       * ES6 Class 的核心特性
        * 
-       * 1. 必须使用 new 调用：普通的构造函数可以直接作为函数执行（如 User()），这会导致 this 指向错误。
-       *    但 class 必须通过 new 调用，否则会直接报错，更安全。
-       * 2. 方法不可枚举：在 class 中定义的方法默认是不可枚举的（enumerable: false），这符合大多数开发
-       *    场景的需求，保持了对象的整洁。
-       * 3. 更简单的继承：通过 extends 和 super 关键字，实现继承比以前修改 prototype 指向要简单得多。
-       * 4. 严格模式：class 内部的代码默认运行在严格模式下。
-       * 5. 私有属性：class 允许定义私有属性，私有属性只能在类内部访问，外部无法访问。
-       * 6. 静态属性：class 允许定义静态属性，静态属性只能通过类名访问，实例无法访问。
-        
-            class BankAccount {
-                #balance = 0; // # 表示私有属性，外部无法直接访问（真正意义上的私有）
-
-                constructor(owner) {
-                    this.owner = owner;
-                }
-
-                deposit(amount) {
-                    this.#balance += amount;
-                    console.log(`存入后余额为: ${this.#balance}`);
-                }
-
-                static bankName() { // static 表示静态方法，只能通过类名调用
-                    return "中央银行";
-                }
-            }
-                
+       * 1. 强制 new 调用：不可作为普通函数执行，安全性更高。
+       * 2. 不可枚举性：类中定义的方法默认不可被 for...in 遍历。
+       * 3. 严格模式：类内部代码默认运行在 "use strict" 下。
+       * 4. 静态成员 (static)：属于类本身，不属于实例。
+       * 5. 私有属性 (#)：真正的私有成员，外部无法访问。
        */
+
+      /*
+      // 进阶案例展示：
+      class BankAccount {
+          #balance = 0; // 私有属性：外部无法直接访问
+
+          constructor(owner) {
+              this.owner = owner;
+          }
+
+          deposit(amount) {
+              this.#balance += amount;
+              console.log(`存入后余额为: ${this.#balance}`);
+          }
+
+          static bankName() { // 静态方法：只能通过 BankAccount.bankName() 调用
+              return "中央银行";
+          }
+      }
+      */
+
       class Cat {
-        // 构造器：等同于旧的构造函数体
+        // 构造器：初始化实例属性
         constructor(name, age) {
           this.name = name
           this.age = age
         }
 
-        // 原型方法：等同于 Cat.prototype.sayHello
+        // 原型方法：语法简洁，无需手动操作 prototype
         sayHello() {
           console.log(`你好，我是 ${this.name}，我今年 ${this.age} 岁了`)
         }
       }
 
-      const catBlack = new Cat('小黑猫', 5)
-      const catWhite = new Cat('小白猫', 10)
+      const catBlack = new Cat('小黑猫', 30)
+      const catWhite = new Cat('小白猫', 40)
       catBlack.sayHello()
       catWhite.sayHello()
       console.log('--------------------------')

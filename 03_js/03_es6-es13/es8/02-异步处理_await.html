@@ -1,52 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>异步处理_await</title>
+    <script>
+      /**
+       * await 关键字：等待异步结果
+       *
+       * 1. 功能：暂停 async 函数的执行，等待 Promise 解决（resolve）并获取其值。
+       * 2. 限制：await 必须放在被 async 修饰的函数内部。
+       * 3. 错误处理：如果 Promise 失败（reject），await 会抛出异常，需配合 try...catch 捕获。
+       */
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>异步处理_await</title>
-  <script>
-    //写法一:创建Promise对象，特别注意：这里其实是用new Promise()来模拟一个异步操作
-    /*
-    const promiseObj = new Promise((resolve,reject) => {
-      //resolve('成功的数据...')
-      reject('失败的数据...')
-    })
-    const main = async() => {
-      try {
-        const result = await promiseObj
-        console.log(result)
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    */
-
-    //写法二:通过函数返回一个Promise对象，特别注意：这里其实是用new Promise()来模拟一个异步操作
-    const promiseFun = () => {
-      return new Promise((resolve,reject) => {
-        //resolve('成功的数据...')
+      /**
+       * 写法一：直接 await 一个 Promise 实例
+       */
+      /*
+      const promiseObj = new Promise((resolve, reject) => {
+        // resolve('成功的数据...')
         reject('失败的数据...')
       })
-    }
 
-
-    //await 必须放在被 async 修饰的方法中
-    const main = async() => {
-      try {
-        const result = await promiseFun()
-        console.log(result)
-      } catch (e) {
-        console.log(e);
+      const main = async () => {
+        try {
+          // await 返回的是 Promise 成功后的 result
+          const result = await promiseObj
+          console.log(result)
+        } catch (e) {
+          // 如果 Promise 失败，则进入 catch 逻辑
+          console.log('捕获到错误：', e);
+        }
       }
-    }
+      */
 
-    main()
-  </script>
-</head>
+      /**
+       * 写法二：await 一个返回 Promise 的函数
+       */
+      /**
+       * promiseFun
+       * - 功能：模拟一个异步操作，通过返回 new Promise() 实现。
+       */
+      const promiseFun = () => {
+        return new Promise((resolve, reject) => {
+          // resolve('成功的数据...')
+          reject('失败的数据...')
+        })
+      }
 
-<body>
+      /**
+       * main 主函数
+       * - async：修饰函数，使其内部可以使用 await。
+       * - try...catch：异步任务的“保险箱”，防止程序因未捕获的错误而崩溃。
+       */
+      const main = async () => {
+        try {
+          // 1. 等待异步函数执行结果
+          const result = await promiseFun()
+          // 2. 如果成功，打印结果
+          console.log(result)
+        } catch (e) {
+          // 3. 如果失败，处理异常
+          console.log('执行出错：', e)
+        }
+      }
 
-</body>
+      // 调用异步主入口
+      main()
+    </script>
+  </head>
 
+  <body></body>
 </html>

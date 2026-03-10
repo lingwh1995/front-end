@@ -1,18 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>指数运算符</title>
-  <script>
-    /**
-     * 指数运算符（**）：这个运算符用于计算一个数的指数幂，左边是基数，右边是指数。
-     */
-    //求2的3次方
-    console.log(2 ** 3)    //输出8
-  </script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>指数运算符</title>
+    <script>
+      /**
+       * 1. 指数运算符 (**)
+       * - 功能：计算一个数的指数幂。
+       * - 语法：基数 ** 指数 (左边为底数，右边为幂次)。
+       * - [ES7新增]：等同于传统的 Math.pow(基数, 指数)。
+       */
+
+      // 求 2 的 3 次方 (2 * 2 * 2)
+      console.log(2 ** 3) // 输出：8
+      console.log('------------01------------')
+
+      /**
+       * 2. 指数赋值运算符 (**=)
+       * - 类似于 += 或 *=，可以将结果直接赋值给变量。
+       */
+      let a = 3
+      a **= 2 // 等同于 a = a ** 2
+      console.log(a) // 输出：9
+      console.log('------------02------------')
+    </script>
+  </head>
+  <body></body>
 </html>

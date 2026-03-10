@@ -1,70 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>生成器函数_用户、商品、订单案例(异步任务转同步任务)</title>
-  <script>
-    /*
-     * 模拟获取 获取用户数据 => 根据用户数据获取订单数据 => 根据订单数据获取商品信息
-     */
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数_用户、商品、订单案例(异步任务转同步任务)</title>
+    <script>
+      /**
+       * 业务需求：
+       * 模拟异步串行执行：获取用户数据 => 根据用户ID获取订单 => 根据订单获取商品信息
+       * 核心技术：利用 Generator 的 yield 暂停特性，通过 next(value) 实现异步数据的同步回传。
+       */
 
-    //获取用户数据
-    const getUserInfo = () => {
-      setTimeout(() => {
-        //模拟从数据库中查询到了用户数据
-        const user = {id:'001', name:'李华', address:'浙江省青田市'}
-        //第二次调用next()方法
-        iterator.next(user)
-      },1000)
-    }
+      // 1. 获取用户数据
+      const getUserInfo = () => {
+        setTimeout(() => {
+          // 模拟从数据库中查询到了用户数据
+          const user = { id: '001', name: '李华', address: '浙江省青田市' }
+          console.log('--- 1. 成功获取用户信息 ---')
+          // 第二次调用 next，并将 user 对象回传给生成器内部的 userInfo 变量
+          iterator.next(user)
+        }, 1000)
+      }
 
-    //根据用户数据获取订单数据
-    const getOrderInfo = (userInfo) => {
-      setTimeout(() => {
-        //模拟数据库数据
-        const orders = [
-          {orderId:'0000001', userId:'001', goods:{goodsName:'牙刷', price: '￥10.0'}},
-          {orderId:'0000002', userId:'002', goods:{goodsName:'牙膏', price: '￥15.0'}},
-          {orderId:'0000003', userId:'003', goods:{goodsName:'饮料', price: '￥20.0'}},
-          {orderId:'0000004', userId:'004', goods:{goodsName:'被子', price: '￥50.0'}},
-          {orderId:'0000005', userId:'005', goods:{goodsName:'音箱', price: '￥99.0'}},
-        ]
-        //模拟从数据库中 根据用户数据查询订单数据
-          //TODO 优化获取数组中第一个元素的方法
-        const order = orders.filter(order => userInfo.id == order.userId)[0]
-        //第三次调用next()方法
-        iterator.next(order)
-      },1000)
-    }
+      // 2. 根据用户数据获取订单数据
+      const getOrderInfo = (userInfo) => {
+        setTimeout(() => {
+          // 模拟数据库订单集合
+          const orders = [
+            { orderId: '0000001', userId: '001', goods: { goodsName: '牙刷', price: '￥10.0' } },
+            { orderId: '0000002', userId: '002', goods: { goodsName: '牙膏', price: '￥15.0' } },
+            { orderId: '0000003', userId: '003', goods: { goodsName: '饮料', price: '￥20.0' } },
+            { orderId: '0000004', userId: '004', goods: { goodsName: '被子', price: '￥50.0' } },
+            { orderId: '0000005', userId: '005', goods: { goodsName: '音箱', price: '￥99.0' } },
+          ]
+          // 模拟数据库查询：根据传入的 userInfo.id 过滤订单
+          const order = orders.find((item) => item.userId === userInfo.id)
+          console.log('--- 2. 成功获取订单信息 ---')
+          // 第三次调用 next，并将 order 对象回传给生成器内部的 orderInfo 变量
+          iterator.next(order)
+        }, 1000)
+      }
 
-    //根据订单数据获取商品信息
-    const getGoodsInfo = (orderInfo) => {
-      setTimeout(() => {
-        const goods = orderInfo.goods
-        //第四次调用next()方法
-        iterator.next(goods)
-      },1000)
-    }
+      // 3. 根据订单数据获取商品信息
+      const getGoodsInfo = (orderInfo) => {
+        setTimeout(() => {
+          const goods = orderInfo.goods
+          console.log('--- 3. 成功获取商品信息 ---')
+          // 第四次调用 next，并将 goods 对象回传给生成器内部的 goodsInfo 变量
+          iterator.next(goods)
+        }, 1000)
+      }
 
-    function * generator() {
-      //第一个yield语句的整体返回结果 => 第二次调用next()时传递参数
-      const userInfo = yield getUserInfo()
-      console.log(userInfo)
-      //第二个yield语句的整体返回结果 => 第三次调用next()时传递参数
-      const orderInfo = yield getOrderInfo(userInfo)
-      console.log(orderInfo)
-      //第三个yield语句的整体返回结果 => 第四次调用next()时传递参数
-      const goodsInfo = yield getGoodsInfo(orderInfo)
-      console.log(goodsInfo)
-    }
+      /**
+       * 生成器函数：定义业务逻辑主流程
+       * 看起来像同步代码，实际上每行 yield 都会等待异步操作回调
+       */
+      function* generator() {
+        // 这里的 userInfo 接收的是第二次 next() 传入的参数
+        const userInfo = yield getUserInfo()
+        console.log('生成器内部接收到的用户数据:', userInfo)
 
-    const iterator = generator()
-    //第一次调用next()方法
-    iterator.next()
-  </script>
-</head>
-<body>
-  
-</body>
+        // 这里的 orderInfo 接收的是第三次 next() 传入的参数
+        const orderInfo = yield getOrderInfo(userInfo)
+        console.log('生成器内部接收到的订单数据:', orderInfo)
+
+        // 这里的 goodsInfo 接收的是第四次 next() 传入的参数
+        const goodsInfo = yield getGoodsInfo(orderInfo)
+        console.log('生成器内部接收到的商品数据:', goodsInfo)
+      }
+
+      // 初始化并启动
+      const iterator = generator()
+
+      // 第一次调用 next()：启动生成器，开始执行 getUserInfo()
+      iterator.next()
+    </script>
+  </head>
+  <body></body>
 </html>

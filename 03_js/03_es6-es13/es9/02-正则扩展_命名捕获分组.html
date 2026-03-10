@@ -1,39 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>正则扩展_命名捕获分组</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        //声明一个字符串
-        // let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
+      /**
+       * 传统捕获分组（ES9之前）
+       * 
+       * 1. 特点：通过索引 (result[1], result[2]) 获取匹配内容。
+       * 2. 缺点：当正则表达式复杂时，通过索引获取内容极易出错，且代码语义化差。
+       */
+      /*
+      let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
+      // 提取 url 与 『标签文本』
+      const reg = /<a href="(.*)">(.*)<\/a>/
+      // 执行
+      const result = reg.exec(str)
+      console.log(result)
+      // console.log(result[1])
+      // console.log(result[2])
+      */
 
-        // //提取 url 与 『标签文本』
-        // const reg = /<a href="(.*)">(.*)<\/a>/
+      /**
+       * 命名捕获分组 [ES9新增]
+       * 
+       * 1. 语法：(?<name>pattern)
+       * 2. 优点：给分组起名，匹配结果会存储在 result.groups 对象中。
+       * 3. 价值：大幅提高代码的可维护性和可读性，不再依赖不直观的索引。
+       */
+      let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
 
-        // //执行
-        // const result = reg.exec(str)
+      // 分组命名：url 和 text
+      const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/
 
-        // console.log(result)
-        // // console.log(result[1])
-        // // console.log(result[2])
+      const result = reg.exec(str)
 
-        
-        let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
-        //分组命名
-        const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/
+      // 通过 groups 对象直接访问命名后的成员
+      console.log(result.groups) // 输出包含 url 和 text 的对象
+      console.log(result.groups.url) // 输出：http://www.atguigu.com
+      console.log(result.groups.text) // 输出：尚硅谷
 
-        const result = reg.exec(str)
-
-        console.log(result.groups)
-        console.log(result.groups.url)
-
-        console.log(result.groups.text)
+      console.log('------------01------------')
     </script>
-</body>
-
+  </body>
 </html>

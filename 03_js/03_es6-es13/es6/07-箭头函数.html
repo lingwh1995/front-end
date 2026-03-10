@@ -1,48 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>箭头函数</title>
-  <script>
-    //ES6允许使用箭头定义函数
-    const name = 'zhangsan'
-    //1.箭头函数的this是静态的，始终指向外层调用者
-    const printName = () => {
-      console.log(this.name)
-    }
-    printName()
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭头函数</title>
+    <script>
+      /**
+       * ES6 允许使用“箭头” (=>) 定义函数
+       */
+      const name = 'zhangsan'
 
-    //2.箭头函数的this不能使用call或apply更改
-    const user = {name:'lisi'}
-    //printName().call(user)
+      /**
+       * 1. 静态 this 机制
+       * 箭头函数的 this 是静态的，始终指向函数声明时所在作用域下的 this
+       */
+      const printName = () => {
+        console.log(this.name)
+      }
+      printName()
 
-    //3.不能作为构造实例化对象
-    let Person = () => {
-      this.name = name
-      this.age = age
-    }
-    // let person = new Person('张三',20)
-    // console.log(person)
+      /**
+       * 2. 不可更改的 this
+       * 箭头函数的 this 指向无法通过 call、apply 或 bind 进行更改
+       */
+      const user = { name: 'lisi' }
+      // printName.call(user)
 
-    //4.不能使用 arguments 变量
-    const testArguments = () => {
-      console.log(arguments)
-    }
-    // testArguments()
+      /**
+       * 3. 不能作为构造函数
+       * 箭头函数不能使用 new 命令来实例化对象，否则会报错
+       */
+      let Person = () => {
+        this.name = name
+        this.age = age
+      }
+      // let person = new Person('张三', 20)
+      // console.log(person)
 
-    //5.箭头函数的简写
-      //1).省略小括号，当形参有且只有一个的时候
-    let double = n => {
-      return n * 2
-    }
-    console.log(double(10))
-      //2).省略花括号，当代码体只有一条语句的时候，注意：此时 return 关键字也可以省略
-    const pow = n => n * n
-    console.log(pow(10))
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 4. 无 arguments 变量
+       * 箭头函数内部不可以使用 arguments 对象，可以使用 rest 参数代替
+       */
+      const testArguments = () => {
+        // console.log(arguments)
+      }
+      // testArguments()
+
+      /**
+       * 5. 箭头函数的简写规则
+       */
+
+      // 1) 省略小括号：当形参有且只有一个的时候
+      let double = (n) => {
+        return n * 2
+      }
+      console.log(double(10))
+
+      // 2) 省略花括号：当代码体只有一条语句的时候。
+      // 注意：此时 return 关键字也必须省略，语句的执行结果即为返回值
+      const pow = (n) => n * n
+      console.log(pow(10))
+    </script>
+  </head>
+  <body></body>
 </html>

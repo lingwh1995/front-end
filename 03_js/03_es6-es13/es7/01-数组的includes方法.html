@@ -1,26 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组的includes方法</title>
-  <script>
-    /**
-     * includes(): 判断数组中是否包含一个元素，可以直接返回boolean值true和false
-     */ 
-    let array = [1, 2, 3, 4, 5]
-    console.log(array.includes(2))  //输出：true
-    console.log(array.includes(6))  //输出：false
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的includes方法</title>
+    <script>
+      /**
+       * 1. includes(searchElement, fromIndex)
+       * - 功能：判断数组中是否包含一个指定的值。
+       * - 返回值：Boolean (true/false)。
+       * - [ES7新增]：相比 indexOf 更语义化，且能识别 NaN。
+       */
+      let array = [1, 2, 3, 4, 5]
+      console.log(array.includes(2)) // 输出：true
+      console.log(array.includes(6)) // 输出：false
+      console.log('------------01------------')
 
-    /**
-     * ES7之前的indexOf()方法也可以判断数组中是否包含一个元素，不过没有includes()方法这么方便
-     */ 
-    array = [1, 2, 3, 4, 5]
-    console.log(array.indexOf(2) !== -1)  // 输出：true
-    console.log(array.indexOf(6) !== -1)  // 输出：false
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. indexOf(searchElement, fromIndex)
+       * - 功能：返回指定元素在数组中首次出现的索引。
+       * - 逻辑：若包含则返回索引（0 或正整数），若不包含则返回 -1。
+       * - 局限：判断是否存在时需要手动与 -1 进行比较，且无法识别 NaN。
+       */
+      array = [1, 2, 3, 4, 5]
+      console.log(array.indexOf(2) !== -1) // 输出：true
+      console.log(array.indexOf(6) !== -1) // 输出：false
+      console.log('------------02------------')
+    </script>
+  </head>
+  <body></body>
 </html>

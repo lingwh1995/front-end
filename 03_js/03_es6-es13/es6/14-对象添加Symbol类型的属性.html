@@ -1,44 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>对象添加Symbol类型的属性</title>
-  <script>
-    //为对象添加Symbol类型方式属性方式一
-    let cat = {
-      eat(){
-        console.log('喝水...');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象添加Symbol类型的属性</title>
+    <script>
+      /**
+       * 为对象添加 Symbol 类型属性方式一：外部定义后动态添加
+       * 这种方式适合在不确定对象内部结构时，安全地扩展对象方法，有效避免属性名冲突。
+       */
+      let cat = {
+        eat() {
+          console.log('喝水...')
+        },
       }
-    }
 
-    let methods = {
-      eat: Symbol(),
-      drink: Symbol()
-    }
-
-    cat[methods.eat] = () => {
-      console.log('煤球吃饭...')
-    }
-
-    cat[methods.drink] = () => {
-      console.log('煤球喝水...')
-    }
-    console.log(cat)
-
-    //为对象添加Symbol类型方式属性方式二
-    let dog = {
-      name: '狗白儿',
-      [Symbol('eat')]: () => {
-        console.log('狗白儿吃饭...')
-      },
-      [Symbol('drink')]: () => {
-        console.log('狗白儿喝水...')
+      let methods = {
+        eat: Symbol(),
+        drink: Symbol(),
       }
-    }
-  </script>
-</head>
-<body>
-  
-</body>
+
+      // 使用中括号语法 [] 挂载 Symbol 属性
+      cat[methods.eat] = () => {
+        console.log('煤球吃饭...')
+      }
+
+      cat[methods.drink] = () => {
+        console.log('煤球喝水...')
+      }
+      console.log(cat)
+
+      /**
+       * 为对象添加 Symbol 类型属性方式二：对象字面量直接定义
+       * 使用计算属性名（Computed Property Names）语法直接在对象内部声明。
+       */
+      let dog = {
+        name: '狗白儿',
+        [Symbol('eat')]: () => {
+          console.log('狗白儿吃饭...')
+        },
+        [Symbol('drink')]: () => {
+          console.log('狗白儿喝水...')
+        },
+      }
+      console.log(dog)
+    </script>
+  </head>
+  <body></body>
 </html>

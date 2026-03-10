@@ -1,38 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>函数参数的默认值设置</title>
-  <script>
-    //ES6允许给函数参数赋初始值
-    //1.给形参赋初始值，一般赋初始值的形参位置要放在最后(约定优于配置)
-    const sum = (a,b,c=30) => a + b + c
-    //不给函数参数赋初始值
-    console.log(sum(10,20,100))
-    //给函数参数赋初始值
-    console.log(sum(10,20))
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数参数的默认值设置</title>
+    <script>
+      /**
+       * ES6 允许给函数参数赋初始值
+       */
 
-    //2.与解构赋值结合
-    const connect = (({host='127.0.0.1',username,password,port}) => {
-      console.log(`主机地址:${host},用户名:${username},密码:${password},端口:${port}`)
-    })
-    //不给函数参数赋初始值
-    connect({
-      host: 'localhost',
-      username: 'admin',
-      password: '123456',
-      port: '8080'
-    })
-    //给函数参数赋初始值
-    connect({
-      username: 'admin',
-      password: '123456',
-      port: '8080'
-    })
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 1. 基本用法
+       * 给形参赋初始值。
+       * 注意：一般建议将带初始值的参数放在参数列表的最后（遵循“约定优于配置”原则）。
+       */
+      const sum = (a, b, c = 30) => a + b + c
+
+      // 显式传入所有参数（覆盖默认值）
+      console.log(sum(10, 20, 100))
+      // 第三个参数缺省，使用默认值 30
+      console.log(sum(10, 20))
+
+      /**
+       * 2. 与解构赋值结合使用
+       * 常用于配置对象，可以极大地提高代码的可读性和健壮性
+       */
+      const connect = ({ host = '127.0.0.1', username, password, port }) => {
+        console.log(`主机地址:${host}, 用户名:${username}, 密码:${password}, 端口:${port}`)
+      }
+
+      // 传入完整的配置对象（不使用默认值）
+      connect({
+        host: 'localhost',
+        username: 'admin',
+        password: '123456',
+        port: '8080',
+      })
+
+      // 缺省 host 属性，解构时将自动使用默认值 '127.0.0.1'
+      connect({
+        username: 'admin',
+        password: '123456',
+        port: '8080',
+      })
+    </script>
+  </head>
+  <body></body>
 </html>

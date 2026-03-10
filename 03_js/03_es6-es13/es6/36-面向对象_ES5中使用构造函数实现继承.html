@@ -1,57 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>面向对象_es5中使用构造函数实现继承</title>
-  <script>
-    //父类-Animal类
-    function Animal(name) {
-      this.name = name
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>面向对象_es5中使用构造函数实现继承</title>
+    <script>
+      /**
+       * 父类定义
+       *
+       * 属性定义在构造函数中，方法定义在原型对象（prototype）上
+       */
+      function Animal(name) {
+        this.name = name
+      }
 
-    //父类方法
-    Animal.prototype.drink = function() {
-      console.log('动物正在喝水...[我是父类方法]')
-    }
+      // 父类共享方法：喝水
+      Animal.prototype.drink = function () {
+        console.log('动物正在喝水...[我是父类方法]')
+      }
 
-    //父类方法
-    Animal.prototype.eat = function() {
-      console.log('动物正在吃饭...[我是父类方法]')
-    }
+      // 父类共享方法：吃饭
+      Animal.prototype.eat = function () {
+        console.log('动物正在吃饭...[我是父类方法]')
+      }
 
-    //子类-Pig类
-    function Pig(name,color) {
-      //使用call()改变Animal中this的指向
-      Animal.call(this,name)
-      this.color = color
-    }
+      /**
+       * 子类定义：实现组合继承
+       *
+       * 1. 构造函数继承：利用 call 借用父类构造函数，实现属性的私有化。
+       * 2. 原型链继承：将子类的原型指向父类实例，实现方法的公用。
+       */
+      function Pig(name, color) {
+        /**
+         * 步骤 A：属性继承
+         * 使用 call() 调用父类构造函数，并将 Animal 内部的 this 指向当前 Pig 实例。
+         */
+        Animal.call(this, name)
+        this.color = color
+      }
 
-    //设置子类构造函数的原型为父类
-    Pig.prototype = new Animal
-    //修正子类构造函数的原型
-    Pig.prototype.constructor = Pig
+      /**
+       * 步骤 B：方法继承
+       * 设置子类构造函数的原型为父类的一个实例，从而连接原型链。
+       */
+      Pig.prototype = new Animal()
 
-    //声明子类的方法
-    Pig.prototype.sleep = function() {
-      console.log(`${this.color}小猪${this.name}正在睡觉...[我是子类自身方法]`)
-    }
+      /**
+       * 步骤 C：修复构造器指向
+       * 因重写了 prototype，需手动将 constructor 指回 Pig，否则 constructor 会指向 Animal。
+       */
+      Pig.prototype.constructor = Pig
 
-    //重写父类的方法
-    Pig.prototype.eat = function() {
-      console.log(`${this.color}小猪${this.name}正在吃饭...[我是子类重写父类方法]`)
-    }
+      // 声明子类独有的方法
+      Pig.prototype.sleep = function () {
+        console.log(`${this.color}小猪${this.name}正在睡觉...[我是子类自身方法]`)
+      }
 
-    const pig = new Pig('佩奇','红色')
-    //调用父类的方法
-    pig.drink()
-    //调用子类的方法
-    pig.sleep()
-    //调用子类重写父类的方法
-    pig.eat()
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 步骤 D：方法重写 (Override)
+       * 在子类原型上覆盖父类的同名方法，利用原型链的就近原则进行调用。
+       */
+      Pig.prototype.eat = function () {
+        console.log(`${this.color}小猪${this.name}正在吃饭...[我是子类重写父类方法]`)
+      }
+
+      // 实例化测试
+      const pig = new Pig('佩奇', '红色')
+
+      // 1. 调用父类的方法（通过原型链向上查找）
+      pig.drink()
+
+      // 2. 调用子类自身的方法
+      pig.sleep()
+
+      // 3. 调用子类重写父类的方法（优先执行子类原型上的方法）
+      pig.eat()
+    </script>
+  </head>
+  <body></body>
 </html>

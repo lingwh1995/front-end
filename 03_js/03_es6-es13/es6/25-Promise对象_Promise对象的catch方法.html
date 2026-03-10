@@ -1,38 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise对象_Promise对象的catch方法</title>
+    <script>
+      const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          /**
+           * 状态切换：
+           * resolve() -> fulfilled (成功)
+           * reject()  -> rejected (失败)
+           */
+          let error = '数据读取失败'
+          reject(error)
+        }, 1000)
+      })
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promise对象_Promise对象的catch方法</title>
-  <script>
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        /**
-         * 调用resolve()：设置promise对象的状态为成功状态，可以resolve()传递参数
-         * 调用reject()： 设置promise对象的状态为失败状态，可以reject()传递参数
-         */
+      /**
+       * Promise.prototype.catch() 方法
+       * 1. 作用：专门用于指定 Promise 状态变为 rejected 时的回调函数。
+       * 2. 语法糖：本质上是 .then(null, reason => {...}) 的简写。
+       * 3. 错误穿透：在链式调用中，前面的 then 抛出的错误或 rejected 状态，
+       *    都会不断向后传递，直到被 catch 捕获。
+       */
+      promise.catch((reason) => {
+        // 打印失败的原因
+        console.error('捕获到错误：', reason)
+        // catch 运行结束后也会返回一个新的 Promise 对象
+        return false
+      })
+    </script>
+  </head>
 
-        // let data = '数据库中的数据'
-        // resolve(data)
-
-        let error = '数据读取失败'
-        reject(error)
-      }, 1000)
-    })
-
-    /**
-     * 使用catch()的解决promise调用出错
-     */
-    promise.catch(reason => {
-      console.log(reason)
-      return false
-    })
-  </script>
-</head>
-
-<body>
-
-</body>
-
+  <body></body>
 </html>

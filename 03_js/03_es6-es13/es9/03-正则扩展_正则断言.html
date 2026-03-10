@@ -1,24 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>正则扩展_正则断言</title>
-  <script>
-    //声明字符串
-    let str = 'JS5211314你知道么555啦啦啦'
-    //正向断言
-    /*
-    const reg = /\d+(?=啦)/
-    const result = reg.exec(str)
-    */reg
-    //反向断言
-    const reg = /(?<=么)\d+/
-    const result = reg.exec(str)
-    console.log(result)
-</script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正则扩展_正则断言</title>
+    <script>
+      /**
+       * 正则断言：位置匹配而不消耗字符
+       *
+       * 1. 正向断言 (Lookahead): (?=pattern)
+       *    - 功能：匹配后面紧跟着指定内容的字符串。
+       * 2. 反向断言 (Lookbehind) [ES9新增]: (?<=pattern)
+       *    - 功能：匹配前面紧跟着指定内容的字符串。
+       */
+
+      // 声明字符串
+      let str = 'JS5211314你知道么555啦啦啦'
+
+      /**
+       * 正向断言示例
+       *
+       * 逻辑：匹配数字，但要求这些数字后面必须紧跟着“啦”字。
+       */
+      /*
+      const reg = /\d+(?=啦)/
+      const result = reg.exec(str) // 匹配到 555
+      */
+
+      /**
+       * 反向断言示例
+       *
+       * 逻辑：匹配数字，但要求这些数字前面必须紧跟着“么”字。
+       */
+      const reg = /(?<=么)\d+/
+      const result = reg.exec(str)
+
+      // 执行结果
+      console.log('匹配结果:', result) // 匹配到 555
+      console.log('------------01------------')
+    </script>
+  </head>
+  <body></body>
 </html>

@@ -1,43 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新增for...of...遍历方式</title>
-  <script>
-    const users = [
-      {
-        id : '001',
-        name : '张三',
-        age: 18
-      },
-      {
-        id : '002',
-        name : '李四',
-        age: 19
-      },
-      {
-        id : '003',
-        name : '王五',
-        age: 20
-      },
-    ]
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新增 for...of 遍历方式</title>
+    <script>
+      /**
+       * 基础数据：对象数组
+       */
+      const users = [
+        {
+          id: '001',
+          name: '张三',
+          age: 18,
+        },
+        {
+          id: '002',
+          name: '李四',
+          age: 19,
+        },
+        {
+          id: '003',
+          name: '王五',
+          age: 20,
+        },
+      ]
 
-    // for...in...方式遍历对象数组
-    for(index in users) {
-      console.log(users[index])
-    }
+      /**
+       * 1. for...in 循环
+       * - 特点：遍历的是对象的“键名”（Key）或数组的“索引”（Index）。
+       * - 缺点：索引是字符串类型的数字，且会遍历原型链上的可枚举属性。
+       */
+      for (index in users) {
+        // 拿到的是索引 0, 1, 2，需要通过索引再次访问数组
+        console.log(users[index])
+      }
 
-    console.log('--------------------')
+      console.log('--------------------')
 
-    // for...of...方式遍历对象数组
-    for(user of users) {
-      console.log(user)
-    }
-
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. for...of 循环 (ES6 新增)
+       * - 特点：遍历的是具体的“键值”（Value）。
+       * - 优势：
+       *   1) 语法更直接，直接获取元素本身。
+       *   2) 专门用于遍历具备 Iterator 接口的数据结构（Array, Set, Map, String, arguments 等）。
+       *   3) 不会遍历原型链上的属性，安全性更高。
+       */
+      for (user of users) {
+        // 直接拿到数组中的对象元素
+        console.log(user)
+      }
+    </script>
+  </head>
+  <body></body>
 </html>

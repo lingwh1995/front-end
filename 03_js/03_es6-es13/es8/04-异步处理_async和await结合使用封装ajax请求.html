@@ -1,48 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>异步处理_async和await结合使用封装ajax请求</title>
-  <script>
-    const sendAjax = () => {
-      return new Promise((resolve,reject) => {
-        // 1.创建对象
-        const xhr = new XMLHttpRequest();
-        // 2.初始化,设置请求方式和接口地址
-        xhr.open("GET", "http://api.tianapi.com/film/index?key=74cb68c12016c1e9508bf6d5f981a7be&num=10");
-        // 3.发送请求
-        xhr.send();
-        // 4.绑定事件，处理响应结果
-        xhr.onreadystatechange = () => {
-          // 判断
-          if (xhr.readyState === 4) {
-            // 判断响应状态码 200~299
-            if (xhr.status >= 200 && xhr.status < 300) {
-              // 获取成功
-              resolve(xhr.response);
-              //console.log(xhr.response);
-            } else {
-              // 获取失败
-              reject(xhr.status);
-              //console.log(xhr.status);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>异步处理_async和await结合使用封装ajax请求</title>
+    <script>
+      /**
+       * 1. 封装 AJAX 请求函数
+       * - 原理：返回一个 Promise 对象，将原生 XMLHttpRequest 的异步过程包裹在内。
+       * - 逻辑：请求成功执行 resolve，请求失败执行 reject。
+       */
+      const sendAjax = () => {
+        return new Promise((resolve, reject) => {
+          // 步骤 1：创建 XMLHttpRequest 对象
+          const xhr = new XMLHttpRequest()
+
+          // 步骤 2：初始化请求，设置请求方式 (GET) 和 接口地址
+          xhr.open(
+            'GET',
+            'http://api.tianapi.com/film/index?key=74cb68c12016c1e9508bf6d5f981a7be&num=10'
+          )
+
+          // 步骤 3：发送请求
+          xhr.send()
+
+          // 步骤 4：绑定事件，监听 readyState 状态改变并处理响应结果
+          xhr.onreadystatechange = () => {
+            // 判断是否请求完成 (readyState 为 4)
+            if (xhr.readyState === 4) {
+              // 判断响应 HTTP 状态码是否在 200~299 范围内（代表成功）
+              if (xhr.status >= 200 && xhr.status < 300) {
+                // 获取数据成功，调用 resolve 并传递响应数据
+                resolve(xhr.response)
+              } else {
+                // 获取数据失败，调用 reject 并传递状态码
+                reject(xhr.status)
+              }
             }
           }
-        }
-      })
-    }
+        })
+      }
 
-    /**
-     * async 配合 await 调用异步ajax方法
-     */
-    const send = async() => {
-      const result = await sendAjax()
-      console.log(result)
-    }
-    send()
-  </script>
-</head>
-<body>
-  
-</body>
+      /**
+       * 2. async 配合 await 调用异步 AJAX 方法
+       * - 优势：避免了层层嵌套的回调函数，使异步请求的调用像同步代码一样直观。
+       */
+      const send = async () => {
+        try {
+          // 等待 Promise 返回的成功结果
+          const result = await sendAjax()
+          console.log('请求成功：', result)
+        } catch (status) {
+          // 处理请求失败的情况
+          console.error('请求失败，状态码为：', status)
+        }
+      }
+
+      // 执行调用
+      send()
+    </script>
+  </head>
+  <body></body>
 </html>
